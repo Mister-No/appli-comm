@@ -80,8 +80,6 @@ class Contacts extends CI_Controller  {
 	            "result_ent" => $result_ent,
 	        );
 
-
-
 					$this->load->view('header', $data);
 	        $this->load->view('contacts_ajouter');
 	        $this->load->view('footer');

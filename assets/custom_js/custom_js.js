@@ -8,7 +8,7 @@ $(document).ready(function()
 	  username = $(this).find('input[name=username]').val();
 	  passwrd = $(this).find('input[name=passwrd]').val();
 
-	  $.post('http://localhost/new-appli-comm/login/verifier.html', {username: username, passwrd: passwrd}, function(data) {
+	  $.post('http://localhost/appli-comm/login/verifier.html', {username: username, passwrd: passwrd}, function(data) {
 	    if (data==1) {
 
 	      window.location.href = 'dashboard.html';
@@ -37,7 +37,7 @@ $(document).ready(function()
 
 function select (item, id, urlSelect) {
 
-	var base_url = 'http://localhost/new-appli-comm/common/' + urlSelect;
+	var base_url = 'http://localhost/appli-comm/common/' + urlSelect;
 
   $.post(base_url, function(data) {
 
