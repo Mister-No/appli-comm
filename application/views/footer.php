@@ -35,11 +35,6 @@
 				<strong>UNPG</strong>
 				by <a href="http://coxdigital.fr" target="_blank">CoxDigital</a>
 			</div>
-			<div class="go-up">
-				<a href="#" rel="go-top">
-					<i class="fa-angle-up"></i>
-				</a>
-			</div>
 		</div>
 	</footer>
 </div>

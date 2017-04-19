@@ -1,19 +1,23 @@
-
+<div class="jumbotron" data-pages="parallax">
+	<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+		<div class="inner">
+			<ul class="breadcrumb">
+				<li>
+					<p>Pages</p>
+				</li>
+				<li>
+					<a href="<?=base_url();?>listes.html" class="active">Listes</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>listes/ajouter.html" class="active">Ajouter</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 <div class="container-fluid container-fixed-lg">
 	<div class="page-container">
     <div class="main-content">
-    	<div class="page-title">
-    		<div class="title-env">
-    			<h3>Listes</h3>
-    		</div>
-    		<div class="breadcrumb-env">
-    			<ol class="breadcrumb bc-1" >
-    				<li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
-    				<li> <a href="">Listes</a> </li>
-    				<li class="active">Ajouter une liste</li>
-    			</ol>
-    		</div>
-    	</div>
       <form id="form" method="post" class="validate" action="<?=base_url();?>listes/add.html">
         <div class="row">
           <div class="col-md-12">

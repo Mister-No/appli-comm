@@ -70,6 +70,8 @@ class Listes extends CI_Controller {
 
           $result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
+          $result = array();
+
           foreach ($result_cat_parent as $row) {
 
             $result_cat_child = $this->My_categories->get_child_cat($row->id);

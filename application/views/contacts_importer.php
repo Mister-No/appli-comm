@@ -1,19 +1,23 @@
-
+<div class="jumbotron" data-pages="parallax">
+	<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+		<div class="inner">
+			<ul class="breadcrumb">
+				<li>
+					<p>Pages</p>
+				</li>
+				<li>
+					<a href="<?=base_url();?>contacts.html" class="active">Contacts</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>contacts/importer.html" class="active">Importer</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 <div class="container-fluid container-fixed-lg">
 	<div class="page-container">
 		<div class="main-content">
-			<div class="page-title">
-				<div class="title-env">
-					<h3>Contacts</h3>
-				</div>
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1" >
-						<li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
-						<li> <a href="">Contacts</a> </li>
-						<li class="active">Importer un contact</li>
-					</ol>
-				</div>
-			</div>
 			<div class="row">
 		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">

@@ -1,24 +1,23 @@
+<div class="jumbotron" data-pages="parallax">
+	<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+		<div class="inner">
+			<ul class="breadcrumb">
+				<li>
+					<p>Pages</p>
+				</li>
+				<li>
+					<a href="<?=base_url();?>categories.html" class="active">Catégories</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>categories/modifier.html" class="active">Modifier</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 <div class="container-fluid container-fixed-lg">
 	<div class="page-container">
 		<div class="main-content">
-			<div class="page-title">
-				<div class="title-env">
-					<h3>Catégories</h3>
-				</div>
-				<div class="breadcrumb-env">
-					<ol class="breadcrumb bc-1" >
-						<li>
-							<i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a>
-						</li>
-						<li>
-							<a href="<?=base_url();?>categories.html">Catégories</a>
-						</li>
-						<li class="active">
-							Modifier une catégorie
-						</li>
-					</ol>
-				</div>
-			</div>
 			<div class="row">
         <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
           <div class="panel-heading">
