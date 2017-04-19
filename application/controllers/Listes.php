@@ -8,7 +8,9 @@ class Listes extends CI_Controller {
 
 			$this->load->model('My_listes');
 
-      $result_list = $this->My_listes->get_all_listes();
+      $id_group = $_SESSION["id_group"];
+
+      $result_list = $this->My_listes->get_all_listes($id_group);
 
       $result = array();
 
@@ -62,9 +64,11 @@ class Listes extends CI_Controller {
 
     if ($_SESSION["is_connect"] == TRUE){
 
+      $id_group = $_SESSION["id_group"];
+
       $this->load->model('My_categories');
 
-          $result_cat_parent = $this->My_categories->get_all_parent_cat();
+          $result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
           foreach ($result_cat_parent as $row) {
 
@@ -109,11 +113,13 @@ class Listes extends CI_Controller {
 
       $id = $this->uri->segment(3, 0);
 
+      $id_group = $_SESSION["id_group"];
+
           $result_liste = $this->My_listes->get_liste_by_id($id);
 
           foreach ($result_liste as $row_liste) {
 
-              $result_cat_parent = $this->My_categories->get_all_parent_cat();
+              $result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
               foreach ($result_cat_parent as $row_cat_parent) {
 

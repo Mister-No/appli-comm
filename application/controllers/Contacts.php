@@ -9,7 +9,9 @@ class Contacts extends CI_Controller  {
 
 			$this->load->model('My_contacts');
 
-	        $result_cont = $this->My_contacts->get_all_cont();
+          $id_group = $_SESSION["id_group"];
+
+	        $result_cont = $this->My_contacts->get_all_cont($id_group);
 
           $result = array();
 
@@ -56,8 +58,8 @@ class Contacts extends CI_Controller  {
     if ($_SESSION["is_connect"] == TRUE){
 
       $this->load->view('header');
-          $this->load->view('contacts_erreur');
-          $this->load->view('footer');
+      $this->load->view('contacts_erreur');
+      $this->load->view('footer');
 
       } else {
           $this->load->view('login');
@@ -72,8 +74,10 @@ class Contacts extends CI_Controller  {
 					$this->load->model('My_entreprises');
 					$this->load->model('My_categories');
 
-	        $result_cat = $this->My_categories->get_all_cat();
-	        $result_ent = $this->My_entreprises->get_all_ent();
+          $id_group = $_SESSION["id_group"];
+
+	        $result_cat = $this->My_categories->get_all_cat($id_group);
+	        $result_ent = $this->My_entreprises->get_all_ent($id_group);
 
 	        $data = array(
 	            "result_cat" => $result_cat,

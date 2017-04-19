@@ -26,6 +26,7 @@ class Login extends CI_Controller {
 
 				$_SESSION["is_connect"] = TRUE;
 				$_SESSION["user_id"] = $row->id;
+        $_SESSION["id_group"] = $row->id_group;
 				$_SESSION["is_admin"] = $row->admin;
 				$_SESSION["user_nom"] = $row->nom." ".$row->prenom;
 

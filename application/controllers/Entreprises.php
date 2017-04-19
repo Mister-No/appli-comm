@@ -8,7 +8,9 @@ class Entreprises extends CI_Controller {
 
       $this->load->model('My_entreprises');
 
-      $result = $this->My_entreprises->get_all_ent();
+      $id_group = $_SESSION["id_group"];
+
+      $result = $this->My_entreprises->get_all_ent($id_group);
 
       $data = array(
           "result" => $result,

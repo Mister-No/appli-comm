@@ -4,11 +4,12 @@ class My_categories extends CI_Model {
   /******************************************/
 	/* SELECT TOUTES LES CATEGORIES PARENT    */
 	/******************************************/
-	function get_all_parent_cat(){
+	function get_all_parent_cat($id_group){
 
 		$this->db->select();
 		$this->db->from('categorie');
 		$this->db->where("categorie.id_parent = 0");
+    $this->db->where("categorie.id_group = $id_group");
     $this->db->order_by ("titre", "ASC");
 
 		$query = $this->db->get();
@@ -19,10 +20,11 @@ class My_categories extends CI_Model {
   /******************************************/
   /* SELECT TOUTES LES CATEGORIES           */
   /******************************************/
-  function get_all_cat(){
+  function get_all_cat($id_group){
 
     $this->db->select();
     $this->db->from('categorie');
+    $this->db->where("categorie.id_group = $id_group");
     $this->db->order_by ("titre", "ASC");
 
     $query = $this->db->get();

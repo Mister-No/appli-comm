@@ -8,7 +8,9 @@ class Categories extends CI_Controller {
 
 			$this->load->model('My_categories');
 
-					$result_cat_parent = $this->My_categories->get_all_parent_cat();
+					$id_group = $_SESSION["id_group"];
+
+					$result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
 					foreach ($result_cat_parent as $row_cat_parent) {
 

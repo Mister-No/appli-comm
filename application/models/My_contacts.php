@@ -4,11 +4,12 @@ class My_contacts extends CI_Model {
   /******************************************/
   /* SELECT TOUTES LES contactsS           */
   /******************************************/
-  function get_all_cont(){
+  function get_all_cont($id_group){
 
     $this->db->select('contacts.*, entreprises.raison_sociale');
 		$this->db->from('contacts');
 		$this->db->join('entreprises', 'entreprises.id = contacts.id_ent', 'LEFT');
+    $this->db->where("contacts.id_group = $id_group");
     $this->db->order_by ("nom", "ASC");
 
     $query = $this->db->get();

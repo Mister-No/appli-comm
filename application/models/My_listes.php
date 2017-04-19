@@ -4,10 +4,11 @@ class My_listes extends CI_Model {
   /******************************************/
 	/* SELECT TOUTES LES LISTES               */
 	/******************************************/
-	function get_all_listes(){
+	function get_all_listes($id_group){
 
 		$this->db->select();
 		$this->db->from('liste');
+    $this->db->where("liste.id_group = $id_group");
     $this->db->order_by ("titre", "ASC");
 
 		$query = $this->db->get();
