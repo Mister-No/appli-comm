@@ -113,10 +113,12 @@
         <div class="bar-inner">
           <ul>
             <li>
-              <a href="#">Accueil</a>
+              <a href="<?=base_url();?>dashboard.html"><span class="title">Accueil</span>
+              <span class=" arrow"></span></a>
             </li>
             <li class="mega">
-              <a href="javascript:;">Campagnes</a>
+              <a href="javascript:;"><span class="title">Campagnes</span>
+              <span class=" arrow"></span></a>
               <ul class="mega">
                 <div class="container">
                   <div class="row">
@@ -163,7 +165,8 @@
             </ul>
           </li>
           <li class="mega">
-            <a href="javascript:;">Statistiques</a>
+            <a href="javascript:;"><span class="title">Statistiques</span>
+            <span class=" arrow"></span></a>
             <ul class="mega">
               <div class="container">
                 <div class="row">
@@ -210,7 +213,8 @@
             </ul>
           </li>
           <li class="mega">
-            <a href="javascript:;">Listes</a>
+            <a href="javascript:;"><span class="title">Listes</span>
+            <span class=" arrow"></span></a>
             <ul class="mega">
               <div class="container">
                 <div class="row">
@@ -257,7 +261,8 @@
             </ul>
           </li>
           <li class="mega">
-            <a href="javascript:;">Contacts</a>
+            <a href="javascript:;"><span class="title">Contacts</span>
+            <span class=" arrow"></span></a>
             <ul class="mega">
               <div class="container">
                 <div class="row">
@@ -339,7 +344,8 @@
             </ul>
           </li>
           <li class="mega">
-            <a href="javascript:;">Catégories</a>
+            <a href="javascript:;"><span class="title">Catégories</span>
+            <span class=" arrow"></span></a>
             <ul class="mega">
               <div class="container">
                 <div class="row">

@@ -77,7 +77,12 @@ class Entreprises extends CI_Controller {
 
 		if ($_SESSION["is_connect"] == TRUE){
 
+      $id_group = $_SESSION["id_group"];
+
+      var_dump($id_group);
+
 			$data = array(
+        'id_group' 		    => $id_group,
 				'id_parent' 		  => $this->input->post('id_parent'),
 				'raison_sociale' 	=> $this->input->post('raison_sociale'),
 				'siret' 			    => $this->input->post('siret'),
@@ -122,7 +127,7 @@ class Entreprises extends CI_Controller {
 	        $this->My_entreprises->delete_ent_cat($this->input->post('id'));
 
 			$data = array(
-				'id'      		=> $this->input->post('id'),
+				'id'      		    => $this->input->post('id'),
 				'id_parent'    		=> $this->input->post('id_parent'),
 				'raison_sociale' 	=> $this->input->post('raison_sociale'),
 				'siret' 			    => $this->input->post('siret'),

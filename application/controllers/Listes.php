@@ -184,6 +184,8 @@ class Listes extends CI_Controller {
 
     if ($_SESSION["is_connect"] == TRUE){
 
+      $id_group = $_SESSION["id_group"];
+
       $data = array(
         "titre" => $_POST["titre"],
       );
@@ -193,14 +195,17 @@ class Listes extends CI_Controller {
           foreach ($_POST["id_cat"] as $key => $value) {
 
             $data = array(
-              "id_liste" => $id,
-              "id_cat" => $value,
+              "id_liste"  => $id,
+              'id_group' 	=> $id_group,
+              "id_cat"    => $value,
             );
+
+            var_dump($data);
 
         $this->My_common->insert_data ("liste_cat", $data);
           }
 
-      redirect('listes');
+      //redirect('listes');
 
     } else {
           $this->load->view('login');

@@ -22,7 +22,6 @@
 		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
 		        <div class="panel-title">Ajouter un contact</div>
-						<div class="panel-title">Modifier un contact</div>
 						<div class="panel-controls">
 							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i

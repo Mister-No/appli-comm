@@ -53,7 +53,11 @@ class Categories extends CI_Controller {
 
 		$this->load->model('My_categories');
 
-		$result_cat_parent = $this->My_categories->get_all_parent_cat();
+		$id_group = $_SESSION["id_group"];
+
+		$result = array();
+
+		$result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
 		foreach ($result_cat_parent as $row_cat_parent) {
 
@@ -155,9 +159,10 @@ class Categories extends CI_Controller {
 			} else {
 
 			$data = array(
-				'id' 		 => $this->input->post('id'),
-				'titre'  => $this->input->post('titre'),
-				'id_parent'  => $this->input->post('titre'),
+				'id' 		 		=> $this->input->post('id'),
+				'id_group' 	=> $id_group,
+				'titre'  		=> $this->input->post('titre'),
+				'id_parent' => $this->input->post('titre'),
 			);
 
 			$this->My_common->insert_data ("categorie", $data);

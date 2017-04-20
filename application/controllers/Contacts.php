@@ -143,6 +143,8 @@ class Contacts extends CI_Controller  {
 
 			$result = $this->My_contacts->check_exist ($this->input->post('email'), $this->input->post('nom'));
 
+      $id_group = $_SESSION["id_group"];
+
 			if (count($result) > 0){
 
 		        redirect('contacts/erreur');
@@ -151,6 +153,7 @@ class Contacts extends CI_Controller  {
 
 				$data = array(
 					'id' 			    => $this->input->post('id'),
+          'id_group' 		=> $id_group,
 					'civ' 				=> $this->input->post('civ'),
 					'nom' 				=> $this->input->post('nom'),
 					'prenom' 			=> $this->input->post('prenom'),
@@ -258,7 +261,9 @@ class Contacts extends CI_Controller  {
 
 			$this->load->model('My_categories');
 
-      $result_cat = $this->My_categories->get_all_cat ();
+      $id_group = $_SESSION["id_group"];
+
+      $result_cat = $this->My_categories->get_all_cat($id_group);
 
       $data = array(
           "result_cat" => $result_cat,
