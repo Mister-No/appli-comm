@@ -34,7 +34,7 @@
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">
-									<div class="form-group form-group-default form-group-default-select2 ">
+									<div class="form-group form-group-default form-group-default-select2">
 										<label class="">Civilité :</label>
 											<select class="full-width" data-placeholder="Choisir votre civilité" data-init-plugin="select2" id="select_civility" name="civ">
 											<option value=""></option>

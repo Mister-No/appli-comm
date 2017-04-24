@@ -4,7 +4,7 @@ class Categories extends CI_Controller {
 
 	public function index()
 	{
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_categories');
 
@@ -35,7 +35,7 @@ class Categories extends CI_Controller {
 					}
 
 					$data = array(
-							"result" => $result,
+							'result' => $result,
 					);
 
 					$this->load->view('header', $data);
@@ -49,11 +49,11 @@ class Categories extends CI_Controller {
 
 	public function exporter()
 	{
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 		$this->load->model('My_categories');
 
-		$id_group = $_SESSION["id_group"];
+		$id_group = $_SESSION['id_group'];
 
 		$result = array();
 
@@ -82,7 +82,7 @@ class Categories extends CI_Controller {
 			}
 
 			$data = array(
-					"result" => $result,
+					'result' => $result,
 			);
 
 			$this->load->view('header', $data);
@@ -107,7 +107,7 @@ class Categories extends CI_Controller {
 	public function ajouter()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 					$this->load->view('header');
 					$this->load->view('categories_ajouter');
@@ -122,7 +122,7 @@ class Categories extends CI_Controller {
 	public function modifier()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_categories');
 
@@ -131,7 +131,7 @@ class Categories extends CI_Controller {
 				$result = $this->My_categories->get_cat_by_id($id);
 
 				$data = array(
-					"result" => $result,
+					'result' => $result,
 				);
 
 				$this->load->view('header', $data);
@@ -146,9 +146,11 @@ class Categories extends CI_Controller {
 	public function add()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 		$this->load->model('My_categories');
+
+		$id_group = $_SESSION['id_group'];
 
 		$result = $this->My_categories->check_exist ($this->input->post('titre'));
 
@@ -158,14 +160,20 @@ class Categories extends CI_Controller {
 
 			} else {
 
-			$data = array(
-				'id' 		 		=> $this->input->post('id'),
-				'id_group' 	=> $id_group,
-				'titre'  		=> $this->input->post('titre'),
-				'id_parent' => $this->input->post('titre'),
-			);
+				if ($this->input->post('id_cat') > 0) {
+					$id_parent = $this->input->post('id_cat');
+				} else {
+					$id_parent = 0;
+				}
 
-			$this->My_common->insert_data ("categorie", $data);
+				$data = array(
+					'id' 		 		=> $this->input->post('id'),
+					'id_group' 	=> $id_group,
+					'titre'  		=> $this->input->post('titre'),
+					'id_parent' => $id_parent,
+				);
+
+				$this->My_common->insert_data('categorie', $data);
 
 				redirect('categories');
 
@@ -173,27 +181,27 @@ class Categories extends CI_Controller {
 
     } else {
       	$this->load->view('login');
-    	}
+    }
 
 	}
 
 	public function update()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 			$data = array (
-				"id" 		=> $this->input->post('id'),
-				"titre" 	=> $this->input->post('titre'),
-				"id_parent" => $this->input->post('id_parent'),
+				'id' 				 => $this->input->post('id'),
+				'titre' 		 => $this->input->post('titre'),
+				'id_parent'	 => $this->input->post('id_parent'),
 			);
 
-	    $this->My_common->update_data("categorie", "id", $this->input->post('id'), $data);
+	    $this->My_common->update_data('categorie', 'id', $this->input->post('id'), $data);
 
 			redirect('categories');
 
     	} else {
-        	$this->load->view('login');
+        $this->load->view('login');
     	}
 
 	}
@@ -201,9 +209,9 @@ class Categories extends CI_Controller {
 	public function delete()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
-	     $this->My_common->delete_data("categorie", $this->input->post('id'));
+	     $this->My_common->delete_data('categorie', $this->input->post('id'));
 
 			redirect('categories');
 

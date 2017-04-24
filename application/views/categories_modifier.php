@@ -33,7 +33,7 @@
 					</div>
         </div>
         <div class="panel-body">
-					<form role="form" id="form1" method="post" class="validate" action="<?=base_url();?>categories/update.html">
+					<form role="form" id="form" method="post" class="validate" action="<?=base_url();?>categories/update.html">
         	<?php
 						foreach ($result as $row) {
               echo '<input type="hidden" name="id" value="' . $row->id . '">
@@ -49,7 +49,7 @@
 								<div class="col-md-6">
 									<div class="form-group form-group-default form-group-default-select2 ">
 									<label class="">Catégorie (facultatif):</label>
-										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_cat[]" disabled>
+										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_parent" disabled>
 	                	</select>
 		              </div>
 								</div>

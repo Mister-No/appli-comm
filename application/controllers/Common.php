@@ -6,7 +6,7 @@ class Common extends CI_Controller  {
 
     public function select_all_ent()
   	{
-  		if ($_SESSION["is_connect"] == TRUE){
+  		if ($_SESSION['is_connect'] == TRUE){
 
   		$this->load->model('My_entreprises');
 
@@ -30,7 +30,7 @@ class Common extends CI_Controller  {
 
     public function select_all_cat()
     {
-      if ($_SESSION["is_connect"] == TRUE){
+      if ($_SESSION['is_connect'] == TRUE){
 
       $this->load->model('My_categories');
 

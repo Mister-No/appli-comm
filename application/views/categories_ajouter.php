@@ -44,7 +44,7 @@
 								<div class="col-md-6">
 									<div class="form-group form-group-default form-group-default-select2 ">
 									<label class="">Catégorie (facultatif):</label>
-										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_cat[]" disabled>
+										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_cat" disabled>
 										</select>
 		              </div>
 								</div>

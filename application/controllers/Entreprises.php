@@ -4,16 +4,16 @@ class Entreprises extends CI_Controller {
 
   public function index()
   {
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
       $this->load->model('My_entreprises');
 
-      $id_group = $_SESSION["id_group"];
+      $id_group = $_SESSION['id_group'];
 
       $result = $this->My_entreprises->get_all_ent($id_group);
 
       $data = array(
-          "result" => $result,
+          'result' => $result,
       );
 
       $this->load->view('header', $data);
@@ -28,7 +28,7 @@ class Entreprises extends CI_Controller {
   public function ajouter()
   {
 
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
           $this->load->view('header');
           $this->load->view('entreprises_ajouter');
@@ -42,7 +42,7 @@ class Entreprises extends CI_Controller {
   public function modifier()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_categories');
 			$this->load->model('My_entreprises');
@@ -75,9 +75,9 @@ class Entreprises extends CI_Controller {
   public function add()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
-      $id_group = $_SESSION["id_group"];
+      $id_group = $_SESSION['id_group'];
 
       var_dump($id_group);
 
@@ -120,7 +120,7 @@ class Entreprises extends CI_Controller {
 	public function update()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_entreprises');
 
@@ -166,11 +166,11 @@ class Entreprises extends CI_Controller {
   public function delete()
   {
 
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
       $this->load->model('My_entreprises');
 
-          $this->My_common->delete_data("entreprises", $this->input->post('id'));
+          $this->My_common->delete_data('entreprises', $this->input->post('id'));
           $this->My_entreprises->delete_ent_cat($this->input->post('id'));
 
       redirect('entreprises');

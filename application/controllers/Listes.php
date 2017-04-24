@@ -4,7 +4,7 @@ class Listes extends CI_Controller {
 
   public function index()
 	{
-		if ($_SESSION["is_connect"] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_listes');
 
@@ -47,7 +47,7 @@ class Listes extends CI_Controller {
         }
 
       $data = array(
-          "result" => $result,
+          'result' => $result,
       );
 
 			$this->load->view('header', $data);
@@ -62,7 +62,7 @@ class Listes extends CI_Controller {
   public function ajouter()
   {
 
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
       $id_group = $_SESSION["id_group"];
 
@@ -94,7 +94,7 @@ class Listes extends CI_Controller {
             }
 
           $data = array(
-              "result" => $result
+              'result' => $result
           );
 
           $this->load->view('header', $data);
@@ -182,30 +182,28 @@ class Listes extends CI_Controller {
   public function add()
   {
 
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
-      $id_group = $_SESSION["id_group"];
+      $id_group = $_SESSION['id_group'];
 
       $data = array(
-        "titre" => $_POST["titre"],
+        'titre' => $_POST['titre'],
+        'id_group' 	=> $id_group,
       );
 
-          $id = $this->My_common->insert_data ("liste", $data);
+          $id = $this->My_common->insert_data ('liste', $data);
 
-          foreach ($_POST["id_cat"] as $key => $value) {
+          foreach ($_POST['id_cat'] as $key => $value) {
 
             $data = array(
-              "id_liste"  => $id,
-              'id_group' 	=> $id_group,
-              "id_cat"    => $value,
+              'id_liste'  => $id,
+              'id_cat'    => $value,
             );
 
-            var_dump($data);
-
-        $this->My_common->insert_data ("liste_cat", $data);
+        $this->My_common->insert_data('liste_cat', $data);
           }
 
-      //redirect('listes');
+      redirect('listes');
 
     } else {
           $this->load->view('login');
@@ -215,10 +213,10 @@ class Listes extends CI_Controller {
   public function delete()
   {
 
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
-      $this->My_common->delete_data("liste", $this->input->post('id'));
-      $this->db->delete("liste_cat", array('id_liste' => $this->input->post('id')));
+      $this->My_common->delete_data('liste', $this->input->post('id'));
+      $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
 
       redirect('listes');
 
@@ -231,26 +229,26 @@ class Listes extends CI_Controller {
   public function update()
   {
 
-    if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE){
 
 
       $this->My_common->delete_data("liste", $this->input->post('id'));
-      $this->db->delete("liste_cat", array('id_liste' => $this->input->post('id')));
+      $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
 
       $data = array(
-        "titre" => $_POST["titre"],
+        'titre' => $_POST['titre'],
       );
 
-      $id = $this->My_common->insert_data ("liste", $data);
+      $id = $this->My_common->insert_data ('liste', $data);
 
-      foreach ($_POST["id_cat"] as $key => $value) {
+      foreach ($_POST['id_cat'] as $key => $value) {
 
         $data = array(
-          "id_liste" => $id,
-          "id_cat" => $value,
+          'id_liste' => $id,
+          'id_cat' => $value,
         );
 
-        $this->My_common->insert_data ("liste_cat", $data);
+        $this->My_common->insert_data ('liste_cat', $data);
       }
 
       redirect('listes');

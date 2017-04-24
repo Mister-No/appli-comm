@@ -41,7 +41,6 @@
 										<div class="form-group form-group-default form-group-default-select2 ">
 											<label class="">Civilité :</label>
 												<select class="full-width" data-placeholder="Choisir votre civilité" data-init-plugin="select2" id="select_civility" name="civ">
-												<option value=""></option>
 												<option value="2" ' . $civ_val2 . '>Monsieur</option>
 							          <option value="1" ' . $civ_val1 . '>Madame</option>
 			                  </select>

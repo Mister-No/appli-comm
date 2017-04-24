@@ -1,51 +1,38 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contacts extends CI_Controller  {
+class Users extends CI_Controller  {
 
   public function index()
 	{
-		if ($_SESSION['is_connect'] == TRUE){
+  if ($_SESSION['is_connect'] == TRUE){
 
-			$this->load->model('My_contacts');
+			$this->load->model('My_users');
 
           $id_group = $_SESSION['id_group'];
 
-	        $result_cont = $this->My_contacts->get_all_cont($id_group);
+	        $result_users = $this->My_users->get_all_users($id_group);
 
-          $result = array();
+          $users = array();
 
-          foreach ($result_cont as $row) {
+          foreach ($result_users as $row) {
 
-              $result_cat = $this->My_contacts->get_cat_total_by_id($row->id);
-
-              $cat = "";
-              foreach ($result_cat as $row_cat) {
-                $cat .=  $row_cat->titre." / ";
-              }
-
-            $all_cat = substr($cat, 0, -3);
-            $all_cat = (strlen($all_cat) > 84) ? substr($all_cat,0,84). ' ... ' : $all_cat;
-
-            $temp = array (
-                'id' => $row->id,
-                'nom' => $row->nom,
-                'prenom' => $row->prenom,
-                'raison_sociale' => $row->raison_sociale,
-                'email' => $row->email,
-                'categorie' => $all_cat
-              );
-
-            array_push ($result, $temp);
-
+            $users[] = [
+              'id'    => $row->id,
+              'login' => $row->login,
+              'password' => $row->password,
+              'email' => $row->email,
+              'nom' => $row->nom,
+              'prenom' => $row->prenom,
+            ];
           }
 
 	       $data = array(
-	            'result' => $result,
+	            'users' => $users,
 	        );
 
-			    $this->load->view('header', $data);
-	        $this->load->view('contacts');
+          $this->load->view('header', $data);
+	        $this->load->view('users');
 	        $this->load->view('footer');
 
     	} else {
@@ -98,40 +85,39 @@ class Contacts extends CI_Controller  {
 
     if ($_SESSION['is_connect'] == TRUE){
 
-      $this->load->model('My_contacts');
+			$this->load->model('My_users');
 
-      $id = $this->uri->segment(3, 0);
+          $id_group = $_SESSION['id_group'];
 
-          $result = $this->My_contacts->get_ent_by_id($id);
-          $resultc = $this->My_contacts->get_cat_by_id($id);
+	        $result = $this->My_users->get_all_users($id_group);
 
-          $civ_val1 = '';
-          $civ_val2 = '';
           foreach ($result as $row) {
-            if ($row->civ == 2) { $civ_val2 = 'selected';}
-            if ($row->civ == 1) { $civ_val1 = 'selected';}
+
+            if ($row->admin = 1) { $checked_admin = 'checked="checked"'; }
+            if ($row->admin = 0) { $checked_admin = ''; }
+            if ($row->actif = 1) { $checked_actif = 'checked="checked"'; }
+            if ($row->actif = 0) { $checked_actif = ''; }
+            $selected_rang = 'selected="selected"';
+            /*if ($i=$row->rang) {
+              $selected_rang = ($i == $row->rang ) ? 'selected="selected"':'';
+            }*/
           }
 
-          $result_cat = '';
-
-          foreach ($resultc as $rowc) {
-            $result_cat[] = $rowc->id_cat;
-          }
-
-          $data = array(
-              'result'     => $result,
-              'civ_val1'   => $civ_val1,
-              'civ_val2'   => $civ_val2,
-              'result_cat' => $result_cat,
-            );
+	       $data = array(
+            'result' => $result,
+            'checked_admin' => $checked_admin,
+            'checked_actif' => $checked_actif,
+            'selected_rang' =>$selected_rang
+	        );
 
           $this->load->view('header', $data);
-          $this->load->view('contacts_modifier');
-          $this->load->view('footer');
+	        $this->load->view('users_modifier');
+	        $this->load->view('footer');
 
-      } else {
-          $this->load->view('login');
-      }
+    	} else {
+        	$this->load->view('login');
+    	}
+
   }
 
   public function add()

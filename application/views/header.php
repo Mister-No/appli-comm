@@ -391,6 +391,61 @@
               </div>
             </ul>
           </li>
+
+          <?php  if ($_SESSION['is_admin'] == 1) { ?>
+
+          <li class="mega">
+            <a href="javascript:;"><span class="title">Utilisateurs</span>
+            <span class=" arrow"></span></a>
+            <ul class="mega">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-3 ">
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>users.html">Voir les Utilisateurs</a></div>
+                    <ul class="sub-menu">
+                      <li> <a href="#">Utilisateur 1</a> </li>
+                      <li> <a href="#">Utilisateur 2</a> </li>
+                      <li> <a href="#">Utilisateur 3</a> </li>
+                      <li> <a href="#">Utilisateur 4</a> </li>
+                      <li> <a href="#">Utilisateur 5</a> </li>
+                      <li> <a href="#">Utilisateur 6</a> </li>
+                      <li> <a href="#">Utilisateur 7</a> </li>
+                      <li class="active"> <a href="#">Utilisateur 8</a> </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories.html">Gérer les Utilisateurs</a></div>
+                    <ul class="sub-menu">
+                      <li> <a href="#">Utilisateur 1</a> </li>
+                      <li> <a href="#">Utilisateur 2</a> </li>
+                      <li> <a href="#">Utilisateur 3</a> </li>
+                      <li> <a href="#">Utilisateur 4</a> </li>
+                      <li> <a href="#">Utilisateur 5</a> </li>
+                      <li> <a href="#">Utilisateur 6</a> </li>
+                      <li> <a href="#">Utilisateur 7</a> </li>
+                      <li class="active"> <a href="#">Utilisateur 8</a> </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/ajouter.html">Ajouter des Utilisateurs</a></div>
+                    <ul class="sub-menu">
+                      <li> <a href="#">Utilisateur 1</a> </li>
+                      <li> <a href="#">Utilisateur 2</a> </li>
+                      <li> <a href="#">Utilisateur 3</a> </li>
+                      <li> <a href="#">Utilisateur 4</a> </li>
+                      <li> <a href="#">Utilisateur 5</a> </li>
+                      <li> <a href="#">Utilisateur 6</a> </li>
+                      <li> <a href="#">Utilisateur 7</a> </li>
+                      <li class="active"> <a href="#">Utilisateur 8</a> </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </li>
+
+        <?php } ?>
+
         </ul>
       </div>
     </div>

@@ -24,11 +24,12 @@ class Login extends CI_Controller {
 
 			foreach($result as $row) {
 
-				$_SESSION["is_connect"] = TRUE;
-				$_SESSION["user_id"] = $row->id;
-        $_SESSION["id_group"] = $row->id_group;
-				$_SESSION["is_admin"] = $row->admin;
-				$_SESSION["user_nom"] = $row->nom." ".$row->prenom;
+				$_SESSION['is_connect'] = TRUE;
+				$_SESSION['user_id'] = $row->id;
+        $_SESSION['id_group'] = $row->id_group;
+				$_SESSION['is_admin'] = $row->admin;
+        $_SESSION['rang'] = $row->rang;
+				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
 
 				echo 1;
 			}
@@ -53,7 +54,7 @@ class Login extends CI_Controller {
 
 
 		if ($result_login == false){
-			echo "Erreur";
+			echo 'Erreur';
 		} else {
 
 			foreach ($result_login as $row){
@@ -85,7 +86,7 @@ class Login extends CI_Controller {
 
     		$this->email->send();
 
-			echo "ok";
+			echo 'ok';
 		}
 
 	}
