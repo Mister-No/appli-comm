@@ -13,17 +13,6 @@ function logged_in(){
 }
 
 /******************************************/
-/* Admin ou pas : retourne TRUE si admin  */
-/******************************************/
-function admin_in(){
-  if ($this->session->userdata('admin') == 1){
-    return(TRUE);
-  } else {
-    return(FALSE);
-  }
-}
-
-/******************************************/
 /* FUNCTION DE LOGIN                      */
 /******************************************/
 function login($username,$password){

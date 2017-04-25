@@ -414,7 +414,7 @@
                     </ul>
                   </div>
                   <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories.html">Gérer les Utilisateurs</a></div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>users.html">Gérer les Utilisateurs</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Utilisateur 1</a> </li>
                       <li> <a href="#">Utilisateur 2</a> </li>
@@ -427,7 +427,7 @@
                     </ul>
                   </div>
                   <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/ajouter.html">Ajouter des Utilisateurs</a></div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>users/ajouter.html">Ajouter des Utilisateurs</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Utilisateur 1</a> </li>
                       <li> <a href="#">Utilisateur 2</a> </li>

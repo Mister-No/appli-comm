@@ -6,7 +6,7 @@
 					<p>Pages</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>contacts.html" class="active">Utilisateurs</a>
+					<a href="<?=base_url();?>users.html" class="active">Utilisateurs</a>
 				</li>
 			</ul>
 		</div>
@@ -89,7 +89,7 @@
 		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		          <h4 class="modal-title">Voulez-vous vraiment supprimer ce contact ?</h4>
 		        </div>
-		        <form action="<?=base_url();?>contacts/delete.html" method="POST">
+		        <form action="<?=base_url();?>users/delete.html" method="POST">
 		          <input type="hidden" name="id" id="id">
 		          <div class="modal-body"></div>
 		          <div class="modal-footer">
