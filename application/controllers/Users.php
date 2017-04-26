@@ -133,9 +133,7 @@ class Users extends CI_Controller  {
             $actif = 0;
           }
 
-          $salt = $this->input->post('login') . $this->input->post('id');
-
-          $password = crypt($this->input->post('password'), $salt);
+          $password = crypt($this->input->post('password'), $this->input->post('login'));
 
 				$data = array(
           'id_group' 	  => $id_group,
@@ -165,37 +163,45 @@ class Users extends CI_Controller  {
 
     if ($_SESSION['is_connect'] == TRUE){
 
-      if ($this->input->post('admin') == 'on') {
-        $admin = 1;
-      } else {
-        $admin = 0;
-      }
+    $result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('nom'));
 
-      if ($this->input->post('actif') == 'on') {
-        $actif = 1;
-      } else {
-        $actif = 0;
-      }
+    //if (count($result) > 0){
 
-      $salt = $query->result()[0]->password;
 
-      $password = crypt($this->input->post('password'), $salt);
 
-    $data = array(
-      'id' 		      => $this->input->post('id'),
-      'login' 		  => $this->input->post('login'),
-      'password' 	  => $password,
-      'email' 			=> $this->input->post('email'),
-      'nom' 				=> $this->input->post('nom'),
-      'prenom' 			=> $this->input->post('prenom'),
-      'rang' 			  => $this->input->post('rang'),
-      'admin' 			=> $admin,
-      'actif' 			=> $actif,
-    );
+     //} else {
 
-      $this->My_common->update_data('users','id', $this->input->post('id'), $data);
+       if ($this->input->post('admin') == 'on') {
+         $admin = 1;
+       } else {
+         $admin = 0;
+       }
 
-      redirect('users');
+       if ($this->input->post('actif') == 'on') {
+         $actif = 1;
+       } else {
+         $actif = 0;
+       }
+
+       $password = crypt($this->input->post('password'), $this->input->post('login'));
+
+       $data = array(
+         'id' 		    => $this->input->post('id'),
+         'login' 		  => $this->input->post('login'),
+         'password' 	=> $password,
+         'email' 			=> $this->input->post('email'),
+         'nom' 				=> $this->input->post('nom'),
+         'prenom' 	  => $this->input->post('prenom'),
+         'rang' 			=> $this->input->post('rang'),
+         'admin' 			=> $admin,
+         'actif' 			=> $actif,
+       );
+
+       $this->My_common->update_data('users','id', $this->input->post('id'), $data);
+
+       redirect('users');
+
+    //}
 
     } else {
         $this->load->view('login');

@@ -19,17 +19,13 @@ function login($username,$password){
 
   $password = urlencode($password);
 
-  $this->db->select();
-  $this->db->from('users');
-  $this->db->where("login = '$username'");
-  $query = $this->db->get();
-
-  $password = crypt($password, $query->result()[0]->password);
+  $password = crypt($password, $username);
 
   $this->db->select();
   $this->db->from('users');
   $this->db->where("login = '$username'");
   $this->db->where("password = '$password'");
+  $this->db->where("actif = '1'");
   $query = $this->db->get();
 
   if($query->num_rows() == 1){

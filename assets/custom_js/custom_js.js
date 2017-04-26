@@ -6,9 +6,10 @@ $(document).ready(function()
 	$(function() {
 	  $('#form-login').submit(function() {
 	  username = $(this).find('input[name=username]').val();
-	  passwrd = $(this).find('input[name=passwrd]').val();
+	  password = $(this).find('input[name=password]').val();
 
-	  $.post('http://localhost/appli-comm/login/verifier.html', {username: username, passwrd: passwrd}, function(data) {
+	  $.post('http://localhost/appli-comm/login/verifier.html', {username: username, password: password}, function(data) {
+
 	    if (data==1) {
 
 	      window.location.href = 'dashboard.html';

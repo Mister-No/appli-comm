@@ -18,7 +18,7 @@ class Login extends CI_Controller {
 
     $this->load->model('My_common');
 
-    $result = $this->My_common->login($this->input->post('username'),$this->input->post('passwrd'));
+    $result = $this->My_common->login($this->input->post('username'),$this->input->post('password'));
 
 		if($result){
 

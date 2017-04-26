@@ -65,7 +65,7 @@
             <div class="form-group form-group-default">
               <label>Mot de passe</label>
               <div class="controls">
-                <input type="password" class="form-control" name="passwrd" required>
+                <input type="password" class="form-control" name="password" required>
               </div>
             </div>
             <!-- START Form Control-->
