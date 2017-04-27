@@ -16,6 +16,10 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="retour"></strong>
+		<button class="close"></button>
+	</div>
 	<div class="page-container">
 		<div class="main-content">
 			<div class="row">
@@ -31,7 +35,6 @@
 						</div>
 		       </div>
 				 		<form id="form" method="post" class="validate" action="<?=base_url()?>users/add.html">
-		          <input type="hidden" name="id" value="' . $row->id . '">
 		          <div class="panel-body">
 		            <div class="row">
 		              <div class="col-md-6">
@@ -48,7 +51,7 @@
 		                  <input type="text" class="form-control" name="email" placeholder="Email" />
 		                </div>
 		                <div class="form-group form-group-default">
-		                  <label class="control-label">Téléphone :</label>
+		                  <label class="control-label">Login :</label>
 		                  <input type="text" class="form-control" name="login" placeholder="Login" />
 		                </div>
 									</div>

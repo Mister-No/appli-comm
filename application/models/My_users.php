@@ -34,14 +34,15 @@ class My_users extends CI_Model {
 
 
   /******************************************/
-  /* VERIFIE L'EXISTANCE D'UN CONTACT   */
+  /*    VERIFIE L'EXISTANCE D'UN CONTACT    */
   /******************************************/
-  function check_exist($email, $nom){
+  function check_exist($email, $nom, $login){
 
     $this->db->select();
     $this->db->from('users');
     $this->db->where("users.nom = '".addslashes($nom)."'");
-    $this->db->where("users.email = '$email'");
+    $this->db->or_where("users.email = '$email'");
+    $this->db->or_where("users.login = '$login'");
 
     $query = $this->db->get();
 

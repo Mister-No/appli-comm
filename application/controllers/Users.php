@@ -5,7 +5,7 @@ class Users extends CI_Controller  {
 
   public function index()
 	{
-  if ($_SESSION['is_connect'] == TRUE){
+  if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
 			$this->load->model('My_users');
 
@@ -42,7 +42,7 @@ class Users extends CI_Controller  {
 
   public function erreur()
   {
-    if ($_SESSION['is_connect'] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
       $this->load->view('header');
       $this->load->view('contacts_erreur');
@@ -56,7 +56,7 @@ class Users extends CI_Controller  {
   public function ajouter()
 	{
 
-    if ($_SESSION['is_connect'] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
           $this->load->view('header');
 	        $this->load->view('users_ajouter');
@@ -71,7 +71,7 @@ class Users extends CI_Controller  {
   public function modifier()
   {
 
-    if ($_SESSION['is_connect'] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
 			$this->load->model('My_users');
 
@@ -107,17 +107,17 @@ class Users extends CI_Controller  {
   public function add()
 	{
 
-		if ($_SESSION['is_connect'] == TRUE){
+		if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
 			$this->load->model('My_users');
 
-			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('nom'));
+			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('nom'), $this->input->post('login'));
 
       $id_group = $_SESSION['id_group'];
 
 			if (count($result) > 0){
 
-		        redirect('users/erreur');
+		        echo 1;
 
 		    } else {
 
@@ -149,11 +149,11 @@ class Users extends CI_Controller  {
 
 	        $insert_data = $this->My_common->insert_data('users', $data);
 
-	        redirect('users');
+	        echo "Ok";
 		    }
 
     	} else {
-        	$this->load->view('login');
+        	echo 2;
     	}
 
 	}
@@ -161,7 +161,7 @@ class Users extends CI_Controller  {
   public function update()
 	{
 
-    if ($_SESSION['is_connect'] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
     $result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('nom'));
 
@@ -212,7 +212,7 @@ class Users extends CI_Controller  {
   public function delete()
   {
 
-    if ($_SESSION['is_connect'] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
           $this->My_common->delete_data('users', $this->input->post('id'));
 

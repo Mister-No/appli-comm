@@ -141,13 +141,13 @@ class Contacts extends CI_Controller  {
 
 			$this->load->model('My_contacts');
 
-			$result = $this->My_contacts->check_exist ($this->input->post('email'), $this->input->post('nom'));
+			$result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'));
 
       $id_group = $_SESSION["id_group"];
 
 			if (count($result) > 0){
 
-		        redirect('contacts/erreur');
+		        echo 1;
 
 		    } else {
 
@@ -181,7 +181,7 @@ class Contacts extends CI_Controller  {
 		        	$this->My_common->insert_data ('contacts_cat', $data);
 		        }
 
-		        redirect('contacts');
+		        echo 'ok';
 		    }
 
     	} else {

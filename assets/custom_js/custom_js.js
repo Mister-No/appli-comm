@@ -16,12 +16,53 @@ $(document).ready(function()
 
 	    } else {
 
-				console.log('connexion KO');
-	      $('.erreur').html('<div class="alert alert-danger"><button class="close" data-dismiss="alert"></button><strong>Probleme d\'identification</strong></div>');
+				$('.erreur').css('display', 'block');
+				$('.retour').empty().html('Login ou mot de passe incorrecte');
 	    }
 	  });
 	  return false;
 	  });
+	});
+
+
+/** Fonction de verification d'existance de l'utilisateur ou du contact **/
+
+$(function() {
+
+		$('#form').submit(function() {
+
+		nom = $(this).find('input[name=nom]').val();
+		login = $(this).find('input[name=login]').val();
+		email = $(this).find('input[name=email]').val();
+
+		$.post('http://localhost/appli-comm/users/add.html', {nom: nom, email: email, login: login}, function(data) {
+
+			if (data == 1) {
+
+				$('.erreur').css('display', 'block');
+				$('.retour').empty().html('Cette personne existe deja');
+
+			} else if (data == 2) {
+
+				$('.erreur').css('display', 'block');
+				$('.retour').empty().html('Probleme de droits ou de connexion, votre action n\'a pu etre prise en compte');
+
+			} else {
+
+				window.location.href = 'http://localhost/appli-comm/users.html';
+
+			}
+
+		});
+		return false;
+		});
+
+	});
+
+/** Fonction pour fermer les pop up d'erreur **/
+
+	$('.close').click(function() {
+		$('.erreur').css('display', 'none');
 	});
 
 /** Fonction pour la selection de toutes les checkbox **/

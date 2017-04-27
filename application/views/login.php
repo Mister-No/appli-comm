@@ -23,8 +23,10 @@
     <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="pages/css/pages.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css">
+
     <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js?<?php echo rand (0,10000000); ?>"></script>
+    <script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
     <!--[if lte IE 9]>
         <link href="pages/css/ie9.css" rel="stylesheet" type="text/css" />
     <![endif]-->
@@ -51,11 +53,15 @@
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
           <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
           <p class="p-t-35">Bonjour, veuillez vous identifier!</p>
+          <div class="erreur alert alert-danger">
+            <strong class="retour"></strong>
+            <button class="close"></button>
+          </div>
           <!-- START Login Form -->
           <form id="form-login" class="p-t-15" action="<?=base_url();?>login/verifier.html">
             <!-- START Form Control-->
             <div class="form-group form-group-default">
-              <label>Identifiant</label>
+              <label>Login</label>
               <div class="controls">
                 <input type="text" name="username" class="form-control" required>
               </div>
@@ -85,10 +91,8 @@
           </form>
           <!--END Login Form-->
         </div>
-        <div class="erreur"></div>
       <!-- END Login Right Container-->
     </div>
-
     <!-- BEGIN VENDOR JS -->
     <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>

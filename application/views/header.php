@@ -26,9 +26,10 @@
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/datatables-responsive/css/datatables.responsive.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages-icons.css">
 <link class="main-stylesheet" rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages.css" />
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css">
 
 <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js?<?php echo rand (0,10000000); ?>"></script>
+<script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
 
 
 <!--[if lte IE 9]>
@@ -81,7 +82,7 @@
             </span>
           </button>
           <ul class="dropdown-menu profile-dropdown" role="menu">
-            <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
+            <li><a href="#"><i class="pg-settings_small"></i> Mon profil</a>
             </li>
             <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
             </li>
