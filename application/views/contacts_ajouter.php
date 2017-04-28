@@ -17,7 +17,7 @@
 </div>
 <div class="container-fluid container-fixed-lg">
 	<div class="erreur alert alert-danger">
-		<strong class="retour"></strong>
+		<strong class="message"></strong>
 		<button class="close"></button>
 	</div>
 	<div class="page-container">
@@ -48,11 +48,11 @@
 		              </div>
 		            	<div class="form-group form-group-default">
 		                <label class="control-label">Nom :</label>
-		                <input type="text" class="form-control" name="nom" data-validate="required" data-message-required="Veuillez saisir un nom" placeholder="Nom" />
+		                <input type="text" class="form-control" name="nom" placeholder="Nom" required />
 		              </div>
 		              <div class="form-group form-group-default">
 		                <label class="control-label">Prénom :</label>
-		                <input type="text" class="form-control" name="prenom" data-validate="required" data-message-required="Veuillez saisir un prénom" placeholder="Prénom" />
+		                <input type="text" class="form-control" name="prenom" placeholder="Prénom" />
 		              </div>
 		              <div class="form-group form-group-default">
 		                <label class="control-label">Fonction :</label>
@@ -72,7 +72,7 @@
 		              </div>
 		              <div class="form-group form-group-default">
 		                <label class="control-label">Adresse électronique :</label>
-		                <input type="text" class="form-control" name="email" placeholder="Adresse électronique" />
+		                <input type="text" class="form-control" name="email" placeholder="Adresse électronique" required />
 		              </div>
 		            </div>
 		            <div class="col-md-6">

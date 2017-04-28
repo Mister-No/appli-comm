@@ -172,7 +172,6 @@ class Users extends CI_Controller  {
   foreach ($result as $row) {
       $login = $row->login;
       $email = $row->email;
-
     }
 
     if ($this->input->post('email') == $email && $this->input->post('login') == $login) {
@@ -197,12 +196,9 @@ class Users extends CI_Controller  {
          $actif = 0;
        }
 
-       $password = crypt($this->input->post('password'), $this->input->post('login'));
-
        $data = array(
          'id' 		    => $this->input->post('id'),
          'login' 		  => $this->input->post('login'),
-         'password' 	=> $password,
          'email' 			=> $this->input->post('email'),
          'nom' 				=> $this->input->post('nom'),
          'prenom' 	  => $this->input->post('prenom'),
@@ -224,6 +220,36 @@ class Users extends CI_Controller  {
     }
 
 	}
+
+  public function update_password()
+  {
+    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
+
+      if ($this->input->post('password') != $this->input->post('password_confirm')) {
+
+        echo 4;
+
+      } else {
+
+      $password = sha1($this->input->post('password'));
+
+      $data = array(
+        'id' 		    => $this->input->post('id'),
+        'password' 	=> $password,
+      );
+
+      $this->My_common->update_data('users','id', $this->input->post('id'), $data);
+
+      echo 5;
+
+      }
+
+    } else {
+
+      echo 3;
+
+    }
+  }
 
   public function delete()
   {

@@ -17,7 +17,7 @@
 </div>
 <div class="container-fluid container-fixed-lg">
 	<div class="erreur alert alert-danger">
-		<strong class="retour"></strong>
+		<strong class="message"></strong>
 		<button class="close"></button>
 	</div>
 	<div class="page-container">

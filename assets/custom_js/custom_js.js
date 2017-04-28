@@ -17,7 +17,7 @@ $(document).ready(function()
 	    } else {
 
 				$('.erreur').css('display', 'block');
-				$('.retour').empty().html('Login ou mot de passe incorrecte');
+				$('.retour').empty().html('Login ou mot de passe incorrect');
 	    }
 	  });
 	  return false;
@@ -29,7 +29,7 @@ $(document).ready(function()
 /** Fonction pour fermer les pop up d'erreur **/
 
 	$('.close').click(function() {
-		$('.erreur').css('display', 'none');
+		$('.erreur, .success').css('display', 'none');
 	});
 
 /** Fonction pour la selection de toutes les checkbox **/
@@ -81,17 +81,27 @@ function check_exist(urlCheck, urlRedirect, data) {
 			if (data == 1) {
 
 				$('.erreur').css('display', 'block');
-				$('.retour').empty().html('Cette personne existe deja');
+				$('.message').empty().html('Cette personne existe deja');
 
 			} else if (data == 2) {
 
 				$('.erreur').css('display', 'block');
-				$('.retour').empty().html('Aucunes modifications enregristrées');
+				$('.message').empty().html('Aucunes modifications enregristrées');
 
 			} else if (data == 3) {
 
 				$('.erreur').css('display', 'block');
-				$('.retour').empty().html('Probleme de droits ou de connexion, votre action n\'a pu etre prise en compte');
+				$('.message').empty().html('Probleme de droits ou de connexion, votre action n\'a pu etre prise en compte');
+
+			} else if (data == 4) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Les mots de passe ne sont pas identiques');
+
+			} else if (data == 5) {
+
+				$('.success').css('display', 'block');
+				$('.message').empty().html('Le mot de passe est reinitialisé');
 
 			} else {
 

@@ -17,7 +17,7 @@
 </div>
 <div class="container-fluid container-fixed-lg">
 	<div class="erreur alert alert-danger">
-		<strong class="retour"></strong>
+		<strong class="message"></strong>
 		<button class="close"></button>
 	</div>
 	<div class="page-container">
@@ -60,10 +60,6 @@
 			                </div>
 										</div>
 										<div class="col-md-6">
-			                <div class="form-group form-group-default">
-			                  <label class="control-label">Mot de passe :</label>
-			                  <input type="password" class="form-control" name="password" value="" placeholder="Mot de passe" />
-			                </div>
 											<div class="form-group form-group-default">
 			                  <label class="control-label">Administrateur :</label>
                       	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="admin" ' . $checked_admin . ' />
@@ -87,16 +83,65 @@
 						}
 		        ?>
 
-		          </div>
+        			</div>
 		        </div>
 		        <div class="panel-footer text-right">
 		          <button type="submit" class="btn btn-success">MODIFIER</button>
 		        </div>
-		      </form>
-		    </div>
+	      	</form>
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
+<div class="container-fluid container-fixed-lg">
+	<div class="success alert alert-success">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
+	<div class="erreur alert alert-danger">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
+	<div class="page-container">
+		<div class="main-content">
+			<div class="row">
+		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+		      <div class="panel-heading">
+		        <div class="panel-title">Reinitialiser son mot de passe</div>
+						<div class="panel-controls">
+							<ul>
+							<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+							class="portlet-icon portlet-icon-collapse"></i></a>
+							</li>
+						</ul>
+					</div>
+	       </div>
+				 <form id="form_password" method="post" class="validate" action="<?=base_url()?>users/update_password.html">
+          <input type="hidden" name="id" value="<?=$row->id?>">
+          <div class="panel-body">
+            <div class="col-md-6">
+              <div class="form-group form-group-default">
+	               <label class="control-label">Mot de passe :</label>
+                 <input type="password" class="form-control" name="password" placeholder="Mot de passe" required />
+                </div>
+							</div>
+							<div class="col-md-6">
+                <div class="form-group form-group-default">
+                  <label class="control-label">Confirmation du mot de passe :</label>
+                  <input type="password" class="form-control" name="password_confirm" placeholder="Mot de passe" required />
+                </div>
+							</div>
+	          </div>
+	        	<div class="panel-footer text-right">
+	          	<button type="submit" class="btn btn-success">REINITIALISER</button>
+	        	</div>
+	      	</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script type="text/javascript">
 
 	$('#form').submit(function(e) {
@@ -105,6 +150,18 @@
 
 		data = $(this).serialize();
 		urlCheck = 'users/update.html';
+		urlRedirect = 'users.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+	$('#form_password').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'users/update_password.html';
 		urlRedirect = 'users.html';
 
 		check_exist(urlCheck, urlRedirect, data);

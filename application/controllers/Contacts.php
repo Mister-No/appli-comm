@@ -145,7 +145,12 @@ class Contacts extends CI_Controller  {
 
       $id_group = $_SESSION["id_group"];
 
-			if (count($result) > 0){
+      foreach ($result as $row) {
+        $nom = $row->nom;
+        $email = $row->email;
+      }
+
+			if ($this->input->post('email') == $email || $this->input->post('nom') == $nom) {
 
 		        echo 1;
 
@@ -185,7 +190,9 @@ class Contacts extends CI_Controller  {
 		    }
 
     	} else {
-        	$this->load->view('login');
+
+        echo 3;
+
     	}
 
 	}
@@ -196,43 +203,65 @@ class Contacts extends CI_Controller  {
 		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_contacts');
+      $this->load->model('My_contacts');
 
-	        $this->My_contacts->delete_ent_cat($this->input->post('id'));
+      $this->My_contacts->delete_ent_cat($this->input->post('id'));
 
-			$data = array(
-				'id' 		      => $this->input->post('id'),
-				'id_ent' 			=> $this->input->post('id_ent'),
-				'civ' 				=> $this->input->post('civ'),
-				'nom' 				=> $this->input->post('nom'),
-				'prenom' 			=> $this->input->post('prenom'),
-				'fonction' 		=> $this->input->post('fonction'),
-				'tel' 				=> $this->input->post('tel'),
-				'fax' 				=> $this->input->post('fax'),
-				'mobile' 			=> $this->input->post('mobile'),
-				'email' 			=> $this->input->post('email'),
-				'num_voie' 		=> $this->input->post('num_voie'),
-				'nom_voie' 		=> $this->input->post('nom_voie'),
-				'lieu_dit' 		=> $this->input->post('lieu_dit'),
-				'bp' 				  => $this->input->post('bp'),
-				'cp' 				  => $this->input->post('cp'),
-				'ville' 			=> $this->input->post('ville'),
-				'cedex' 			=> $this->input->post('cedex'),
-			);
+      $result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'));
 
-	        $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
+          foreach ($result as $row) {
+            $nom = $row->nom;
+            $email = $row->email;
+          }
 
-	        foreach ($_POST['id_cat'] as $key => $value) {
-	        	$data =array (
-	        		'id_contact' => $this->input->post('id'),
-	        		'id_cat' => $value,
-	        	);
-	        	$this->My_common->insert_data('contacts_cat', $data);
-	        }
+    			if ($this->input->post('email') == $email || $this->input->post('nom') == $nom) {
 
-			redirect('contacts');
+    		       echo 2;
+
+            } elseif (count($result) > 0 && $this->input->post('email') != $email || $this->input->post('nom') != $nom) {
+
+              echo 1;
+
+            } else {
+
+              $data = array(
+                'id' 		      => $this->input->post('id'),
+                'id_ent' 			=> $this->input->post('id_ent'),
+                'civ' 				=> $this->input->post('civ'),
+                'nom' 				=> $this->input->post('nom'),
+                'prenom' 			=> $this->input->post('prenom'),
+                'fonction' 		=> $this->input->post('fonction'),
+                'tel' 				=> $this->input->post('tel'),
+                'fax' 				=> $this->input->post('fax'),
+                'mobile' 			=> $this->input->post('mobile'),
+                'email' 			=> $this->input->post('email'),
+                'num_voie' 		=> $this->input->post('num_voie'),
+                'nom_voie' 		=> $this->input->post('nom_voie'),
+                'lieu_dit' 		=> $this->input->post('lieu_dit'),
+                'bp' 				  => $this->input->post('bp'),
+                'cp' 				  => $this->input->post('cp'),
+                'ville' 			=> $this->input->post('ville'),
+                'cedex' 			=> $this->input->post('cedex'),
+              );
+
+              $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
+
+              foreach ($_POST['id_cat'] as $key => $value) {
+                $data =array (
+                  'id_contact' => $this->input->post('id'),
+                  'id_cat' => $value,
+                );
+                $this->My_common->insert_data('contacts_cat', $data);
+              }
+
+              echo 'ok';
+
+            }
 
     	} else {
-        	$this->load->view('login');
+
+        echo 3;
+
     	}
 
 	}
