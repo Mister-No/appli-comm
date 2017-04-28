@@ -142,4 +142,16 @@
 
 	select ('#select_category', id, urlSelect);
 
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'contacts/add.html';
+		urlRedirect = 'contacts.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
 	</script>

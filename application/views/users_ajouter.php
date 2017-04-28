@@ -39,16 +39,16 @@
 		            <div class="row">
 		              <div class="col-md-6">
 		                <div class="form-group form-group-default">
-		                  <label class="control-label">Nom :</label>
-		                  <input type="text" class="form-control" name="nom" data-validate="required" data-message-required="Veuillez saisir un nom" placeholder="Nom" />
+		                  <label class="controls-label">Nom :</label>
+		                  <input type="text" class="form-control" name="nom" placeholder="Nom" required />
 		                </div>
 		                <div class="form-group form-group-default">
 		                  <label class="control-label">Prénom :</label>
-		                  <input type="text" class="form-control" name="prenom" data-validate="required" data-message-required="Veuillez saisir un prénom" placeholder="Prénom" />
+		                  <input type="text" class="form-control" name="prenom" placeholder="Prénom" required />
 		                </div>
 		                <div class="form-group form-group-default">
 		                  <label class="control-label">Adresse électronique :</label>
-		                  <input type="text" class="form-control" name="email" placeholder="Email" />
+		                  <input type="text" class="form-control" name="email" placeholder="Email" required />
 		                </div>
 		                <div class="form-group form-group-default">
 		                  <label class="control-label">Login :</label>
@@ -89,3 +89,18 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'users/add.html';
+		urlRedirect = 'users.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+	</script>

@@ -18,6 +18,7 @@
   <script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/lodash.min.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
   <!-- END VENDOR JS -->
   <!-- BEGIN CORE TEMPLATE JS -->
   <script src="<?=base_url();?>pages/js/pages.min.js"></script>

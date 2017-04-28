@@ -111,13 +111,13 @@ class Users extends CI_Controller  {
 
 			$this->load->model('My_users');
 
-			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('nom'), $this->input->post('login'));
+			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'));
 
       $id_group = $_SESSION['id_group'];
 
 			if (count($result) > 0){
 
-		        echo 1;
+		       echo 1;
 
 		    } else {
 
@@ -153,7 +153,9 @@ class Users extends CI_Controller  {
 		    }
 
     	} else {
-        	echo 2;
+
+        echo 3;
+
     	}
 
 	}
@@ -163,13 +165,25 @@ class Users extends CI_Controller  {
 
     if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
 
-    $result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('nom'));
+    $this->load->model('My_users');
 
-    //if (count($result) > 0){
+    $result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'));
 
+  foreach ($result as $row) {
+      $login = $row->login;
+      $email = $row->email;
 
+    }
 
-     //} else {
+    if ($this->input->post('email') == $email && $this->input->post('login') == $login) {
+
+      echo 2;
+
+    } elseif (count($result) > 0 && $this->input->post('email') != $email || $this->input->post('login') != $login) {
+
+       echo 1;
+
+     } else {
 
        if ($this->input->post('admin') == 'on') {
          $admin = 1;
@@ -199,12 +213,14 @@ class Users extends CI_Controller  {
 
        $this->My_common->update_data('users','id', $this->input->post('id'), $data);
 
-       redirect('users');
+       echo "Ok";
 
-    //}
+    }
 
     } else {
-        $this->load->view('login');
+
+      echo 3;
+
     }
 
 	}

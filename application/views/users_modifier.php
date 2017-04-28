@@ -16,6 +16,10 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="retour"></strong>
+		<button class="close"></button>
+	</div>
 	<div class="page-container">
 		<div class="main-content">
 			<div class="row">
@@ -40,25 +44,25 @@
 			              <div class="col-md-6">
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Nom :</label>
-			                  <input type="text" class="form-control" name="nom" value="' . $row->nom . '" data-validate="required" data-message-required="Veuillez saisir un nom" placeholder="Nom" />
+			                  <input type="text" class="form-control" name="nom" value="' . $row->nom . '" placeholder="Nom" required />
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Prénom :</label>
-			                  <input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" data-validate="required" data-message-required="Veuillez saisir un prénom" placeholder="Prénom" />
+			                  <input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" placeholder="Prénom" required />
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Adresse électronique :</label>
-			                  <input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Email" />
+			                  <input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Email" required />
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Login :</label>
-			                  <input type="text" class="form-control" name="login" value="' . $row->login . '"  placeholder="Login" />
+			                  <input type="text" class="form-control" name="login" value="' . $row->login . '"  placeholder="Login" required />
 			                </div>
 										</div>
 										<div class="col-md-6">
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Mot de passe :</label>
-			                  <input type="password" class="form-control" name="password" value="**********" placeholder="Mot de passe" />
+			                  <input type="password" class="form-control" name="password" value="" placeholder="Mot de passe" />
 			                </div>
 											<div class="form-group form-group-default">
 			                  <label class="control-label">Administrateur :</label>
@@ -93,3 +97,18 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'users/update.html';
+		urlRedirect = 'users.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+	</script>

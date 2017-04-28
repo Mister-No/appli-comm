@@ -15,14 +15,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/bootstrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="pages/css/pages-icons.css" rel="stylesheet" type="text/css">
-    <link class="main-stylesheet" href="pages/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url();?>assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url();?>assets/plugins/bootstrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url();?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url();?>assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?=base_url();?>assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?=base_url();?>assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?=base_url();?>pages/css/pages-icons.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="<?=base_url();?>pages/css/pages.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css">
 
     <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
@@ -97,22 +97,22 @@
     <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
-  	<script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js?<?php echo rand (0,10000000); ?>"></script>
-    <script src="assets/plugins/modernizr.custom.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-bez/jquery.bez.min.js"></script>
-    <script src="assets/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-actual/jquery.actual.min.js"></script>
-    <script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/select2/js/select2.full.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/classie/classie.js"></script>
-    <script src="assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+  	<script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
+    <script src="<?=base_url();?>assets/plugins/modernizr.custom.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-bez/jquery.bez.min.js"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-actual/jquery.actual.min.js"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="<?=base_url();?>assets/plugins/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="<?=base_url();?>assets/plugins/classie/classie.js"></script>
+    <script src="<?=base_url();?>assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <!-- END VENDOR JS -->
-    <script src="pages/js/pages.min.js"></script>
+    <script src=<?=base_url();?>"pages/js/pages.min.js"></script>
     <script>
     $(function()
     {
