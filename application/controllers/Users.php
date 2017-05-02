@@ -104,6 +104,32 @@ class Users extends CI_Controller  {
 
   }
 
+  public function profil()
+  {
+
+    if ($_SESSION['is_connect'] == TRUE){
+
+      $this->load->model('My_users');
+
+          $id = $this->uri->segment(3, 0);
+
+          $result = $this->My_users->get_user($id);
+
+         $data = array(
+            'result' => $result,
+          );
+
+          $this->load->view('header', $data);
+          $this->load->view('users_profil');
+          $this->load->view('footer');
+
+      } else {
+          $this->load->view('login');
+      }
+
+  }
+
+
   public function add()
 	{
 
@@ -149,7 +175,7 @@ class Users extends CI_Controller  {
 
 	        $insert_data = $this->My_common->insert_data('users', $data);
 
-	        echo "Ok";
+	        echo "ok";
 		    }
 
     	} else {
@@ -174,13 +200,9 @@ class Users extends CI_Controller  {
       $email = $row->email;
     }
 
-    if ($this->input->post('email') == $email && $this->input->post('login') == $login) {
+    if ($this->input->post('email') == $email || $this->input->post('login') == $login) {
 
-      echo 2;
-
-    } elseif (count($result) > 0 && $this->input->post('email') != $email || $this->input->post('login') != $login) {
-
-       echo 1;
+      echo 1;
 
      } else {
 
@@ -209,7 +231,7 @@ class Users extends CI_Controller  {
 
        $this->My_common->update_data('users','id', $this->input->post('id'), $data);
 
-       echo "Ok";
+       echo "ok";
 
     }
 

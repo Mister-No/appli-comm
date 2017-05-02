@@ -141,9 +141,9 @@ class Contacts extends CI_Controller  {
 
 			$this->load->model('My_contacts');
 
-			$result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'));
-
       $id_group = $_SESSION["id_group"];
+
+			$result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group, $id='rien');
 
       foreach ($result as $row) {
         $nom = $row->nom;
@@ -203,11 +203,10 @@ class Contacts extends CI_Controller  {
 		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_contacts');
-      $this->load->model('My_contacts');
 
       $this->My_contacts->delete_ent_cat($this->input->post('id'));
 
-      $result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'));
+      $result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group, $this->input->post('id'));
 
           foreach ($result as $row) {
             $nom = $row->nom;
@@ -216,11 +215,7 @@ class Contacts extends CI_Controller  {
 
     			if ($this->input->post('email') == $email || $this->input->post('nom') == $nom) {
 
-    		       echo 2;
-
-            } elseif (count($result) > 0 && $this->input->post('email') != $email || $this->input->post('nom') != $nom) {
-
-              echo 1;
+    		       echo 1;
 
             } else {
 
@@ -256,7 +251,7 @@ class Contacts extends CI_Controller  {
 
               echo 'ok';
 
-            }
+           }
 
     	} else {
 

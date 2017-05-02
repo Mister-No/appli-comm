@@ -82,7 +82,7 @@
             </span>
           </button>
           <ul class="dropdown-menu profile-dropdown" role="menu">
-            <li><a href="#"><i class="pg-settings_small"></i> Mon profil</a>
+            <li><a href="<?=base_url();?>users/profil/<?=$_SESSION["user_id"]?>"><i class="pg-settings_small"></i> Mon profil</a>
             </li>
             <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
             </li>

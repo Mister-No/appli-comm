@@ -47,12 +47,16 @@ class My_contacts extends CI_Model {
   /******************************************/
   /* VERIFIE L'EXISTANCE D'UN CONTACT   */
   /******************************************/
-  function check_exist($email, $nom){
+  function check_exist($email, $nom, $id_group, $id='rien'){
 
     $this->db->select();
     $this->db->from('contacts');
     $this->db->where("contacts.nom = '".addslashes($nom)."'");
     $this->db->where("contacts.email = '$email'");
+    $this->db->where("contacts.id_group = $id_group");
+    if($id != 'rien'){
+      $this->db->where("contacts.id != '$id'");
+    }
 
     $query = $this->db->get();
 
