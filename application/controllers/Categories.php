@@ -12,6 +12,8 @@ class Categories extends CI_Controller {
 
 					$result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
+					$result = array();
+
 					foreach ($result_cat_parent as $row_cat_parent) {
 
 						$result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id);
@@ -99,8 +101,6 @@ class Categories extends CI_Controller {
 	{
 		$this->load->model('My_listes');
 
-
-
 		$this->load->view ('categories_xls');
 	}
 
@@ -152,11 +152,11 @@ class Categories extends CI_Controller {
 
 		$id_group = $_SESSION['id_group'];
 
-		$result = $this->My_categories->check_exist ($this->input->post('titre'));
+		$result = $this->My_categories->check_exist($this->input->post('titre'), $id_group);
 
 		if (count($result) > 0){
 
-				redirect('categories/erreur');
+				echo 1;
 
 			} else {
 
@@ -175,12 +175,14 @@ class Categories extends CI_Controller {
 
 				$this->My_common->insert_data('categorie', $data);
 
-				redirect('categories');
+				echo 'ok';
 
 			}
 
     } else {
-      	$this->load->view('login');
+
+			echo 3;
+
     }
 
 	}
@@ -190,18 +192,44 @@ class Categories extends CI_Controller {
 
 		if ($_SESSION['is_connect'] == TRUE){
 
-			$data = array (
-				'id' 				 => $this->input->post('id'),
-				'titre' 		 => $this->input->post('titre'),
-				'id_parent'	 => $this->input->post('id_parent'),
-			);
+			$this->load->model('My_categories');
 
-	    $this->My_common->update_data('categorie', 'id', $this->input->post('id'), $data);
+			$id_group = $_SESSION['id_group'];
 
-			redirect('categories');
+			$result = $this->My_categories->check_exist($this->input->post('titre'), $id_group, $this->input->post('id'));
+
+			if (count($result) > 0){
+
+					echo 1;
+
+				} else {
+
+					if ($this->input->post('id_parent') == null ) {
+
+						$id_parent = 0;
+
+					} else {
+
+						$id_parent = $this->input->post('id_parent');
+
+					}
+
+					$data = array (
+						'id' 				 => $this->input->post('id'),
+						'titre' 		 => $this->input->post('titre'),
+						'id_parent'	 => $id_parent
+					);
+
+			    $this->My_common->update_data('categorie', 'id', $this->input->post('id'), $data);
+
+					echo 'ok';
+
+				}
 
     	} else {
-        $this->load->view('login');
+
+        echo 3;
+
     	}
 
 	}

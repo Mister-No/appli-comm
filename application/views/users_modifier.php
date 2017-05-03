@@ -58,8 +58,15 @@
 			                  <label class="control-label">Login :</label>
 			                  <input type="text" class="form-control" name="login" value="' . $row->login . '"  placeholder="Login" required />
 			                </div>
-										</div>
-										<div class="col-md-6">
+										</div>';
+
+									} ?>
+
+							<?php  if($_SESSION['is_admin'] == 1) { ?>
+
+								<?php  foreach ($result as $row) {
+
+								echo '<div class="col-md-6">
 											<div class="form-group form-group-default">
 			                  <label class="control-label">Administrateur :</label>
                       	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="admin" ' . $checked_admin . ' />
@@ -80,8 +87,10 @@
                       	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" ' . $checked_actif . ' />
 				              </div>
 				          	</div>';
-						}
-		        ?>
+
+									} ?>
+
+							<?php	} ?>
 
         			</div>
 		        </div>

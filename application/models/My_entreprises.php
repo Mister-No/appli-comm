@@ -45,6 +45,24 @@ class My_entreprises extends CI_Model {
 		return $query->result();
 	}
 
+	/******************************************/
+	/* VERIFIE L'EXISTANCE D'UNE ENTREPRISE   */
+	/******************************************/
+	function check_exist($raison_sociale, $id_group, $id='rien'){
+
+		$this->db->select();
+		$this->db->from('entreprises');
+		$this->db->where("entreprises.raison_sociale = '".addslashes($raison_sociale)."'");
+		$this->db->where("entreprises.id_group = '$id_group'");
+		if($id != 'rien'){
+			$this->db->where("entreprises.id != '$id'");
+		}
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 	/********************************************/
 	/* SUPPRIMER LES CATEGORIE D'UNE ENTREPRISE */
 	/********************************************/

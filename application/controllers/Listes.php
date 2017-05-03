@@ -184,29 +184,43 @@ class Listes extends CI_Controller {
 
     if ($_SESSION['is_connect'] == TRUE){
 
-      $id_group = $_SESSION['id_group'];
+      $this->load->model('My_listes');
 
-      $data = array(
-        'titre' => $_POST['titre'],
-        'id_group' 	=> $id_group,
-      );
+      $id_group = $_SESSION["id_group"];
 
-          $id = $this->My_common->insert_data ('liste', $data);
+      $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
 
-          foreach ($_POST['id_cat'] as $key => $value) {
+			if (count($result) > 0) {
 
-            $data = array(
-              'id_liste'  => $id,
-              'id_cat'    => $value,
-            );
+		       echo 1;
 
-        $this->My_common->insert_data('liste_cat', $data);
-          }
+        } else {
 
-      redirect('listes');
+        $data = array(
+          'titre' => $_POST['titre'],
+          'id_group' 	=> $id_group,
+        );
+
+            $id = $this->My_common->insert_data ('liste', $data);
+
+            foreach ($_POST['id_cat'] as $key => $value) {
+
+              $data = array(
+                'id_liste'  => $id,
+                'id_cat'    => $value,
+              );
+
+          $this->My_common->insert_data('liste_cat', $data);
+            }
+
+        echo 'ok';
+
+      }
 
     } else {
-          $this->load->view('login');
+
+      echo 3;
+
     }
   }
 
@@ -231,31 +245,46 @@ class Listes extends CI_Controller {
 
     if ($_SESSION['is_connect'] == TRUE){
 
+      $this->load->model('My_listes');
 
-      $this->My_common->delete_data("liste", $this->input->post('id'));
-      $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
+      $id_group = $_SESSION["id_group"];
 
-      $data = array(
-        'titre' => $_POST['titre'],
-      );
+      $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group, $this->input->post('id'));
 
-      $id = $this->My_common->insert_data ('liste', $data);
+      if (count($result) > 0) {
 
-      foreach ($_POST['id_cat'] as $key => $value) {
+           echo 1;
 
-        $data = array(
-          'id_liste' => $id,
-          'id_cat' => $value,
-        );
+        } else {
 
-        $this->My_common->insert_data ('liste_cat', $data);
-      }
+          $this->My_common->delete_data("liste", $this->input->post('id'));
+          $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
 
-      redirect('listes');
+          $data = array(
+            'titre' => $_POST['titre'],
+            'id_group' => $id_group,
+          );
 
+          $id = $this->My_common->insert_data ('liste', $data);
+
+          foreach ($_POST['id_cat'] as $key => $value) {
+
+            $data = array(
+              'id_liste' => $id,
+              'id_cat' => $value,
+            );
+
+            $this->My_common->insert_data ('liste_cat', $data);
+          }
+
+          echo 'ok';
+
+        }
 
       } else {
-          $this->load->view('login');
+
+        echo 3;
+
       }
 
   }

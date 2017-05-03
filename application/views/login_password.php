@@ -52,7 +52,7 @@
       <div class="login-container bg-white">
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
           <img src="<?=base_url();?>assets/img/logo.png" alt="logo" data-src="<?=base_url();?>assets/img/logo.png" data-src-retina="<?=base_url();?>assets/img/logo_2x.png" width="78" height="22">
-          <p class="p-t-35">Bonjour, veuillez vous identifier!</p>
+          <p class="p-t-35">Mot de passe oublié</p>
           <div class="erreur alert alert-danger">
             <strong class="message"></strong>
             <button class="close"></button>
@@ -61,33 +61,13 @@
           <form id="form" class="p-t-15" action="<?=base_url();?>login/verifier.html">
             <!-- START Form Control-->
             <div class="form-group form-group-default">
-              <label>Login</label>
+              <label>Votre Email</label>
               <div class="controls">
-                <input type="text" name="username" class="form-control" required>
+                <input type="mail" name="email" class="form-control" required>
               </div>
             </div>
             <!-- END Form Control-->
-            <!-- START Form Control-->
-            <div class="form-group form-group-default">
-              <label>Mot de passe</label>
-              <div class="controls">
-                <input type="password" class="form-control" name="password" required>
-              </div>
-            </div>
-            <!-- START Form Control-->
-            <div class="row">
-              <div class="col-md-6 no-padding">
-                <div class="checkbox">
-                  <input type="checkbox" value="1" id="checkbox1">
-                  <label for="checkbox1">se rappeler de moi</label>
-                </div>
-              </div>
-              <div class="col-md-6 text-right">
-                <a href="<?=base_url();?>login/password.html" class="text-info small">Mot de passe oublié?</a>
-              </div>
-            </div>
-            <!-- END Form Control-->
-            <button class="btn btn-primary btn-cons m-t-10" type="submit">Connexion</button>
+            <button class="btn btn-primary btn-cons m-t-10" type="submit">Récupérer</button>
           </form>
           <!--END Login Form-->
         </div>
@@ -127,12 +107,12 @@
 
     data = $(this).serialize();
     urlCheck = 'login/verifier.html';
-    urlRedirect = 'dashboard.html';
+    urlRedirect = 'login.html';
 
     check_exist(urlCheck, urlRedirect, data);
 
   });
-  
+
   </script>
   </body>
 </html>

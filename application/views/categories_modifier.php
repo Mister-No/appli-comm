@@ -16,6 +16,10 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
 	<div class="page-container">
 		<div class="main-content">
 			<div class="row">
@@ -55,7 +59,7 @@
 								</div>
                 <div class="col-md-12">
                   <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-success">AJOUTER</button>
+                    <button type="submit" class="btn btn-success">MODIFIER</button>
                   </div>
                 </div>
 							</div>
@@ -66,8 +70,22 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+
 		var id = <?=$row->id_parent?>;
 		var urlSelect = 'select_all_cat';
 
 		select ('#select_category', id, urlSelect);
+
+		$('#form').submit(function(e) {
+
+			e.preventDefault();
+
+			data = $(this).serialize();
+			urlCheck = 'categories/update.html';
+			urlRedirect = 'categories.html';
+
+			check_exist(urlCheck, urlRedirect, data);
+
+		});
+
 	</script>

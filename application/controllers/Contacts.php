@@ -143,14 +143,9 @@ class Contacts extends CI_Controller  {
 
       $id_group = $_SESSION["id_group"];
 
-			$result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group, $id='rien');
+			$result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group);
 
-      foreach ($result as $row) {
-        $nom = $row->nom;
-        $email = $row->email;
-      }
-
-			if ($this->input->post('email') == $email || $this->input->post('nom') == $nom) {
+			if (count($result) > 0) {
 
 		        echo 1;
 
@@ -206,14 +201,11 @@ class Contacts extends CI_Controller  {
 
       $this->My_contacts->delete_ent_cat($this->input->post('id'));
 
+      $id_group = $_SESSION["id_group"];
+
       $result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group, $this->input->post('id'));
 
-          foreach ($result as $row) {
-            $nom = $row->nom;
-            $email = $row->email;
-          }
-
-    			if ($this->input->post('email') == $email || $this->input->post('nom') == $nom) {
+    			if (count($result) > 0) {
 
     		       echo 1;
 

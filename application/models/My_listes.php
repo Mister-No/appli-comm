@@ -31,6 +31,24 @@ class My_listes extends CI_Model {
     return $query->result();
   }
 
+  /******************************************/
+  /* VERIFIE L'EXISTANCE D'UNE LISTE       */
+  /*****************************************/
+  function check_exist($titre, $id_group, $id='rien'){
+
+    $this->db->select();
+    $this->db->from('liste');
+    $this->db->where("liste.titre = '".addslashes($titre)."'");
+    $this->db->where("liste.id_group = '$id_group'");
+    if($id != 'rien'){
+      $this->db->where("liste.id != '$id'");
+    }
+
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
   /*******************************************/
   /* SELECT TOUS LES CONTACTS PAR CATEGORIES */
   /*******************************************/

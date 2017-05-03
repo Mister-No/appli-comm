@@ -1,31 +1,6 @@
 $(document).ready(function()
 {
 
-/** Fonction de login **/
-
-	$(function() {
-	  $('#form-login').submit(function() {
-	  username = $(this).find('input[name=username]').val();
-	  password = $(this).find('input[name=password]').val();
-
-	  $.post('http://localhost/appli-comm/login/verifier.html', {username: username, password: password}, function(data) {
-
-	    if (data==1) {
-
-	      window.location.href = 'dashboard.html';
-
-	    } else {
-
-				$('.erreur').css('display', 'block');
-				$('.retour').empty().html('Login ou mot de passe incorrect');
-	    }
-	  });
-	  return false;
-	  });
-	});
-
-
-
 /** Fonction pour fermer les pop up d'erreur **/
 
 	$('.close').click(function() {
@@ -37,8 +12,6 @@ $(document).ready(function()
 	$('.check_all').click(function() {
 			$(this).parent().parent().parent().parent().parent().find(':checkbox').prop('checked', this.checked);
 	});
-
-
 
 });
 
@@ -70,7 +43,7 @@ function delete_item (id, titre)
 	$('#modal-delete').modal('show', {backdrop: 'fade'});
 }
 
-/** Fonction de verification d'existance de l'utilisateur ou du contact **/
+/** Fonction de verification d'existance de login, l'utilisateur ou du contact **/
 
 function check_exist(urlCheck, urlRedirect, data) {
 
@@ -81,12 +54,12 @@ function check_exist(urlCheck, urlRedirect, data) {
 			if (data == 1) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Cette personne existe deja');
+				$('.message').empty().html('Entité deja existante');
 
 			} else if (data == 2) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Aucunes modifications enregristrées');
+				$('.message').empty().html('Login ou mot de passe incorrect');
 
 			} else if (data == 3) {
 
@@ -102,6 +75,11 @@ function check_exist(urlCheck, urlRedirect, data) {
 
 				$('.success').css('display', 'block');
 				$('.message').empty().html('Le mot de passe est reinitialisé');
+
+			} else if (data == 6) {
+
+				$('.success').css('display', 'block');
+				$('.message').empty().html('Utilisateur inexistant');
 
 			} else {
 

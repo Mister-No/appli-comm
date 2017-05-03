@@ -16,6 +16,10 @@
 		</div>
 	</div>
 	<div class="container-fluid container-fixed-lg">
+		<div class="erreur alert alert-danger">
+			<strong class="message"></strong>
+			<button class="close"></button>
+		</div>
 		<div class="page-container">
 			<div class="main-content">
 				<div class="row">
@@ -61,8 +65,22 @@
 		</div>
 	</div>
 <script type="text/javascript">
+
 	var id = null;
 	var urlSelect = 'select_all_cat';
 
 	select ('#select_category', id, urlSelect);
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'categories/add.html';
+		urlRedirect = 'categories.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+	
 </script>

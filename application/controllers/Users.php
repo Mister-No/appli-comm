@@ -71,7 +71,7 @@ class Users extends CI_Controller  {
   public function modifier()
   {
 
-    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
+    if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_users');
 
@@ -104,7 +104,7 @@ class Users extends CI_Controller  {
 
   }
 
-  public function profil()
+  /*public function profil()
   {
 
     if ($_SESSION['is_connect'] == TRUE){
@@ -127,7 +127,7 @@ class Users extends CI_Controller  {
           $this->load->view('login');
       }
 
-  }
+  }*/
 
 
   public function add()
@@ -137,9 +137,9 @@ class Users extends CI_Controller  {
 
 			$this->load->model('My_users');
 
-			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'));
+      $id_group = $_SESSION["id_group"];
 
-      $id_group = $_SESSION['id_group'];
+			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'), $id_group);
 
 			if (count($result) > 0){
 
@@ -161,17 +161,17 @@ class Users extends CI_Controller  {
 
           $password = crypt($this->input->post('password'), $this->input->post('login'));
 
-				$data = array(
-          'id_group' 	  => $id_group,
-          'login' 		  => $this->input->post('login'),
-					'password' 	  => $password,
-					'email' 			=> $this->input->post('email'),
-          'nom' 				=> $this->input->post('nom'),
-					'prenom' 			=> $this->input->post('prenom'),
-					'rang' 			  => $this->input->post('rang'),
-					'admin' 			=> $admin,
-          'actif' 			=> $actif,
-				);
+  				$data = array(
+            'id_group' 	  => $id_group,
+            'login' 		  => $this->input->post('login'),
+  					'password' 	  => $password,
+  					'email' 			=> $this->input->post('email'),
+            'nom' 				=> $this->input->post('nom'),
+  					'prenom' 			=> $this->input->post('prenom'),
+  					'rang' 			  => $this->input->post('rang'),
+  					'admin' 			=> $admin,
+            'actif' 			=> $actif,
+  				);
 
 	        $insert_data = $this->My_common->insert_data('users', $data);
 
@@ -189,51 +189,48 @@ class Users extends CI_Controller  {
   public function update()
 	{
 
-    if ($_SESSION['is_connect'] == TRUE && $_SESSION['is_admin'] == 1){
+    if ($_SESSION['is_connect'] == TRUE){
 
-    $this->load->model('My_users');
+      $this->load->model('My_users');
 
-    $result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'));
+      $id_group = $_SESSION["id_group"];
 
-  foreach ($result as $row) {
-      $login = $row->login;
-      $email = $row->email;
-    }
+			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'), $id_group, $this->input->post('id'));
 
-    if ($this->input->post('email') == $email || $this->input->post('login') == $login) {
+      if (count($result) > 0) {
 
-      echo 1;
+        echo 1;
 
-     } else {
-
-       if ($this->input->post('admin') == 'on') {
-         $admin = 1;
        } else {
-         $admin = 0;
-       }
 
-       if ($this->input->post('actif') == 'on') {
-         $actif = 1;
-       } else {
-         $actif = 0;
-       }
+         if ($this->input->post('admin') == 'on') {
+           $admin = 1;
+         } else {
+           $admin = 0;
+         }
 
-       $data = array(
-         'id' 		    => $this->input->post('id'),
-         'login' 		  => $this->input->post('login'),
-         'email' 			=> $this->input->post('email'),
-         'nom' 				=> $this->input->post('nom'),
-         'prenom' 	  => $this->input->post('prenom'),
-         'rang' 			=> $this->input->post('rang'),
-         'admin' 			=> $admin,
-         'actif' 			=> $actif,
-       );
+         if ($this->input->post('actif') == 'on') {
+           $actif = 1;
+         } else {
+           $actif = 0;
+         }
 
-       $this->My_common->update_data('users','id', $this->input->post('id'), $data);
+         $data = array(
+           'id' 		    => $this->input->post('id'),
+           'login' 		  => $this->input->post('login'),
+           'email' 			=> $this->input->post('email'),
+           'nom' 				=> $this->input->post('nom'),
+           'prenom' 	  => $this->input->post('prenom'),
+           'rang' 			=> $this->input->post('rang'),
+           'admin' 			=> $admin,
+           'actif' 			=> $actif,
+         );
 
-       echo "ok";
+         $this->My_common->update_data('users','id', $this->input->post('id'), $data);
 
-    }
+         echo "ok";
+
+      }
 
     } else {
 

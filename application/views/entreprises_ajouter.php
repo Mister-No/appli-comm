@@ -16,6 +16,10 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
 	<div class="page-container">
 		<div class="main-content">
 			 <div class="row">
@@ -30,7 +34,7 @@
 						</ul>
 					</div>
 		        </div>
-		        <form id="form1" method="post" class="validate" action="<?=base_url();?>entreprises/add.html">
+		        <form id="form" method="post" class="validate" action="<?=base_url();?>entreprises/add.html">
 		          <div class="panel-body">
 		            <div class="row">
 		              <div class="col-md-6">
@@ -123,5 +127,17 @@
 	var urlSelect = 'select_all_cat';
 
 	select ('#select_category', id_ent, urlSelect);
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'entreprises/add.html';
+		urlRedirect = 'entreprises.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
 
 	</script>

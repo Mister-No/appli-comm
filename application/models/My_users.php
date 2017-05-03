@@ -34,14 +34,18 @@ class My_users extends CI_Model {
 
 
   /******************************************/
-  /*    VERIFIE L'EXISTANCE D'UN CONTACT    */
+  /*  VERIFIE L'EXISTANCE D'UN UTILISATEUR  */
   /******************************************/
-  function check_exist($email, $login){
+  function check_exist($email, $login='rien', $id_group='rien', $id='rien'){
 
     $this->db->select();
     $this->db->from('users');
-    $this->db->or_where("users.email = '$email'");
-    $this->db->or_where("users.login = '$login'");
+    $this->db->where("users.email = '$email'");
+    if($id != 'rien' || $id_group != 'rien' || $login != 'rien'){
+      $this->db->where("users.login = '$login'");
+      $this->db->where("users.id_group = '$id_group'");
+      $this->db->where("users.id != '$id'");
+    }
 
     $query = $this->db->get();
 

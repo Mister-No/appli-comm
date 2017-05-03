@@ -16,6 +16,10 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
 	<div class="page-container">
 		<div class="main-content">
 
@@ -90,3 +94,18 @@
 	    </div>
 	  </form>
 	</div>
+	<script type="text/javascript">
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'listes/update.html';
+		urlRedirect = 'listes.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+	</script>

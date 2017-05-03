@@ -7,13 +7,6 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 	}
 
-
-	public function pass()
-	{
-		$this->load->view('login_pass');
-	}
-
-	// fonction pour se logger et être rediriger vers la partie client.
 	public function verifier(){
 
     $this->load->model('My_common');
@@ -31,63 +24,42 @@ class Login extends CI_Controller {
         $_SESSION['rang'] = $row->rang;
 				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
 
-				echo 1;
+				echo 'ok';
 			}
 
 		} else {
 
-			echo 0;
+			echo 2;
 		}
 
 	}
 
-	public function retrouver_verifier()
+
+	public function password()
 	{
 
-		$this->load->helper(array('form', 'url'));
+		$this->load->view('login_password');
 
-		$this->load->library('form_validation');
+	}
 
-    $this->load->model('My_common');
+	public function verifier()
+	{
 
-    $result_login = $this->My_common->login_recup($this->input->post('email'));
+    $this->load->model('My_users');
+
+    $result = $this->My_users->check_exist($this->input->post('email'));
+
+    if (count($result) > 0) {
+
+      echo 6;
+
+    } else {
 
 
-		if ($result_login == false){
-			echo 'Erreur';
-		} else {
 
-			foreach ($result_login as $row){
-				$login = $row->email;
-				$pass = $row->password;
-			}
+      echo 7;
 
-    		$message = "Bonjour,<br /><br />Vous recevez ce courriel parce qu'un adhérent souhaite connaître son mot de passe.<br /><br />Voici les identifiants associés à son compte :<br /><br />";
-    		$message.= "<b>Identifiant</b> : ".$login."<br />";
-    		$message.= "<b>Mot de passe</b> : ".$pass."<br />";
-    		$message.= "<br /><br />Merci !";
-
-    		$this->load->library('email');
-
-    		$config['charset'] = 'utf-8';
-    		$config['wordwrap'] = TRUE;
-    		$config['mailtype'] = 'html';
-
-    		$this->email->initialize($config);
-
-    		$this->email->clear();
-
-    		$this->email->from('syndicat@sned.ffbatiment.fr', 'SNED');
-    		$this->email->to('syndicat@sned.ffbatiment.fr');
-    		//$this->email->to('pierre.atman@gmail.com');
-
-    		$this->email->subject('Ivestigo - Récupération de mot de passe');
-    		$this->email->message($message);
-
-    		$this->email->send();
-
-			echo 'ok';
-		}
+    }
 
 	}
 

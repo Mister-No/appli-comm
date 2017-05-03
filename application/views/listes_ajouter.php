@@ -16,6 +16,10 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
 	<div class="page-container">
     <div class="main-content">
       <form id="form" method="post" class="validate" action="<?=base_url();?>listes/add.html">
@@ -83,3 +87,20 @@
       </form>
     </div>
   </div>
+	<script type="text/javascript">
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'listes/add.html';
+		urlRedirect = 'listes.html';
+
+		console.log(data);
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+	</script>
