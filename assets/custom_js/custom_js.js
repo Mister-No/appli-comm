@@ -78,8 +78,13 @@ function check_exist(urlCheck, urlRedirect, data) {
 
 			} else if (data == 6) {
 
-				$('.success').css('display', 'block');
+				$('.erreur').css('display', 'block');
 				$('.message').empty().html('Utilisateur inexistant');
+
+			} else if (data == 7) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Un nouveau mot de passe vous à été envoyé par mail');
 
 			} else {
 

@@ -58,7 +58,7 @@
             <button class="close"></button>
           </div>
           <!-- START Login Form -->
-          <form id="form" class="p-t-15" action="<?=base_url();?>login/verifier.html">
+          <form id="form" class="p-t-15" action="<?=base_url();?>login/recup_password.html">
             <!-- START Form Control-->
             <div class="form-group form-group-default">
               <label>Votre Email</label>
@@ -106,7 +106,7 @@
     e.preventDefault();
 
     data = $(this).serialize();
-    urlCheck = 'login/verifier.html';
+    urlCheck = 'login/recup_password.html';
     urlRedirect = 'login.html';
 
     check_exist(urlCheck, urlRedirect, data);

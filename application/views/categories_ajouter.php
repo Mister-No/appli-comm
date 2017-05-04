@@ -52,14 +52,12 @@
 										</select>
 		              </div>
 								</div>
-                <div class="col-md-12">
-                  <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-success">AJOUTER</button>
-                  </div>
-                </div>
 							</div>
-	          </form>
-	        </div>
+						</div>
+						<div class="panel-footer text-right">
+		          <button type="submit" class="btn btn-success">AJOUTER</button>
+		        </div>
+          </form>
 				</div>
 			</div>
 		</div>
@@ -82,5 +80,5 @@
 		check_exist(urlCheck, urlRedirect, data);
 
 	});
-	
+
 </script>

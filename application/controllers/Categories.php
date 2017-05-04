@@ -40,6 +40,10 @@ class Categories extends CI_Controller {
 							'result' => $result,
 					);
 
+					/*echo '<pre>';
+					print_r($result);
+					echo '<pre>';*/
+
 					$this->load->view('header', $data);
 					$this->load->view('categories');
 					$this->load->view('footer');
@@ -204,23 +208,20 @@ class Categories extends CI_Controller {
 
 				} else {
 
-					if ($this->input->post('id_parent') == null ) {
-
-						$id_parent = 0;
-
-					} else {
-
-						$id_parent = $this->input->post('id_parent');
-
+					foreach ($_POST['id_enfant'] as $key => $id_enfant) {
+						$data = array (
+							'id' 				 => $id_enfant,
+							'id_parent'	 => $id
+						);
+						 $this->My_common->update_data('categorie', 'id', $id_enfant, $data);
 					}
 
 					$data = array (
-						'id' 				 => $this->input->post('id'),
-						'titre' 		 => $this->input->post('titre'),
-						'id_parent'	 => $id_parent
+					'id' 				 => $this->input->post('id'),
+					'titre' 		 => $this->input->post('titre'),
 					);
 
-			    $this->My_common->update_data('categorie', 'id', $this->input->post('id'), $data);
+					$this->My_common->update_data('categorie', 'id', $this->input->post('id'), $data);
 
 					echo 'ok';
 

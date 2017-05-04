@@ -25,6 +25,7 @@ class My_categories extends CI_Model {
     $this->db->select();
     $this->db->from('categorie');
     $this->db->where("categorie.id_group = $id_group");
+    $this->db->where("categorie.id_parent != 0");
     $this->db->order_by ("titre", "ASC");
 
     $query = $this->db->get();
