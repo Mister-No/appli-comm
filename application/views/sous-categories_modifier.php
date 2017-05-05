@@ -26,7 +26,7 @@
         <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
           <div class="panel-heading">
             <div class="panel-title">
-              Modifier une catégorie
+              Modifier une sous-catégorie
             </div>
 						<div class="panel-controls">
 							<ul>
@@ -52,8 +52,8 @@
             ?>
 								<div class="col-md-6">
 									<div class="form-group form-group-default form-group-default-select2 ">
-									<label class="">Ajouter des sous-catégories:</label>
-										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_enfant[]" multiple disabled>
+									<label class="">Déplacer vers une autre catégorie:</label>
+										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_parent" disabled>
 	                	</select>
 		              </div>
 								</div>
@@ -72,7 +72,7 @@
 	<script type="text/javascript">
 
 		var id = <?=$row->id_parent?>;
-		var urlSelect = 'select_all_cat';
+		var urlSelect = 'select_all_parent_cat';
 
 		select ('#select_category', id, urlSelect);
 
@@ -81,7 +81,7 @@
 			e.preventDefault();
 
 			data = $(this).serialize();
-			urlCheck = 'categories/update.html';
+			urlCheck = 'categories/move.html';
 			urlRedirect = 'categories.html';
 
 			check_exist(urlCheck, urlRedirect, data);

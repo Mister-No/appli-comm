@@ -123,7 +123,7 @@ class Categories extends CI_Controller {
 
 	}
 
-	public function modifier()
+	public function modifier_categorie()
 	{
 
 		if ($_SESSION['is_connect'] == TRUE){
@@ -140,6 +140,30 @@ class Categories extends CI_Controller {
 
 				$this->load->view('header', $data);
 				$this->load->view('categories_modifier');
+				$this->load->view('footer');
+
+			} else {
+					$this->load->view('login');
+			}
+	}
+
+	public function modifier_sous_categorie()
+	{
+
+		if ($_SESSION['is_connect'] == TRUE){
+
+			$this->load->model('My_categories');
+
+			$id = $this->uri->segment(3, 0);
+
+				$result = $this->My_categories->get_cat_by_id($id);
+
+				$data = array(
+					'result' => $result,
+				);
+
+				$this->load->view('header', $data);
+				$this->load->view('sous-categories_modifier');
 				$this->load->view('footer');
 
 			} else {
@@ -211,9 +235,10 @@ class Categories extends CI_Controller {
 					foreach ($_POST['id_enfant'] as $key => $id_enfant) {
 						$data = array (
 							'id' 				 => $id_enfant,
-							'id_parent'	 => $id
+							'id_parent'	 => $this->input->post('id')
 						);
 						 $this->My_common->update_data('categorie', 'id', $id_enfant, $data);
+
 					}
 
 					$data = array (
@@ -232,6 +257,43 @@ class Categories extends CI_Controller {
         echo 3;
 
     	}
+
+	}
+
+	public function move()
+	{
+
+		if ($_SESSION['is_connect'] == TRUE){
+
+			$this->load->model('My_categories');
+
+			$id_group = $_SESSION['id_group'];
+
+			$result = $this->My_categories->check_exist($this->input->post('titre'), $id_group, $this->input->post('id'));
+
+			if (count($result) > 0){
+
+					echo 1;
+
+				} else {
+
+					$data = array (
+					'id' 				 => $this->input->post('id'),
+					'titre' 		 => $this->input->post('titre'),
+					'id_parent'  => $this->input->post('id_parent'),
+					);
+
+					$this->My_common->update_data('categorie', 'id', $this->input->post('id'), $data);
+
+					echo 'ok';
+
+				}
+
+			} else {
+
+				echo 3;
+
+			}
 
 	}
 

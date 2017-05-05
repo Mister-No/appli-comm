@@ -52,5 +52,29 @@ class Common extends CI_Controller  {
         }
     }
 
+    public function select_all_parent_cat()
+    {
+      if ($_SESSION['is_connect'] == TRUE){
+
+      $this->load->model('My_categories');
+
+        $id_group = $_SESSION["id_group"];
+
+        $result = $this->My_categories->get_all_parent_cat($id_group);
+
+        foreach ($result as $row) {
+
+            $data[] = array('id' => $row->id, 'text' => $row->titre);
+
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode ($data);
+
+        } else {
+            $this->load->view('login');
+        }
+    }
+
 
 }

@@ -66,7 +66,7 @@
 									<div class="panel-controls">
 										<ul>
 											<li>
-												<a href="' . base_url() .'categories/modifier/' . $row['id']  . '">
+												<a href="' . base_url() .'categories/modifier_categorie/' . $row['id']  . '">
 											    <i class="fa fa-edit"></i>
 											  </a>
 											</li>
@@ -84,7 +84,7 @@
 							        echo '<li class="list-group-item">
                               ' . $row_cat['titre'] . '
                               <span class="panel-controls pull-right">
-																<a href="' . base_url() .'categories/modifier/' . $row_cat['id']  . '"><i class="fa fa-edit"></i>
+																<a href="' . base_url() .'categories/modifier_sous_categorie/' . $row_cat['id']  . '"><i class="fa fa-edit"></i>
 																</a>
 																<a href="javascript:delete_item (\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');" ><i class="fa fa-trash"></i>
 																</a>
