@@ -34,7 +34,7 @@
 						</div>
 				 	 </div>
 					 <div class="panel-body">
-						<form role="form" id="form" method="post" class="validate" action="<?=base_url();?>categories/add.html">
+						<form id="form" method="post" class="validate" action="<?=base_url();?>categories/add.html">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group form-group-default">
@@ -66,36 +66,74 @@
 									<div class="panel-controls">
 										<ul>
 											<li>
-												<a href="' . base_url() .'categories/modifier_categorie/' . $row['id']  . '">
+												<i onclick="edit_cat_title(' . $row['id'] . ');">
 											    <i class="fa fa-edit"></i>
-											  </a>
+											  </i>
 											</li>
-											<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-									class="portlet-icon portlet-icon-collapse"></i></a>
+											<li>
+												<a data-toggle="collapse" class="portlet-collapse" href="#">
+													<i class="portlet-icon portlet-icon-collapse"></i>
+												</a>
 											</li>
 										</ul>
 									</div>
-              		</div>
-              	<div class="panel-body">
-                  <div class="list-group list-group-minimal">';
+								</div>
+								<div class="panel-body edit_sous_cat_title" id="cat_id' . $row['id'] . '">
+			 						<form id="form_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
+			 							<div class="row">
+			 								<div class="col-md-12">
+			 									<div class="form-group form-group-default">
+			 										<label class="control-label">Modifier le titre :</label>
+			 										<input type="text" class="form-control" name="titre" data-validate="required" data-message-required="Veuillez saisir un nouveau titre" placeholder="Titre" />
+													<input type="hidden" name="id" value="' . $row['id'] . '">
+			 									</div>
+			 								</div>
+											<button type="submit" class="btn btn-success btn-cons m-b-10 pull-right">MODIFIER</button>
+											<button type="button" class="btn btn-success btn-cons m-b-10 pull-right cancel">ANNULER</button>
+			 							</form>
+									</div>
+		            	<div class="panel-body">
+		                <div class="list-group list-group-minimal">';
 
-                    foreach ($row['cat_child'] as $row_cat) {
+		                  foreach ($row['cat_child'] as $row_cat) {
 
-							        echo '<li class="list-group-item">
-                              ' . $row_cat['titre'] . '
-                              <span class="panel-controls pull-right">
-																<a href="' . base_url() .'categories/modifier_sous_categorie/' . $row_cat['id']  . '"><i class="fa fa-edit"></i>
-																</a>
-																<a href="javascript:delete_item (\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');" ><i class="fa fa-trash"></i>
-																</a>
-															</span>
-														</li>';
+								        echo '<li class="list-group-item">
+		                            ' . $row_cat['titre'] . '
+		                            <span class="panel-controls pull-right">
+																	<i onclick="edit_cat_title(' . $row_cat['id'] . ', ' . $row['id'] . ');"><i class="fa fa-edit"></i>
+																	</i>
+																		<a href="javascript:delete_item (\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');"><i class="fa fa-trash"></i>
+																	</a>
+																</span>
+															</li>
+															<div class="panel-body edit_sous_cat_title" id="cat_id' . $row_cat['id'] . '">
+																<form role="form" id="form_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
+																<input type="hidden" name="id" value="' . $row_cat['id'] . '">
+																	<div class="row">
+																		<div class="col-md-6">
+																			<div class="form-group form-group-default">
+																				<label class="control-label">Modifier le titre :</label>
+																				<input type="text" class="form-control" value="' . $row_cat['titre'] . '" name="titre" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Titre" />
+																			</div>
+																		</div>
+																		<div class="col-md-6">
+																			<div class="form-group form-group-default form-group-default-select2 ">
+																			<label class="">Déplacer vers une autre catégorie:</label>
+																				<select class="select_category full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" name="id_parent" disabled>
+																				</select>
+																			</div>
+																		</div>
+																		<button type="submit" class="btn btn-success btn-cons m-b-10 pull-right">MODIFIER</button>
+																		<button type="button" class="btn btn-success btn-cons m-b-10 pull-right cancel">ANNULER</button>
+																	</div>
+																</form>
+															</div>';
 
-                    }
+		                  }
 
-                echo '</div>
-              			</div>
-      						</div>';
+              echo '</div>
+            			</div>
+    						</div>';
 		} ?>
 
 		</div>
@@ -121,11 +159,6 @@
 </div>
 <script type="text/javascript">
 
-	var id = null;
-	var urlSelect = 'select_all_cat';
-
-	select ('#select_category', id, urlSelect);
-
 	$('#form').submit(function(e) {
 
 		e.preventDefault();
@@ -137,5 +170,31 @@
 		check_exist(urlCheck, urlRedirect, data);
 
 	});
+
+	$('#form_cat').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'categories/update.html';
+		urlRedirect = 'categories.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+	$('#form_sous_cat').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'categories/move.html';
+		urlRedirect = 'categories.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+
+
 
 </script>

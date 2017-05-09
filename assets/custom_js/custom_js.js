@@ -1,10 +1,10 @@
 $(document).ready(function()
 {
 
-/** Fonction pour fermer les pop up d'erreur **/
+/** Fonction pour fermer les pop up **/
 
-	$('.close').click(function() {
-		$('.erreur, .success').css('display', 'none');
+	$('.close, .cancel').click(function() {
+		$('.erreur, .success, .edit_cat_title').css('display', 'none');
 	});
 
 /** Fonction pour la selection de toutes les checkbox **/
@@ -12,6 +12,9 @@ $(document).ready(function()
 	$('.check_all').click(function() {
 			$(this).parent().parent().parent().parent().parent().find(':checkbox').prop('checked', this.checked);
 	});
+
+
+
 
 });
 
@@ -41,6 +44,20 @@ function delete_item (id, titre)
 	$(".modal").find ("#id").val(id);
 	$(".modal-body").empty().append (titre);
 	$('#modal-delete').modal('show', {backdrop: 'fade'});
+}
+
+/** Fonction pour la modification des titres de catégories **/
+
+function edit_cat_title(id, id_parent) {
+
+		$('.edit_cat_title').hide();
+
+		$('#cat_id'+id).css('display', 'block');
+
+		var urlSelect = 'select_all_parent_cat';
+
+		select ('.select_category', id_parent, urlSelect);
+
 }
 
 /** Fonction de verification d'existance de login, l'utilisateur ou du contact **/

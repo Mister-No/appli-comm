@@ -1,8 +1,6 @@
 
-.erreur {
-  display: none;
-}
-
-.success {
+.erreur,
+.success,
+.edit_cat_title {
   display: none;
 }

@@ -21,15 +21,16 @@ class Categories extends CI_Controller {
 						foreach ($result_cat_child as $row_cat_child) {
 
 							$tab_cat_child[] = [
-								'id' => $row_cat_child->id,
-								'titre' => $row_cat_child->titre,
+								'id' 				=> $row_cat_child->id,
+								'titre' 		=> $row_cat_child->titre,
+								'id_parent' => $row_cat_child->id_parent,
 							];
 
 						}
 
 						$result[] = [
-							'id' => $row_cat_parent->id,
-							'titre' => $row_cat_parent->titre,
+							'id' 				=> $row_cat_parent->id,
+							'titre' 		=> $row_cat_parent->titre,
 							'cat_child' => $tab_cat_child
 						];
 						$tab_cat_child = array();
@@ -231,15 +232,6 @@ class Categories extends CI_Controller {
 					echo 1;
 
 				} else {
-
-					foreach ($_POST['id_enfant'] as $key => $id_enfant) {
-						$data = array (
-							'id' 				 => $id_enfant,
-							'id_parent'	 => $this->input->post('id')
-						);
-						 $this->My_common->update_data('categorie', 'id', $id_enfant, $data);
-
-					}
 
 					$data = array (
 					'id' 				 => $this->input->post('id'),
