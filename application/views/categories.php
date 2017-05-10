@@ -60,37 +60,38 @@
 
       <?php foreach ($result as $row) {
 
-				echo '<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
-              	<div class="panel-heading">
-                  <div class="panel-title">' . $row['titre'] . '</div>
-									<div class="panel-controls">
-										<ul>
-											<li>
-												<i onclick="edit_cat_title(' . $row['id'] . ');">
-											    <i class="fa fa-edit"></i>
-											  </i>
-											</li>
-											<li>
-												<a data-toggle="collapse" class="portlet-collapse" href="#">
-													<i class="portlet-icon portlet-icon-collapse"></i>
-												</a>
-											</li>
-										</ul>
+					echo '<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+	              	<div class="panel-heading">
+	                  <div class="panel-title">' . $row['titre'] . '</div>
+										<div class="panel-controls">
+											<ul>
+												<li>
+													<i onclick="edit_cat_title(' . $row['id'] . ');">
+												    <i class="fa fa-edit"></i>
+												  </i>
+												</li>
+												<li>
+													<a data-toggle="collapse" class="portlet-collapse" href="#">
+														<i class="portlet-icon portlet-icon-collapse"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
 									</div>
-								</div>
-								<div class="panel-body edit_sous_cat_title" id="cat_id' . $row['id'] . '">
-			 						<form id="form_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
-			 							<div class="row">
-			 								<div class="col-md-12">
-			 									<div class="form-group form-group-default">
-			 										<label class="control-label">Modifier le titre :</label>
-			 										<input type="text" class="form-control" name="titre" data-validate="required" data-message-required="Veuillez saisir un nouveau titre" placeholder="Titre" />
-													<input type="hidden" name="id" value="' . $row['id'] . '">
-			 									</div>
-			 								</div>
-											<button type="submit" class="btn btn-success btn-cons m-b-10 pull-right">MODIFIER</button>
-											<button type="button" class="btn btn-success btn-cons m-b-10 pull-right cancel">ANNULER</button>
-			 							</form>
+									<div class="panel-body edit_cat_title" id="cat_id' . $row['id'] . '">
+				 						<form id="form_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
+				 							<div class="row">
+				 								<div class="col-md-12">
+				 									<div class="form-group form-group-default">
+				 										<label class="control-label">Modifier le titre :</label>
+				 										<input type="text" class="form-control" name="titre" data-validate="required" data-message-required="Veuillez saisir un nouveau titre" placeholder="Titre" />
+														<input type="hidden" name="id" value="' . $row['id'] . '">
+				 									</div>
+				 								</div>
+												<button type="submit" class="btn btn-success btn-cons m-b-10 pull-right">MODIFIER</button>
+												<button type="button" class="btn btn-success btn-cons m-b-10 pull-right cancel">ANNULER</button>
+				 							</form>
+										</div>
 									</div>
 		            	<div class="panel-body">
 		                <div class="list-group list-group-minimal">';
@@ -106,7 +107,7 @@
 																	</a>
 																</span>
 															</li>
-															<div class="panel-body edit_sous_cat_title" id="cat_id' . $row_cat['id'] . '">
+															<div class="panel-body edit_cat_title" id="cat_id' . $row_cat['id'] . '">
 																<form role="form" id="form_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
 																<input type="hidden" name="id" value="' . $row_cat['id'] . '">
 																	<div class="row">
@@ -118,7 +119,7 @@
 																		</div>
 																		<div class="col-md-6">
 																			<div class="form-group form-group-default form-group-default-select2 ">
-																			<label class="">Déplacer vers une autre catégorie:</label>
+																				<label class="">Déplacer vers une autre catégorie:</label>
 																				<select class="select_category full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" name="id_parent" disabled>
 																				</select>
 																			</div>
@@ -136,6 +137,7 @@
     						</div>';
 		} ?>
 
+			</div>
 		</div>
 		<div class="modal fade" id="modal-delete">
 			<div class="modal-dialog">
@@ -157,6 +159,7 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
 
 	$('#form').submit(function(e) {
