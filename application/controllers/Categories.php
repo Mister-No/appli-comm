@@ -109,7 +109,7 @@ class Categories extends CI_Controller {
 		$this->load->view ('categories_xls');
 	}
 
-	public function ajouter()
+	/*public function ajouter()
 	{
 
 		if ($_SESSION['is_connect'] == TRUE){
@@ -170,7 +170,7 @@ class Categories extends CI_Controller {
 			} else {
 					$this->load->view('login');
 			}
-	}
+	}*/
 
 	public function add()
 	{
@@ -189,8 +189,8 @@ class Categories extends CI_Controller {
 
 			} else {
 
-				if ($this->input->post('id_cat') > 0) {
-					$id_parent = $this->input->post('id_cat');
+				if ($this->input->post('id_parent') > 0) {
+					$id_parent = $this->input->post('id_parent');
 				} else {
 					$id_parent = 0;
 				}
@@ -293,6 +293,8 @@ class Categories extends CI_Controller {
 	{
 
 		if ($_SESSION['is_connect'] == TRUE){
+
+			$this->My_common->delete_data('liste_cat', $this->input->post('id'));
 
 	     $this->My_common->delete_data('categorie', $this->input->post('id'));
 

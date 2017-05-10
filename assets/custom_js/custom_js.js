@@ -4,7 +4,7 @@ $(document).ready(function()
 /** Fonction pour fermer les pop up **/
 
 	$('.close, .cancel').click(function() {
-		$('.erreur, .success, .edit_cat_title').css('display', 'none');
+		$('.erreur, .success, .edit_cat, .add_cat').css('display', 'none');
 	});
 
 /** Fonction pour la selection de toutes les checkbox **/
@@ -12,9 +12,6 @@ $(document).ready(function()
 	$('.check_all').click(function() {
 			$(this).parent().parent().parent().parent().parent().find(':checkbox').prop('checked', this.checked);
 	});
-
-
-
 
 });
 
@@ -48,15 +45,25 @@ function delete_item (id, titre)
 
 /** Fonction pour la modification des titres de catégories **/
 
-function edit_cat_title(id, id_parent) {
+function edit_cat(id, id_parent) {
 
-		$('.edit_cat_title').hide();
+		$('.edit_cat').hide();
 
 		$('#cat_id'+id).css('display', 'block');
 
 		var urlSelect = 'select_all_parent_cat';
 
 		select ('.select_category', id_parent, urlSelect);
+
+}
+
+/** Fonction pour l'ajout d'une sous-catégories **/
+
+function add_cat(id) {
+
+		$('.add_cat').hide();
+
+		$('#cat_id_parent'+id).css('display', 'block');
 
 }
 

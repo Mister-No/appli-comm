@@ -66,9 +66,12 @@
 										<div class="panel-controls">
 											<ul>
 												<li>
-													<i onclick="edit_cat_title(' . $row['id'] . ');">
+													<i onclick="edit_cat(' . $row['id'] . ');">
 												    <i class="fa fa-edit"></i>
 												  </i>
+												</li>
+												<li>
+													<i onclick="delete_item (\''.$row['id'].'\', \''.$row['titre'].'\');"><i class="fa fa-trash"></i></i>
 												</li>
 												<li>
 													<a data-toggle="collapse" class="portlet-collapse" href="#">
@@ -78,7 +81,7 @@
 											</ul>
 										</div>
 									</div>
-									<div class="panel-body edit_cat_title" id="cat_id' . $row['id'] . '">
+									<div class="form-group form-group-default edit_cat" id="cat_id' . $row['id'] . '">
 				 						<form id="form_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
 				 							<div class="row">
 				 								<div class="col-md-12">
@@ -101,13 +104,13 @@
 								        echo '<li class="list-group-item">
 		                            ' . $row_cat['titre'] . '
 		                            <span class="panel-controls pull-right">
-																	<i onclick="edit_cat_title(' . $row_cat['id'] . ', ' . $row['id'] . ');"><i class="fa fa-edit"></i>
+																	<i onclick="edit_cat(' . $row_cat['id'] . ', ' . $row['id'] . ');"><i class="fa fa-edit"></i>
 																	</i>
-																		<a href="javascript:delete_item (\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');"><i class="fa fa-trash"></i>
-																	</a>
+																		<i onclick="delete_item(\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');"><i class="fa fa-trash"></i>
+																	</i>
 																</span>
 															</li>
-															<div class="panel-body edit_cat_title" id="cat_id' . $row_cat['id'] . '">
+															<div class="form-group form-group-default edit_cat" id="cat_id' . $row_cat['id'] . '">
 																<form role="form" id="form_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
 																<input type="hidden" name="id" value="' . $row_cat['id'] . '">
 																	<div class="row">
@@ -133,11 +136,30 @@
 		                  }
 
               echo '</div>
-            			</div>
-    						</div>';
+										<div class="row">
+											<div class="col-md-12">
+												<div class="panel-default add_cat" id="cat_id_parent' . $row['id'] . '">
+							 						<form id="form_add_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/add.html">
+						 								<div class="col-md-12">
+							 								<div class="form-group form-group-default">
+						 										<label class="control-label">Ajouter une sous-catégorie :</label>
+						 										<input type="text" class="form-control" name="titre" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Titre" />
+																<input type="hidden" name="id_parent" value="' . $row['id'] . '">
+						 									</div>
+															<button type="submit" class="btn btn-success btn-cons m-b-10 pull-right">AJOUTER</button>
+															<button type="button" class="btn btn-success btn-cons m-b-10 pull-right cancel">ANNULER</button>
+														</div>
+							 						</form>
+												</div>
+											</div>
+										</div>
+										<div class="text-center">
+											<strong onclick="add_cat(' . $row['id'] . ');"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une sous-catégorie</strong>
+										</div>
+	            		</div>
+	    					</div>';
 		} ?>
 
-			</div>
 		</div>
 		<div class="modal fade" id="modal-delete">
 			<div class="modal-dialog">
@@ -150,7 +172,7 @@
 						<input type="hidden" name="id" id="id">
 						<div class="modal-body"></div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
+							<button type="button" class="btn btn-white" data-dismiss="modal">FERMER</button>
 							<button type="submit" class="btn btn-info">SUPPRIMER</button>
 						</div>
 					</form>
@@ -198,6 +220,18 @@
 
 	});
 
+	$('#form_add_sous_cat').submit(function(e) {
 
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'categories/add.html';
+		urlRedirect = 'categories.html';
+
+		console.log(data);
+
+		//check_exist(urlCheck, urlRedirect, data);
+
+	});
 
 </script>

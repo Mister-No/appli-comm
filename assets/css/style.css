@@ -1,6 +1,7 @@
 
 .erreur,
 .success,
-.edit_cat_title {
+.edit_cat,
+.add_cat {
   display: none;
 }

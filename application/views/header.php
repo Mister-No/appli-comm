@@ -363,31 +363,6 @@
                       <li class="active"> <a href="#">Catégorie 8</a> </li>
                     </ul>
                   </div>
-                  <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories.html">Gérer les catégories</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Catégorie 1</a> </li>
-                      <li> <a href="#">Catégorie 2</a> </li>
-                      <li> <a href="#">Catégorie 3</a> </li>
-                      <li> <a href="#">Catégorie 4</a> </li>
-                      <li> <a href="#">Catégorie 5</a> </li>
-                      <li> <a href="#">Catégorie 6</a> </li>
-                      <li> <a href="#">Catégorie 7</a> </li>
-                      <li class="active"> <a href="#">Catégorie 8</a> </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/ajouter.html">Ajouter des catégories</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Catégorie 1</a> </li>
-                      <li> <a href="#">Catégorie 2</a> </li>
-                      <li> <a href="#">Catégorie 3</a> </li>
-                      <li> <a href="#">Catégorie 4</a> </li>
-                      <li> <a href="#">Catégorie 5</a> </li>
-                      <li> <a href="#">Catégorie 6</a> </li>
-                      <li> <a href="#">Catégorie 7</a> </li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </ul>
