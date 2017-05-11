@@ -68,9 +68,25 @@ function login_recup($username){
   /****************************************************************/
   /* suppression by id dans la base                 			    */
   /****************************************************************/
-  function delete_data($table, $id){
+  function delete_data($table, $id, $id_parent = 'rien'){
 
-    $query = $this->db->delete($table, array('id' => $id));
+    if ($table == 'liste_cat' || $table == 'contacts_cat' || $table == 'entreprises_cat' ) {
+
+      $query = $this->db->delete($table, array('id_cat' => $id));
+
+    } else if ($table == 'categorie' && $id_parent != 'rien') {
+
+      if ($id_parent != 0) {
+        $query = $this->db->delete($table, array('id_parent' => $id));
+      } else {
+        $query = $this->db->delete($table, array('id' => $id));
+      }
+
+    } else {
+
+      $query = $this->db->delete($table, array('id' => $id));
+
+    }
 
   }
 

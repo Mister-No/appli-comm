@@ -34,7 +34,7 @@
 						</div>
 				 	 </div>
 					 <div class="panel-body">
-						<form id="form" method="post" class="validate" action="<?=base_url();?>categories/add.html">
+						<form class="form" method="post" class="validate" action="<?=base_url();?>categories/add.html">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group form-group-default">
@@ -82,7 +82,7 @@
 										</div>
 									</div>
 									<div class="form-group form-group-default edit_cat" id="cat_id' . $row['id'] . '">
-				 						<form id="form_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
+				 						<form class="form_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
 				 							<div class="row">
 				 								<div class="col-md-12">
 				 									<div class="form-group form-group-default">
@@ -106,12 +106,12 @@
 		                            <span class="panel-controls pull-right">
 																	<i onclick="edit_cat(' . $row_cat['id'] . ', ' . $row['id'] . ');"><i class="fa fa-edit"></i>
 																	</i>
-																		<i onclick="delete_item(\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');"><i class="fa fa-trash"></i>
+																		<i onclick="delete_item(\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\',\'' . $row['id'] . '\');"><i class="fa fa-trash"></i>
 																	</i>
 																</span>
 															</li>
 															<div class="form-group form-group-default edit_cat" id="cat_id' . $row_cat['id'] . '">
-																<form role="form" id="form_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
+																<form class="form_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/update.html">
 																<input type="hidden" name="id" value="' . $row_cat['id'] . '">
 																	<div class="row">
 																		<div class="col-md-6">
@@ -139,7 +139,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="panel-default add_cat" id="cat_id_parent' . $row['id'] . '">
-							 						<form id="form_add_sous_cat" method="post" class="validate" action="' . base_url() . 'categories/add.html">
+							 						<form class="form" method="post" class="validate" action="' . base_url() . 'categories/add.html">
 						 								<div class="col-md-12">
 							 								<div class="form-group form-group-default">
 						 										<label class="control-label">Ajouter une sous-catégorie :</label>
@@ -170,6 +170,7 @@
 					</div>
 					<form action="<?=base_url();?>categories/delete.html" method="POST">
 						<input type="hidden" name="id" id="id">
+						<input type="hidden" name="id_parent" id="id_parent">
 						<div class="modal-body"></div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-white" data-dismiss="modal">FERMER</button>
@@ -184,7 +185,7 @@
 
 <script type="text/javascript">
 
-	$('#form').submit(function(e) {
+	$('.form').submit(function(e) {
 
 		e.preventDefault();
 
@@ -196,7 +197,7 @@
 
 	});
 
-	$('#form_cat').submit(function(e) {
+	$('.form_cat').submit(function(e) {
 
 		e.preventDefault();
 
@@ -208,7 +209,7 @@
 
 	});
 
-	$('#form_sous_cat').submit(function(e) {
+	$('.form_sous_cat').submit(function(e) {
 
 		e.preventDefault();
 
@@ -217,20 +218,6 @@
 		urlRedirect = 'categories.html';
 
 		check_exist(urlCheck, urlRedirect, data);
-
-	});
-
-	$('#form_add_sous_cat').submit(function(e) {
-
-		e.preventDefault();
-
-		data = $(this).serialize();
-		urlCheck = 'categories/add.html';
-		urlRedirect = 'categories.html';
-
-		console.log(data);
-
-		//check_exist(urlCheck, urlRedirect, data);
 
 	});
 

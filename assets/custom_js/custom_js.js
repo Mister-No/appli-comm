@@ -36,9 +36,12 @@ function select (item, id, urlSelect) {
 
 /** Fonction d'affichaqge d'un message permettant l'affichage d'un message de confirmation de suppression **/
 
-function delete_item (id, titre)
+function delete_item (id, titre, id_parent)
 {
 	$(".modal").find ("#id").val(id);
+	if (id_parent != '') {
+		$(".modal").find ("#id_parent").val(id_parent);
+	}
 	$(".modal-body").empty().append (titre);
 	$('#modal-delete').modal('show', {backdrop: 'fade'});
 }

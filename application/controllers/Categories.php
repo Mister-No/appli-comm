@@ -292,17 +292,21 @@ class Categories extends CI_Controller {
 	public function delete()
 	{
 
-		if ($_SESSION['is_connect'] == TRUE){
+	if ($_SESSION['is_connect'] == TRUE){
 
-			$this->My_common->delete_data('liste_cat', $this->input->post('id'));
+		$this->My_common->delete_data('contacts_cat', $this->input->post('id'));
 
-	     $this->My_common->delete_data('categorie', $this->input->post('id'));
+		$this->My_common->delete_data('entreprises_cat', $this->input->post('id'));
 
-			redirect('categories');
+		$this->My_common->delete_data('liste_cat', $this->input->post('id'));
 
-    	} else {
-        	$this->load->view('login');
-    	}
+    $this->My_common->delete_data('categorie', $this->input->post('id'), $this->input->post('id_parent'));
+
+		redirect('categories');
+
+  	} else {
+      	$this->load->view('login');
+  	}
 
 	}
 
