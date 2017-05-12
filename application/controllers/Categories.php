@@ -13,6 +13,7 @@ class Categories extends CI_Controller {
 					$result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
 					$result = array();
+					$tab_cat_child = array();
 
 					foreach ($result_cat_parent as $row_cat_parent) {
 
@@ -108,69 +109,6 @@ class Categories extends CI_Controller {
 
 		$this->load->view ('categories_xls');
 	}
-
-	/*public function ajouter()
-	{
-
-		if ($_SESSION['is_connect'] == TRUE){
-
-					$this->load->view('header');
-					$this->load->view('categories_ajouter');
-					$this->load->view('footer');
-
-			} else {
-					$this->load->view('login');
-			}
-
-	}
-
-	public function modifier_categorie()
-	{
-
-		if ($_SESSION['is_connect'] == TRUE){
-
-			$this->load->model('My_categories');
-
-			$id = $this->uri->segment(3, 0);
-
-				$result = $this->My_categories->get_cat_by_id($id);
-
-				$data = array(
-					'result' => $result,
-				);
-
-				$this->load->view('header', $data);
-				$this->load->view('categories_modifier');
-				$this->load->view('footer');
-
-			} else {
-					$this->load->view('login');
-			}
-	}
-
-	public function modifier_sous_categorie()
-	{
-
-		if ($_SESSION['is_connect'] == TRUE){
-
-			$this->load->model('My_categories');
-
-			$id = $this->uri->segment(3, 0);
-
-				$result = $this->My_categories->get_cat_by_id($id);
-
-				$data = array(
-					'result' => $result,
-				);
-
-				$this->load->view('header', $data);
-				$this->load->view('sous-categories_modifier');
-				$this->load->view('footer');
-
-			} else {
-					$this->load->view('login');
-			}
-	}*/
 
 	public function add()
 	{
@@ -294,13 +232,13 @@ class Categories extends CI_Controller {
 
 	if ($_SESSION['is_connect'] == TRUE){
 
-		$this->My_common->delete_data('contacts_cat', $this->input->post('id'));
+		$this->My_categories->delete_cat('contacts_cat', $this->input->post('id'));
 
-		$this->My_common->delete_data('entreprises_cat', $this->input->post('id'));
+		$this->My_categories->delete_cat('entreprises_cat', $this->input->post('id'));
 
-		$this->My_common->delete_data('liste_cat', $this->input->post('id'));
+		$this->My_categories->delete_cat('liste_cat', $this->input->post('id'));
 
-    $this->My_common->delete_data('categorie', $this->input->post('id'), $this->input->post('id_parent'));
+    $this->My_categories->delete_cat('categorie', $this->input->post('id'));
 
 		redirect('categories');
 

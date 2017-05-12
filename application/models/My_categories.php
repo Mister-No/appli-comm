@@ -10,7 +10,7 @@ class My_categories extends CI_Model {
 		$this->db->from('categorie');
 		$this->db->where("categorie.id_parent = 0");
     $this->db->where("categorie.id_group = $id_group");
-    $this->db->order_by("titre", "ASC");
+    $this->db->order_by("id", "DESC");
 
 		$query = $this->db->get();
 
@@ -77,5 +77,21 @@ class My_categories extends CI_Model {
 
     return $query->result();
   }
+
+  function delete_cat($table, $id){
+
+  if ($table == 'liste_cat' || $table == 'contacts_cat' || $table == 'entreprises_cat' ) {
+
+      $query = $this->db->delete($table, array('id_cat' => $id));
+
+    } else {
+
+      $this->db->where('id', $id);
+      $this->db->or_where('id_parent', $id);
+      $this->db->delete($table);
+
+    }
+
+    }
 
 }
