@@ -307,7 +307,7 @@ class Contacts extends CI_Controller  {
 			$this->load->helper('directory');
 
 			$config['upload_path'] = 'temp/';
-			$config['allowed_types'] = 'xls|xlsx';
+			$config['allowed_types'] = '*';
 			$config['max_size'] = '110000';
 			$config['overwrite'] = true;
 
@@ -318,6 +318,7 @@ class Contacts extends CI_Controller  {
 				$this->upload->initialize($config);
 				if (!$this->upload->do_upload('fichier')){
 					echo 'erreur 1';
+          echo $this->upload->display_errors();
 				} else {
 
 					require(APPPATH.'libraries/PHPExcel.php');
@@ -335,7 +336,7 @@ class Contacts extends CI_Controller  {
 							$nom 	= $row['B'];
 
 							// On verifie si le contact est déjà dans la base :
-							$result = $this->My_contacts->check_exist ($email, $nom);
+							$result = $this->My_contacts->check_exist ($email, $nom, $_SESSION['id_group']);
 
 							if (count($result) > 0){
 
@@ -362,6 +363,7 @@ class Contacts extends CI_Controller  {
 
 								// Si il est pas dans la base on l'ajoute avec le categorie
 	  						$data = array (
+                  'id_group' => $_SESSION['id_group'],
 	  							'civ' 		=> $row['A'],
 	  							'nom' 		=> $row['B'],
 	  							'prenom' 	=> $row['C'],

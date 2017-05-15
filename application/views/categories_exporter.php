@@ -22,7 +22,7 @@
 
 						<?php foreach ($result as $row) {
 
-						echo '<form action="/categories/export_csv.html" method="post">
+						echo '<form action="' . base_url() . '/categories/export_csv.html" method="post">
 										<div class="col-md-12">
 				          		<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 				              	<div class="panel-heading">

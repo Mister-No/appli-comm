@@ -63,6 +63,21 @@ class My_contacts extends CI_Model {
     return $query->result();
   }
 
+  /******************************************/
+  /* VERIFIE L'APPARTENANCE A UNE CATEGORIE   */
+  /******************************************/
+  function check_contact_cat($id_cat, $id_contact){
+
+    $this->db->select();
+    $this->db->from('contacts_cat');
+    $this->db->where("contacts_cat.id_cat = $id_cat");
+    $this->db->where("contacts_cat.id_contact = $id_contact");
+
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
   /************************************************/
   /*   SELECT UNE CONTACT PAR ID AVEC ENTREPRISE  */
   /***********************************************/

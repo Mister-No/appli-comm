@@ -92,6 +92,6 @@ class My_categories extends CI_Model {
 
     }
 
-    }
+  }
 
 }

@@ -31,7 +31,7 @@
 							</ul>
 						</div>
 		      </div>
-		      <form id="form1" method="post" class="validate" action="<?=base_url();?>contacts/importer.html">
+		      <form id="form" method="post" class="validate" action="<?=base_url();?>contacts/importer_save.html" enctype="multipart/form-data">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">
