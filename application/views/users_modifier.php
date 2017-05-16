@@ -43,24 +43,35 @@
 			            <div class="row">
 			              <div class="col-md-6">
 			                <div class="form-group form-group-default">
-			                  <label class="control-label">Nom :</label>
-			                  <input type="text" class="form-control" name="nom" value="' . $row->nom . '" placeholder="Nom" required />
+												<label class="control-label">Login :</label>
+												<input type="text" class="form-control" name="login" value="' . $row->login . '"  placeholder="Login" required />
 			                </div>
 			                <div class="form-group form-group-default">
-			                  <label class="control-label">Prénom :</label>
-			                  <input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" placeholder="Prénom" required />
+												<label class="control-label">Nom :</label>
+												<input type="text" class="form-control" name="nom" value="' . $row->nom . '" placeholder="Nom" required />
 			                </div>
 			                <div class="form-group form-group-default">
-			                  <label class="control-label">Adresse électronique :</label>
-			                  <input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Email" required />
+												<label class="control-label">Prénom :</label>
+												<input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" placeholder="Prénom" required />
 			                </div>
 			                <div class="form-group form-group-default">
-			                  <label class="control-label">Login :</label>
-			                  <input type="text" class="form-control" name="login" value="' . $row->login . '"  placeholder="Login" required />
+												<label class="control-label">Adresse électronique :</label>
+												<input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Email" required />
 			                </div>
 										</div>';
 
 									} ?>
+
+							<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['user_id'] == 1) { ?>
+
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Choisir une entreprise :</label>
+											<select class="full-width" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_ent" disabled>
+												<option value=""></option>
+										</select>
+									</div>
+
+							<?php	} ?>
 
 							<?php  if($_SESSION['is_admin'] == 1) { ?>
 
@@ -152,6 +163,11 @@
 	</div>
 
 	<script type="text/javascript">
+
+	var id = <?php echo json_encode ($tab_ent);?>;
+	var urlSelect = 'select_all_ent';
+
+	select ('#select_business', id, urlSelect);
 
 	$('#form').submit(function(e) {
 

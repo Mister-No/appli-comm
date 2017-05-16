@@ -10,7 +10,11 @@ class Common extends CI_Controller  {
 
   		$this->load->model('My_entreprises');
 
-        $id_group = $_SESSION["id_group"];
+        $id_group = $_SESSION['id_group'];
+
+        if ($id_group == 0) {
+          $id_group = 'rien';
+        }
 
         $result = $this->My_entreprises->get_all_ent($id_group);
 
@@ -34,7 +38,7 @@ class Common extends CI_Controller  {
 
       $this->load->model('My_categories');
 
-        $id_group = $_SESSION["id_group"];
+        $id_group = $_SESSION['id_group'];
 
         $result = $this->My_categories->get_all_cat($id_group);
 
@@ -58,7 +62,7 @@ class Common extends CI_Controller  {
 
       $this->load->model('My_categories');
 
-        $id_group = $_SESSION["id_group"];
+        $id_group = $_SESSION['id_group'];
 
         $result = $this->My_categories->get_all_parent_cat($id_group);
 

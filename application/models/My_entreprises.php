@@ -4,11 +4,13 @@ class My_entreprises extends CI_Model {
 	/******************************************/
 	/* SELECT TOUTES LES ENTREPRISES           */
 	/******************************************/
-	function get_all_ent($id_group){
+	function get_all_ent($id_group = 'rien'){
 
 		$this->db->select();
 		$this->db->from('entreprises');
-		$this->db->where("entreprises.id_group = $id_group");
+		if ($id_group != 'rien') {
+			$this->db->where("entreprises.id_group = $id_group");
+		}
     $this->db->order_by ("raison_sociale", "ASC");
 
 		$query = $this->db->get();

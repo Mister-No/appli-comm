@@ -74,61 +74,43 @@ class Users extends CI_Controller  {
     if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_users');
+      $this->load->model('My_entreprises');
 
-          $id = $this->uri->segment(3, 0);
+        $id = $this->uri->segment(3, 0);
 
-	        $result = $this->My_users->get_user($id);
+        $result_ent = $this->My_entreprises->get_all_ent();
 
-          foreach ($result as $row) {
+        $result = $this->My_users->get_user($id);
 
-            if ($row->admin == 1) { $checked_admin = 'checked="checked"'; }
-            if ($row->admin == 0) { $checked_admin = ''; }
-            if ($row->actif == 1) { $checked_actif = 'checked="checked"'; }
-            if ($row->actif == 0) { $checked_actif = ''; }
+        foreach ($result as $row) {
 
-          }
+          if ($row->admin == 1) { $checked_admin = 'checked="checked"'; }
+          if ($row->admin == 0) { $checked_admin = ''; }
+          if ($row->actif == 1) { $checked_actif = 'checked="checked"'; }
+          if ($row->actif == 0) { $checked_actif = ''; }
 
-	       $data = array(
-            'result' => $result,
-            'checked_admin' => $checked_admin,
-            'checked_actif' => $checked_actif,
-	        );
+        }
 
-          $this->load->view('header', $data);
-	        $this->load->view('users_modifier');
-	        $this->load->view('footer');
+        foreach ($result_ent as $row_ent) {
+          $tab_ent[] = $row_ent->id;
+        }
+
+       $data = array(
+          'tab_ent'       => $tab_ent,
+          'result'        => $result,
+          'checked_admin' => $checked_admin,
+          'checked_actif' => $checked_actif,
+        );
+
+        $this->load->view('header', $data);
+        $this->load->view('users_modifier');
+        $this->load->view('footer');
 
     	} else {
         	$this->load->view('login');
     	}
 
   }
-
-  /*public function profil()
-  {
-
-    if ($_SESSION['is_connect'] == TRUE){
-
-      $this->load->model('My_users');
-
-          $id = $this->uri->segment(3, 0);
-
-          $result = $this->My_users->get_user($id);
-
-         $data = array(
-            'result' => $result,
-          );
-
-          $this->load->view('header', $data);
-          $this->load->view('users_profil');
-          $this->load->view('footer');
-
-      } else {
-          $this->load->view('login');
-      }
-
-  }*/
-
 
   public function add()
 	{

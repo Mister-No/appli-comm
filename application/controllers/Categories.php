@@ -112,9 +112,8 @@ class Categories extends CI_Controller {
 		$objPHPExcel = PHPExcel_IOFactory::createReader('Excel2007');
 		$objPHPExcel = $objPHPExcel->load(APPPATH.'/libraries/registre.xlsx'); // Empty Sheet
 		$objPHPExcel->setActiveSheetIndex(0);
-
-
-		/*function searchForId($nom, $email , $array) {
+		
+		function searchForId($nom, $email , $array) {
 		   foreach ($array as $key => $val) {
 		       if (($val['1'] === $nom) && ($val['7'] === $email)) {
 		           return $key;
@@ -124,47 +123,46 @@ class Categories extends CI_Controller {
 		}
 
 		/*
-		    INSERT DES DATAS
+		    INSERTION DES DATAS
 		*/
 
 		$rowArray = array();
 
+      foreach ($_POST['id_cat'] as $key => $value) {
 
-		        foreach ($_POST['id_cat'] as $key => $value) {
+          $result_contact = $this->My_listes->get_contact_by_cat($value);
 
-		            $result_contact = $this->My_listes->get_contact_by_cat($value);
+          foreach ($result_contact as $row) {
 
-		            foreach ($result_contact as $row) {
+              $temp = array (
+                  $row->civ,
+                  $row->nom,
+                  $row->prenom,
+                  $row->fonction,
+                  $row->tel,
+                  $row->mobile,
+                  $row->fax,
+                  $row->email,
+                  $row->num_voie,
+                  $row->nom_voie,
+                  $row->lieu_dit,
+                  $row->bp,
+                  $row->cp,
+                  $row->ville,
+                  $row->cedex,
+              );
+             if (searchForId ($row->nom, $row->email, $rowArray) === "rien"){
+                  array_push($rowArray, $temp);
 
-		                $temp = array (
-		                    $row->civ,
-		                    $row->nom,
-		                    $row->prenom,
-		                    $row->fonction,
-		                    $row->tel,
-		                    $row->mobile,
-		                    $row->fax,
-		                    $row->email,
-		                    $row->num_voie,
-		                    $row->nom_voie,
-		                    $row->lieu_dit,
-		                    $row->bp,
-		                    $row->cp,
-		                    $row->ville,
-		                    $row->cedex,
-		                );
-		               /* if (searchForId ($row->nom, $row->email, $rowArray) === "rien"){
-		                    array_push($rowArray, $temp);
-
-		                    if ($row->nom == "BERGOUIGNON"){
-		                      //echo "#####".searchForId ($row->nom, $row->email, $rowArray)."<br>";
-		                    }
-		                    //echo searchForId ($row->nom, $row->email, $rowArray)."coucouc<br>";
-		                } else {
-		                   // echo $row->nom." foudn<br>";
-		                }*/
-		            }
-		        }
+                /*  if ($row->nom == "BERGOUIGNON"){
+                    //echo "#####".searchForId ($row->nom, $row->email, $rowArray)."<br>";
+                  }*/
+                  //echo searchForId ($row->nom, $row->email, $rowArray)."coucouc<br>";
+              }/* else {
+                 // echo $row->nom." foudn<br>";
+              }*/
+          }
+      }
 
 		//$rowArray = array('Value1', 'Value2', 'Value3', 'Value4');
 		$objPHPExcel->getActiveSheet()->fromArray($rowArray, NULL, 'A3');
