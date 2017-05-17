@@ -4,12 +4,14 @@ class My_users extends CI_Model {
   /********************************************/
   /* SELECT TOUTES LES UTILISATEURS           */
   /********************************************/
-  function get_all_users($id_group){
+function get_all_users($id_group = 'rien'){
 
     $this->db->select();
 		$this->db->from('users');
-    $this->db->where("users.id_group = $id_group");
-    $this->db->order_by ("nom", "ASC");
+    if ($id_group != 'rien') {
+      $this->db->where("users.id_group = $id_group");
+   }
+    $this->db->order_by ('nom', 'ASC');
 
     $query = $this->db->get();
 
@@ -31,7 +33,6 @@ class My_users extends CI_Model {
     return $query->result();
 
   }
-
 
   /******************************************/
   /*  VERIFIE L'EXISTANCE D'UN UTILISATEUR  */

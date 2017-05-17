@@ -4,81 +4,112 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Common extends CI_Controller  {
 
 
-    public function select_all_ent()
-  	{
-  		if ($_SESSION['is_connect'] == TRUE){
+  public function select_all_ent()
+	{
+		if ($_SESSION['is_connect'] == TRUE){
 
-  		$this->load->model('My_entreprises');
+		$this->load->model('My_entreprises');
 
-        $id_group = $_SESSION['id_group'];
+      $id_group = $_SESSION['id_group'];
 
-        if ($id_group == 0) {
-          $id_group = 'rien';
-        }
+      if ($id_group == 0) {
+        $id_group = 'rien';
+      }
 
-        $result = $this->My_entreprises->get_all_ent($id_group);
-
-          foreach ($result as $row) {
-
-              $data[] = array('id' => $row->id, 'text' => $row->raison_sociale);
-
-          }
-
-          header('Content-Type: application/json');
-          echo json_encode ($data);
-
-      	} else {
-          	$this->load->view('login');
-      	}
-  	}
-
-    public function select_all_cat()
-    {
-      if ($_SESSION['is_connect'] == TRUE){
-
-      $this->load->model('My_categories');
-
-        $id_group = $_SESSION['id_group'];
-
-        $result = $this->My_categories->get_all_cat($id_group);
+      $result = $this->My_entreprises->get_all_ent($id_group);
 
         foreach ($result as $row) {
 
-            $data[] = array('id' => $row->id, 'text' => $row->titre);
+            $data[] = array('id' => $row->id, 'text' => $row->raison_sociale);
 
         }
 
         header('Content-Type: application/json');
         echo json_encode ($data);
 
-        } else {
-            $this->load->view('login');
-        }
-    }
+    	} else {
+        	$this->load->view('login');
+    	}
+	}
 
-    public function select_all_parent_cat()
-    {
-      if ($_SESSION['is_connect'] == TRUE){
+  public function select_all_cat()
+  {
+    if ($_SESSION['is_connect'] == TRUE){
 
-      $this->load->model('My_categories');
+    $this->load->model('My_categories');
 
-        $id_group = $_SESSION['id_group'];
+      $id_group = $_SESSION['id_group'];
 
-        $result = $this->My_categories->get_all_parent_cat($id_group);
+      $result = $this->My_categories->get_all_cat($id_group);
 
-        foreach ($result as $row) {
+      foreach ($result as $row) {
 
-            $data[] = array('id' => $row->id, 'text' => $row->titre);
+          $data[] = array('id' => $row->id, 'text' => $row->titre);
 
-        }
+      }
 
-        header('Content-Type: application/json');
-        echo json_encode ($data);
+      header('Content-Type: application/json');
+      echo json_encode ($data);
 
-        } else {
-            $this->load->view('login');
-        }
-    }
+      } else {
+          $this->load->view('login');
+      }
+  }
+
+  public function select_all_parent_cat()
+  {
+    if ($_SESSION['is_connect'] == TRUE){
+
+    $this->load->model('My_categories');
+
+      $id_group = $_SESSION['id_group'];
+
+      $result = $this->My_categories->get_all_parent_cat($id_group);
+
+      foreach ($result as $row) {
+
+          $data[] = array('id' => $row->id, 'text' => $row->titre);
+
+      }
+
+      header('Content-Type: application/json');
+      echo json_encode ($data);
+
+      } else {
+          $this->load->view('login');
+      }
+  }
+
+  public function select_all_users()
+  {
+    if ($_SESSION['is_connect'] == TRUE){
+
+    $this->load->model('My_users');
+
+    $result = $this->My_users->get_all_users();
+
+      foreach ($result as $row) {
+
+        $entreprise[] = array(
+          'entreprise' => $row->entreprise,
+        );
+
+        $resulttab = array_unique($row->entreprise);
+
+          $data[] = array(
+            'id'         => $row->id,
+            'text' => $entreprise,
+          );
+var_dump($resulttab);
+      }
+/*
+      header('Content-Type: application/json');
+      echo json_encode ($data);*/
+
+      } else {
+          $this->load->view('login');
+      }
+  }
 
 
 }

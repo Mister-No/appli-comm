@@ -74,13 +74,13 @@ class Users extends CI_Controller  {
     if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_users');
-      $this->load->model('My_entreprises');
 
         $id = $this->uri->segment(3, 0);
-
-        $result_ent = $this->My_entreprises->get_all_ent();
+        $id_group = $_SESSION["id_group"];
 
         $result = $this->My_users->get_user($id);
+
+        $result_users = $this->My_users->get_all_users();
 
         foreach ($result as $row) {
 
@@ -91,12 +91,12 @@ class Users extends CI_Controller  {
 
         }
 
-        foreach ($result_ent as $row_ent) {
-          $tab_ent[] = $row_ent->id;
+        foreach ($result_users as $row_users) {
+          $tab_users[] = $row_users->id;
         }
 
        $data = array(
-          'tab_ent'       => $tab_ent,
+          //'tab_ent'       => $tab_ent,
           'result'        => $result,
           'checked_admin' => $checked_admin,
           'checked_actif' => $checked_actif,
@@ -197,8 +197,13 @@ class Users extends CI_Controller  {
            $actif = 0;
          }
 
-         $data = array(
+         var_dump($this->input->post('id_ent'));
+
+
+
+        /* $data = array(
            'id' 		    => $this->input->post('id'),
+           'id_groupe'  => $id_group,
            'login' 		  => $this->input->post('login'),
            'email' 			=> $this->input->post('email'),
            'nom' 				=> $this->input->post('nom'),
@@ -210,7 +215,7 @@ class Users extends CI_Controller  {
 
          $this->My_common->update_data('users','id', $this->input->post('id'), $data);
 
-         echo "ok";
+         echo "ok";*/
 
       }
 

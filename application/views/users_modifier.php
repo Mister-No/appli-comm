@@ -64,9 +64,10 @@
 
 							<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['user_id'] == 1) { ?>
 
+								<div class="col-md-6">
 									<div class="form-group form-group-default form-group-default-select2 ">
-										<label class="">Choisir une entreprise :</label>
-											<select class="full-width" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_ent" disabled>
+										<label class="control-label">Choisir une entreprise :</label>
+											<select class="form-control" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_ent" disabled>
 												<option value=""></option>
 										</select>
 									</div>
@@ -77,8 +78,7 @@
 
 								<?php  foreach ($result as $row) {
 
-								echo '<div class="col-md-6">
-											<div class="form-group form-group-default">
+								echo '<div class="form-group form-group-default">
 			                  <label class="control-label">Administrateur :</label>
                       	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="admin" ' . $checked_admin . ' />
 			                </div>
@@ -164,12 +164,12 @@
 
 	<script type="text/javascript">
 
-	var id = <?php echo json_encode ($tab_ent);?>;
-	var urlSelect = 'select_all_ent';
+	var id = <?=$row->id?>;
+	var urlSelect = 'select_all_users';
 
 	select ('#select_business', id, urlSelect);
 
-	$('#form').submit(function(e) {
+	/**$('#form').submit(function(e) {
 
 		e.preventDefault();
 
@@ -191,6 +191,6 @@
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});
+	});**/
 
 	</script>
