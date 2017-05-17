@@ -90,17 +90,20 @@ class Common extends CI_Controller  {
 
       foreach ($result as $row) {
 
-        $entreprise[] = array(
+        /*$entreprise = array(
           'entreprise' => $row->entreprise,
         );
 
-        $resulttab = array_unique($row->entreprise);
+
+        $resulttab = array_unique($entreprise);*/
 
           $data[] = array(
             'id'         => $row->id,
-            'text' => $entreprise,
+            'text' => $row->entreprise,
           );
-var_dump($resulttab);
+
+          var_dump($data);
+
       }
 /*
       header('Content-Type: application/json');
