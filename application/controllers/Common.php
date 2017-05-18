@@ -80,34 +80,25 @@ class Common extends CI_Controller  {
       }
   }
 
-  public function select_all_users()
+  public function select_all_clients()
   {
     if ($_SESSION['is_connect'] == TRUE){
 
     $this->load->model('My_users');
 
-    $result = $this->My_users->get_all_users();
+    $result = $this->My_users->get_all_clients();
 
       foreach ($result as $row) {
 
-        /*$entreprise = array(
-          'entreprise' => $row->entreprise,
-        );
-
-
-        $resulttab = array_unique($entreprise);*/
-
           $data[] = array(
-            'id'         => $row->id,
+            'id'         => $row->id_group,
             'text' => $row->entreprise,
           );
 
-          var_dump($data);
-
       }
-/*
+
       header('Content-Type: application/json');
-      echo json_encode ($data);*/
+      echo json_encode ($data);
 
       } else {
           $this->load->view('login');

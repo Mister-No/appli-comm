@@ -67,7 +67,7 @@
 								<div class="col-md-6">
 									<div class="form-group form-group-default form-group-default-select2 ">
 										<label class="control-label">Choisir une entreprise :</label>
-											<select class="form-control" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_ent" disabled>
+											<select class="form-control" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_group" disabled>
 												<option value=""></option>
 										</select>
 									</div>
@@ -164,12 +164,12 @@
 
 	<script type="text/javascript">
 
-	var id = <?=$row->id?>;
-	var urlSelect = 'select_all_users';
+	var id = <?=$row->id_group?>;
+	var urlSelect = 'select_all_clients';
 
 	select ('#select_business', id, urlSelect);
 
-	/**$('#form').submit(function(e) {
+	$('#form').submit(function(e) {
 
 		e.preventDefault();
 
@@ -191,6 +191,6 @@
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});**/
+	});
 
 	</script>

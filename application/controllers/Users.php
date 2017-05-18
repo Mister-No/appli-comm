@@ -80,7 +80,7 @@ class Users extends CI_Controller  {
 
         $result = $this->My_users->get_user($id);
 
-        $result_users = $this->My_users->get_all_users();
+        //$result_users = $this->My_users->get_all_users($id_group);
 
         foreach ($result as $row) {
 
@@ -91,9 +91,9 @@ class Users extends CI_Controller  {
 
         }
 
-        foreach ($result_users as $row_users) {
+        /*foreach ($result_users as $row_users) {
           $tab_users[] = $row_users->id;
-        }
+        }*/
 
        $data = array(
           //'tab_ent'       => $tab_ent,
@@ -120,6 +120,7 @@ class Users extends CI_Controller  {
 			$this->load->model('My_users');
 
       $id_group = $_SESSION["id_group"];
+      $entreprise = $_SESSION["entreprise"];
 
 			$result = $this->My_users->check_exist($this->input->post('email'), $this->input->post('login'), $id_group);
 
@@ -141,7 +142,7 @@ class Users extends CI_Controller  {
             $actif = 0;
           }
 
-          $password = crypt($this->input->post('password'), $this->input->post('login'));
+          $password = sha1($this->input->post('password'));
 
   				$data = array(
             'id_group' 	  => $id_group,
@@ -150,6 +151,7 @@ class Users extends CI_Controller  {
   					'email' 			=> $this->input->post('email'),
             'nom' 				=> $this->input->post('nom'),
   					'prenom' 			=> $this->input->post('prenom'),
+            'entreprise'  => $entreprise,
   					'rang' 			  => $this->input->post('rang'),
   					'admin' 			=> $admin,
             'actif' 			=> $actif,
@@ -197,13 +199,9 @@ class Users extends CI_Controller  {
            $actif = 0;
          }
 
-         var_dump($this->input->post('id_ent'));
-
-
-
-        /* $data = array(
+         $data = array(
            'id' 		    => $this->input->post('id'),
-           'id_groupe'  => $id_group,
+           'id_group'   => $this->input->post('id_group'),
            'login' 		  => $this->input->post('login'),
            'email' 			=> $this->input->post('email'),
            'nom' 				=> $this->input->post('nom'),
@@ -215,7 +213,26 @@ class Users extends CI_Controller  {
 
          $this->My_common->update_data('users','id', $this->input->post('id'), $data);
 
-         echo "ok";*/
+         if ($_SESSION['is_admin'] == 1 && $_SESSION['user_id'] == 1) {
+
+           $_SESSION["id_group"] = $this->input->post('id_group');
+
+           $result = $this->My_users->get_all_users($_SESSION["id_group"]);
+
+           foreach ($result as $row) {
+
+             $_SESSION['entreprise'] =  $row->entreprise;
+             $data = array(
+               'id' 		    => $this->input->post('id'),
+               'entreprise' => $row->entreprise,
+             );
+
+             $this->My_common->update_data('users','id', $this->input->post('id'), $data);
+           }
+
+         }
+
+         echo "ok";
 
       }
 

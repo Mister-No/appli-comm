@@ -4,16 +4,12 @@ class My_users extends CI_Model {
   /********************************************/
   /* SELECT TOUTES LES UTILISATEURS           */
   /********************************************/
-function get_all_users($id_group = 'rien'){
+function get_all_users($id_group){
 
-    $this->db->distinct('entreprise, id');
+    $this->db->select();
 		$this->db->from('users');
-    if ($id_group != 'rien') {
-      $this->db->where("users.id_group = $id_group");
-   }
-    //$this->db->group_by ('entreprise');
+    $this->db->where("users.id_group = $id_group");
     $this->db->order_by ('nom', 'ASC');
-
 
     $query = $this->db->get();
 
@@ -29,6 +25,22 @@ function get_all_users($id_group = 'rien'){
     $this->db->select();
     $this->db->from('users');
     $this->db->where("users.id = $id");
+
+    $query = $this->db->get();
+
+    return $query->result();
+
+  }
+
+  /********************************************/
+  /*      SELECT TOUTES LES CLIENTS           */
+  /********************************************/
+  function get_all_clients(){
+
+    $this->db->select('users.id_group, users.entreprise');
+    $this->db->distinct();
+    $this->db->from('users');
+    $this->db->order_by ('entreprise', 'ASC');
 
     $query = $this->db->get();
 

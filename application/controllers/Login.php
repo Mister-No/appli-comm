@@ -13,7 +13,9 @@ class Login extends CI_Controller {
 
     $result = $this->My_common->login($this->input->post('username'),$this->input->post('password'));
 
+
 		if($result){
+
 
 			foreach($result as $row) {
 
@@ -23,6 +25,16 @@ class Login extends CI_Controller {
 				$_SESSION['is_admin'] = $row->admin;
         $_SESSION['rang'] = $row->rang;
 				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
+
+        $this->load->model('My_users');
+
+        $result_user = $this->My_users->get_user($row->id);
+
+        foreach($result_user as $row_user) {
+
+          $_SESSION['entreprise'] = $row_user->entreprise;
+
+        }
 
 				echo 'ok';
 			}
