@@ -125,7 +125,7 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-3 ">
-                      <div class="sub-menu-heading bold">Voir les campagnes</div>
+                      <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes.html">Voir les campagnes</a></div>
                       <ul class="sub-menu">
                         <li> <a href="#">Campagne 1</a> </li>
                         <li> <a href="#">Campagne 2</a> </li>
