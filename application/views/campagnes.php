@@ -13,6 +13,53 @@
 	</div>
 </div>
 <div class="container-fluid container-fixed-lg">
+	<div class="erreur alert alert-danger">
+		<strong class="message"></strong>
+		<button class="close"></button>
+	</div>
+	<div class="page-container">
+		<div class="main-content">
+			<div class="row">
+				<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+					<div class="panel-heading">
+						<div class="panel-title">
+							Ajouter une campagne
+						</div>
+						<div class="panel-controls">
+							<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+								class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
+						</div>
+				 	 </div>
+					 <div class="panel-body">
+						<form class="form" method="post" class="validate" action="<?=base_url();?>campagnes/add.html">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-group-default">
+										<label class="control-label">Nom de la campagne :</label>
+										<input type="text" class="form-control" name="name" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Nom de la campagne" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-group-default">
+										<label class="control-label">Objet de l'email :</label>
+										<input type="text" class="form-control" name="subject" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Objet de l'email" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer text-right">
+		          <button type="submit" class="btn btn-success">AJOUTER</button>
+		        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid container-fixed-lg">
 	<div class="page-container">
     <div class="main-content">
         <div class="row">
@@ -59,10 +106,24 @@
 															<td class="v-align-middle">' . $row['status'] . '</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
+
 																	<a class="btn btn-success" href=""><i class="fa fa-edit"></i></a>
+
+																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-copy"></i></button>
+
+																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-trash"></i></button>
+
 																</div>
 																<div class="btn-group">
-																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-trash"></i></button>
+
+																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-envelope"></i></button>
+
+																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-send"></i></button>
+
+																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-bar-chart"></i></button>
+
+																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-archive"></i></button>
+
 																</div>
 															</td>
 				                    </tr>';

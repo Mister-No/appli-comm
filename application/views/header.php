@@ -138,7 +138,7 @@
                       </ul>
                     </div>
                     <div class="col-md-3">
-                    <div class="sub-menu-heading bold">Campagnes archivées</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes_archivees.html">Campagnes archivées</a></div>
                       <ul class="sub-menu">
                         <li> <a href="#">Campagne 1</a> </li>
                         <li> <a href="#">Campagne 2</a> </li>
@@ -148,18 +148,6 @@
                         <li> <a href="#">Campagne 6</a> </li>
                         <li> <a href="#">Campagne 7</a> </li>
                         <li class="active"> <a href="#">Campagne 8</a> </li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="sub-menu-heading bold">Ajouter une campagne</div>
-                      <ul class="sub-menu">
-                        <li> <a href="#">Campagne 1</a> </li>
-                        <li> <a href="#">Campagne 2</a> </li>
-                        <li> <a href="#">Campagne 3</a> </li>
-                        <li> <a href="#">Campagne 4</a> </li>
-                        <li> <a href="#">Campagne 5</a> </li>
-                        <li> <a href="#">Campagne 6</a> </li>
-                        <li> <a href="#">Campagne 7</a> </li>
                       </ul>
                     </div>
                 </div>

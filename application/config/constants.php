@@ -5,8 +5,8 @@
 define ("API_key", "Q8ySqdN5p4BOG6CH");
 
 
-define ("API_category", "UNPG");
-define ("API_from_name", "UNPG");
+define ("API_category", "Appli comm");
+define ("API_from_name", "Appli comm");
 define ("API_from_email", "pierre.atman@gmail.com");
 define ("API_bat", "pierre.atman@gmail.com");
 define ("API_reply_to", "pierre.atman@gmail.com");
