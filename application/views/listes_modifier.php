@@ -88,12 +88,12 @@
 
 			} ?>
 
-	      <div class="col-md-12">
-	        <button type="submit" class="btn btn-success pull-right">MODIFIER</button>
-	      </div>
-	    </div>
-	  </form>
+			<div class="panel-footer text-right">
+				<button type="submit" class="btn btn-success">MODIFIER</button>
+			</div>
+		</form>
 	</div>
+</div>
 	<script type="text/javascript">
 
 	$('#form').submit(function(e) {

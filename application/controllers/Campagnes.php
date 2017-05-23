@@ -34,6 +34,68 @@ class Campagnes extends CI_Controller {
     	}
 	}
 
+	public function listes()
+	{
+		if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_categories');
+      $this->load->model('My_listes');
+
+      $id_group = $_SESSION["id_group"];
+
+          $result_liste = $this->My_listes->get_all_listes($id_group);
+
+        //  foreach ($result_liste as $row_liste) {
+
+              $result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
+
+              foreach ($result_cat_parent as $row_cat_parent) {
+
+                $result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id);
+
+                foreach ($result_cat_child as $row_cat_child) {
+
+                    $tab_cat[] = [
+                    'id' => $row_cat_child->id,
+                    'titre' => $row_cat_child->titre,
+                    ];
+
+                }
+
+                $result[] = [
+                  'id' => $row_cat_parent->id,
+                  'titre' => $row_cat_parent->titre,
+                	'cat' => $tab_cat,
+                ];
+                $tab_cat = array();
+              }
+
+            /*  $result[] = [
+                'id' => $row_liste->id,
+                'titre' => $row_liste->titre,
+                'cat' => $tab_cat,
+              ];*/
+
+
+        //  }
+
+          $data = array(
+              "result" => $result,
+          );
+
+					/*echo '<pre>';
+					print_r($result);
+					echo '</pre>';*/
+
+        $this->load->view('header', $data);
+          $this->load->view('campagnes_listes');
+          $this->load->view('footer');
+
+      } else {
+          $this->load->view('login');
+      }
+	}
+
 	public function add()
 	{
 

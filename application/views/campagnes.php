@@ -116,7 +116,7 @@
 																</div>
 																<div class="btn-group">
 
-																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-envelope"></i></button>
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/listes/' . $row["id"] . '"><i class="fa fa-envelope"></i></a>
 
 																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-send"></i></button>
 
