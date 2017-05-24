@@ -94,4 +94,20 @@ class My_categories extends CI_Model {
 
   }
 
+  /******************************************/
+  /* SELECT TOUTES LES CATEGORIES ENFANT    */
+  /******************************************/
+  function get_contact_by_cat($id){
+
+    //$this->db->select('contacts.*');
+    $this->db->distinct('contacts.*');
+    $this->db->from('contacts_cat');
+    $this->db->join('contacts', 'contacts.id = contacts_cat.id_contact');
+    $this->db->where("contacts_cat.id_cat = $id");
+
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
 }

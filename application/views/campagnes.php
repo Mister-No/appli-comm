@@ -6,7 +6,7 @@
 					<p>Pages</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>contacts.html" class="active">Campagnes</a>
+					<a href="<?=base_url();?>campagnes.html" class="active">Campagnes</a>
 				</li>
 			</ul>
 		</div>

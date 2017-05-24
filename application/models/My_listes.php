@@ -19,12 +19,26 @@ class My_listes extends CI_Model {
   /********************************************/
   /* SELECT TOUTES LES CATEGORIES PAR LISTES  */
   /********************************************/
+
   function get_cat_by_liste($id){
 
     $this->db->select();
     $this->db->from('liste_cat');
     $this->db->join('categorie', 'categorie.id = liste_cat.id_cat');
     $this->db->where("liste_cat.id_liste = $id");
+
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
+  function get_cat_parent_by_liste($id){
+
+    $this->db->distinct();
+    $this->db->from('liste_cat');
+    $this->db->join('categorie', 'categorie.id = liste_cat.id_cat');
+    $this->db->where("liste_cat.id_liste = $id");
+    $this->db->where("categorie.id_parent = 0");
 
     $query = $this->db->get();
 
