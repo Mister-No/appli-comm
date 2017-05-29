@@ -72,7 +72,7 @@ class Campagnes extends CI_Controller {
 
         	 }
 
-					$liste[] = [
+					$result[] = [
 					'id' => $row_liste->id,
 					'titre' => $row_liste->titre,
 					'cat' => $tab_cat,
@@ -81,23 +81,23 @@ class Campagnes extends CI_Controller {
 
         }
 
-			echo '<pre>';
-			print_r($liste);
-			echo '</pre>';
+			/*echo '<pre>';
+			print_r($result);
+			echo '</pre>';*/
 
 			require(APPPATH.'libraries/Mailin.php');
 			$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
 			$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
 
-    /*$data = array(
+    $data = array(
         "result" => $result,
 				'campagne' => $campagne["data"]
-		);*/
+		);
 
-  	/*$this->load->view('header', $data);
+  	$this->load->view('header', $data);
     $this->load->view('campagnes_listes');
-    $this->load->view('footer');*/
+    $this->load->view('footer');
 
     } else {
         $this->load->view('login');
@@ -130,7 +130,7 @@ class Campagnes extends CI_Controller {
 					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id_cat);
 
 					foreach ($result_contact as $row_contact) {
-						var_dump($row_contact->email);
+						var_dump($row_contact);
 						/*$found = 0;
 						foreach ($email_array as $key => $value) {
 							if($value[0] == $row_contact->email) {
@@ -148,7 +148,22 @@ class Campagnes extends CI_Controller {
 
 			}
 
+			foreach ($_POST["id_cat"] as $key => $value) {
 
+				$result_cat = $this->My_categories->get_cat_by_id($value);
+
+				foreach ($result_cat as $row_cat) {
+
+					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id);
+
+					foreach ($result_contact as $row_contact) {
+						var_dump($row_contact);
+					}
+
+				}
+
+
+			}
 
 					/*$data = array(
 							"id_campagne" => $id_campagne,

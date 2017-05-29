@@ -38,10 +38,10 @@
 						echo '<form id="form" method="post" class="validate" action="'. base_url() . 'campagnes/listes_recap/' . $row_camp['id'] . '">
 								   <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 										<div class="panel-heading">
-											<div class="panel-title">' . $row->titre . '</div>
+											<div class="panel-title">' . $row['titre'] . '</div>
 												<div class="panel-controls">
 													<ul>
-													<li><input type="checkbox" name="id_liste[]" class="check_all" value="' . $row->id . '"></li>
+													<li><input type="checkbox" name="id_liste[]" class="check_all" value="' . $row['id'] . '"></li>
 													<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
 													class="pg-arrow_minimize"></i></a>
 													</li>
@@ -49,22 +49,40 @@
 											</div>
 										</div>
 										<div class="panel-body" style="display:none;">
-											<ul class="list-group list-group-minimal">';
+											';
 
-												foreach ($row['cat'] as $row_cat) {
+											foreach ($row['cat'] as $row_cat) {
 
-														echo '<li class="list-group-item">' .  $row_cat['titre'] . '
-																		<input type="checkbox" class="pull-right"  name="id_liste[]" value="' . $row_cat['id'] . '">
-																		</li>';
-												}
+												echo '<div class="col-md-12">
 
-													echo '</ul>
-															</div>
-														</div>';
+																	<div class="panel-heading">
+																		<div class="panel-title">' . $row_cat['titre_cat_parent'] . '</div>
+																			<div class="panel-controls">
+																				<ul>
+																				<li><input type="checkbox" name="id_cat[]" class="check_all" value="' . $row_cat['id'] . '"></li>
+																			</ul>
+																		</div>
+																	</div>
+																	<div class="panel panel-default">
+																		<ul class="list-group">';
 
+																			foreach ($row_cat['child_cat'] as $row_cat_child) {
 
-				}
-			 ?>
+																				echo '<li class="list-group-item">' .  $row_cat_child['titre'] . '
+																								<input type="checkbox" class="pull-right"  name="id_cat[]" value="' . $row_cat_child['id'] . '">
+																								</li>';
+																			}
+
+																			echo '</ul>
+																					</div>
+																				</div>';
+
+										}
+
+										echo '</div>
+												</div>';
+
+									} ?>
 
 			 <div class="panel-footer text-right">
 				 <button type="submit" class="btn btn-success">SELECTIONNER</button>
@@ -75,7 +93,7 @@
 
 	<script type="text/javascript">
 
-	/**$('#form').submit(function(e) {
+	/***$('#form').submit(function(e) {
 
 		e.preventDefault();
 
@@ -85,6 +103,6 @@
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});
+	});***/
 
 	</script>
