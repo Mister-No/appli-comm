@@ -91,8 +91,8 @@ class Campagnes extends CI_Controller {
 			$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
 
     $data = array(
-        "result" => $result,
-				'campagne' => $campagne["data"]
+        'result' => $result,
+				'campagne' => $campagne['data']
 		);
 
   	$this->load->view('header', $data);
@@ -117,9 +117,27 @@ class Campagnes extends CI_Controller {
 
 			$result = $this->My_listes->get_all_listes($id_group);
 
-			/*$email_array = array();
-			$nom_array = array();
-			$prenom_array = array();*/
+			$email_array = array();
+			$email_array_cat = array();
+			$email_array_list = array();
+
+			function unique_multidim_array($array, $key) {
+					$temp_array = array();
+					$i = 0;
+					$key_array = array();
+
+					foreach($array as $val) {
+
+							if (!in_array($val[$key], $key_array)) {
+									$key_array[$i] = $val[$key];
+									$temp_array[$i] = $val;
+							}
+							$i++;
+					}
+					return $temp_array;
+			}
+
+		if (isset($_POST["id_liste"])) {
 
 			foreach ($_POST["id_liste"] as $key => $value) {
 
@@ -130,23 +148,20 @@ class Campagnes extends CI_Controller {
 					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id_cat);
 
 					foreach ($result_contact as $row_contact) {
-						var_dump($row_contact);
-						/*$found = 0;
-						foreach ($email_array as $key => $value) {
-							if($value[0] == $row_contact->email) {
-								$found = 1;
-							}
+
+						$contact_array_liste[] = array('email' => $row_contact->email, 'nom' => $row_contact->nom, 'prenom' => $row_contact->prenom);
+
 						}
 
-						if ($found == 0){
-													array_push($email_array, array($row_contact->email, $row_contact->nom, $row_contact->prenom) );
-											}*/
-
-										}
-
-								}
+				}
 
 			}
+
+		$contact_array_liste = unique_multidim_array($contact_array_liste,'nom');
+
+		}
+
+		if (isset($_POST["id_cat"])) {
 
 			foreach ($_POST["id_cat"] as $key => $value) {
 
@@ -157,32 +172,44 @@ class Campagnes extends CI_Controller {
 					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id);
 
 					foreach ($result_contact as $row_contact) {
-						var_dump($row_contact);
+
+						$contact_array_cat[] = array('email' => $row_contact->email, 'nom' => $row_contact->nom, 'prenom' => $row_contact->prenom);
+
 					}
 
 				}
 
-
 			}
 
-					/*$data = array(
-							"id_campagne" => $id_campagne,
-							"email_array" => $email_array,
-					);*/
+			$contact_array_cat = unique_multidim_array($contact_array_cat,'nom');
 
+		}
 
+		$contact_array = array_merge($contact_array_liste, $contact_array_cat);
 
-					/*$this->load->view('header', $data);
-					$this->load->view('campagnes_recap');
-					$this->load->view('footer');*/
+		$email_array = unique_multidim_array($contact_array, 'nom');
 
+		require(APPPATH.'libraries/Mailin.php');
+		$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
+		$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
 
+		$data = array(
+				'campagne' => $campagne['data'],
+				'email_array' => $email_array,
+		);
 
+		/*echo '<pre>';
+		print_r($data);
+		echo '</pre>';*/
 
-			} else {
-					$this->load->view('login');
-			}
+		$this->load->view('header', $data);
+		$this->load->view('campagnes_recap');
+		$this->load->view('footer');
+
+		} else {
+				$this->load->view('login');
+		}
 	}
 
 	public function add()
