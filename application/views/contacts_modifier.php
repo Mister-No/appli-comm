@@ -6,7 +6,7 @@
 					<p>Pages</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>contacts.html" class="active">Contacts</a>
+					<a href="<?=base_url();?>contacts.html">Contacts</a>
 				</li>
 				<li>
 					<a href="<?=base_url();?>contacts/modifier.html" class="active">Modifier</a>

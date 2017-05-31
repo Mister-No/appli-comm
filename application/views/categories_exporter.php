@@ -6,7 +6,7 @@
 						<p>Pages</p>
 					</li>
 					<li>
-						<a href="<?=base_url();?>categories.html" class="active">Catégories</a>
+						<a href="<?=base_url();?>categories.html">Catégories</a>
 					</li>
 					<li>
 						<a href="<?=base_url();?>categories/exporter.html" class="active">Exporter</a>

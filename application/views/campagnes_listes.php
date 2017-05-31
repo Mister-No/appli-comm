@@ -6,10 +6,16 @@
 					<p>Pages</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes.html" class="active">Campagnes</a>
+					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes/listes.html" class="active">Envoyer</a>
+					<?php foreach ($campagne as $row_camp) {
+						echo '<a href="' . base_url() . 'campagnes/listes/' . $row_camp['id'] . '">Campagne ' . $row_camp['campaign_name'] . '</a>';
+					}
+					?>
+				</li>
+				<li>
+					<a href="<?=base_url();?>campagnes/listes.html" class="active">Destinataires</a>
 				</li>
 			</ul>
 		</div>
@@ -17,25 +23,18 @@
 </div>
 <div class="container-fluid container-fixed-lg">
 	<div class="page-container">
-			<div class="main-content">
-				<div class="row">
+		<div class="main-content">
+			<div class="row">
+				<div class="col-md-12">
 					<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 						<div class="panel-heading">
 							<div class="panel-title">Selectionner des destinataires</div>
-							<div class="panel-body">
-								<div class="form-group">
-									<?php foreach ($campagne as $row_camp) {
-										echo '<div class="panel-title">Campagne ' . $row_camp['campaign_name'] . '</div>';
-									}
-								 	?>
-								</div>
-							</div>
 						</div>
 					</div>
 
 		<?php foreach ($result as $row) {
 
-						echo '<form id="form" method="post" class="validate" action="'. base_url() . 'campagnes/listes_recap/' . $row_camp['id'] . '">
+						echo '<form id="form_select_contact" method="post" class="validate" action="'. base_url() . 'campagnes/listes_recap/' . $row_camp['id'] . '">
 								   <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 										<div class="panel-heading">
 											<div class="panel-title">' . $row['titre'] . '</div>
@@ -84,25 +83,102 @@
 
 									} ?>
 
-			 <div class="panel-footer text-right">
-				 <button type="submit" class="btn btn-success">SELECTIONNER</button>
+					 <div class="panel-footer text-right">
+						 <button type="submit" class="btn btn-success">SELECTIONNER</button>
+					 </div>
+				 </form>
 			 </div>
-		 </form>
-	 </div>
+	 		</div>
+		</div>
+	</div>
  </div>
+
+ <div class="container-fluid container-fixed-lg">
+ 	<div class="erreur alert alert-danger">
+ 		<strong class="message"></strong>
+ 		<button class="close"></button>
+ 	</div>
+ 	<div class="page-container">
+     <div class="main-content">
+       <div class="row">
+           <div class="col-md-12">
+             <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+               <div class="panel-heading">
+                 <div class="panel-title">Créer une liste</div>
+ 								<div class="panel-controls">
+ 									<ul>
+										<li>
+											<a data-toggle="collapse" class="portlet-collapse" href="#"><i
+											class="portlet-icon portlet-icon-collapse"></i></a>
+										</li>
+ 									</ul>
+ 								</div>
+	              <div class="panel-body">
+								 <form id="form_ajout_liste" method="post" class="validate" action="<?=base_url();?>listes/add.html">
+                   <div class="form-group">
+                     <label class="control-label">Titre :</label>
+                     <input type="text" class="form-control" name="titre" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Titre" />
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+				 </div>
+
+ 					<?php foreach ($result_cat as $row_full_cat) {
+
+ 						echo '<div class="panel-default">
+ 				            <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
+ 				              <div class="panel-heading">
+ 				                <div class="panel-title">' . $row_full_cat['titre'] . '</div>
+ 					                <div class="panel-controls">
+ 														<ul>
+ 						                  <li>
+																<input type="checkbox" name="id_cat[]" class="check_all" value="' . $row_full_cat['id'] . '">
+															</li>
+															<li>
+																<a data-toggle="collapse" class="portlet-collapse" href="#"><i
+																class="pg-arrow_minimize"></i></a>
+ 															</li>
+ 														</ul>
+ 					                </div>
+ 					              </div>
+ 												<div class="panel-body" style="display:none;">
+ 					                <ul class="list-group list-group-minimal">';
+
+ 														foreach ($row_full_cat['child'] as $row_child) {
+
+ 																echo '<li class="list-group-item">' . $row_child['titre'] . '
+ 									                      <input type="checkbox" class="pull-right"  name="id_cat[]" value="' . $row_child['id'] . '">
+ 									                    </li>';
+ 														}
+
+ 					echo '</ul>
+ 							</div>
+ 			       </div>
+ 			      </div>';
+
+ 					} ?>
+
+           <div class="panel-footer text-right">
+             <button type="submit" class="btn btn-success">AJOUTER</button>
+           </div>
+         </div>
+       </form>
+     </div>
 
 	<script type="text/javascript">
 
-	/***$('#form').submit(function(e) {
+	$('#form_ajout_liste').submit(function(e) {
 
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'campagnes/listes_recap.html';
-		urlRedirect = 'campagnes.html';
+		urlCheck = 'listes/add.html';
+		urlRedirect = 'campagnes/listes/<?=$row_camp['id']?>';
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});***/
+	});
 
 	</script>

@@ -6,7 +6,7 @@
 					<p>Pages</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>users.html" class="active">Utilisateurs</a>
+					<a href="<?=base_url();?>users.html">Utilisateurs</a>
 				</li>
 				<li>
 					<a href="<?=base_url();?>users/ajouter.html" class="active">Ajouter</a>

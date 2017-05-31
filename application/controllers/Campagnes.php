@@ -81,9 +81,34 @@ class Campagnes extends CI_Controller {
 
         }
 
-			/*echo '<pre>';
-			print_r($result);
-			echo '</pre>';*/
+			/* Affichage des catégories pour la creation de listes */
+
+			$result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
+
+			$result_cat = array();
+
+			foreach ($result_cat_parent as $row) {
+
+				$result_cat_child = $this->My_categories->get_child_cat($row->id);
+
+				$tab_cat = array();
+				foreach ($result_cat_child as $row_cat) {
+					$tab_cat[] = [
+						'id' => $row_cat->id,
+						'id_parent' => $row_cat->id,
+						'titre' => $row_cat->titre
+					];
+				}
+
+				$result_cat[] = [
+					'id' => $row->id,
+					'titre' => $row->titre,
+					'child' => $tab_cat
+				];
+
+				}
+
+			/* Informations sur la campagne */
 
 			require(APPPATH.'libraries/Mailin.php');
 			$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
@@ -91,7 +116,8 @@ class Campagnes extends CI_Controller {
 			$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
 
     $data = array(
-        'result' => $result,
+				'result' => $result,
+				'result_cat' => $result_cat,
 				'campagne' => $campagne['data']
 		);
 
@@ -114,6 +140,8 @@ class Campagnes extends CI_Controller {
 			$id = $this->uri->segment(3, 0);
 
 			$id_group = $_SESSION["id_group"];
+
+			/* Recherche pour affichage de contact */
 
 			$result = $this->My_listes->get_all_listes($id_group);
 
@@ -149,7 +177,10 @@ class Campagnes extends CI_Controller {
 
 					foreach ($result_contact as $row_contact) {
 
-						$contact_array_liste[] = array('email' => $row_contact->email, 'nom' => $row_contact->nom, 'prenom' => $row_contact->prenom);
+						$contact_array_liste[] = array('email' => $row_contact->email,
+						 															 'nom' => $row_contact->nom,
+																					 'prenom' => $row_contact->prenom
+																				 	);
 
 						}
 
@@ -173,7 +204,10 @@ class Campagnes extends CI_Controller {
 
 					foreach ($result_contact as $row_contact) {
 
-						$contact_array_cat[] = array('email' => $row_contact->email, 'nom' => $row_contact->nom, 'prenom' => $row_contact->prenom);
+						$contact_array_cat[] = array('email' => $row_contact->email,
+						 														 'nom' => $row_contact->nom,
+																				 'prenom' => $row_contact->prenom
+																			 	);
 
 					}
 
@@ -189,6 +223,8 @@ class Campagnes extends CI_Controller {
 
 		$email_array = unique_multidim_array($contact_array, 'nom');
 
+		/* Informations sur la campagne */
+
 		require(APPPATH.'libraries/Mailin.php');
 		$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
@@ -198,10 +234,6 @@ class Campagnes extends CI_Controller {
 				'campagne' => $campagne['data'],
 				'email_array' => $email_array,
 		);
-
-		/*echo '<pre>';
-		print_r($data);
-		echo '</pre>';*/
 
 		$this->load->view('header', $data);
 		$this->load->view('campagnes_recap');

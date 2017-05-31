@@ -6,7 +6,7 @@
 					<p>Pages</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>listes.html" class="active">Listes</a>
+					<a href="<?=base_url();?>listes.html">Listes</a>
 				</li>
 				<li>
 					<a href="<?=base_url();?>listes/ajouter.html" class="active">Ajouter</a>
