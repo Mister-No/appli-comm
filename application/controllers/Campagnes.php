@@ -244,6 +244,151 @@ class Campagnes extends CI_Controller {
 		}
 	}
 
+	public function listes_add_recap()
+	{
+		if ($_SESSION["is_connect"] == TRUE){
+
+			$this->load->model('My_listes');
+			$this->load->model('My_categories');
+
+			$id_group = $_SESSION["id_group"];
+
+			/* Ajout d'une liste et redirection vers la recapitulation des contacts pour l'envoi */
+
+			$result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
+
+			if (count($result) > 0) {
+
+					 echo 1;
+
+				} else {
+
+				$data = array(
+					'titre' => $_POST['titre'],
+					'id_group' 	=> $id_group,
+				);
+
+						$id = $this->My_common->insert_data ('liste', $data);
+
+						foreach ($_POST['id_cat'] as $key => $value) {
+
+							$data = array(
+								'id_liste'  => $id,
+								'id_cat'    => $value,
+							);
+
+					$this->My_common->insert_data('liste_cat', $data);
+						}
+
+				echo $this->db->insert_id();
+
+			}
+
+			/* Recherche pour affichage de contact */
+
+			/*$result = $this->My_listes->get_all_listes($id_group);
+
+			$email_array = array();
+			$email_array_cat = array();
+			$email_array_list = array();
+
+			function unique_multidim_array($array, $key) {
+					$temp_array = array();
+					$i = 0;
+					$key_array = array();
+
+					foreach($array as $val) {
+
+							if (!in_array($val[$key], $key_array)) {
+									$key_array[$i] = $val[$key];
+									$temp_array[$i] = $val;
+							}
+							$i++;
+					}
+					return $temp_array;
+			}
+
+
+
+			foreach ($_POST["id_liste"] as $key => $value) {
+
+				$result_cat = $this->My_listes->get_cat_by_liste($value);
+
+				foreach ($result_cat as $row_cat) {
+
+					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id_cat);
+
+					foreach ($result_contact as $row_contact) {
+
+						$contact_array_liste[] = array('email' => $row_contact->email,
+						 															 'nom' => $row_contact->nom,
+																					 'prenom' => $row_contact->prenom
+																				 	);
+
+						}
+
+				}
+
+			}
+
+		$contact_array_liste = unique_multidim_array($contact_array_liste,'nom');
+
+
+
+		if (isset($_POST["id_cat"])) {
+
+			foreach ($_POST["id_cat"] as $key => $value) {
+
+				$result_cat = $this->My_categories->get_cat_by_id($value);
+
+				foreach ($result_cat as $row_cat) {
+
+					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id);
+
+					foreach ($result_contact as $row_contact) {
+
+						$contact_array_cat[] = array('email' => $row_contact->email,
+						 														 'nom' => $row_contact->nom,
+																				 'prenom' => $row_contact->prenom
+																			 	);
+
+					}
+
+				}
+
+			}
+
+			$contact_array_cat = unique_multidim_array($contact_array_cat,'nom');
+
+		}
+
+		$contact_array = array_merge($contact_array_liste, $contact_array_cat);
+
+		$email_array = unique_multidim_array($contact_array, 'nom');
+
+		/* Informations sur la campagne */
+
+		/*$id = $this->uri->segment(3, 0);
+
+		require(APPPATH.'libraries/Mailin.php');
+		$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+
+		$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
+
+		$data = array(
+				'campagne' => $campagne['data'],
+				'email_array' => $email_array,
+		);
+
+		/*$this->load->view('header', $data);
+		$this->load->view('campagnes_recap');
+		$this->load->view('footer');*/
+
+		} else {
+				$this->load->view('login');
+		}
+	}
+
 	public function add()
 	{
 

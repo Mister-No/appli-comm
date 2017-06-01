@@ -47,8 +47,7 @@
 												</ul>
 											</div>
 										</div>
-										<div class="panel-body" style="display:none;">
-											';
+										<div class="panel-body" style="display:none;">';
 
 											foreach ($row['cat'] as $row_cat) {
 
@@ -114,10 +113,10 @@
  									</ul>
  								</div>
 	              <div class="panel-body">
-								 <form id="form_ajout_liste" method="post" class="validate" action="<?=base_url();?>listes/add.html">
+								 <form id="form_ajout_liste" method="post" class="validate" action="<?=base_url();?>campagnes/listes_add_recap.html">
                    <div class="form-group">
                      <label class="control-label">Titre :</label>
-                     <input type="text" class="form-control" name="titre" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Titre" />
+                     <input type="text" class="form-control" name="titre" required placeholder="Titre" />
                    </div>
                  </div>
                </div>
@@ -169,7 +168,7 @@
 
 	<script type="text/javascript">
 
-	$('#form_ajout_liste').submit(function(e) {
+	/***$('#form_ajout_liste').submit(function(e) {
 
 		e.preventDefault();
 
@@ -179,6 +178,6 @@
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});
+	});***/
 
 	</script>
