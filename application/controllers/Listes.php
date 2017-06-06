@@ -201,7 +201,7 @@ class Listes extends CI_Controller {
           'id_group' 	=> $id_group,
         );
 
-            $id = $this->My_common->insert_data ('liste', $data);
+           $id = $this->My_common->insert_data ('liste', $data);
 
             foreach ($_POST['id_cat'] as $key => $value) {
 
@@ -214,6 +214,8 @@ class Listes extends CI_Controller {
             }
 
         echo 'ok';
+
+        return $data;
 
       }
 

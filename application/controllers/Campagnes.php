@@ -132,14 +132,28 @@ class Campagnes extends CI_Controller {
 
 	public function listes_recap()
 	{
+
 		if ($_SESSION["is_connect"] == TRUE){
 
 			$this->load->model('My_listes');
 			$this->load->model('My_categories');
+			$this->load->library('../listes/add');
 
 			$id = $this->uri->segment(3, 0);
 
 			$id_group = $_SESSION["id_group"];
+
+			//$id_liste = $_POST["id_liste"];
+
+			$id_cat = $_POST["id_cat"];
+
+			$titre = $_POST["titre"];
+
+			/* Appel du controleur d'ajout de liste */
+
+
+
+			var_dump($data);
 
 			/* Recherche pour affichage de contact */
 
@@ -165,9 +179,9 @@ class Campagnes extends CI_Controller {
 					return $temp_array;
 			}
 
-		if (isset($_POST["id_liste"])) {
+		if (isset($id_liste)) {
 
-			foreach ($_POST["id_liste"] as $key => $value) {
+			foreach ($id_liste as $key => $value) {
 
 				$result_cat = $this->My_listes->get_cat_by_liste($value);
 
@@ -192,9 +206,9 @@ class Campagnes extends CI_Controller {
 
 		}
 
-		if (isset($_POST["id_cat"])) {
+		if (isset($id_cat)) {
 
-			foreach ($_POST["id_cat"] as $key => $value) {
+			foreach ($id_cat as $key => $value) {
 
 				$result_cat = $this->My_categories->get_cat_by_id($value);
 
@@ -235,14 +249,15 @@ class Campagnes extends CI_Controller {
 				'email_array' => $email_array,
 		);
 
-		$this->load->view('header', $data);
+		/*$this->load->view('header', $data);
 		$this->load->view('campagnes_recap');
-		$this->load->view('footer');
+		$this->load->view('footer');*/
 
 		} else {
 				$this->load->view('login');
 		}
 	}
+
 
 	public function listes_add_recap()
 	{
