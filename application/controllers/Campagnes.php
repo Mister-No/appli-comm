@@ -20,9 +20,7 @@ class Campagnes extends CI_Controller {
 	        $data = array(
 	            "result" => $result,
 	        );
-				/*echo '<pre>';
-				print_r($data);
-				echo '</pre>';*/
+
 					$this->load->view('header', $data);
 	        $this->load->view('campagnes');
 	        $this->load->view('footer');
@@ -137,7 +135,6 @@ class Campagnes extends CI_Controller {
 
 			$this->load->model('My_listes');
 			$this->load->model('My_categories');
-			$this->load->library('../listes/add');
 
 			$id = $this->uri->segment(3, 0);
 
@@ -150,10 +147,8 @@ class Campagnes extends CI_Controller {
 			$titre = $_POST["titre"];
 
 			/* Appel du controleur d'ajout de liste */
+			//parent::add();
 
-
-
-			var_dump($data);
 
 			/* Recherche pour affichage de contact */
 
@@ -283,29 +278,42 @@ class Campagnes extends CI_Controller {
 					'id_group' 	=> $id_group,
 				);
 
-						$id = $this->My_common->insert_data ('liste', $data);
+					$id = $this->My_common->insert_data ('liste', $data);
 
-						foreach ($_POST['id_cat'] as $key => $value) {
+					foreach ($_POST['id_cat'] as $key => $value) {
 
-							$data = array(
-								'id_liste'  => $id,
-								'id_cat'    => $value,
-							);
+						$data = array(
+							'id_liste'  => $id,
+							'id_cat'    => $value,
+						);
 
-					$this->My_common->insert_data('liste_cat', $data);
+						$this->My_common->insert_data('liste_cat', $data);
+
+
+						$result_cat = $this->My_categories->get_cat_by_id($value);
+
+						foreach ($result_cat as $row_cat) {
+
+							$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id);
+
+							foreach ($result_contact as $row_contact) {
+
+								$contact_array_cat[] = array('email' => $row_contact->email,
+																						 'nom' => $row_contact->nom,
+																						 'prenom' => $row_contact->prenom
+																						);
+
+							}
+
 						}
 
-				echo $this->db->insert_id();
+				}
 
 			}
 
 			/* Recherche pour affichage de contact */
 
-			/*$result = $this->My_listes->get_all_listes($id_group);
-
-			$email_array = array();
-			$email_array_cat = array();
-			$email_array_list = array();
+			//$result = $this->My_listes->get_all_listes($this->db->insert_id());
 
 			function unique_multidim_array($array, $key) {
 					$temp_array = array();
@@ -323,77 +331,25 @@ class Campagnes extends CI_Controller {
 					return $temp_array;
 			}
 
-
-
-			foreach ($_POST["id_liste"] as $key => $value) {
-
-				$result_cat = $this->My_listes->get_cat_by_liste($value);
-
-				foreach ($result_cat as $row_cat) {
-
-					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id_cat);
-
-					foreach ($result_contact as $row_contact) {
-
-						$contact_array_liste[] = array('email' => $row_contact->email,
-						 															 'nom' => $row_contact->nom,
-																					 'prenom' => $row_contact->prenom
-																				 	);
-
-						}
-
-				}
-
-			}
-
-		$contact_array_liste = unique_multidim_array($contact_array_liste,'nom');
-
-
-
-		if (isset($_POST["id_cat"])) {
-
-			foreach ($_POST["id_cat"] as $key => $value) {
-
-				$result_cat = $this->My_categories->get_cat_by_id($value);
-
-				foreach ($result_cat as $row_cat) {
-
-					$result_contact = $this->My_categories->get_contact_by_cat($row_cat->id);
-
-					foreach ($result_contact as $row_contact) {
-
-						$contact_array_cat[] = array('email' => $row_contact->email,
-						 														 'nom' => $row_contact->nom,
-																				 'prenom' => $row_contact->prenom
-																			 	);
-
-					}
-
-				}
-
-			}
-
-			$contact_array_cat = unique_multidim_array($contact_array_cat,'nom');
-
-		}
-
-		$contact_array = array_merge($contact_array_liste, $contact_array_cat);
-
-		$email_array = unique_multidim_array($contact_array, 'nom');
+		$contact_array_liste = unique_multidim_array($contact_array_cat,'nom');
 
 		/* Informations sur la campagne */
 
-		/*$id = $this->uri->segment(3, 0);
+		$id = $this->uri->segment(3, 0);
 
 		require(APPPATH.'libraries/Mailin.php');
 		$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
-		$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
+		$campagne = $mailin->get_campaigns_v2();
 
 		$data = array(
-				'campagne' => $campagne['data'],
-				'email_array' => $email_array,
+				'campagne' => $campagne,
+				'email_array' => $contact_array_liste,
 		);
+
+		echo '<pre>';
+		print_r($data);
+		echo '</pre>';
 
 		/*$this->load->view('header', $data);
 		$this->load->view('campagnes_recap');

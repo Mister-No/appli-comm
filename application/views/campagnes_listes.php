@@ -113,7 +113,7 @@
  									</ul>
  								</div>
 	              <div class="panel-body">
-								 <form id="form_ajout_liste" method="post" class="validate" action="<?=base_url();?>campagnes/listes_recap.html">
+								 <form id="form_ajout_liste" method="post" class="validate" action="<?=base_url();?>campagnes/listes_add_recap.html">
                    <div class="form-group">
                      <label class="control-label">Titre :</label>
                      <input type="text" class="form-control" name="titre" required placeholder="Titre" />
