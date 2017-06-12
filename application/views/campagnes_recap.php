@@ -9,7 +9,7 @@
 					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<?php foreach ($campagne as $row_camp) {
+					<?php foreach ($campagne2 as $row_camp) {
 						echo '<a href="' . base_url() . 'campagnes/listes/' . $row_camp['id'] . '">Campagne ' . $row_camp['campaign_name'] . '</a>';
 					}
 					?>
