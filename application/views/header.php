@@ -40,7 +40,7 @@
 <!-- START PAGE-CONTAINER -->
 <div class="page-container ">
   <!-- START HEADER -->
-  <div class="header ">
+  <div class="header">
     <!-- START MOBILE CONTROLS -->
     <div class="container-fluid relative">
       <div class="pull-center hidden-md hidden-lg">

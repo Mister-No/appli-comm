@@ -247,37 +247,27 @@ class Campagnes extends CI_Controller {
 	}
 
 
-	public function liste_ajouter_recap ()
+	/*public function liste_ajouter_recap ()
 	{
-		$this->load->model('My_listes');
-		$this->load->model('My_categories');
-
-		$liste_tab = array(
+		$liste_tab2 = array(
 			'titre' => $_POST['titre'],
 			'id_group' 	=>  $_SESSION["id_group"],
 		);
 
-		$id = $this->My_common->insert_data ('liste', $liste_tab);
+		$id = $this->My_common->insert_data ('liste', $liste_tab2);
 
-		echo $this->db->last_query();
-
-		$data = array(
-				'id_campagne' => 22,
-				'email_array' => "",
-		);
 
 		$this->load->view('header');
-		$this->load->view('campagnes_recap');
-		$this->load->view('footer');
+		//$this->load->view('campagnes_recap');
+		//$this->load->view('footer');
 
 
 
-	}
-	public function listes_add_recap()
+	}*/
+
+	public function list_add_recap()
 	{
 		if ($_SESSION["is_connect"] == TRUE){
-
-			var_dump ($_POST);
 
 			$this->load->model('My_listes');
 			$this->load->model('My_categories');
@@ -288,11 +278,7 @@ class Campagnes extends CI_Controller {
 
 			//Ajout d'une liste et redirection vers la recapitulation des contacts pour l'envoi
 
-			//$result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
-
-			$result = [];
-
-
+			$result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
 
 			if (count($result) > 0) {
 
@@ -304,16 +290,13 @@ class Campagnes extends CI_Controller {
 				$liste_tab = array();
 				$liste_cat_tab = array();
 
-				$titre_liste = $_POST['titre'];
-
 				$liste_tab = array(
-					'titre' => $titre_liste,
+					'titre' => $_POST['titre'],
 					'id_group' 	=> $id_group,
 				);
 
 				$id = $this->My_common->insert_data ('liste', $liste_tab);
 
-					/*
 					foreach ($_POST['id_cat'] as $key => $value) {
 
 						$liste_cat_tab = array(
@@ -324,7 +307,9 @@ class Campagnes extends CI_Controller {
 						$this->My_common->insert_data('liste_cat', $liste_cat_tab);
 
 						//Recherche pour affichage de contact
+
 						$result_contact = $this->My_categories->get_contact_by_cat($value);
+
 						foreach ($result_contact as $row_contact) {
 
 							$contact_array_cat[] = array(
@@ -336,11 +321,9 @@ class Campagnes extends CI_Controller {
 						}
 
 					}
-					*/
 
 			}
 
-			/*
 			function unique_multidim_array($array, $key) {
 				$temp_array = array();
 				$i = 0;
@@ -358,28 +341,21 @@ class Campagnes extends CI_Controller {
 			}
 
 			$email_array = unique_multidim_array($contact_array_cat,'nom');
-			*/
 
-			//$email_array = $contact_array_cat;
-
-			/*
 			//Informations sur la campagne
 			require(APPPATH.'libraries/Mailin.php');
 			$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
 			$campagne = $mailin->get_campaigns_v2(array( "id" => $id_campagne));
 
-*/
 			$data = array(
-					'id_campagne' => 22,
-					'email_array' => "",
+					'id_campagne' => $campagne['data'],
+					'email_array' => $email_array,
 			);
-
 
 			$this->load->view('header', $data);
 			$this->load->view('campagnes_recap');
 			$this->load->view('footer');
-
 
 		} else {
 				$this->load->view('login');

@@ -113,7 +113,7 @@
  									</ul>
  								</div>
 	              <div class="panel-body">
-								 <form id="form_ajout_liste" method="post" class="validate" action="<?=base_url();?>campagnes/liste_ajouter_recap/<?=$row_camp['id']?>">
+								 <form method="post" class="validate" action="<?=base_url();?>campagnes/list_add_recap">
                    <div class="form-group">
                      <label class="control-label">Titre :</label>
                      <input type="text" class="form-control" name="titre" required placeholder="Titre" />
@@ -167,17 +167,5 @@
      </div>
 
 	<script type="text/javascript">
-
-	/***$('#form_ajout_liste').submit(function(e) {
-
-		e.preventDefault();
-
-		data = $(this).serialize();
-		urlCheck = 'listes/add.html';
-		urlRedirect = 'campagnes/listes/<?=$row_camp['id']?>';
-
-		check_exist(urlCheck, urlRedirect, data);
-
-	});***/
 
 	</script>
