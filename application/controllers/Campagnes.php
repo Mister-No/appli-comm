@@ -139,8 +139,6 @@ class Campagnes extends CI_Controller {
 			$this->load->model('My_listes');
 			$this->load->model('My_categories');
 
-			$id = $this->uri->segment(3, 0);
-
 			$id_group = $_SESSION["id_group"];
 
 			/* Recherche pour affichage de contact */
@@ -230,7 +228,7 @@ class Campagnes extends CI_Controller {
 		require(APPPATH.'libraries/Mailin.php');
 		$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
-		$campagne = $mailin->get_campaigns_v2( array( "id" => $id) );
+		$campagne = $mailin->get_campaigns_v2( array( "id" => $_POST['id_campagne']) );
 
 		$data = array(
 				'campagne' => $campagne['data'],
@@ -246,25 +244,6 @@ class Campagnes extends CI_Controller {
 		}
 	}
 
-
-	/*public function liste_ajouter_recap ()
-	{
-		$liste_tab2 = array(
-			'titre' => $_POST['titre'],
-			'id_group' 	=>  $_SESSION["id_group"],
-		);
-
-		$id = $this->My_common->insert_data ('liste', $liste_tab2);
-
-
-		$this->load->view('header');
-		//$this->load->view('campagnes_recap');
-		//$this->load->view('footer');
-
-
-
-	}*/
-
 	public function list_add_recap()
 	{
 		if ($_SESSION["is_connect"] == TRUE){
@@ -272,7 +251,7 @@ class Campagnes extends CI_Controller {
 			$this->load->model('My_listes');
 			$this->load->model('My_categories');
 
-			$id_campagne = $this->uri->segment(3, 0);
+			//$id_campagne = $this->uri->segment(3, 0);
 
 			$id_group = $_SESSION["id_group"];
 
@@ -346,13 +325,16 @@ class Campagnes extends CI_Controller {
 			require(APPPATH.'libraries/Mailin.php');
 			$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
-			$campagne = $mailin->get_campaigns_v2(array( "id" => $id_campagne));
+			$campagne = $mailin->get_campaigns_v2(array( "id" => $_POST['id_campagne']));
 
 			$data = array(
-					'id_campagne' => $campagne['data'],
+					'campagne' => $campagne['data'],
 					'email_array' => $email_array,
 			);
 
+			/*echo '<pre>';
+			print_r($data);
+			echo '</pre>';*/
 			$this->load->view('header', $data);
 			$this->load->view('campagnes_recap');
 			$this->load->view('footer');
@@ -362,6 +344,83 @@ class Campagnes extends CI_Controller {
 		}
 
 
+	}
+
+	public function envoyer()
+	{
+		if ($_SESSION["is_connect"] == TRUE){
+
+			$this->load->model('My_listes');
+
+			$id_campagne = $_POST["id_campagne"];
+
+			$email_array = array();
+			$nom_array = array();
+
+
+			$csv = "NAME;SURNAME;EMAIL\n";
+
+			foreach ($_POST["email"] as $key => $value) {
+
+                //$csv .= $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n";
+                //echo $key." -    - ". $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n"."<br>";
+				if (isset($_POST["nom"][$key])){
+                	$csv .= $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n";
+				} else {
+                	$csv .= ";;".$value."\n";
+				}
+			}
+
+			//echo $csv;
+
+			require(APPPATH.'libraries/Mailin.php');
+	      	$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+
+
+		    $data = array(
+		        "body" => $csv,
+		        "name" => "unpg_".$id_campagne,
+		    );
+
+				var_dump($data);
+
+		    //$result = $mailin->import_users($data);
+
+
+		    $id_liste = $result["data"]["list_id"][0];
+
+		    $code = $result["code"];
+
+
+		    if ($code == "success"){
+
+				$data = array(
+					"id"				=>$id_campagne,
+					"listid"			=>array($id_liste),
+					"send_now"			=>1,
+					"html_url"			=>"http://coxdigital.fr/newsletter/assets/export_html.php?template_name=maquette&saveCode=".$id_campagne,
+				);
+
+				/*$result = $mailin->update_campaign($data);
+
+				$code = $result["code"];
+
+				if ($code == "success"){
+					redirect (base_url()."campagnes.html");
+				} else {
+					print_r($result);
+					echo "Erreur";
+				}*/
+
+		    }
+
+
+
+
+
+    	} else {
+        	$this->load->view('login');
+    	}
 	}
 
 	public function add()

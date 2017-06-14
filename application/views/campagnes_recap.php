@@ -31,7 +31,7 @@
 						</div>
 					</div>
 
-					<form id="form" method="post" class="validate" action="<?=base_url();?>'campagnes/envoyer/<?=$row_camp['id']?>">
+					<form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/envoyer">
 						<div class="panel panel-default" id="portlet-basic">
 							<div class="panel-heading">
 								<input type="hidden" name="id_campagne" value="<?=$row_camp['id']?>">
@@ -46,7 +46,7 @@
 												<div class="panel-title">' . $row['nom'] . ' ' . $row['prenom'] . '</div>
 													<div class="panel panel-controls">
 														<ul>
-														<li><input type="checkbox" name="id_cat[]"  value="' . $row['email'] . '" checked></li>
+														<li><input type="checkbox" name="email[]"  value="' . $row['email'] . '" checked></li>
 													</ul>
 												</div>
 												<div class="panel"><i>' . $row['email'] . '</i></div>
