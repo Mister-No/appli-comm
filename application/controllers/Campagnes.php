@@ -379,13 +379,12 @@ class Campagnes extends CI_Controller {
 
 		    $data = array(
 		        "body" => $csv,
-		        "name" => "unpg_".$id_campagne,
+		        "name" => "liste_".$id_campagne,
 		    );
 
+		    $result = $mailin->import_users($data);
+
 				var_dump($data);
-
-		    //$result = $mailin->import_users($data);
-
 
 		    $id_liste = $result["data"]["list_id"][0];
 
@@ -400,6 +399,8 @@ class Campagnes extends CI_Controller {
 					"send_now"			=>1,
 					"html_url"			=>"http://coxdigital.fr/newsletter/assets/export_html.php?template_name=maquette&saveCode=".$id_campagne,
 				);
+
+								var_dump($data);
 
 				/*$result = $mailin->update_campaign($data);
 
@@ -469,5 +470,66 @@ class Campagnes extends CI_Controller {
 			}
 	}
 
+	public function duplicate()
+	{
+
+		if ($_SESSION["is_connect"] == TRUE){
+
+			require(APPPATH.'libraries/Mailin.php');
+					$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+
+			$data = array( "id"=>$this->uri->segment(3, 0) );
+
+			$info = $mailin->get_campaign_v2($data);
+
+			$data = array(
+				"category"			=>API_category,
+				"from_name"			=>API_from_name,
+				"from_email"		=>API_from_email,
+				"name"				=>$info["data"][0]["campaign_name"]." - COPIE",
+				"html_content"		=>"<html><head></head></html>",
+				"html_url"			=>"",
+				"listid"			=> "",
+				"scheduled_date"	=>"",
+				"subject"			=>$info["data"][0]["subject"],
+				"reply_to"			=>API_reply_to,
+				"to_field"			=>"[PRENOM] [NOM]",
+				'exclude_list'		=> array(),
+				"attachment_url"	=>"",
+				"inline_image"		=>0,
+				"mirror_active"		=>1,
+				"send_now"			=>0
+			);
+
+				$result = $mailin->create_campaign($data);
+
+				file_get_contents('http://coxdigital.fr/newsletter/assets/duplicate_folder.php?folder=maquette&id='.$this->uri->segment(3, 0).'&id_new='.$result["data"]["id"].'&token=unpg-23498674730722840757940');
+
+				redirect (base_url()."campagnes.html");
+
+			} else {
+					$this->load->view('login');
+			}
+	}
+
+	public function delete()
+	{
+
+		if ($_SESSION["is_connect"] == TRUE){
+
+			require(APPPATH.'libraries/Mailin.php');
+
+				$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+      	$data = array( "id"=>$this->input->post('id') );
+      	$mailin->delete_campaign($data);
+
+      	file_get_contents('http://coxdigital.fr/newsletter/assets/delete_folder.php?folder=maquette&id='.$this->input->post('id').'&token=unpg-23498674730722840757940');
+
+			redirect('campagnes');
+
+    	} else {
+        	$this->load->view('login');
+    	}
+	}
 
 }

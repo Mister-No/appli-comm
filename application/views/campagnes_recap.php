@@ -44,6 +44,8 @@
 										<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 											<div class="panel-heading">
 												<div class="panel-title">' . $row['nom'] . ' ' . $row['prenom'] . '</div>
+												<input type="hidden" name="nom[]" value="' . $row['nom'] . '" >
+												<input type="hidden" name="prenom[]" value="' . $row['prenom'] . '" >
 													<div class="panel panel-controls">
 														<ul>
 														<li><input type="checkbox" name="email[]"  value="' . $row['email'] . '" checked></li>
