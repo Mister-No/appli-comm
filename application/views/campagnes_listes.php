@@ -34,7 +34,7 @@
 
 		<?php foreach ($result as $row) {
 
-						echo '<form id="form_select_contact" method="post" class="validate" action="'. base_url() . 'campagnes/listes_recap">
+						echo '<form method="post" class="validate" action="'. base_url() . 'campagnes/listes_recap">
 									 <input type="hidden" name="id_campagne" value="' . $row_camp['id'] . '">
 								   <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 										<div class="panel-heading">
@@ -114,7 +114,7 @@
  									</ul>
  								</div>
 	              <div class="panel-body">
-								 <form method="post" class="validate" action="<?=base_url();?>campagnes/list_add_recap">
+								 <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/list_add_recap">
 									 <input type="hidden" name="id_campagne" value="<?=$row_camp['id']?>">
                    <div class="form-group">
                      <label class="control-label">Titre :</label>
@@ -169,5 +169,19 @@
      </div>
 
 	<script type="text/javascript">
+
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = 'campagnes/list_add_recap.html';
+		urlRedirect = 'campagnes/listes_recap.html ';
+
+		console.log(data);
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
 
 	</script>

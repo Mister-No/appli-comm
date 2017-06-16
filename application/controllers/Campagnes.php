@@ -148,6 +148,8 @@ class Campagnes extends CI_Controller {
 			$email_array = array();
 			$email_array_cat = array();
 			$email_array_list = array();
+			$contact_array_cat = array();
+			$contact_array_liste = array();
 
 			function unique_multidim_array($array, $key) {
 					$temp_array = array();
@@ -251,8 +253,6 @@ class Campagnes extends CI_Controller {
 			$this->load->model('My_listes');
 			$this->load->model('My_categories');
 
-			//$id_campagne = $this->uri->segment(3, 0);
-
 			$id_group = $_SESSION["id_group"];
 
 			//Ajout d'une liste et redirection vers la recapitulation des contacts pour l'envoi
@@ -332,17 +332,15 @@ class Campagnes extends CI_Controller {
 					'email_array' => $email_array,
 			);
 
-			/*echo '<pre>';
-			print_r($data);
-			echo '</pre>';*/
 			$this->load->view('header', $data);
 			$this->load->view('campagnes_recap');
 			$this->load->view('footer');
 
 		} else {
-				$this->load->view('login');
-		}
 
+			echo 3;
+
+		}
 
 	}
 
@@ -362,8 +360,6 @@ class Campagnes extends CI_Controller {
 
 			foreach ($_POST["email"] as $key => $value) {
 
-                //$csv .= $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n";
-                //echo $key." -    - ". $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n"."<br>";
 				if (isset($_POST["nom"][$key])){
                 	$csv .= $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n";
 				} else {
@@ -371,10 +367,8 @@ class Campagnes extends CI_Controller {
 				}
 			}
 
-			//echo $csv;
-
 			require(APPPATH.'libraries/Mailin.php');
-	      	$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+	    $mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
 
 		    $data = array(
@@ -383,8 +377,6 @@ class Campagnes extends CI_Controller {
 		    );
 
 		    $result = $mailin->import_users($data);
-
-				var_dump($data);
 
 		    $id_liste = $result["data"]["list_id"][0];
 
@@ -400,24 +392,22 @@ class Campagnes extends CI_Controller {
 					"html_url"			=>"http://coxdigital.fr/newsletter/assets/export_html.php?template_name=maquette&saveCode=".$id_campagne,
 				);
 
-								var_dump($data);
-
-				/*$result = $mailin->update_campaign($data);
+				$result = $mailin->update_campaign($data);
 
 				$code = $result["code"];
 
 				if ($code == "success"){
+
 					redirect (base_url()."campagnes.html");
+
 				} else {
+
 					print_r($result);
 					echo "Erreur";
-				}*/
+
+				}
 
 		    }
-
-
-
-
 
     	} else {
         	$this->load->view('login');
@@ -506,6 +496,57 @@ class Campagnes extends CI_Controller {
 				file_get_contents('http://coxdigital.fr/newsletter/assets/duplicate_folder.php?folder=maquette&id='.$this->uri->segment(3, 0).'&id_new='.$result["data"]["id"].'&token=unpg-23498674730722840757940');
 
 				redirect (base_url()."campagnes.html");
+
+			} else {
+					$this->load->view('login');
+			}
+	}
+
+	public function bat()
+	{
+		if ($_SESSION["is_connect"] == TRUE){
+
+			require(APPPATH.'libraries/Mailin.php');
+			$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+
+			$this->load->model('My_listes');
+
+			$id_campagne = $this->uri->segment(3, 0);
+
+			$data = array(
+				"id"				=>$id_campagne,
+				"send_now"			=>0,
+				"html_url"			=>"http://coxdigital.fr/newsletter/assets/export_html.php?template_name=maquette&saveCode=".$id_campagne,
+			);
+
+			$result = $mailin->update_campaign($data);
+
+			var_dump($result);
+
+			$code = $result["code"];
+
+			var_dump($code);
+
+			if ($code == "success"){
+
+				$data = array(
+					"id" => $id_campagne,
+					"emails" => array("noresihia@gmail.com")
+				);
+
+				$mailin->send_bat_email($data);
+
+				var_dump($data);
+
+				/*$this->load->view('header');
+				$this->load->view('campagnes_bat');
+				$this->load->view('footer');*/
+
+			} else {
+
+				echo "Erreur - 2";
+
+			}
 
 			} else {
 					$this->load->view('login');

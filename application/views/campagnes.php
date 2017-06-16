@@ -107,7 +107,7 @@
 															<td class="v-align-middle">
 																<div class="btn-group">
 
-																	<a class="btn btn-success" href=""><i class="fa fa-edit"></i></a>
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/builder/' . $row["id"] . '"><i class="fa fa-edit"></i></a>
 
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row["id"] . '"><i class="fa fa-copy"></i></a>
 
@@ -118,11 +118,11 @@
 
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/listes/' . $row["id"] . '"><i class="fa fa-envelope"></i></a>
 
-																	<button class="btn btn-success " onclick="delete_item()" ><i class="fa fa-send"></i></button>
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/bat/' . $row["id"] . '" ><i class="fa fa-send"></i></a>
 
-																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-bar-chart"></i></button>
+																	<button class="btn btn-success" ><i class="fa fa-bar-chart"></i></button>
 
-																	<button class="btn btn-success " onclick="delete_item ()" ><i class="fa fa-archive"></i></button>
+																	<button class="btn btn-success" ><i class="fa fa-archive"></i></button>
 
 																</div>
 															</td>
