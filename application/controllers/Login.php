@@ -13,9 +13,7 @@ class Login extends CI_Controller {
 
     $result = $this->My_common->login($this->input->post('username'),$this->input->post('password'));
 
-
 		if($result){
-
 
 			foreach($result as $row) {
 

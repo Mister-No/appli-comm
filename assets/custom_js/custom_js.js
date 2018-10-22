@@ -74,9 +74,7 @@ function add_cat(id) {
 
 function check_exist(urlCheck, urlRedirect, data) {
 
-		base_url = 'http://localhost/appli-comm/'+ urlCheck;
-
-		$.post(base_url, data, function(data) {
+		$.post(urlCheck, data, function(data) {
 
 			if (data == 1) {
 
@@ -115,7 +113,7 @@ function check_exist(urlCheck, urlRedirect, data) {
 
 			} else {
 
-				window.location.href = 'http://localhost/appli-comm/'+ urlRedirect;
+				window.location.href = urlRedirect;
 
 			}
 

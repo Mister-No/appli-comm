@@ -19,7 +19,7 @@ function login($username,$password){
 
   $password = urlencode($password);
 
-  $password = sha1($password);
+  //$password = sha1($password);
 
   $this->db->select();
   $this->db->from('users');

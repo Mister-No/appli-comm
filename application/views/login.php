@@ -116,6 +116,8 @@
   <script src=<?=base_url();?>"pages/js/pages.min.js"></script>
   <script>
 
+  base_url = '<?=base_url();?>';
+
   $(function()
   {
     $('#form').validate()
@@ -126,13 +128,13 @@
     e.preventDefault();
 
     data = $(this).serialize();
-    urlCheck = 'login/verifier.html';
-    urlRedirect = 'dashboard.html';
+    urlCheck = base_url+'login/verifier.html';
+    urlRedirect = base_url+'dashboard.html';
 
     check_exist(urlCheck, urlRedirect, data);
 
   });
-  
+
   </script>
   </body>
 </html>
