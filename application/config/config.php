@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/appli-comm/';
+$config['base_url'] = 'http://app.comm/';
 
 /*
 |--------------------------------------------------------------------------
