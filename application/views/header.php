@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type">
 <meta charset="utf-8"/>
-<title>Pages - Admin Dashboard UI Kit - Blank Page</title>
+<title>App comm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-touch-fullscreen" content="yes">
@@ -65,7 +65,7 @@
     <div class=" pull-left sm-table hidden-xs hidden-sm">
       <div class="header-inner">
         <div class="brand inline">
-          <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+          <img src="<?=base_url();?>assets/img/logo.png" alt="logo" data-src="<?=base_url();?>assets/img/logo.png" data-src-retina="<?=base_url();?>assets/img/logo_2x.png" width="78" height="22">
         </div>
         <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a> </div>
     </div>
@@ -79,7 +79,7 @@
         <div class="dropdown pull-right">
           <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="thumbnail-wrapper d32 circular inline m-t-5">
-              <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+              <img src="<?=base_url();?>assets/img/profiles/avatar.jpg" alt="" data-src="<?=base_url();?>assets/img/profiles/avatar.jpg" data-src-retina="<?=base_url();?>assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
             </span>
           </button>
           <ul class="dropdown-menu profile-dropdown" role="menu">
@@ -124,6 +124,9 @@
               <ul class="mega">
                 <div class="container">
                   <div class="row">
+                    <div class="col-md-3">
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>builder/campagne_creer.html">Créer une campagne</a></div>
+                    </div>
                     <div class="col-md-3 ">
                       <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes.html">Voir les campagnes</a></div>
                       <ul class="sub-menu">
