@@ -19,9 +19,21 @@
   border: 1px solid rgba(230, 230, 230, 0.7);
 }
 
+.fullHeight {
+  height: auto;
+  min-height: 100%;
+}
+
 .newsBuilder {
-  min-height: 400px;
+  min-height: 200px;
   margin-bottom: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .newsBuilderBlock {
@@ -33,20 +45,122 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
 .addBlock {
   width: 80px;
   height: 80px;
+  opacity: 0.6;
   background-color: rgba(230, 230, 230, 0.7);
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  transition: .4s;
 }
 
 .addIcon {
   font-size: 40px;
+}
 
+.addBlock:hover {
+  opacity: 1;
+}
+
+.blockSelect {
+  background-color: rgba(0, 0, 0, 0.94);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.closeBlockSelect{
+  height: 60px;
+  text-align: right;
+  margin-bottom: 40px;
+}
+
+.closeIcon {
+  font-size: 28px;
+  color: #fff;
+  margin: 20px 20px;
+  cursor: pointer;
+}
+
+.newsBlocks {
+  min-height: 20px;
+}
+
+.choosenBlockContainer {
+  visibility: hidden;
+  min-height: 72vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.newBlock {
+  height: 80px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.newBlock i {
+  font-size: 34px;
+  margin: 8px 4px;
+}
+
+.titleBlock i {
+  border-bottom: 2px solid #626262;
+}
+
+.choosenBlock {
+  min-height: 100px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.choosenBlock label {
+  height: 40px;
+  line-height: 46px;
+  text-align: center;
+}
+
+.spacerButton {
+  width: 72px;
+  height: 28px;
+  margin: 12px 0px 8px 0px;
+}
+
+.linkButton {
+  width: 60px;
+  height: 32px;
+  margin: 12px 0px 4px 0px;
+}
+
+.builderTextarea {
+  width: 100%;
+  min-height: 80px;
+  margin: 10px auto;
+  resize: none;
+  border: none;
+}
+
+.builderInput {
+  width: 100%;
+  height: 40px;
+  margin: 10px auto 20px auto;
+  border: none;
+  border-bottom: 1px solid #626262;
+}
+
+.builderInputFile {
+  width: 100%;
+  height: 40px;
+  margin: 0px auto 20px auto;
 }
