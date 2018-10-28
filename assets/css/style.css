@@ -90,7 +90,6 @@
 .closeBlockSelect{
   height: 60px;
   text-align: right;
-  margin-bottom: 40px;
 }
 
 .closeIcon {
@@ -102,19 +101,20 @@
 
 .newsBlocks {
   min-height: 20px;
+
 }
 
 .choosenBlockContainer {
-  visibility: hidden;
-  display: flex;
+  display: none;
+  height: 80vh;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 
 .newBlock {
-  height: 80px;
-  margin-bottom: 20px;
+  height: 160px;
+  margin: 40px 60px 40px 60px;
   background-color: #fff;
   text-align: center;
   cursor: pointer;
@@ -142,6 +142,10 @@
   height: 40px;
   line-height: 46px;
   text-align: center;
+}
+
+.choosenBlockFooter .btn-complete {
+  margin-right: 20px;
 }
 
 .spacerButton {
