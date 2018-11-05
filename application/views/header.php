@@ -126,9 +126,7 @@
                   <div class="row">
                     <div class="col-md-3">
                       <div class="sub-menu-heading bold">
-                        <form class="" action="<?=base_url();?>builder/add.html" method="post">
-                          <input class="headerSubmit" type="submit" name="creer" value="Créer une campagne">
-                        </form>
+                        <a href="<?=base_url();?>builder/index.html">Créer une campagne</a>
                       </div>
                     </div>
                     <div class="col-md-3 ">

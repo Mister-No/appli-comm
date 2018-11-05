@@ -56,14 +56,17 @@
 
 	<script type="text/javascript">
 
+		var id_block;
 		var blockPlace;
 
 		$('.newsBuilderBlock').hover(function(){
 
-			blockPlace = $(this).children('input').val();
+			//blockPlace = $(this).children('input').val();
+			id = $(this).children('input[name="id"]').val();
+			blockPlace = $(this).children('input[name="ordre"]').val();
 
 			$('.newsBuilderAddBlock').remove();
-			$('.deleteBlock').remove();
+			$('.optionsBlock').remove();
 
 			block_before = '<div id="before" class="newsBuilderAddBlock">'+
 											'<div class="addBlock center-block">'+
@@ -80,13 +83,19 @@
 			$(this).before(block_before);
 			$(this).after(block_after);
 
-			delete_block	=	'<div class="deleteBlock">'+
+			edit_block	=	'<div class="optionsBlock">'+
+											'<button type="button" class="deleteBlock">'+
 												'<i class="deleteIcon pg-close"></i>'+
-											'</div>';
+											'</button>'+
+											'<button type="button" class="editBlock">'+
+												'<i class="editIcon fa fa-magic"></i>'+
+											'</button>'+
+										'</div>';
 
-			$(this).append(delete_block);
+			$(this).append(edit_block);
 
 			addblock();
+			//editblock();
 			deleteBlock();
 
 		});
@@ -103,14 +112,12 @@
 			addBlockPlace = $(this).attr('id');
 
 			if (addBlockPlace == 'after') {
-				blockPlace = Number(blockPlace)+1;
+				newBlockPlace = Number(blockPlace)+1;
 			} else if (addBlockPlace == 'before') {
-				blockPlace = Number(blockPlace)-1;
+				newBlockPlace = Number(blockPlace);
 			} else {
 
 			}
-
-			console.log(blockPlace);
 
 			chooseBlock = '	<div class="page-container blockSelect fullHeight">'+
 												'<div class="main-content">'+
@@ -172,7 +179,7 @@
 														'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 															'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 															'</div>'+
-															'<input type="hidden" name="ordre" value="'+blockPlace+'">'+
+															'<input type="hidden" name="ordre" value="'+newBlockPlace+'">'+
 															'<div class="col-xs-10 choosenBlockFooter panel-footer center-block text-right">'+
 																'<button id="return" type="button" class="btn btn-complete">RETOUR</button>'+
 																'<button type="submit" class="btn btn-success">AJOUTER</button>'+
@@ -287,9 +294,23 @@
 
 	function deleteBlock() {
 
-		$('.deleteBlock').click( function() {
-			$(this).parent().remove();
-			$('.newsBuilderAddBlock').remove();
+		$('.deleteBlock').unbind().click( function() {
+
+			block = $(this).parent().parent();
+			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
+			id_block_content = $(this).parent().parent().children('input[name="id_block_content"]').val();
+			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+
+			$.post('<?=base_url();?>builder/delete/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
+
+				if (data=='ok') {
+					block.remove();
+					$('.newsBuilderAddBlock').remove();
+					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+				}
+
+			});
+
 		});
 
 	}
