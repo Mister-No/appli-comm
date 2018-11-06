@@ -206,9 +206,6 @@
 				$('.choosenBlockContainer').css('display', 'flex');
 				$('.choosenBlockContent').remove();
 
-				/**block = '<textarea class="builderTextarea choosenBlockContent" name="text" placeholder="Votre texte"></textarea>'+
-				'<input type="hidden" name="id_block" value="2">';**/
-
 				block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="2"></div>';
 
 				$('.choosenBlock').css('min-height', '200px');

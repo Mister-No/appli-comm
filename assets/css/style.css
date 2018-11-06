@@ -222,23 +222,6 @@
   border: none;
 }
 
-/** WYSIWYG **/
-
-/**.note-editable {
-  min-height: 140px;
-}
-
-.note-style,
-.note-fontname,
-.note-height,
-.note-para,
-.note-table,
-.note-insert,
-.note-view,
-.note-help {
-  display: none;
-}**/
-
 .builderInput {
   width: 100%;
   height: 40px;
