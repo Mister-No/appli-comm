@@ -49,7 +49,7 @@
 						</div>
 						<input type="hidden" name="ordre" value="4">
 					</div>-->
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -84,7 +84,7 @@
 			$(this).after(block_after);
 
 			edit_block	=	'<div class="optionsBlock">'+
-											'<button type="button" class="deleteBlock">'+
+											'<button type="submit" class="deleteBlock">'+
 												'<i class="deleteIcon pg-close"></i>'+
 											'</button>'+
 											'<button type="button" class="editBlock">'+
@@ -206,12 +206,23 @@
 				$('.choosenBlockContainer').css('display', 'flex');
 				$('.choosenBlockContent').remove();
 
-				block = '<textarea class="builderTextarea choosenBlockContent" name="text" placeholder="Votre texte"></textarea>'+
-				'<input type="hidden" name="id_block" value="2">';
+				/**block = '<textarea class="builderTextarea choosenBlockContent" name="text" placeholder="Votre texte"></textarea>'+
+				'<input type="hidden" name="id_block" value="2">';**/
 
-				$('.choosenBlock').css('min-height', '100px');
+				block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="2"></div>';
+
+				$('.choosenBlock').css('min-height', '200px');
 				$('.choosenBlock').append(block);
-
+				$('#summernote').summernote({
+				  toolbar: [
+				    // [groupName, [list of button]]
+				    ['style', ['bold', 'italic', 'underline', 'clear']],
+				    ['font', ['strikethrough', 'superscript', 'subscript']],
+				    ['fontsize', ['fontsize']],
+				    ['color', ['color']],
+				  ],
+					height: 140,
+				});
 			});
 
 			$('.titleBlock').click( function() {
@@ -285,6 +296,31 @@
 
 				$('.choosenBlock').css('min-height', '100px');
 				$('.choosenBlock').append(block);
+
+			});
+
+		});
+
+	}
+
+	function editBlock() {
+
+		$('.editBlock').unbind().click( function() {
+
+			block = $(this).parent().parent();
+			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
+			id_block_html = $(this).parent().parent().children('input[name="id_block"]').val();
+			id_block_content = $(this).parent().parent().children('input[name="id_block_content"]').val();
+			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+
+
+
+			$.post('<?=base_url();?>builder/update/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
+
+				if (data=='ok') {
+
+					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+				}
 
 			});
 

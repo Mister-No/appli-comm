@@ -1,3 +1,13 @@
+	<footer class="main-footer sticky footer-type-1">
+		<div class="footer-inner">
+			<div class="footer-text">
+				&copy; date
+				<strong>UNPG</strong>
+				by <a href="http://coxdigital.fr" target="_blank">CoxDigital</a>
+			</div>
+		</div>
+	</footer>
+</div>
 <!-- BEGIN VENDOR JS -->
   <script src="<?=base_url();?>assets/plugins/pace/pace.min.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/plugins/modernizr.custom.js" type="text/javascript"></script>
@@ -19,6 +29,7 @@
   <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/lodash.min.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/summernote/js/summernote.min.js" type="text/javascript"></script>
   <!-- END VENDOR JS -->
   <!-- BEGIN CORE TEMPLATE JS -->
   <script src="<?=base_url();?>pages/js/pages.min.js"></script>
@@ -28,17 +39,6 @@
   <script src="<?=base_url();?>assets/js/scripts.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/js/scripts.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS -->
-
-	<footer class="main-footer sticky footer-type-1">
-		<div class="footer-inner">
-			<div class="footer-text">
-				&copy; date
-				<strong>UNPG</strong>
-				by <a href="http://coxdigital.fr" target="_blank">CoxDigital</a>
-			</div>
-		</div>
-	</footer>
-</div>
 
 </body>
 </html>
