@@ -169,7 +169,7 @@
 }
 
 .choosenBlockContainer {
-  display: none;
+  display: flex;
   height: 80vh;
   flex-flow: column nowrap;
   justify-content: center;
