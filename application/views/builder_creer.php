@@ -68,6 +68,8 @@
 			$('.newsBuilderAddBlock').remove();
 			$('.optionsBlock').remove();
 
+			// BLOCK D'AJOUT
+
 			block_before = '<div id="before" class="newsBuilderAddBlock">'+
 											'<div class="addBlock center-block">'+
 												'<i class="addIcon pg-plus"></i>'+
@@ -83,18 +85,40 @@
 			$(this).before(block_before);
 			$(this).after(block_after);
 
+			// BLOCK OPTIONS
+
+			if (blockPlace > 1) {
+				upblock = '<button type="button" class="upBlock">'+
+										'<i class="upIcon fa fa-arrow-up"></i>'+
+									'</button>';
+			} else {
+				upblock = '';
+			}
+
+			if (blockPlace < $('.newsBuilderBlock').length) {
+				downblock = '<button type="button" class="downBlock">'+
+											'<i class="downIcon fa fa-arrow-down"></i>'+
+										'</button>';
+			} else {
+				downblock = '';
+			}
+
 			edit_block	=	'<div class="optionsBlock">'+
+											upblock+
 											'<button type="submit" class="deleteBlock">'+
 												'<i class="deleteIcon pg-close"></i>'+
 											'</button>'+
 											'<button type="button" class="editBlock">'+
-												'<i class="editIcon fa fa-magic"></i>'+
-											'</button>'+
+												'<i class="editIcon fa fa-edit"></i>'+
+											'<button type="button"'+
+											downblock+
 										'</div>';
 
 			$(this).append(edit_block);
 
-			addblock();
+			chooseblock();
+			upMoveBlock();
+			downMoveBlock();
 			//editblock();
 			deleteBlock();
 
@@ -105,19 +129,9 @@
 			$('.newsBuilderAddBlock').remove();
 		});**/
 
-	function addblock() {
+	function chooseblock() {
 
 		$('.newsBuilderAddBlock').click( function() {
-
-			addBlockPlace = $(this).attr('id');
-
-			if (addBlockPlace == 'after') {
-				newBlockPlace = Number(blockPlace)+1;
-			} else if (addBlockPlace == 'before') {
-				newBlockPlace = Number(blockPlace);
-			} else {
-
-			}
 
 			chooseBlock = '	<div class="page-container blockSelect fullHeight">'+
 												'<div class="main-content">'+
@@ -175,6 +189,40 @@
 																'<img class="linkButton" src="/assets/img/link_button_icon.png" alt="">'+
 																'<p>Bouton lien</p>'+
 															'</div>'+
+														'</div>'+
+													'</div>'+
+												'</div>'+
+											'</div>';
+
+			$('.pace-done').append(chooseBlock);
+
+			$('.closeIcon').click( function() {
+				$('.blockSelect').remove();
+			});
+
+		});
+
+	}
+
+	function addblock() {
+
+		$('.newBlock').click( function() {
+
+			addBlockPlace = $(this).attr('id');
+
+			if (addBlockPlace == 'after') {
+				newBlockPlace = Number(blockPlace)+1;
+			} else if (addBlockPlace == 'before') {
+				newBlockPlace = Number(blockPlace);
+			} else {
+
+			}
+
+			chooseBlock = '	<div class="page-container blockSelect fullHeight">'+
+												'<div class="main-content">'+
+													'<div class="row">'+
+														'<div class="closeBlockSelect col-lg-12">'+
+															'<i class="closeIcon pg-close"></i>'+
 														'</div>'+
 														'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 															'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
@@ -316,6 +364,44 @@
 
 				if (data=='ok') {
 
+					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+				}
+
+			});
+
+		});
+
+	}
+
+	function upMoveBlock() {
+
+		$('.upBlock').unbind().click( function() {
+
+			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
+			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+
+			$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+
+				if (data=='ok') {
+					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+				}
+
+			});
+
+		});
+
+	}
+
+	function downMoveBlock() {
+
+		$('.downBlock').unbind().click( function() {
+
+			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
+			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+
+			$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+
+				if (data=='ok') {
 					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
 				}
 

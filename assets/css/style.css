@@ -85,6 +85,8 @@
 
 .addBlock,
 .editBlock,
+.upBlock,
+.downBlock,
 .deleteBlock {
   width: 40px;
   height: 40px;
@@ -108,12 +110,19 @@
   background-color: #10cfbd;
 }
 
-.deleteIcon {
-  font-size: 28px;
+.upBlock,
+.downBlock {
+  background-color: #1E9CDC;
+}
+
+.upIcon,
+.downIcon,
+.editIcon {
+  font-size: 20px;
   color: #fff;
 }
 
-.editIcon {
+.deleteIcon {
   font-size: 28px;
   color: #fff;
 }
@@ -128,7 +137,9 @@
 
 .newsBuilderAddBlock:hover .addBlock,
 .newsBuilderBlock:hover .deleteBlock,
-.newsBuilderBlock:hover .editBlock {
+.newsBuilderBlock:hover .editBlock,
+.newsBuilderBlock:hover .upBlock,
+.newsBuilderBlock:hover .downBlock {
   opacity: 1;
 }
 

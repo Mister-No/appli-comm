@@ -23,18 +23,13 @@ class My_builder extends CI_Model {
 	}
 
 	/********************************************************/
-	/*         SELECT NEWSLETTER BLOCK CONTENT              */
+	/*         SELECT NEWSLETTER BLOCK BY ID                  */
 	/********************************************************/
-	function get_newsletter_block_content($id_newsletter, $id_group){
+	function get_newsletter_id_block($id_newsletter){
 
 		$this->db->select();
-		$this->db->from('newsletter');
-		$this->db->join('newsletter_has_block', 'newsletter.id = newsletter_has_block.id_newsletter', 'left');
-		$this->db->join('builder_block_html', 'newsletter_has_block.id_block = builder_block_html.id', 'left');
-		$this->db->join('block_has_content', 'builder_block.id = block_has_content.id_block', 'left');
-		$this->db->join('builder_block_content', 'block_has_content.id_block = builder_block_content.id', 'left');
-		$this->db->where("newsletter.id", $id_newsletter);
-		$this->db->where("newsletter.id_group", $id_group);
+		$this->db->from('newsletter_has_block');
+		$this->db->where("newsletter_has_block.id_newsletter", $id_newsletter);
 
 		$query = $this->db->get();
 
@@ -42,13 +37,15 @@ class My_builder extends CI_Model {
 	}
 
 	/********************************************************/
-	/*         SELECT NEWSLETTER BLOCK ID                  */
+	/*         SELECT NEWSLETTER BLOCK BY ORDRE                  */
 	/********************************************************/
-	function get_newsletter_id_block($id_newsletter){
+	function get_newsletter_block_by_ordre($id_newsletter, $ordre) {
 
 		$this->db->select();
 		$this->db->from('newsletter_has_block');
 		$this->db->where("newsletter_has_block.id_newsletter", $id_newsletter);
+		$this->db->where("newsletter_has_block.ordre", $ordre);
+		$this->db->limit(1);
 
 		$query = $this->db->get();
 

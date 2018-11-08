@@ -207,6 +207,8 @@ class Builder extends CI_Controller {
 
 			$id_block_content = $this->My_common->insert_data('builder_block_content', $data_content);
 
+      // Ajout du block et contenu
+
 			$config['upload_path'] = 'mediatheque/';
 			$config['allowed_types'] = 'jpg|jpeg|gif|png';
 			$this->load->library('upload', $config);
@@ -232,6 +234,78 @@ class Builder extends CI_Controller {
       $this->My_common->insert_data('newsletter_has_block', $data);
 
       redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function block_move_up()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_builder');
+
+      $data_ordre = array();
+
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+      $id_block = $this->input->post ('id_block');
+      $ordre = $this->input->post ('ordre');
+
+      // Inversion de l'ordre des blocks
+
+      $result = $this->My_builder->get_newsletter_block_by_ordre($id_newsletter, $ordre-1);
+
+      $data_ordre = array(
+        'ordre' => $result[0]->ordre+1,
+      );
+
+  		$this->My_common->update_data('newsletter_has_block', 'id', $result[0]->id, $data_ordre);
+
+      $data_ordre = array(
+        'ordre' => $ordre-1,
+      );
+
+      $this->My_common->update_data('newsletter_has_block', 'id', $id_block, $data_ordre);
+
+      echo 'ok';
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function block_move_down()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_builder');
+
+      $data_ordre = array();
+
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+      $id_block = $this->input->post ('id_block');
+      $ordre = $this->input->post ('ordre');
+
+      // Inversion de l'ordre des blocks
+
+      $result = $this->My_builder->get_newsletter_block_by_ordre($id_newsletter, $ordre+1);
+
+      $data_ordre = array(
+        'ordre' => $result[0]->ordre-1,
+      );
+
+  		$this->My_common->update_data('newsletter_has_block', 'id', $result[0]->id, $data_ordre);
+
+      $data_ordre = array(
+        'ordre' => $ordre+1,
+      );
+
+      $this->My_common->update_data('newsletter_has_block', 'id', $id_block, $data_ordre);
+
+      echo 'ok';
 
     } else {
         $this->load->view('login');
