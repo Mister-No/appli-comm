@@ -86,18 +86,6 @@
 			$(this).before(block_before);
 			$(this).after(block_after);
 
-			// PLACE DU BLOCK
-
-			addBlockPlace = $(this).attr('id');
-
-			if (addBlockPlace == 'after') {
-				newBlockPlace = Number(blockPlace)+1;
-			} else if (addBlockPlace == 'before') {
-				newBlockPlace = Number(blockPlace);
-			} else {
-
-			}
-
 			// BLOCK OPTIONS
 
 			if (blockPlace > 1) {
@@ -128,6 +116,22 @@
 
 			$(this).append(edit_block);
 
+			// CALCUL DE LA PLACE DU BLOCK QUI VA ETRE AJOUTÉ
+
+			$('.newsBuilderAddBlock').hover( function() {
+
+				addBlockPlace = $(this).attr('id');
+
+				if (addBlockPlace == 'after') {
+					newBlockPlace = Number(blockPlace)+1;
+				} else if (addBlockPlace == 'before') {
+					newBlockPlace = Number(blockPlace);
+				} else {
+
+				}
+
+			});
+
 			chooseblock();
 			upMoveBlock();
 			downMoveBlock();
@@ -144,7 +148,7 @@
 
 		$('.newsBuilderAddBlock').click( function() {
 
-			$('.blockSelect').hide();
+			$('.blockSelect').remove();
 
 			chooseBlock = '<div class="page-container blockSelect fullHeight">'+
 											'<div class="main-content">'+
@@ -153,55 +157,7 @@
 														'<i class="closeIcon pg-close"></i>'+
 													'</div>'+
 													'<div class="col-lg-8 newsBlocks clearFloat center-block">'+
-														'<div class="col-xs-2 newBlock imgBlock center-block" data-blocktype="5">'+
-															'<i class="fa fa-image"></i>'+
-															'<p>Image</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock imgTextBlock">'+
-															'<i class="fa fa-image"></i>'+
-															'<i class="pg-grid"></i>'+
-															'<p>Image + Texte</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock titleBlock">'+
-															'<i class="fa fa-font"></i>'+
-															'<p>Titre</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock textBlock" data-blocktype="2">'+
-															'<i class="fa fa-font"></i>'+
-															'<p>Texte</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock spacerBlock">'+
-															'<img class="spacerButton" src="/assets/img/spacer_icon.png" alt="">'+
-															'<p>Marge</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock buttonBlock">'+
-															'<img class="linkButton" src="/assets/img/link_button_icon.png" alt="">'+
-															'<p>Bouton lien</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock spacerBlock">'+
-															'<img class="spacerButton" src="/assets/img/spacer_icon.png" alt="">'+
-															'<p>Marge</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock buttonBlock">'+
-															'<img class="linkButton" src="/assets/img/link_button_icon.png" alt="">'+
-															'<p>Bouton lien</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock spacerBlock">'+
-															'<img class="spacerButton" src="/assets/img/spacer_icon.png" alt="">'+
-															'<p>Marge</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock buttonBlock">'+
-															'<img class="linkButton" src="/assets/img/link_button_icon.png" alt="">'+
-															'<p>Bouton lien</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock spacerBlock">'+
-															'<img class="spacerButton" src="/assets/img/spacer_icon.png" alt="">'+
-															'<p>Marge</p>'+
-														'</div>'+
-														'<div class="col-xs-2 newBlock buttonBlock">'+
-															'<img class="linkButton" src="/assets/img/link_button_icon.png" alt="">'+
-															'<p>Bouton lien</p>'+
-														'</div>'+
+														'<?=$builder_block_html?>'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
@@ -222,17 +178,8 @@
 	function addblock() {
 
 		$('.newBlock').click( function() {
-console.log(newBlockPlace);
-			$('.blockSelect').hide();
-			/**addBlockPlace = $(this).attr('id');
 
-			if (addBlockPlace == 'after') {
-				newBlockPlace = Number(blockPlace)+1;
-			} else if (addBlockPlace == 'before') {
-				newBlockPlace = Number(blockPlace);
-			} else {
-
-			}**/
+			$('.blockSelect').remove();
 
 			addBlock = '<div class="page-container blockSelect fullHeight">'+
 										'<div class="main-content">'+
@@ -256,8 +203,7 @@ console.log(newBlockPlace);
 			$('.pace-done').append(addBlock);
 
 			$('#return').click( function() {
-				//$('.choosenBlockContainer').css('display', 'none');
-				chooseblock();
+				$('.newsBuilderAddBlock').click();
 			});
 
 			$('.closeIcon').click( function() {
@@ -267,7 +213,16 @@ console.log(newBlockPlace);
 			blocktype = $(this).data('blocktype');
 
 			if (blocktype == 1) {
-				// BLOCK HEADER
+
+				// BLOCK HEADER LOGO
+
+				block = '<label class="choosenBlockContent">Votre image : </label>'+
+				'<input type="file" class="builderInputFile choosenBlockContent" name="img">'+
+				'<input type="hidden" name="id_block" value="1">';
+
+				$('.choosenBlock').css('min-height', '40px');
+				$('.choosenBlock').append(block);
+
 			} else if (blocktype == 2) {
 
 				// BLOCK TEXTE
@@ -282,14 +237,31 @@ console.log(newBlockPlace);
 						['font', ['strikethrough', 'superscript', 'subscript']],
 						['fontsize', ['fontsize']],
 						['color', ['color']],
+						['para', ['paragraph']],
 					],
 					height: 140,
 				});
 
 			} else if (blocktype == 3) {
-				// BLOCK FOOTER
+
+				// BLOCK FOOTER LOGO + ADRESSE
+				block = '<label class="choosenBlockContent">Votre image : </label>'+
+				'<input type="file" class="builderInputFile choosenBlockContent" name="img">'+
+				'<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Votre adresse">'+
+				'<input type="hidden" name="id_block" value="3">';
+
+				$('.choosenBlock').css('min-height', '40px');
+				$('.choosenBlock').append(block);
+
 			} else if (blocktype == 4) {
+
 				// BLOCK DESABONNEMENT
+				block = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Texte du lien">'+
+				'<input type="hidden" name="id_block" value="4">';
+
+				$('.choosenBlock').css('min-height', '40px');
+				$('.choosenBlock').append(block);
+
 			} else if (blocktype == 5) {
 
 				// BLOCK IMAGE
@@ -300,30 +272,51 @@ console.log(newBlockPlace);
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block);
 
-			} else if (blocktype == 6) {
+			}  else if (blocktype == 6) {
+
+				// BLOCK IMAGE + TEXTE
+				block = '<label class="choosenBlockContent">Votre image : </label>'+
+				'<input type="file" class="builderInputFile choosenBlockContent" name="img">'+
+				'<input type="hidden" name="id_block" value="5"><div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="6"></div>';
+
+				$('.choosenBlock').css('min-height', '200px');
+				$('.choosenBlock').append(block);
+				$('#summernote').summernote({
+					toolbar: [
+						// [groupName, [list of button]]
+						['style', ['bold', 'italic', 'underline', 'clear']],
+						['font', ['strikethrough', 'superscript', 'subscript']],
+						['fontsize', ['fontsize']],
+						['color', ['color']],
+						['para', ['paragraph']],
+					],
+					height: 140,
+				});
+
+			} else if (blocktype == 7) {
 
 				// BLOCK TITRE
 				block = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Votre titre">'+
-				'<input type="hidden" name="id_block" value="2">';
+				'<input type="hidden" name="id_block" value="7">';
 
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block);
 
-			} else if (blocktype == 7) {
+			} else if (blocktype == 8) {
 
 				// BLOCK BOUTTON
 				block = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Titre du bouton">'+
 				'<input type="text" class="builderInput choosenBlockContent" name="text1" placeholder="Votre lien">'+
-				'<input type="hidden" name="id_block" value="3">';
+				'<input type="hidden" name="id_block" value="8">';
 
 				$('.choosenBlock').css('min-height', '100px');
 				$('.choosenBlock').append(block);
 
-			} else if (blocktype == 8) {
+			} else if (blocktype == 9) {
 
 				// BLOCK ESPACE
 				block = '<label class="choosenBlockContent">Ajouter un espace entre 2 blocs</label>'+
-				'<input type="hidden" name="id_block" value="4">';
+				'<input type="hidden" name="id_block" value="9">';
 
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block);

@@ -6,8 +6,6 @@ class Builder extends CI_Controller {
   {
     if ($_SESSION["is_connect"] == TRUE){
 
-
-
       $this->load->view('header');
       $this->load->view('builder_infos');
       $this->load->view('footer');
@@ -26,9 +24,15 @@ class Builder extends CI_Controller {
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
       $data = array();
+      $data_blocks = array();
       $replace_html = '';
+      $builder_blocks = '';
+      $theme = 0;
+
+      // NEWSLETTER
 
       $result_newsletter = $this->My_builder->get_newsletter($id_newsletter, $id_group);
+
       //var_dump($this->db->last_query());
       //var_dump($result_newsletter);
       foreach ($result_newsletter as $row_newsletter) {
@@ -36,11 +40,11 @@ class Builder extends CI_Controller {
         $id_block = intval($row_newsletter->id_block);
         $id_block_html = intval($row_newsletter->id_block_html);
         $id_block_content = intval($row_newsletter->id_block_content);
-        $img_link = $row_newsletter->builder_block_img;
-        $text = $row_newsletter->builder_block_text;
-        $text1 = $row_newsletter->builder_block_text1;
-        $html = $row_newsletter->builder_block_html;
-        $ordre = $row_newsletter->builder_block_ordre;
+        $img_link = $row_newsletter->newsletter_block_img;
+        $text = $row_newsletter->newsletter_block_text;
+        $text1 = $row_newsletter->newsletter_block_text1;
+        $html = $row_newsletter->newsletter_block_html;
+        $ordre = $row_newsletter->newsletter_block_ordre;
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -65,9 +69,24 @@ class Builder extends CI_Controller {
         );
 
       }
-      //print_r($data);
+
+      // BUILDER BLOCKS
+
+      $result_builder_block = $this->My_builder->get_builder_block($theme);
+
+      foreach ($result_builder_block as $row_builder_block) {
+
+        $builder_blocks .= $row_builder_block->builder_block_html;
+
+        $data_blocks = array(
+          'builder_block_html' => $builder_blocks,
+        );
+
+      }
+
+      //print_r($data_blocks);
       $this->load->view('header', $data);
-      $this->load->view('builder_creer');
+      $this->load->view('builder_creer', $data_blocks);
       $this->load->view('footer');
 
 
@@ -118,7 +137,7 @@ class Builder extends CI_Controller {
               'id_block_html' => $i,
       				'img' => 'assets/img/logo.png',
       			);
-      			$id_block_content = $this->My_common->insert_data('builder_block_content', $data_content);
+      			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
 
           case 2:
@@ -126,7 +145,7 @@ class Builder extends CI_Controller {
               'id_block_html' => $i,
               'text' => 'Votre texte.',
             );
-            $id_block_content = $this->My_common->insert_data('builder_block_content', $data_content);
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
 
           case 3:
@@ -135,7 +154,7 @@ class Builder extends CI_Controller {
               'text' => 'PAGES<br>1 rue test<br>11111 TEST<br>Tel: 01 01 01 01 01',
               'img' => 'assets/img/logo.png',
             );
-            $id_block_content = $this->My_common->insert_data('builder_block_content', $data_content);
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
 
           case 4:
@@ -143,7 +162,7 @@ class Builder extends CI_Controller {
               'id_block_html' => $i,
               'text' => 'Se desinscrire de cette newsletter',
             );
-            $id_block_content = $this->My_common->insert_data('builder_block_content', $data_content);
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
 
           default:
@@ -205,7 +224,7 @@ class Builder extends CI_Controller {
 				'text1'         => $this->input->post ('text1'),
 			);
 
-			$id_block_content = $this->My_common->insert_data('builder_block_content', $data_content);
+			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
       // Ajout du block et contenu
 
@@ -221,7 +240,7 @@ class Builder extends CI_Controller {
 					"img" => $img,
 				);
 
-				$this->My_common->update_data('builder_block_content', 'id', $id_content, $data_content);
+				$this->My_common->update_data('newsletter_block_content', 'id', $id_content, $data_content);
 			}
 
       $data = array(
@@ -344,7 +363,7 @@ class Builder extends CI_Controller {
 
       // Delete contenu du block
 
-      $this->My_common->delete_data('builder_block_content', $id_block_content);
+      $this->My_common->delete_data('newsletter_block_content', $id_block_content);
       $this->My_common->delete_data('newsletter_has_block', $id_block);
 
       echo 'ok';
