@@ -255,7 +255,48 @@
 
 /** BLOCK NEWSLETTER **/
 
+/** TEXTE **/
+
 .newsBuilderBlock.textBlock div {
   width: 100%;
   text-align: left;
+}
+
+/** BOUTON LIEN **/
+
+.buttonLinkBlock {
+  min-width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #000000;
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 20px;
+}
+
+/** IMAGE + TEXTE **/
+
+.newsBuilderBlock.imgTextBlock img {
+  width: 50%;
+}
+
+.newsBuilderBlock.imgTextBlock .imgText {
+  width: 50%;
+}
+
+/** TITRE **/
+
+.newsBuilderBlock.tittleBlock h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/** ESPACE **/
+
+.newsBuilderBlock.spacerBlock {
+  min-height: 40px;
 }

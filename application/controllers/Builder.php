@@ -53,7 +53,7 @@ class Builder extends CI_Controller {
           '{{id_block_content}}' => $id_block_content,
           '{{img}}'              => $img_link,
           '{{text}}'             => $text,
-          '{{text1}}'            => $text,
+          '{{text1}}'            => $text1,
           '{{ordre}}'            => $ordre,
         );
 
@@ -160,7 +160,7 @@ class Builder extends CI_Controller {
           case 4:
             $data_content = array (
               'id_block_html' => $i,
-              'text' => 'Se desinscrire de cette newsletter',
+              'text' => 'Se desinscrire',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
@@ -240,7 +240,7 @@ class Builder extends CI_Controller {
 					"img" => $img,
 				);
 
-				$this->My_common->update_data('newsletter_block_content', 'id', $id_content, $data_content);
+				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
 			}
 
       $data = array(
@@ -253,6 +253,65 @@ class Builder extends CI_Controller {
       $this->My_common->insert_data('newsletter_has_block', $data);
 
       redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function get_block_content()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_builder');
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+      $data = array();
+      $data_blocks = array();
+      $replace_html = '';
+      $builder_blocks = '';
+      $theme = 0;
+
+      // NEWSLETTER
+
+      $result_newsletter = $this->My_builder->get_newsletter($id_newsletter, $id_group);
+
+      //var_dump($this->db->last_query());
+      //var_dump($result_newsletter);
+      foreach ($result_newsletter as $row_newsletter) {
+
+        $id_block = intval($row_newsletter->id_block);
+        $id_block_html = intval($row_newsletter->id_block_html);
+        $id_block_content = intval($row_newsletter->id_block_content);
+        $img_link = $row_newsletter->newsletter_block_img;
+        $text = $row_newsletter->newsletter_block_text;
+        $text1 = $row_newsletter->newsletter_block_text1;
+        $html = $row_newsletter->newsletter_block_html;
+        $ordre = $row_newsletter->newsletter_block_ordre;
+
+        $replace = array(
+          '{{base_url}}'         => base_url(),
+          '{{id_block}}'         => $id_block,
+          '{{id_block_html}}'    => $id_block_html,
+          '{{id_block_content}}' => $id_block_content,
+          '{{img}}'              => $img_link,
+          '{{text}}'             => $text,
+          '{{text1}}'            => $text1,
+          '{{ordre}}'            => $ordre,
+        );
+
+        $replace_html .= str_replace(
+          array_keys($replace),
+          array_values($replace),
+          $html
+        );
+
+        $data = array(
+          'id_newsletter' => $id_newsletter,
+          'newsletter'    => $replace_html,
+        );
+
+      }
 
     } else {
         $this->load->view('login');
