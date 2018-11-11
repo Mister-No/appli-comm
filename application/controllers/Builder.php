@@ -266,6 +266,9 @@ class Builder extends CI_Controller {
       $this->load->model('My_builder');
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
+      $id_block = $this->input->post ('id_block');
+      $id_block_html = $this->input->post ('id_block_html');
+      $id_block_content = $this->input->post ('id_block_content');
       $data = array();
       $data_blocks = array();
       $replace_html = '';
@@ -274,11 +277,11 @@ class Builder extends CI_Controller {
 
       // NEWSLETTER
 
-      $result_newsletter = $this->My_builder->get_newsletter($id_newsletter, $id_group);
+      $result_block = $this->My_builder->get_block_by_id($id_newsletter, $id_block, $id_block_content, $id_block_html, $id_group);
 
       //var_dump($this->db->last_query());
-      //var_dump($result_newsletter);
-      foreach ($result_newsletter as $row_newsletter) {
+      var_dump($result_block);
+      /**foreach ($result_block as $row_block) {
 
         $id_block = intval($row_newsletter->id_block);
         $id_block_html = intval($row_newsletter->id_block_html);
@@ -311,7 +314,7 @@ class Builder extends CI_Controller {
           'newsletter'    => $replace_html,
         );
 
-      }
+      }**/
 
     } else {
         $this->load->view('login');
