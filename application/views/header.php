@@ -31,6 +31,17 @@
 <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
 
+<script>
+UPLOADCARE_PUBLIC_KEY = '2b7ba941611069fbc4ca';
+UPLOADCARE_LOCALE = 'fr';
+UPLOADCARE_TABS = 'file gdrive gphotos dropbox';
+UPLOADCARE_IMAGES_ONLY = true;
+UPLOADCARE_PREVIEW_STEP = true;
+</script>
+
+
+<script charset="utf-8" src="//ucarecdn.com/libs/widget/3.6.1/uploadcare.full.min.js"></script>
+
 <!--[if lte IE 9]>
 <link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
 <![endif]-->

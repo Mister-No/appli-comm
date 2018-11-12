@@ -177,38 +177,6 @@
 
 		$('.newBlock').click( function() {
 
-			// BLOCK IMAGE
-			block_image = '<label class="choosenBlockContent">Votre image : </label>'+
-			'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-			'<input type="hidden" name="id_block" value="1">';
-
-			// BLOCK TEXTE
-			block_texte = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="2"></div>';
-
-			// BLOCK FOOTER LOGO + ADRESSE
-			block_footer = '<label class="choosenBlockContent">Votre image : </label>'+
-			'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-			'<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre adresse</textarea>'+
-			'<input type="hidden" name="id_block" value="3">';
-
-			// BLOCK BOUTON LIEN
-			block_bouton = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Titre du bouton" value="">'+
-			'<input type="text" class="builderInput choosenBlockContent" name="text1" placeholder="Votre lien" value="">'+
-			'<input type="hidden" name="id_block" value="4">';
-
-			// BLOCK IMAGE + TEXTE
-			block_image_texte = '<label class="choosenBlockContent">Votre image : </label>'+
-			'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-			'<input type="hidden" name="id_block" value="5"><div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="5"></div>';
-
-			// BLOCK TITRE
-			block_titre = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Votre titre" value="">'+
-			'<input type="hidden" name="id_block" value="6">';
-
-			// BLOCK ESPACE
-			block_espace = '<label class="choosenBlockContent">Ajouter un espace entre 2 blocs</label>'+
-			'<input type="hidden" name="id_block" value="7">';
-
 			$('.blockSelect').remove();
 
 			addBlock = '<div class="page-container blockSelect fullHeight">'+
@@ -244,10 +212,19 @@
 
 			if (blocktype == 1) {
 
+				// BLOCK IMAGE
+				block_image = '<label class="choosenBlockContent">Votre image : </label>'+
+				'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
+				'<input type="hidden" name="id_block" value="1">'+
+				'<input type="hidden" name="image" data-crop="" id="image_mag" />';
+
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block_image);
 
 			} else if (blocktype == 2) {
+
+				// BLOCK TEXTE
+				block_texte = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="2"></div>';
 
 				$('.choosenBlock').css('min-height', '200px');
 				$('.choosenBlock').append(block_texte);
@@ -265,6 +242,12 @@
 
 			} else if (blocktype == 3) {
 
+				// BLOCK FOOTER LOGO + ADRESSE
+				block_footer = '<label class="choosenBlockContent">Votre image : </label>'+
+				'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
+				'<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre adresse</textarea>'+
+				'<input type="hidden" name="id_block" value="3">';
+
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block_footer);
 				$('#summernote').summernote({
@@ -281,10 +264,22 @@
 
 			} else if (blocktype == 4) {
 
+				// BLOCK BOUTON LIEN
+				block_bouton = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Titre du bouton" value="">'+
+				'<input type="text" class="builderInput choosenBlockContent" name="text1" placeholder="Votre lien" value="">'+
+				'<input type="hidden" name="id_block" value="4">';
+
+
 				$('.choosenBlock').css('min-height', '100px');
 				$('.choosenBlock').append(block_bouton);
 
 			} else if (blocktype == 5) {
+
+				// BLOCK IMAGE + TEXTE
+				block_image_texte = '<label class="choosenBlockContent">Votre image : </label>'+
+				'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
+				'<input type="hidden" name="id_block" value="5"><div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text">Votre texte</textarea><input type="hidden" name="id_block" value="5"></div>'+
+				'<input type="hidden" name="image" data-crop="" id="image_mag" />';
 
 				$('.choosenBlock').css('min-height', '200px');
 				$('.choosenBlock').append(block_image_texte);
@@ -302,10 +297,18 @@
 
 			} else if (blocktype == 6) {
 
+				// BLOCK TITRE
+				block_titre = '<input type="text" class="builderInput choosenBlockContent" name="text" placeholder="Votre titre" value="">'+
+				'<input type="hidden" name="id_block" value="6">';
+
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block_titre);
 
 			} else if (blocktype == 7) {
+
+				// BLOCK ESPACE
+				block_espace = '<label class="choosenBlockContent">Ajouter un espace entre 2 blocs</label>'+
+				'<input type="hidden" name="id_block" value="7">';
 
 				$('.choosenBlock').css('min-height', '40px');
 				$('.choosenBlock').append(block_espace);
