@@ -277,44 +277,20 @@ class Builder extends CI_Controller {
 
       // NEWSLETTER
 
-      $result_block = $this->My_builder->get_block_by_id($id_newsletter, $id_block, $id_block_content, $id_block_html, $id_group);
+      $result_block = $this->My_builder->get_block_by_id($id_newsletter, $id_block_content);
 
       //var_dump($this->db->last_query());
-      var_dump($result_block);
-      /**foreach ($result_block as $row_block) {
-
-        $id_block = intval($row_newsletter->id_block);
-        $id_block_html = intval($row_newsletter->id_block_html);
-        $id_block_content = intval($row_newsletter->id_block_content);
-        $img_link = $row_newsletter->newsletter_block_img;
-        $text = $row_newsletter->newsletter_block_text;
-        $text1 = $row_newsletter->newsletter_block_text1;
-        $html = $row_newsletter->newsletter_block_html;
-        $ordre = $row_newsletter->newsletter_block_ordre;
-
-        $replace = array(
-          '{{base_url}}'         => base_url(),
-          '{{id_block}}'         => $id_block,
-          '{{id_block_html}}'    => $id_block_html,
-          '{{id_block_content}}' => $id_block_content,
-          '{{img}}'              => $img_link,
-          '{{text}}'             => $text,
-          '{{text1}}'            => $text1,
-          '{{ordre}}'            => $ordre,
-        );
-
-        $replace_html .= str_replace(
-          array_keys($replace),
-          array_values($replace),
-          $html
-        );
+      //var_dump($result_block);
 
         $data = array(
-          'id_newsletter' => $id_newsletter,
-          'newsletter'    => $replace_html,
+          'img_link' => $result_block[0]->newsletter_block_img,
+          'text' => $result_block[0]->newsletter_block_text,
+          'text1' => $result_block[0]->newsletter_block_text1,
         );
 
-      }**/
+        $block_content = json_encode($data);
+
+        echo $block_content;
 
     } else {
         $this->load->view('login');

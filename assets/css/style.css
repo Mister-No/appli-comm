@@ -266,14 +266,14 @@
 
 .buttonLinkBlock {
   min-width: 200px;
-  height: 40px;
+  height: 34px;
   border-radius: 20px;
-  background-color: #000000;
+  background-color: #888888;
   display: block;
   text-align: center;
-  line-height: 40px;
+  line-height: 34px;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   padding: 0px 20px;
 }
