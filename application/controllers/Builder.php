@@ -112,7 +112,7 @@ class Builder extends CI_Controller {
     }
   }
 
-  public function add()
+  public function add_newsletter()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -187,7 +187,7 @@ class Builder extends CI_Controller {
     }
   }
 
-  public function update()
+  public function add_block()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -251,6 +251,51 @@ class Builder extends CI_Controller {
       );
 
       $this->My_common->insert_data('newsletter_has_block', $data);
+
+      redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function update_block()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_builder');
+
+      $data = array();
+      $data_block = array();
+      $data_content = array();
+
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+      $id_block_contnt = $this->input->post ('id_block_content');
+
+      $data_content = array (
+				'text'          => $this->input->post ('text'),
+				'text1'         => $this->input->post ('text1'),
+			);
+
+			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+      // Ajout du block et contenu
+
+			$config['upload_path'] = 'mediatheque/';
+			$config['allowed_types'] = 'jpg|jpeg|gif|png';
+			$this->load->library('upload', $config);
+
+			if($this->upload->do_upload('img'))
+			{
+				$picture = $this->upload->data();
+				$img = $picture['file_name'];
+				$data_content = array (
+					"img" => $img,
+				);
+
+				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+			}
 
       redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
 

@@ -34,7 +34,7 @@
 							</ul>
 						</div>
 		      </div>
-		      <form id="form" method="post" class="validate" action="<?=base_url();?>builder/add.html">
+		      <form id="form" method="post" class="validate" action="<?=base_url();?>builder/add_newsletter.html">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-12">

@@ -185,7 +185,7 @@
 												'<div class="closeBlockSelect col-lg-12">'+
 													'<i class="closeIcon pg-close"></i>'+
 												'</div>'+
-												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
+												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/add_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 													'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 													'</div>'+
 													'<input type="hidden" name="ordre" value="'+newBlockPlace+'">'+
@@ -360,7 +360,7 @@
 													'<div class="closeBlockSelect col-lg-12">'+
 														'<i class="closeIcon pg-close"></i>'+
 													'</div>'+
-													'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
+													'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 														'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 														'</div>'+
 														'<input type="hidden" name="ordre" value="'+blockPlace+'">'+
