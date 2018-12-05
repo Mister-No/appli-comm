@@ -208,9 +208,56 @@
 				$('.blockSelect').remove();
 			});
 
-			blocktype = $(this).data('blocktype');
+			/**blocktype = $(this).data('blocktype');**/
 
-			if (blocktype == 1) {
+			blocktype = $(this).children('.block_type').map(function(idx, elem) {
+		    return $(elem).val();
+		  }).get();
+
+			for (var i = 0; i < blocktype.length; i++) {
+				console.log(blocktype[i]);
+
+				if (blocktype[i] == 1) {
+					// BLOCK IMAGE
+					block = '<label class="choosenBlockContent">Votre image : </label>'+
+					'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
+					'<input type="hidden" name="id_block" value="1">'+
+					'<input type="hidden" name="image'+i+'" data-crop="" id="image_mag" />';
+				}
+
+				if (blocktype[i] == 2) {
+					// BLOCK TEXTE WYZIWYG
+					block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">Votre texte</textarea><input type="hidden" name="id_block" value="2"></div>';
+				}
+
+				if (blocktype[i] == 3) {
+					// BLOCK TEXTE BASIQUE
+					block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="Votre titre" value="">'+
+					'<input type="hidden" name="id_block" value="3">';
+				}
+
+				if (blocktype[i] == 4) {
+					// BLOCK TITRE
+					block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="Votre titre" value="">'+
+					'<input type="hidden" name="id_block" value="3">';
+				}
+
+				$('.choosenBlock').append(block);
+				$('#summernote').summernote({
+					toolbar: [
+						// [groupName, [list of button]]
+						['style', ['bold', 'italic', 'underline', 'clear']],
+						['font', ['strikethrough', 'superscript', 'subscript']],
+						['fontsize', ['fontsize']],
+						['color', ['color']],
+						['para', ['paragraph']],
+					],
+					height: 140,
+				});
+
+			}
+
+			/**if (blocktype == 1) {
 
 				// BLOCK IMAGE
 				block_image = '<label class="choosenBlockContent">Votre image : </label>'+
@@ -317,7 +364,7 @@
 
 
 
-			}
+			}**/
 
 		});
 
