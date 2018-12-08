@@ -179,6 +179,14 @@
 
 			$('.blockSelect').remove();
 
+			idBlock = $(this).children('input[name="id_block"]').val();
+			blockInput = $(this).children('.block_input').map(function(idx, elem) {
+		    return $(elem).val();
+		  }).get();
+			blockLabel = $(this).children('.block_label').map(function(idx, elem) {
+		    return $(elem).val();
+		  }).get();
+
 			addBlock = '<div class="page-container blockSelect fullHeight">'+
 										'<div class="main-content">'+
 											'<div class="row">'+
@@ -188,6 +196,7 @@
 												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/add_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 													'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 													'</div>'+
+													'<input type="hidden" name="id_block" value="'+idBlock+'">'+
 													'<input type="hidden" name="ordre" value="'+newBlockPlace+'">'+
 													'<div class="col-xs-10 choosenBlockFooter panel-footer center-block text-right">'+
 														'<button id="return" type="button" class="btn btn-complete">RETOUR</button>'+
@@ -208,38 +217,23 @@
 				$('.blockSelect').remove();
 			});
 
-			/**blocktype = $(this).data('blocktype');**/
+			for (var i = 0; i < blockInput.length; i++) {
 
-			blocktype = $(this).children('.block_type').map(function(idx, elem) {
-		    return $(elem).val();
-		  }).get();
-
-			for (var i = 0; i < blocktype.length; i++) {
-				console.log(blocktype[i]);
-
-				if (blocktype[i] == 1) {
+				if (blockInput[i] == 1) {
 					// BLOCK IMAGE
-					block = '<label class="choosenBlockContent">Votre image : </label>'+
+					block = '<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
 					'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-					'<input type="hidden" name="id_block" value="1">'+
 					'<input type="hidden" name="image'+i+'" data-crop="" id="image_mag" />';
 				}
 
-				if (blocktype[i] == 2) {
+				if (blockInput[i] == 2) {
 					// BLOCK TEXTE WYZIWYG
-					block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">Votre texte</textarea><input type="hidden" name="id_block" value="2"></div>';
+					block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">'+blockLabel[i]+'</textarea>';
 				}
 
-				if (blocktype[i] == 3) {
+				if (blockInput[i] == 3) {
 					// BLOCK TEXTE BASIQUE
-					block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="Votre titre" value="">'+
-					'<input type="hidden" name="id_block" value="3">';
-				}
-
-				if (blocktype[i] == 4) {
-					// BLOCK TITRE
-					block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="Votre titre" value="">'+
-					'<input type="hidden" name="id_block" value="3">';
+					block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="'+blockLabel[i]+'" value="">';
 				}
 
 				$('.choosenBlock').append(block);
@@ -375,11 +369,17 @@
 
 		$('.editBlock').unbind().click( function() {
 
-			block = $(this).parent().parent();
-			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
-			id_block_html = $(this).parent().parent().children('input[name="id_block_html"]').val();
-			id_block_content = $(this).parent().parent().children('input[name="id_block_content"]').val();
+			//block = $(this).parent().parent();
+			idBlock = $(this).parent().parent().children('input[name="id_block"]').val();
+			//idBlockHtml = $(this).parent().parent().children('input[name="id_block_html"]').val();
+			idBlockContent = $(this).parent().parent().children('input[name="id_block_content"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+			blockInput = $(this).children('.block_input').map(function(idx, elem) {
+				return $(elem).val();
+			}).get();
+			blockLabel = $(this).children('.block_label').map(function(idx, elem) {
+				return $(elem).val();
+			}).get();
 
 			$.post('<?=base_url();?>builder/get_block_content/<?=$id_newsletter?>.html', {'id_block_content': id_block_content}, function(data) {
 
@@ -425,7 +425,41 @@
 					$('.blockSelect').remove();
 				});
 
-				if (id_block_html == 1) {
+				for (var i = 0; i < blockInput.length; i++) {
+
+					if (blockInput[i] == 1) {
+						// BLOCK IMAGE
+						block = '<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
+						'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
+						'<input type="hidden" name="image'+i+'" data-crop="" id="image_mag" />';
+					}
+
+					if (blockInput[i] == 2) {
+						// BLOCK TEXTE WYZIWYG
+						block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">'+blockLabel[i]+'</textarea>';
+					}
+
+					if (blockInput[i] == 3) {
+						// BLOCK TEXTE BASIQUE
+						block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="'+blockLabel[i]+'" value="">';
+					}
+
+					$('.choosenBlock').append(block);
+					$('#summernote').summernote({
+						toolbar: [
+							// [groupName, [list of button]]
+							['style', ['bold', 'italic', 'underline', 'clear']],
+							['font', ['strikethrough', 'superscript', 'subscript']],
+							['fontsize', ['fontsize']],
+							['color', ['color']],
+							['para', ['paragraph']],
+						],
+						height: 140,
+					});
+
+				}
+
+				/**if (id_block_html == 1) {
 
 					// BLOCK IMAGE
 					block_image = '<label class="choosenBlockContent">Votre image : </label>'+
@@ -525,7 +559,7 @@
 					$('.choosenBlock').css('min-height', '40px');
 					$('.choosenBlock').append(block_espace);
 
-				}
+				}**/
 
 			}, 'json');
 
