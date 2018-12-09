@@ -179,7 +179,7 @@
 
 			$('.blockSelect').remove();
 
-			idBlock = $(this).children('input[name="id_block"]').val();
+			idBlockHtml = $(this).children('input[name="id_block"]').val();
 			blockInput = $(this).children('.block_input').map(function(idx, elem) {
 		    return $(elem).val();
 		  }).get();
@@ -196,7 +196,7 @@
 												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/add_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 													'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 													'</div>'+
-													'<input type="hidden" name="id_block" value="'+idBlock+'">'+
+													'<input type="hidden" name="id_block_html" value="'+idBlockHtml+'">'+
 													'<input type="hidden" name="ordre" value="'+newBlockPlace+'">'+
 													'<div class="col-xs-10 choosenBlockFooter panel-footer center-block text-right">'+
 														'<button id="return" type="button" class="btn btn-complete">RETOUR</button>'+
@@ -223,7 +223,7 @@
 					// BLOCK IMAGE
 					block = '<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
 					'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-					'<input type="hidden" name="image'+i+'" data-crop="" id="image_mag" />';
+					'<input type="hidden" name="img'+i+'" data-crop="" id="image_mag" />';
 				}
 
 				if (blockInput[i] == 2) {
@@ -374,30 +374,33 @@
 			//idBlockHtml = $(this).parent().parent().children('input[name="id_block_html"]').val();
 			idBlockContent = $(this).parent().parent().children('input[name="id_block_content"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
-			blockInput = $(this).children('.block_input').map(function(idx, elem) {
+			blockInput = $(this).parent().parent().children('.block_input').map(function(idx, elem) {
 				return $(elem).val();
 			}).get();
-			blockLabel = $(this).children('.block_label').map(function(idx, elem) {
+			blockLabel = $(this).parent().parent().children('.block_label').map(function(idx, elem) {
+				return $(elem).val();
+			}).get();
+			blockContent = $(this).parent().parent().children('.block_content').map(function(idx, elem) {
 				return $(elem).val();
 			}).get();
 
-			$.post('<?=base_url();?>builder/get_block_content/<?=$id_newsletter?>.html', {'id_block_content': id_block_content}, function(data) {
+			/**$.post('<?=base_url();?>builder/get_block_content/<?=$id_newsletter?>.html', {'id_block_content': idBlockContent}, function(data) {
 
-				if (data.img_link != null) {
-					contentImg = data.img_link;
+				if (data.img_link1 != null) {
+					contentImg1 = data.img_link1;
 				} else {
-					contentImg = '';
-				}
-				if (data.text != null) {
-					contentText = data.text;
-				} else {
-					contentText = '';
+					contentImg1 = '';
 				}
 				if (data.text1 != null) {
 					contentText1 = data.text1;
 				} else {
 					contentText1 = '';
 				}
+				if (data.text2 != null) {
+					contentText2 = data.text2;
+				} else {
+					contentText2 = '';
+				}**/
 
 				$('.blockSelect').remove();
 
@@ -430,18 +433,18 @@
 					if (blockInput[i] == 1) {
 						// BLOCK IMAGE
 						block = '<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
-						'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-						'<input type="hidden" name="image'+i+'" data-crop="" id="image_mag" />';
+						'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="'+blockContent[i]+'">'+
+						'<input type="hidden" name="img'+i+'" data-crop="" id="image_mag" />';
 					}
 
 					if (blockInput[i] == 2) {
 						// BLOCK TEXTE WYZIWYG
-						block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">'+blockLabel[i]+'</textarea>';
+						block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">'+blockContent[i]+'</textarea>';
 					}
 
 					if (blockInput[i] == 3) {
 						// BLOCK TEXTE BASIQUE
-						block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="'+blockLabel[i]+'" value="">';
+						block = '<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="'+blockLabel[i]+'" value="'+blockContent[i]+'">';
 					}
 
 					$('.choosenBlock').append(block);
@@ -561,7 +564,7 @@
 
 				}**/
 
-			}, 'json');
+			//}, 'json');
 
 		});
 

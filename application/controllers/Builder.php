@@ -40,8 +40,9 @@ class Builder extends CI_Controller {
         $id_block = intval($row_newsletter->id_block);
         $id_block_html = intval($row_newsletter->id_block_html);
         $id_block_content = intval($row_newsletter->id_block_content);
-        $img_link = $row_newsletter->newsletter_block_img;
-        $text = $row_newsletter->newsletter_block_text;
+        $img_link0 = $row_newsletter->newsletter_block_img0;
+        $img_link1 = $row_newsletter->newsletter_block_img1;
+        $text0 = $row_newsletter->newsletter_block_text0;
         $text1 = $row_newsletter->newsletter_block_text1;
         $html = $row_newsletter->newsletter_block_html;
         $ordre = $row_newsletter->newsletter_block_ordre;
@@ -51,8 +52,9 @@ class Builder extends CI_Controller {
           '{{id_block}}'         => $id_block,
           '{{id_block_html}}'    => $id_block_html,
           '{{id_block_content}}' => $id_block_content,
-          '{{img}}'              => $img_link,
-          '{{text}}'             => $text,
+          '{{img0}}'             => $img_link0,
+          '{{img1}}'             => $img_link1,
+          '{{text0}}'            => $text0,
           '{{text1}}'            => $text1,
           '{{ordre}}'            => $ordre,
         );
@@ -135,7 +137,7 @@ class Builder extends CI_Controller {
           case 1:
             $data_content = array (
               'id_block_html' => $i,
-      				'img' => 'assets/img/logo.png',
+      				'img0' => 'assets/img/logo.png',
       			);
       			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
@@ -143,7 +145,7 @@ class Builder extends CI_Controller {
           case 2:
             $data_content = array (
               'id_block_html' => $i,
-              'text' => 'Votre texte.',
+              'text0' => 'Votre texte.',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
@@ -151,8 +153,8 @@ class Builder extends CI_Controller {
           case 3:
             $data_content = array (
               'id_block_html' => $i,
-              'text' => 'PAGES<br>1 rue test<br>11111 TEST<br>Tel: 01 01 01 01 01',
-              'img' => 'assets/img/logo.png',
+              'text0' => 'PAGES<br>1 rue test<br>11111 TEST<br>Tel: 01 01 01 01 01',
+              'img0' => 'assets/img/logo.png',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
@@ -160,7 +162,7 @@ class Builder extends CI_Controller {
           case 4:
             $data_content = array (
               'id_block_html' => $i,
-              'text' => 'Se desinscrire',
+              'text0' => 'Se desinscrire',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
@@ -199,7 +201,7 @@ class Builder extends CI_Controller {
 
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
-      $id_block = $this->input->post ('id_block');
+      $id_block_html = $this->input->post ('id_block_html');
       $ordre = $this->input->post ('ordre');
 
       // Ordre des autres blocks
@@ -219,8 +221,8 @@ class Builder extends CI_Controller {
       }
 
       $data_content = array (
-        'id_block_html' => $id_block,
-				'text'          => $this->input->post ('text'),
+        'id_block_html' => $id_block_html,
+				'text0'         => $this->input->post ('text0'),
 				'text1'         => $this->input->post ('text1'),
 			);
 
@@ -235,9 +237,9 @@ class Builder extends CI_Controller {
 			if($this->upload->do_upload('img'))
 			{
 				$picture = $this->upload->data();
-				$img = $picture['file_name'];
+				$img1 = $picture['file_name'];
 				$data_content = array (
-					"img" => $img,
+					"img0" => $img0,
 				);
 
 				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -245,7 +247,7 @@ class Builder extends CI_Controller {
 
       $data = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => $id_block,
+        'id_block_html'    => $id_block_html,
         'id_block_content' => $id_block_content,
         'ordre'            => $ordre,
       );
@@ -274,8 +276,8 @@ class Builder extends CI_Controller {
       $id_block_contnt = $this->input->post ('id_block_content');
 
       $data_content = array (
-				'text'          => $this->input->post ('text'),
-				'text1'         => $this->input->post ('text1'),
+				'text0'          => $this->input->post ('text0'),
+				'text1'          => $this->input->post ('text1'),
 			);
 
 			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -289,9 +291,9 @@ class Builder extends CI_Controller {
 			if($this->upload->do_upload('img'))
 			{
 				$picture = $this->upload->data();
-				$img = $picture['file_name'];
+				$img1 = $picture['file_name'];
 				$data_content = array (
-					"img" => $img,
+					"img0" => $img0,
 				);
 
 				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -328,8 +330,8 @@ class Builder extends CI_Controller {
       //var_dump($result_block);
 
         $data = array(
-          'img_link' => $result_block[0]->newsletter_block_img,
-          'text' => $result_block[0]->newsletter_block_text,
+          'img_link0' => $result_block[0]->newsletter_block_img0,
+          'text0' => $result_block[0]->newsletter_block_text0,
           'text1' => $result_block[0]->newsletter_block_text1,
         );
 

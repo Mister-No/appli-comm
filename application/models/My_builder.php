@@ -6,7 +6,7 @@ class My_builder extends CI_Model {
 	/************************************************/
 	function get_newsletter($id_newsletter, $id_group){
 
-		$this->db->select('newsletter.id as id_newsletter, newsletter.theme as theme, newsletter_block_html.id as id_block_html, newsletter_block_html.nom as newsletter_block_nom, newsletter_has_block.id as id_block, newsletter_has_block.id_block_content as id_block_content, newsletter_has_block.ordre as newsletter_block_ordre, newsletter_block_html.type as newsletter_block_type, newsletter_block_html.block_html as newsletter_block_html, newsletter_block_content.img as newsletter_block_img, newsletter_block_content.text as newsletter_block_text, newsletter_block_content.text1 as newsletter_block_text1');
+		$this->db->select('newsletter.id as id_newsletter, newsletter.theme as theme, newsletter_block_html.id as id_block_html, newsletter_block_html.nom as newsletter_block_nom, newsletter_has_block.id as id_block, newsletter_has_block.id_block_content as id_block_content, newsletter_has_block.ordre as newsletter_block_ordre, newsletter_block_html.type as newsletter_block_type, newsletter_block_html.block_html as newsletter_block_html, newsletter_block_content.img0 as newsletter_block_img0, newsletter_block_content.img1 as newsletter_block_img1, newsletter_block_content.text0 as newsletter_block_text0, newsletter_block_content.text1 as newsletter_block_text1');
 		$this->db->from('newsletter');
 		$this->db->join('newsletter_has_block', 'newsletter.id = newsletter_has_block.id_newsletter', 'left');
 		$this->db->join('newsletter_block_html', 'newsletter_has_block.id_block_html = newsletter_block_html.id', 'left');
@@ -28,7 +28,7 @@ class My_builder extends CI_Model {
 	/******************************************************/
 	function get_block_by_id($id_newsletter, $id_block_content){
 
-		$this->db->select('newsletter_block_content.img as newsletter_block_img, newsletter_block_content.text as newsletter_block_text, newsletter_block_content.text1 as newsletter_block_text1');
+		$this->db->select('newsletter_block_content.img0 as newsletter_block_img0, newsletter_block_content.text0 as newsletter_block_text0, newsletter_block_content.text1 as newsletter_block_text1');
 		$this->db->from('newsletter_block_content');
 		$this->db->join('newsletter_has_block', 'newsletter_block_content.id = newsletter_has_block.id_block_content', 'left');
 		$this->db->where("newsletter_has_block.id_newsletter", $id_newsletter);
