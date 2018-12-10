@@ -50,11 +50,13 @@
 					          </div>
 					        </div>
 					      </div>
-					    </div>';
+					    </div>
+						</div>';
 
 					foreach ($row['cat'] as $row_cat) {
 
-						echo '<div class="col-md-12">
+						echo '<div class="row">
+									<div class="col-md-12">
 										<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 											<div class="panel-heading">
 												<div class="panel-title">' . $row_cat['titre'] . '</div>

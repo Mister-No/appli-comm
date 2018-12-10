@@ -67,39 +67,41 @@ class Listes extends CI_Controller {
       $id_group = $_SESSION["id_group"];
 
       $this->load->model('My_categories');
+      $tab_cat = array();
+      $tab_cat_child = array();
+      $result = array();
+      $data = array();
 
-          $result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
+      $result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
 
-          $result = array();
+      foreach ($result_cat_parent as $row) {
 
-          foreach ($result_cat_parent as $row) {
+        $result_cat_child = $this->My_categories->get_child_cat($row->id);
 
-            $result_cat_child = $this->My_categories->get_child_cat($row->id);
+        $tab_cat = array();
+        foreach ($result_cat_child as $row_cat) {
+          $tab_cat[] = [
+            'id' => $row_cat->id,
+            'id_parent' => $row_cat->id,
+            'titre' => $row_cat->titre
+          ];
+        }
 
-            $tab_cat = array();
-            foreach ($result_cat_child as $row_cat) {
-              $tab_cat[] = [
-                'id' => $row_cat->id,
-                'id_parent' => $row_cat->id,
-                'titre' => $row_cat->titre
-              ];
-            }
+        $result[] = [
+          'id' => $row->id,
+          'titre' => $row->titre,
+          'child' => $tab_cat
+        ];
 
-            $result[] = [
-              'id' => $row->id,
-              'titre' => $row->titre,
-              'child' => $tab_cat
-            ];
+        }
 
-            }
+      $data = array(
+          'result' => $result
+      );
 
-          $data = array(
-              'result' => $result
-          );
-
-          $this->load->view('header', $data);
-          $this->load->view('listes_ajouter');
-          $this->load->view('footer');
+      $this->load->view('header', $data);
+      $this->load->view('listes_ajouter');
+      $this->load->view('footer');
 
     } else {
           $this->load->view('login');
@@ -116,6 +118,10 @@ class Listes extends CI_Controller {
       $id = $this->uri->segment(3, 0);
 
       $id_group = $_SESSION["id_group"];
+      $tab_cat = array();
+      $tab_cat_child = array();
+      $result = array();
+      $data = array();
 
           $result_liste = $this->My_listes->get_liste_by_id($id);
 

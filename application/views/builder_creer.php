@@ -23,33 +23,47 @@
 	<div class="page-container">
 		<div class="main-content">
 			<div class="row">
-				<div class="clearFloat noPadding border center-block col-lg-8 newsBuilder">
-					<?=$newsletter?>
-					<!--<div class="newsBuilderBlock text">
-						<p>Some text.</p>
-						<input type="hidden" name="ordre" value="2">
-					</div>
-					<div class="newsBuilderBlock footerBlock">
-						<img class="item" src="<?=base_url();?>assets/img/logo.png" alt="">
-						<div class="item">
-							<p>PAGES<br>
-							1 rue test<br>
-							11111 TEST<br>
-							Tel: 01 01 01 01 01</p>
+				<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+					<div class="panel-heading">
+						<div class="panel-title">Votre newsletter <?=$nom_campagne?></div>
+						<div class="panel-controls">
+							<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+								class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
 						</div>
-						<input type="hidden" name="ordre" value="3">
 					</div>
-					<div class="newsBuilderBlock footerBlock">
-						<div class="item">
-							<a href="#">Se desinscrire de cette newsletter</a>
+					<div class="clearFloat noPadding border center-block col-lg-8 newsBuilder">
+						<?=$newsletter?>
+						<!--<div class="newsBuilderBlock text">
+							<p>Some text.</p>
+							<input type="hidden" name="ordre" value="2">
 						</div>
-						<input type="hidden" name="ordre" value="4">
-					</div>-->
+						<div class="newsBuilderBlock footerBlock">
+							<img class="item" src="<?=base_url();?>assets/img/logo.png" alt="">
+							<div class="item">
+								<p>PAGES<br>
+								1 rue test<br>
+								11111 TEST<br>
+								Tel: 01 01 01 01 01</p>
+							</div>
+							<input type="hidden" name="ordre" value="3">
+						</div>
+						<div class="newsBuilderBlock footerBlock">
+							<div class="item">
+								<a href="#">Se desinscrire de cette newsletter</a>
+							</div>
+							<input type="hidden" name="ordre" value="4">
+						</div>-->
 
+					</div>
+					<div class="panel-footer text-right">
+						<a href="/builder/campagne_listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-
 	<script type="text/javascript">
 
 		var id_block;
@@ -136,7 +150,7 @@
 
 		});
 
-		/**$('.newsBuilder').mouseleave(function(){
+		/**$('.newsBuilder').mouseout(function(){
 			console.log('out');
 			$('.newsBuilderAddBlock').remove();
 		});**/
@@ -172,6 +186,7 @@
 
 	}
 
+	// Fonction d'affichage des éléments pour l'ajout d'un block
 
 	function addblock() {
 
@@ -364,6 +379,7 @@
 
 	}
 
+	// Fonction d'affichage des éléments pour l'update d'un block
 
 	function editBlock() {
 
@@ -413,6 +429,7 @@
 													'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 														'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 														'</div>'+
+														'<input type="hidden" name="id_block_content" value="'+idBlockContent+'">'+
 														'<input type="hidden" name="ordre" value="'+blockPlace+'">'+
 														'<div class="col-xs-10 choosenBlockFooter panel-footer center-block text-right">'+
 															'<button type="submit" class="btn btn-success">MODIFIER</button>'+
@@ -570,6 +587,8 @@
 
 	}
 
+	// Fonction de deplacement du block vers le haut
+
 	function upMoveBlock() {
 
 		$('.upBlock').unbind().click( function() {
@@ -589,6 +608,8 @@
 
 	}
 
+	// Fonction de deplacement du block vers le bas
+
 	function downMoveBlock() {
 
 		$('.downBlock').unbind().click( function() {
@@ -607,6 +628,8 @@
 		});
 
 	}
+
+	// Fonction de suppression du block
 
 	function deleteBlock() {
 

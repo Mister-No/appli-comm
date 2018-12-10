@@ -34,18 +34,18 @@
 						</div>
 				 	 </div>
 					 <div class="panel-body">
-						<form class="form" method="post" class="validate" action="<?=base_url();?>campagnes/add.html">
+						<form class="form" method="post" class="validate" action="<?=base_url();?>builder/add_newsletter.html">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group form-group-default">
 										<label class="control-label">Nom de la campagne :</label>
-										<input type="text" class="form-control" name="name" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Nom de la campagne" />
+										<input type="text" class="form-control" name="nom_campagne" data-validate="required" data-message-required="Veuillez saisir un nom de campagne" placeholder="Nom de la campagne" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group form-group-default">
 										<label class="control-label">Objet de l'email :</label>
-										<input type="text" class="form-control" name="subject" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Objet de l'email" />
+										<input type="text" class="form-control" name="objet" data-validate="required" data-message-required="Veuillez saisir un objet" placeholder="Objet de l'email" />
 									</div>
 								</div>
 							</div>

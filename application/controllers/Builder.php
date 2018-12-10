@@ -40,6 +40,7 @@ class Builder extends CI_Controller {
         $id_block = intval($row_newsletter->id_block);
         $id_block_html = intval($row_newsletter->id_block_html);
         $id_block_content = intval($row_newsletter->id_block_content);
+        $nom_campagne = $row_newsletter->nom_campagne;
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $text0 = $row_newsletter->newsletter_block_text0;
@@ -68,6 +69,7 @@ class Builder extends CI_Controller {
         $data = array(
           'id_newsletter' => $id_newsletter,
           'newsletter'    => $replace_html,
+          'nom_campagne'  => $nom_campagne,
         );
 
       }
@@ -107,6 +109,32 @@ class Builder extends CI_Controller {
 
       $this->load->view('header');
       $this->load->view('builder_modifier');
+      $this->load->view('footer');
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function campagne_listes()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_builder');
+      $this->load->model('My_listes');
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+
+      $result_newsletter = $this->My_builder->get_newsletter($id_newsletter, $id_group);
+      $result_list = $this->My_listes->get_all_listes($id_group);
+
+      $data = array(
+        'result_newsletter' => $result_newsletter,
+        'result_list'       => $result_list
+      );
+
+      $this->load->view('header', $data);
+      $this->load->view('builder_listes');
       $this->load->view('footer');
 
     } else {
@@ -234,10 +262,10 @@ class Builder extends CI_Controller {
 			$config['allowed_types'] = 'jpg|jpeg|gif|png';
 			$this->load->library('upload', $config);
 
-			if($this->upload->do_upload('img'))
+			if($this->upload->do_upload('img0'))
 			{
 				$picture = $this->upload->data();
-				$img1 = $picture['file_name'];
+				$img0 = $picture['file_name'];
 				$data_content = array (
 					"img0" => $img0,
 				);
@@ -273,7 +301,7 @@ class Builder extends CI_Controller {
 
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
-      $id_block_contnt = $this->input->post ('id_block_content');
+      $id_block_content = $this->input->post ('id_block_content');
 
       $data_content = array (
 				'text0'          => $this->input->post ('text0'),
@@ -288,10 +316,10 @@ class Builder extends CI_Controller {
 			$config['allowed_types'] = 'jpg|jpeg|gif|png';
 			$this->load->library('upload', $config);
 
-			if($this->upload->do_upload('img'))
+			if($this->upload->do_upload('img0'))
 			{
 				$picture = $this->upload->data();
-				$img1 = $picture['file_name'];
+				$img0 = $picture['file_name'];
 				$data_content = array (
 					"img0" => $img0,
 				);
