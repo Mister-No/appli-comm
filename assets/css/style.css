@@ -51,14 +51,31 @@
   cursor: pointer;
   background-color: #fff;
   cursor: pointer;
+  background: rgba(230, 230, 230, 0.4);
+  -webkit-text-size-adjust:none;
+  font-family: 'Montserrat' sans-serif;
 }
 
-.newsBuilderBlock,
-.newsBuilderAddBlock {
+.newsBuilder a {
+  color:#7cea1b; text-decoration:none
+}
+
+.newsBuilder p {
+  padding:0 !important; margin:0 !important
+}
+
+.newsBuilder img {
+  -ms-interpolation-mode: bicubic;
+}
+
+.newsBuilder .mcnPreviewText {
+  display: none !important;
+}
+
+.newsBuilderBlock {
   width: 100%;
-  min-height: 80px;
-  padding: 10px 20px;
-  background-color: rgba(230, 230, 230, 0.4);
+  min-height: 60px;
+  background-color: #fff;
   border-bottom: 1px solid rgba(230, 230, 230, 0.7);
   display: flex;
   flex-flow: row nowrap;
@@ -67,12 +84,19 @@
 }
 
 .newsBuilderAddBlock {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 20px;
   background-color: #fff;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .newsBuilderBlock .item,
 .newsBuilderAddBlock .item {
-  margin: 20px;
 }
 
 .optionsBlock {
@@ -92,7 +116,6 @@
 .deleteBlock {
   width: 40px;
   height: 40px;
-  margin: 20px;
   opacity: 0.4;
   background-color: rgba(230, 230, 230, 0.7);
   display: flex;

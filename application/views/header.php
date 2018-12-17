@@ -18,6 +18,7 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/plugins/pace/pace-theme-flash.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/plugins/bootstrapv3/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/plugins/font-awesome/css/font-awesome.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,600,600i,700,700i" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/jquery-scrollbar/jquery.scrollbar.css"/>
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/select2/css/select2.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/switchery/css/switchery.min.css" />
@@ -28,6 +29,7 @@
 <link class="main-stylesheet" rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/summernote/css/summernote.css">
+
 <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
 

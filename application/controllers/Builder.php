@@ -41,23 +41,39 @@ class Builder extends CI_Controller {
         $id_block_html = intval($row_newsletter->id_block_html);
         $id_block_content = intval($row_newsletter->id_block_content);
         $nom_campagne = $row_newsletter->nom_campagne;
-        $img_link0 = $row_newsletter->newsletter_block_img0;
-        $img_link1 = $row_newsletter->newsletter_block_img1;
-        $text0 = $row_newsletter->newsletter_block_text0;
-        $text1 = $row_newsletter->newsletter_block_text1;
         $html = $row_newsletter->newsletter_block_html;
         $ordre = $row_newsletter->newsletter_block_ordre;
+        $img_link0 = $row_newsletter->newsletter_block_img0;
+        $img_link1 = $row_newsletter->newsletter_block_img1;
+        $img_link2 = $row_newsletter->newsletter_block_img2;
+        $text0 = $row_newsletter->newsletter_block_text0;
+        $text1 = $row_newsletter->newsletter_block_text1;
+        $text2 = $row_newsletter->newsletter_block_text2;
+        $text3 = $row_newsletter->newsletter_block_text3;
+        $text4 = $row_newsletter->newsletter_block_text4;
+        $text5 = $row_newsletter->newsletter_block_text5;
+        $text6 = $row_newsletter->newsletter_block_text6;
+        $text7 = $row_newsletter->newsletter_block_text7;
+        $text8 = $row_newsletter->newsletter_block_text8;
 
         $replace = array(
           '{{base_url}}'         => base_url(),
           '{{id_block}}'         => $id_block,
           '{{id_block_html}}'    => $id_block_html,
           '{{id_block_content}}' => $id_block_content,
+          '{{ordre}}'            => $ordre,
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
+          '{{img2}}'             => $img_link2,
           '{{text0}}'            => $text0,
           '{{text1}}'            => $text1,
-          '{{ordre}}'            => $ordre,
+          '{{text2}}'            => $text2,
+          '{{text3}}'            => $text3,
+          '{{text4}}'            => $text4,
+          '{{text5}}'            => $text5,
+          '{{text6}}'            => $text6,
+          '{{text7}}'            => $text7,
+          '{{text8}}'            => $text8,
         );
 
         $replace_html .= str_replace(
@@ -165,7 +181,6 @@ class Builder extends CI_Controller {
           case 1:
             $data_content = array (
               'id_block_html' => $i,
-      				'img0' => 'assets/img/logo.png',
       			);
       			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
@@ -173,24 +188,30 @@ class Builder extends CI_Controller {
           case 2:
             $data_content = array (
               'id_block_html' => $i,
-              'text0' => 'Votre texte.',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
 
           case 3:
-            $data_content = array (
-              'id_block_html' => $i,
-              'text0' => 'PAGES<br>1 rue test<br>11111 TEST<br>Tel: 01 01 01 01 01',
-              'img0' => 'assets/img/logo.png',
-            );
+          $data_content = array (
+            'id_block_html' => $i,
+            'text0' => '1',
+            'text1' => date('A-e-B-Y'),
+          );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
 
           case 4:
             $data_content = array (
               'id_block_html' => $i,
-              'text0' => 'Se desinscrire',
+              'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+              'text1' => '1. Vie du syndicat',
+              'text2' => 'Bibliothèque',
+              'text3' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text4' => 'Suivre les évolutions réglementaires et normatives en lien avec les autorités compétentes',
+              'text5' => 'Sensibiliser les acteurs sur les enjeux de la profession afin qu’ils puissent être pris en compte sur les chantiers',
+              'text6' => 'Défendre les intérêts économiques de nos professions aux regards des acteurs amont et aval',
+              'text7' => 'S’assurer d’une juste concurrence entre les entreprises et lutter contre les pratiques illégales',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
           break;
