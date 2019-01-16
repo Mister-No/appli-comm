@@ -243,7 +243,7 @@
 
 				if (blockInput[i] == 2) {
 					// BLOCK TEXTE WYZIWYG
-					block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">'+blockLabel[i]+'</textarea>';
+					block = '<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+i+'">'+blockLabel[i]+'</textarea>';
 				}
 
 				if (blockInput[i] == 3) {
@@ -252,7 +252,7 @@
 				}
 
 				$('.choosenBlock').append(block);
-				$('#summernote').summernote({
+				$('.summernote').summernote({
 					toolbar: [
 						// [groupName, [list of button]]
 						['style', ['bold', 'italic', 'underline', 'clear']],
@@ -261,7 +261,7 @@
 						['color', ['color']],
 						['para', ['paragraph']],
 					],
-					height: 140,
+					height: 80,
 				});
 
 			}
@@ -456,7 +456,7 @@
 
 					if (blockInput[i] == 2) {
 						// BLOCK TEXTE WYZIWYG
-						block = '<div class="summernote-wrapper"><textarea id="summernote" class="builderTextarea choosenBlockContent" name="text'+i+'">'+blockContent[i]+'</textarea>';
+						block = '<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+i+'">'+blockContent[i]+'</textarea>';
 					}
 
 					if (blockInput[i] == 3) {
@@ -465,7 +465,7 @@
 					}
 
 					$('.choosenBlock').append(block);
-					$('#summernote').summernote({
+					$('.summernote').summernote({
 						toolbar: [
 							// [groupName, [list of button]]
 							['style', ['bold', 'italic', 'underline', 'clear']],
@@ -474,7 +474,7 @@
 							['color', ['color']],
 							['para', ['paragraph']],
 						],
-						height: 140,
+						height: 80,
 					});
 
 				}

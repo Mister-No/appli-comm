@@ -55,6 +55,12 @@ class Builder extends CI_Controller {
         $text6 = $row_newsletter->newsletter_block_text6;
         $text7 = $row_newsletter->newsletter_block_text7;
         $text8 = $row_newsletter->newsletter_block_text8;
+        $text9 = $row_newsletter->newsletter_block_text9;
+        $text10 = $row_newsletter->newsletter_block_text10;
+        $text11 = $row_newsletter->newsletter_block_text11;
+        $text12 = $row_newsletter->newsletter_block_text12;
+        $text13 = $row_newsletter->newsletter_block_text13;
+        $text14 = $row_newsletter->newsletter_block_text14;
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -74,6 +80,12 @@ class Builder extends CI_Controller {
           '{{text6}}'            => $text6,
           '{{text7}}'            => $text7,
           '{{text8}}'            => $text8,
+          '{{text9}}'            => $text9,
+          '{{text10}}'           => $text10,
+          '{{text11}}'           => $text11,
+          '{{text12}}'           => $text12,
+          '{{text13}}'           => $text13,
+          '{{text14}}'           => $text14,
         );
 
         $replace_html .= str_replace(
@@ -175,45 +187,140 @@ class Builder extends CI_Controller {
 
 			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
 
-      for ($i=1; $i < 5; $i++) {
+      for ($i=1; $i < 8; $i++) {
 
         switch ($i) {
           case 1:
             $data_content = array (
-              'id_block_html' => $i,
+              'id_block_html' => 1,
       			);
       			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 1,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
           break;
 
           case 2:
             $data_content = array (
-              'id_block_html' => $i,
+              'id_block_html' => 2,
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 2,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
           break;
 
           case 3:
           $data_content = array (
-            'id_block_html' => $i,
-            'text0' => '1',
-            'text1' => date('A-e-B-Y'),
+            'id_block_html' => 3,
+            'text0' => 'Seddre\'infos',
+            'text1' => 1,
+            'text2' => date('Y-m-d'),
           );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 3,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
           break;
 
           case 4:
             $data_content = array (
-              'id_block_html' => $i,
-              'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-              'text1' => '1. Vie du syndicat',
-              'text2' => 'Bibliothèque',
-              'text3' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-              'text4' => 'Suivre les évolutions réglementaires et normatives en lien avec les autorités compétentes',
-              'text5' => 'Sensibiliser les acteurs sur les enjeux de la profession afin qu’ils puissent être pris en compte sur les chantiers',
-              'text6' => 'Défendre les intérêts économiques de nos professions aux regards des acteurs amont et aval',
-              'text7' => 'S’assurer d’une juste concurrence entre les entreprises et lutter contre les pratiques illégales',
+              'id_block_html' => 4,
+              'img0'  => 'img_1.png',
+              'text0' => '#',
+              'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+              'text2' => '1. Vie du syndicat',
+              'text3' => 'Bibliothèque',
+              'text4' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text5' => 'Suivre les évolutions réglementaires et normatives en lien avec les autorités compétentes',
+              'text6' => 'Sensibiliser les acteurs sur les enjeux de la profession afin qu’ils puissent être pris en compte sur les chantiers',
+              'text7' => 'Défendre les intérêts économiques de nos professions aux regards des acteurs amont et aval',
+              'text8' => 'S’assurer d’une juste concurrence entre les entreprises et lutter contre les pratiques illégales',
+              'text9' => 'En savoir +',
+              'text10' => '#',
             );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 4,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+          break;
+
+          case 5:
+            $data_content = array (
+              'id_block_html' => 23,
+            );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 23,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+          break;
+
+          case 6:
+            $data_content = array (
+              'id_block_html' => 24,
+            );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 24,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+          break;
+
+          case 7:
+            $data_content = array (
+              'id_block_html' => 25,
+            );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => 25,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
           break;
 
           default:
@@ -221,14 +328,6 @@ class Builder extends CI_Controller {
           break;
         }
 
-        $data_block = array(
-          'id_newsletter'    => $id_newsletter,
-          'id_block_html'    => $i,
-          'id_block_content' => $id_block_content,
-          'ordre'            => $i,
-        );
-
-        $this->My_common->insert_data('newsletter_has_block', $data_block);
       }
 
       redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
