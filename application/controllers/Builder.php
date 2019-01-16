@@ -229,7 +229,7 @@ class Builder extends CI_Controller {
             'id_block_html' => 3,
             'text0' => 'Seddre\'infos',
             'text1' => 1,
-            'text2' => date('Y-m-d'),
+            'text2' => date('d/m/Y'),
           );
             $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
@@ -372,6 +372,19 @@ class Builder extends CI_Controller {
         'id_block_html' => $id_block_html,
 				'text0'         => $this->input->post ('text0'),
 				'text1'         => $this->input->post ('text1'),
+        'text2'         => $this->input->post ('text2'),
+				'text3'         => $this->input->post ('text3'),
+        'text4'         => $this->input->post ('text4'),
+				'text5'         => $this->input->post ('text5'),
+        'text6'         => $this->input->post ('text6'),
+				'text7'         => $this->input->post ('text7'),
+        'text8'         => $this->input->post ('text8'),
+				'text9'         => $this->input->post ('text9'),
+        'text10'        => $this->input->post ('text10'),
+				'text11'        => $this->input->post ('text11'),
+        'text12'        => $this->input->post ('text12'),
+				'text13'        => $this->input->post ('text13'),
+        'text14'        => $this->input->post ('text14'),
 			);
 
 			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
@@ -392,6 +405,28 @@ class Builder extends CI_Controller {
 
 				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
 			}
+
+      if($this->upload->do_upload('img1'))
+      {
+        $picture = $this->upload->data();
+        $img1 = $picture['file_name'];
+        $data_content = array (
+          "img1" => $img1,
+        );
+
+        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+      }
+
+      if($this->upload->do_upload('img2'))
+      {
+        $picture = $this->upload->data();
+        $img2 = $picture['file_name'];
+        $data_content = array (
+          "img2" => $img2,
+        );
+
+        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+      }
 
       $data = array(
         'id_newsletter'    => $id_newsletter,
@@ -424,8 +459,21 @@ class Builder extends CI_Controller {
       $id_block_content = $this->input->post ('id_block_content');
 
       $data_content = array (
-				'text0'          => $this->input->post ('text0'),
-				'text1'          => $this->input->post ('text1'),
+				'text0'         => $this->input->post ('text0'),
+				'text1'         => $this->input->post ('text1'),
+        'text2'         => $this->input->post ('text2'),
+				'text3'         => $this->input->post ('text3'),
+        'text4'         => $this->input->post ('text4'),
+				'text5'         => $this->input->post ('text5'),
+        'text6'         => $this->input->post ('text6'),
+				'text7'         => $this->input->post ('text7'),
+        'text8'         => $this->input->post ('text8'),
+				'text9'         => $this->input->post ('text9'),
+        'text10'        => $this->input->post ('text10'),
+				'text11'        => $this->input->post ('text11'),
+        'text12'        => $this->input->post ('text12'),
+				'text13'        => $this->input->post ('text13'),
+        'text14'        => $this->input->post ('text14'),
 			);
 
 			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -436,16 +484,38 @@ class Builder extends CI_Controller {
 			$config['allowed_types'] = 'jpg|jpeg|gif|png';
 			$this->load->library('upload', $config);
 
-			if($this->upload->do_upload('img0'))
-			{
-				$picture = $this->upload->data();
-				$img0 = $picture['file_name'];
-				$data_content = array (
-					"img0" => $img0,
-				);
+      if($this->upload->do_upload('img0'))
+      {
+        $picture = $this->upload->data();
+        $img0 = $picture['file_name'];
+        $data_content = array (
+          "img0" => $img0,
+        );
 
 				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
-			}
+      }
+
+      if($this->upload->do_upload('img1'))
+      {
+        $picture = $this->upload->data();
+        $img1 = $picture['file_name'];
+        $data_content = array (
+          "img1" => $img1,
+        );
+
+        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+      }
+
+      if($this->upload->do_upload('img2'))
+      {
+        $picture = $this->upload->data();
+        $img2 = $picture['file_name'];
+        $data_content = array (
+          "img2" => $img2,
+        );
+
+        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+      }
 
       redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
 
@@ -479,8 +549,23 @@ class Builder extends CI_Controller {
 
         $data = array(
           'img_link0' => $result_block[0]->newsletter_block_img0,
-          'text0' => $result_block[0]->newsletter_block_text0,
-          'text1' => $result_block[0]->newsletter_block_text1,
+          'img_link1' => $result_block[0]->newsletter_block_img1,
+          'img_link2' => $result_block[0]->newsletter_block_img2,
+          'text0'     => $result_block[0]->newsletter_block_text0,
+          'text1'     => $result_block[0]->newsletter_block_text1,
+          'text2'     => $result_block[0]->newsletter_block_text2,
+          'text3'     => $result_block[0]->newsletter_block_text3,
+          'text4'     => $result_block[0]->newsletter_block_text4,
+          'text5'     => $result_block[0]->newsletter_block_text5,
+          'text6'     => $result_block[0]->newsletter_block_text6,
+          'text7'     => $result_block[0]->newsletter_block_text7,
+          'text8'     => $result_block[0]->newsletter_block_text8,
+          'text9'     => $result_block[0]->newsletter_block_text9,
+          'text10'    => $result_block[0]->newsletter_block_text10,
+          'text11'    => $result_block[0]->newsletter_block_text11,
+          'text12'    => $result_block[0]->newsletter_block_text12,
+          'text13'    => $result_block[0]->newsletter_block_text13,
+          'text14'    => $result_block[0]->newsletter_block_text14,
         );
 
         $block_content = json_encode($data);
