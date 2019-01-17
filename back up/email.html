@@ -206,7 +206,7 @@
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td valign="bottom" class="text-8 t-blue" style="font-family:'Montserrat', Arial, sans-serif; font-size:45px; line-height:51px; text-align:left; font-weight:300; color:#00b5f0;">
-																			<strong>{{text0}}</strong>
+																			{{text0}}
 																		</td>
 																		<td valign="bottom" class="img" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																		<td valign="bottom">
@@ -215,7 +215,7 @@
 																					<td class="img" width="1" bgcolor="#48c8ff" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																					<td class="img" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																					<td class="text-6" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:25px; line-height:31px; text-align:left; font-weight:300;">
-																						{{text1}}
+																						n° {{text1}}
 																					</td>
 																				</tr>
 																			</table>
@@ -246,6 +246,10 @@
 
 				<!-- Divider -->
 				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<input type="hidden" name="id_block" value="{{id_block}}">
+					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
 							<table width="900" border="0" cellspacing="0" cellpadding="0" class="m-shell">
@@ -273,49 +277,19 @@
 				</table>
 				<!-- END Divider -->
 
-				<!-- Intro -->
+				<!-- Image -->
 				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input[]" value="1">
-					<input class="block_input" type="hidden" name="block_input[]" value="3">
-					<input class="block_input" type="hidden" name="block_input[]" value="3">
-					<input class="block_input" type="hidden" name="block_input[]" value="3">
-					<input class="block_input" type="hidden" name="block_input[]" value="3">
-					<input class="block_input" type="hidden" name="block_input[]" value="2">
-					<input class="block_input" type="hidden" name="block_input[]" value="2">
-					<input class="block_input" type="hidden" name="block_input[]" value="2">
-					<input class="block_input" type="hidden" name="block_input[]" value="2">
-					<input class="block_input" type="hidden" name="block_input[]" value="2">
-					<input class="block_input" type="hidden" name="block_input[]" value="3">
+					<input class="block_crop" type="hidden" name="block_crop[]" value="700x450">
 					<input class="block_input" type="hidden" name="block_input[]" value="3">
 					<input class="block_label" type="hidden" name="block_label[]" value="Image">
 					<input class="block_label" type="hidden" name="block_label[]" value="Lien de l'image">
-					<input class="block_label" type="hidden" name="block_label[]" value="Légende d'image">
-					<input class="block_label" type="hidden" name="block_label[]" value="Titre">
-					<input class="block_label" type="hidden" name="block_label[]" value="Titre du chapitre">
-					<input class="block_label" type="hidden" name="block_label[]" value="Sous-titre">
-					<input class="block_label" type="hidden" name="block_label[]" value="Texte">
-					<input class="block_label" type="hidden" name="block_label[]" value="Option 1">
-					<input class="block_label" type="hidden" name="block_label[]" value="Option 2">
-					<input class="block_label" type="hidden" name="block_label[]" value="Option 3">
-					<input class="block_label" type="hidden" name="block_label[]" value="Option 4">
-					<input class="block_label" type="hidden" name="block_label[]" value="Titre du bouton">
-					<input class="block_label" type="hidden" name="block_label[]" value="Lien du bouton">
 					<input class="block_content" type="hidden" name="block_content[]" value="{{img0}}">
 					<input class="block_content" type="hidden" name="block_content[]" value="{{text0}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text1}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text2}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text3}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text4}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text5}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text6}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text7}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text8}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text9}}">
-					<input class="block_content" type="hidden" name="block_content[]" value="{{text10}}">
 					<tr>
 						<td align="center" valign="top">
 							<table width="900" border="0" cellspacing="0" cellpadding="0" class="m-shell">
@@ -331,62 +305,12 @@
 															</td>
 														</tr>
 														<tr>
-															<td class="text-7 fw-300" style="padding-bottom: 20px; color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:30px; line-height:36px; text-align:left; font-weight:300;">
-																{{text1}}
-															</td>
-														</tr>
-														<tr>
-															<td class="text-3 t-green" style="padding-bottom: 15px; font-family:'Montserrat', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:300; color:#7cea1b;">
-																<strong>{{text2}}</strong>
-															</td>
-														</tr>
-														<tr>
-															<td class="text-1 t-grey-2" style="padding-bottom: 15px; font-family:'Montserrat', Arial, sans-serif; font-size:18px; line-height:32px; text-align:left; font-weight:300; color:#4a4a4a;">
-																<strong>&rarr; {{text3}}</strong>
-															</td>
-														</tr>
-														<tr>
-															<td class="text t-justify" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; font-weight:300; text-align:justify;">
-																{{text4}}
-															</td>
-														</tr>
-														<tr>
-															<td style="padding-bottom: 25px;">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																	<tr>
-																		<td valign="top" class="text t-green" width="30" style="font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; font-weight:300; color:#7cea1b;">&bull;</td>
-																		<td valign="top" class="text t-justify" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; font-weight:300; text-align:justify;">
-																			{{text5}}
-																		</td>
-																	</tr>
-																	<tr>
-																		<td valign="top" class="text t-green" width="30" style="font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; font-weight:300; color:#7cea1b;">&bull;</td>
-																		<td valign="top" class="text t-justify" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; font-weight:300; text-align:justify;">
-																			{{text6}}
-																		</td>
-																	</tr>
-																	<tr>
-																		<td valign="top" class="text t-green" width="30" style="font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; font-weight:300; color:#7cea1b;">&bull;</td>
-																		<td valign="top" class="text t-justify" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; font-weight:300; text-align:justify;">
-																			{{text7}}
-																		</td>
-																	</tr>
-																	<tr>
-																		<td valign="top" class="text t-green" width="30" style="font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; font-weight:300; color:#7cea1b;">&bull;</td>
-																		<td valign="top" class="text t-justify" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; font-weight:300; text-align:justify;">
-																			{{text8}}
-																		</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-														<tr>
 															<td align="left">
 																<!-- Button -->
 																<table border="0" cellspacing="0" cellpadding="0" style="min-width: 160px;">
 																	<tr>
 																		<td class="text-btn" style="padding: 10px 25px; color:#ffffff; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:20px; text-align:center; border-radius:20px;" bgcolor="#7cea1b">
-																			<a href="{{text10}}" target="_blank" class="link t-white" style="text-decoration:none; color:#ffffff;"><span class="link t-white" style="text-decoration:none; color:#ffffff;">{{text9}}</span></a>
+																			<a href="{{text10}}" target="_blank" class="t-white" style="text-decoration:none; color:#ffffff;"><span class="t-white" style="text-decoration:none; color:#ffffff;">{{text9}}</span></a>
 																		</td>
 																	</tr>
 																</table>
@@ -400,13 +324,122 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/empty.png" width="900" height="1" border="0" alt="" /></td>
+									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/images/empty.png" width="900" height="1" border="0" alt="" /></td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 				</table>
-				<!-- END Intro -->
+				<!-- Image -->
+
+				<!-- Titre -->
+				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<input type="hidden" name="id_block" value="{{id_block}}">
+					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="ordre" value="{{ordre}}">
+					<input class="block_input" type="hidden" name="block_input[]" value="3">
+					<input class="block_label" type="hidden" name="block_label[]" value="Titre">
+					<input class="block_content" type="hidden" name="block_content[]" value="{{text0}}">
+					<tr>
+						<td align="center" valign="top">
+							<table width="900" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+								<tr>
+									<td class="td" style="width:900px; min-width:900px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="plr-20" style="padding: 18px 100px;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td class="text-7 fw-300" style="padding-bottom: 20px; color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:30px; line-height:36px; text-align:left; font-weight:300;">
+																{{text0}}
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/images/empty.png" width="900" height="1" border="0" alt="" /></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<!-- END Titre -->
+
+				<!-- Texte -->
+				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<input type="hidden" name="id_block" value="{{id_block}}">
+					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="ordre" value="{{ordre}}">
+					<input class="block_input" type="hidden" name="block_input[]" value="3">
+					<input class="block_input" type="hidden" name="block_input[]" value="3">
+					<input class="block_input" type="hidden" name="block_input[]" value="2">
+					<input class="block_input" type="hidden" name="block_input[]" value="3">
+					<input class="block_input" type="hidden" name="block_input[]" value="3">
+					<input class="block_label" type="hidden" name="block_label[]" value="Titre">
+					<input class="block_label" type="hidden" name="block_label[]" value="Sous-titre">
+					<input class="block_label" type="hidden" name="block_label[]" value="Texte">
+					<input class="block_label" type="hidden" name="block_label[]" value="Titre du bouton">
+					<input class="block_label" type="hidden" name="block_label[]" value="Lien du bouton">
+					<input class="block_content" type="hidden" name="block_content[]" value="{{text0}}">
+					<input class="block_content" type="hidden" name="block_content[]" value="{{text1}}">
+					<input class="block_content" type="hidden" name="block_content[]" value="{{text2}}">
+					<input class="block_content" type="hidden" name="block_content[]" value="{{text3}}">
+					<input class="block_content" type="hidden" name="block_content[]" value="{{text4}}">
+					<tr>
+						<td align="center" valign="top">
+							<table width="900" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+								<tr>
+									<td class="td" style="width:900px; min-width:900px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="plr-20" style="padding: 18px 100px;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td class="text-3 t-green" style="padding-bottom: 15px; font-family:'Montserrat', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:300; color:#7cea1b;">
+																<strong>{{text0}}</strong>
+															</td>
+														</tr>
+														<tr>
+															<td class="text-1 t-grey-2" style="padding-bottom: 15px; font-family:'Montserrat', Arial, sans-serif; font-size:18px; line-height:32px; text-align:left; font-weight:300; color:#4a4a4a;">
+																<strong>&rarr; {{text1}}</strong>
+															</td>
+														</tr>
+														<tr>
+															<td class="text t-justify" style="color:#6b6775; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; font-weight:300; text-align:justify;">
+																{{text2}}
+															</td>
+														</tr>
+														<tr>
+															<td align="left">
+																<table border="0" cellspacing="0" cellpadding="0" style="min-width: 160px;">
+																	<tr>
+																		<td class="text-btn" style="padding: 10px 25px; color:#ffffff; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:20px; text-align:center; border-radius:20px;" bgcolor="#7cea1b">
+																			<a href="{{text4}}" target="_blank" class="t-white" style="text-decoration:none; color:#ffffff;"><span class="t-white" style="text-decoration:none; color:#ffffff;">{{text3}}</span></a>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/images/empty.png" width="900" height="1" border="0" alt="" /></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<!-- END Texte -->
 
 				<!-- Divider -->
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -1013,7 +1046,6 @@
 					<input class="block_input" type="hidden" name="block_input[]" value="3">
 					<input class="block_input" type="hidden" name="block_input[]" value="3">
 					<input class="block_input" type="hidden" name="block_input[]" value="3">
-
 					<input class="block_label" type="hidden" name="block_label[]" value="Titre">
 					<input class="block_label" type="hidden" name="block_label[]" value="Date">
 					<input class="block_label" type="hidden" name="block_label[]" value="Heure">
@@ -1022,7 +1054,6 @@
 					<input class="block_label" type="hidden" name="block_label[]" value="Lien bouton 1">
 					<input class="block_label" type="hidden" name="block_label[]" value="Titre bouton 2">
 					<input class="block_label" type="hidden" name="block_label[]" value="Lien bouton 2">
-
 					<input class="block_content" type="hidden" name="block_content[]" value="{{text0}}">
 					<input class="block_content" type="hidden" name="block_content[]" value="{{text1}}">
 					<input class="block_content" type="hidden" name="block_content[]" value="{{text2}}">
@@ -2433,7 +2464,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<th class="column-top" valign="top" width="260" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="http://seddre.fr" target="_blank"><img src="images/logo_1.png" border="0" width="260" height="83" alt="" /></a></div>
+																<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="http://seddre.fr" target="_blank"><img src="/mediatheque/newsletter/images/logo_1.png" border="0" width="260" height="83" alt="" /></a></div>
 															</th>
 															<th class="column-top pb-15" valign="top" width="15" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
 															<th class="column-top pb-1" valign="top" width="1" bgcolor="#7cea1b" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
@@ -2471,7 +2502,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/empty.png" width="900" height="1" border="0" alt="" /></td>
+									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/images/empty.png" width="900" height="1" border="0" alt="" /></td>
 								</tr>
 							</table>
 						</td>
@@ -2500,7 +2531,7 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl">
 																	<tr>
 																		<th class="column" dir="ltr" width="61" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-																			<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="http://www.ffbatiment.fr" target="_blank"><img src="images/logo_ffb.png" border="0" width="61" height="44" alt="" /></a></div>
+																			<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="http://www.ffbatiment.fr" target="_blank"><img src="/mediatheque/newsletter/images/logo_ffb.png" border="0" width="61" height="44" alt="" /></a></div>
 																		</th>
 																		<th class="column pb-15" dir="ltr" width="15" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;"></th>
 																		<th class="column" dir="ltr" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
@@ -2523,15 +2554,15 @@
 																						<table border="0" cellspacing="0" cellpadding="0">
 																							<tr>
 																								<td class="img" width="17" style="font-size:0pt; line-height:0pt; text-align:left;">
-																									<a href="https://www.linkedin.com/company/sned/" target="_blank"><img src="images/ico_linkedin.png" width="15" height="16" border="0" alt="" /></a>
+																									<a href="https://www.linkedin.com/company/sned/" target="_blank"><img src="/mediatheque/newsletter/images/ico_linkedin.png" width="15" height="16" border="0" alt="" /></a>
 																								</td>
 																								<td class="img" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																								<td class="img" width="9" style="font-size:0pt; line-height:0pt; text-align:left;">
-																									<a href="https://www.facebook.com/sned.fr/" target="_blank"><img src="images/ico_facebook.png" width="9" height="18" border="0" alt="" /></a>
+																									<a href="https://www.facebook.com/sned.fr/" target="_blank"><img src="/mediatheque/newsletter/images/ico_facebook.png" width="9" height="18" border="0" alt="" /></a>
 																								</td>
 																								<td class="img" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																								<td class="img" width="17" style="font-size:0pt; line-height:0pt; text-align:left;">
-																									<a href="https://www.youtube.com/channel/UCs1I-zH-toxcDEza3pYYsgg" target="_blank"><img src="images/ico_youtube.png" width="18" height="16" border="0" alt="" /></a>
+																									<a href="https://www.youtube.com/channel/UCs1I-zH-toxcDEza3pYYsgg" target="_blank"><img src="/mediatheque/newsletter/images/ico_youtube.png" width="18" height="16" border="0" alt="" /></a>
 																								</td>
 																							</tr>
 																						</table>
@@ -2558,7 +2589,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/empty.png" width="900" height="1" border="0" alt="" /></td>
+									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/images/empty.png" width="900" height="1" border="0" alt="" /></td>
 								</tr>
 							</table>
 						</td>
@@ -2587,7 +2618,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/empty.png" width="900" height="1" border="0" alt="" /></td>
+									<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/images/empty.png" width="900" height="1" border="0" alt="" /></td>
 								</tr>
 							</table>
 						</td>

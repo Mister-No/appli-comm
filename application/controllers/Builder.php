@@ -187,148 +187,154 @@ class Builder extends CI_Controller {
 
 			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
 
-      for ($i=1; $i < 8; $i++) {
+      //CRÉATION DU TEMPLATE DE BASE
 
-        switch ($i) {
-          case 1:
-            $data_content = array (
-              'id_block_html' => 1,
-      			);
-      			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      //Block Top
+      $data_content = array (
+        'id_block_html' => 5,
+			);
+			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 1,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 5,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 1,
+      );
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          break;
+      //Block Header
+      $data_content = array (
+        'id_block_html' => 6,
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          case 2:
-            $data_content = array (
-              'id_block_html' => 2,
-            );
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 6,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 2,
+      );
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 2,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+      //Block Headline
+      $data_content = array (
+        'id_block_html' => 7,
+        'text0' => 'Seddre\'infos',
+        'text1' => 1,
+        'text2' => date('d/m/Y'),
+      );
 
-          break;
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          case 3:
-          $data_content = array (
-            'id_block_html' => 3,
-            'text0' => 'Seddre\'infos',
-            'text1' => 1,
-            'text2' => date('d/m/Y'),
-          );
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 7,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 3,
+      );
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 3,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+      //Block Image
+      $data_content = array (
+        'id_block_html' => 1,
+        'img0'  => 'img_1.png',
+        'text0' => '#',
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          break;
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 1,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 4,
+      );
 
-          case 4:
-            $data_content = array (
-              'id_block_html' => 4,
-              'img0'  => 'img_1.png',
-              'text0' => '#',
-              'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-              'text2' => '1. Vie du syndicat',
-              'text3' => 'Bibliothèque',
-              'text4' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-              'text5' => 'Suivre les évolutions réglementaires et normatives en lien avec les autorités compétentes',
-              'text6' => 'Sensibiliser les acteurs sur les enjeux de la profession afin qu’ils puissent être pris en compte sur les chantiers',
-              'text7' => 'Défendre les intérêts économiques de nos professions aux regards des acteurs amont et aval',
-              'text8' => 'S’assurer d’une juste concurrence entre les entreprises et lutter contre les pratiques illégales',
-              'text9' => 'En savoir +',
-              'text10' => '#',
-            );
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 4,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      //Block Titre
+      $data_content = array (
+        'id_block_html' => 2,
+        'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 2,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 5,
+      );
 
-          break;
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          case 5:
-            $data_content = array (
-              'id_block_html' => 23,
-            );
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      //Block Paragraphe
+      $data_content = array (
+        'id_block_html' => 3,
+        'text0' => '1. Vie du syndicat',
+        'text1' => 'Bibliothèque',
+        'text2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        'text3' => 'En savoir +',
+        'text4' => '#',
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 23,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 3,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 6,
+      );
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          break;
+      //Block Footer
+      $data_content = array (
+        'id_block_html' => 25,
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          case 6:
-            $data_content = array (
-              'id_block_html' => 24,
-            );
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 25,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 7,
+      );
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 24,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+      //Block Footer bar
+      $data_content = array (
+        'id_block_html' => 26,
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          break;
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 26,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 8,
+      );
 
-          case 7:
-            $data_content = array (
-              'id_block_html' => 25,
-            );
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => 25,
-              'id_block_content' => $id_block_content,
-              'ordre'            => $i,
-            );
+      //Block Bottom
+      $data_content = array (
+        'id_block_html' => 27,
+      );
+      $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-          break;
+      $data_block = array(
+        'id_newsletter'    => $id_newsletter,
+        'id_block_html'    => 27,
+        'id_block_content' => $id_block_content,
+        'ordre'            => 9,
+      );
 
-          default:
-            // code...
-          break;
-        }
-
-      }
+      $this->My_common->insert_data('newsletter_has_block', $data_block);
 
       redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
 
@@ -352,92 +358,126 @@ class Builder extends CI_Controller {
       $id_block_html = $this->input->post ('id_block_html');
       $ordre = $this->input->post ('ordre');
 
-      // Ordre des autres blocks
+      if (!empty($id_newsletter)) {
 
-      $result = $this->My_builder->get_newsletter_id_block($id_newsletter);
+        // Ordre des autres blocks
 
-      foreach ($result as $row) {
+        $result = $this->My_builder->get_newsletter_id_block($id_newsletter);
 
-        if ($row->ordre >= $ordre) {
-          $data_ordre = array(
-            'ordre' => $row->ordre+1,
-          );
-  			  $this->My_common->update_data('newsletter_has_block', 'id', $row->id, $data_ordre);
+        foreach ($result as $row) {
+
+          if ($row->ordre >= $ordre) {
+            $data_ordre = array(
+              'ordre' => $row->ordre+1,
+            );
+    			  $this->My_common->update_data('newsletter_has_block', 'id', $row->id, $data_ordre);
+
+          }
 
         }
 
-      }
+        // Ajout du block et contenu
 
-      $data_content = array (
-        'id_block_html' => $id_block_html,
-				'text0'         => $this->input->post ('text0'),
-				'text1'         => $this->input->post ('text1'),
-        'text2'         => $this->input->post ('text2'),
-				'text3'         => $this->input->post ('text3'),
-        'text4'         => $this->input->post ('text4'),
-				'text5'         => $this->input->post ('text5'),
-        'text6'         => $this->input->post ('text6'),
-				'text7'         => $this->input->post ('text7'),
-        'text8'         => $this->input->post ('text8'),
-				'text9'         => $this->input->post ('text9'),
-        'text10'        => $this->input->post ('text10'),
-				'text11'        => $this->input->post ('text11'),
-        'text12'        => $this->input->post ('text12'),
-				'text13'        => $this->input->post ('text13'),
-        'text14'        => $this->input->post ('text14'),
-			);
-
-			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-      // Ajout du block et contenu
-
-			$config['upload_path'] = 'mediatheque/';
-			$config['allowed_types'] = 'jpg|jpeg|gif|png';
-			$this->load->library('upload', $config);
-
-			if($this->upload->do_upload('img0'))
-			{
-				$picture = $this->upload->data();
-				$img0 = $picture['file_name'];
-				$data_content = array (
-					"img0" => $img0,
-				);
-
-				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
-			}
-
-      if($this->upload->do_upload('img1'))
-      {
-        $picture = $this->upload->data();
-        $img1 = $picture['file_name'];
         $data_content = array (
-          "img1" => $img1,
+          'id_block_html' => $id_block_html,
+  				'text0'         => $this->input->post ('text0'),
+  				'text1'         => $this->input->post ('text1'),
+          'text2'         => $this->input->post ('text2'),
+  				'text3'         => $this->input->post ('text3'),
+          'text4'         => $this->input->post ('text4'),
+  				'text5'         => $this->input->post ('text5'),
+          'text6'         => $this->input->post ('text6'),
+  				'text7'         => $this->input->post ('text7'),
+          'text8'         => $this->input->post ('text8'),
+  				'text9'         => $this->input->post ('text9'),
+          'text10'        => $this->input->post ('text10'),
+  				'text11'        => $this->input->post ('text11'),
+          'text12'        => $this->input->post ('text12'),
+  				'text13'        => $this->input->post ('text13'),
+          'text14'        => $this->input->post ('text14'),
+  			);
+
+  			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+        // Ajout et enregistrement des images
+
+        if (!empty($this->input->post ("img0")))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img0 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img0");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img0.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+  					"img0" => $img0,
+  				);
+
+  				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        if (!empty($this->input->post ("img1")))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img0 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img1");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img1.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+            "img1" => $img1,
+          );
+
+          $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        if (!empty($this->input->post ("img2")))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img0 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img2");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img2.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+  					"img2" => $img2,
+  				);
+
+  				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        $data = array(
+          'id_newsletter'    => $id_newsletter,
+          'id_block_html'    => $id_block_html,
+          'id_block_content' => $id_block_content,
+          'ordre'            => $ordre,
         );
 
-        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+        $this->My_common->insert_data('newsletter_has_block', $data);
+
+        redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+
+      } else {
+        // code...
       }
-
-      if($this->upload->do_upload('img2'))
-      {
-        $picture = $this->upload->data();
-        $img2 = $picture['file_name'];
-        $data_content = array (
-          "img2" => $img2,
-        );
-
-        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
-      }
-
-      $data = array(
-        'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => $id_block_html,
-        'id_block_content' => $id_block_content,
-        'ordre'            => $ordre,
-      );
-
-      $this->My_common->insert_data('newsletter_has_block', $data);
-
-      redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
 
     } else {
         $this->load->view('login');
@@ -458,66 +498,100 @@ class Builder extends CI_Controller {
       $id_group = $_SESSION['id_group'];
       $id_block_content = $this->input->post ('id_block_content');
 
-      $data_content = array (
-				'text0'         => $this->input->post ('text0'),
-				'text1'         => $this->input->post ('text1'),
-        'text2'         => $this->input->post ('text2'),
-				'text3'         => $this->input->post ('text3'),
-        'text4'         => $this->input->post ('text4'),
-				'text5'         => $this->input->post ('text5'),
-        'text6'         => $this->input->post ('text6'),
-				'text7'         => $this->input->post ('text7'),
-        'text8'         => $this->input->post ('text8'),
-				'text9'         => $this->input->post ('text9'),
-        'text10'        => $this->input->post ('text10'),
-				'text11'        => $this->input->post ('text11'),
-        'text12'        => $this->input->post ('text12'),
-				'text13'        => $this->input->post ('text13'),
-        'text14'        => $this->input->post ('text14'),
-			);
+      if (!empty($id_newsletter) && !empty($id_block_content)) {
 
-			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+        // Ajout du block et contenu
 
-      // Ajout du block et contenu
-
-			$config['upload_path'] = 'mediatheque/';
-			$config['allowed_types'] = 'jpg|jpeg|gif|png';
-			$this->load->library('upload', $config);
-
-      if($this->upload->do_upload('img0'))
-      {
-        $picture = $this->upload->data();
-        $img0 = $picture['file_name'];
         $data_content = array (
-          "img0" => $img0,
-        );
+  				'text0'         => $this->input->post ('text0'),
+  				'text1'         => $this->input->post ('text1'),
+          'text2'         => $this->input->post ('text2'),
+  				'text3'         => $this->input->post ('text3'),
+          'text4'         => $this->input->post ('text4'),
+  				'text5'         => $this->input->post ('text5'),
+          'text6'         => $this->input->post ('text6'),
+  				'text7'         => $this->input->post ('text7'),
+          'text8'         => $this->input->post ('text8'),
+  				'text9'         => $this->input->post ('text9'),
+          'text10'        => $this->input->post ('text10'),
+  				'text11'        => $this->input->post ('text11'),
+          'text12'        => $this->input->post ('text12'),
+  				'text13'        => $this->input->post ('text13'),
+          'text14'        => $this->input->post ('text14'),
+  			);
 
-				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+  			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        // Ajout et enregistrement des images
+
+        if (!empty($this->input->post ("img0")))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img0 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img0");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img0.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+            "img0" => $img0.'.jpg',
+          );
+
+          $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        if (!empty($this->input->post ("img1")))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img0 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img1");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img1.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+            "img1" => $img1.'.jpg',
+          );
+
+          $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        if (!empty($this->input->post ("img2")))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img0 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img2");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img2.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+            "img2" => $img2.'.jpg',
+          );
+
+          $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+
+      } else {
+        // code...
       }
-
-      if($this->upload->do_upload('img1'))
-      {
-        $picture = $this->upload->data();
-        $img1 = $picture['file_name'];
-        $data_content = array (
-          "img1" => $img1,
-        );
-
-        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
-      }
-
-      if($this->upload->do_upload('img2'))
-      {
-        $picture = $this->upload->data();
-        $img2 = $picture['file_name'];
-        $data_content = array (
-          "img2" => $img2,
-        );
-
-        $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
-      }
-
-      redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
 
     } else {
         $this->load->view('login');

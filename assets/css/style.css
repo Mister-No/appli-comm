@@ -274,3 +274,7 @@
   height: 40px;
   margin: 0px auto 20px auto;
 }
+
+.uploadcare--widget {
+  display: block;
+}

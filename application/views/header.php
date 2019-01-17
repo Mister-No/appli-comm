@@ -41,7 +41,6 @@ UPLOADCARE_IMAGES_ONLY = true;
 UPLOADCARE_PREVIEW_STEP = true;
 </script>
 
-
 <script charset="utf-8" src="//ucarecdn.com/libs/widget/3.6.1/uploadcare.full.min.js"></script>
 
 <!--[if lte IE 9]>

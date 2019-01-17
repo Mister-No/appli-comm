@@ -155,10 +155,10 @@
 
 			$('.pace-done').append(chooseBlock);
 			$('.blockSelect').css('top', $(window).scrollTop());
-			$('body').css('overflow', 'hidden');
+			//$('body').css('overflow', 'hidden');
 
 			$('.closeIcon').click( function() {
-				$('body').css('overflow', 'auto');
+				//$('body').css('overflow', 'auto');
 				$('.blockSelect').css('top', '0');
 				$('.blockSelect').remove();
 			});
@@ -182,6 +182,9 @@
 		    return $(elem).val();
 		  }).get();
 			blockLabel = $(this).children('.block_label').map(function(idx, elem) {
+		    return $(elem).val();
+		  }).get();
+			cropInfos = $(this).children('.block_crop').map(function(idx, elem) {
 		    return $(elem).val();
 		  }).get();
 
@@ -220,8 +223,7 @@
 				if (blockInput[i] == 1) {
 					// BLOCK IMAGE
 					block = '<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
-					'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="">'+
-					'<input type="hidden" name="img'+i+'" data-crop="" id="image_mag" />';
+					'<input type="hidden" name="img'+i+'" data-crop="'+cropInfos[i]+'" class="image_mag" />';
 				}
 
 				if (blockInput[i] == 2) {
@@ -237,6 +239,8 @@
 				}
 
 				$('.choosenBlock').append(block);
+
+				//Summernote
 				$('.summernote').summernote({
 					toolbar: [
 						// [groupName, [list of button]]
@@ -247,6 +251,22 @@
 						['para', ['paragraph']],
 					],
 					height: 80,
+				});
+
+				//Uploadcare
+				$(function()
+					{
+						// Initialisation du widget
+						var widget = uploadcare.Widget('.image_mag');
+
+						// Action après l'upload :
+						widget.onUploadComplete(function(info) {
+						console.log("File info!", info);
+
+						$("#img_show").attr ("src", info.cdnUrl);
+						$("#img_show").show();
+					});
+
 				});
 
 			}
@@ -275,6 +295,9 @@
 			blockContent = $(this).parent().parent().children('.block_content').map(function(idx, elem) {
 				return $(elem).val();
 			}).get();
+			cropInfos = $(this).children('.block_crop').map(function(idx, elem) {
+		    return $(elem).val();
+		  }).get();
 
 				$('.blockSelect').remove();
 
@@ -302,7 +325,7 @@
 				//$('body').css('overflow', 'hidden');
 
 				$('.closeIcon').click( function() {
-					$('body').css('overflow', 'auto');
+					//$('body').css('overflow', 'auto');
 					$('.blockSelect').css('top', '0');
 					$('.blockSelect').remove();
 				});
@@ -312,8 +335,7 @@
 					if (blockInput[i] == 1) {
 						// BLOCK IMAGE
 						block = '<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
-						'<input type="file" class="builderInputFile choosenBlockContent" name="img" value="'+blockContent[i]+'">'+
-						'<input type="hidden" name="img'+i+'" data-crop="" id="image_mag" />';
+						'<input type="hidden" name="img'+i+'" data-crop="'+cropInfos[i]+'" class="image_mag" />';
 					}
 
 					if (blockInput[i] == 2) {
@@ -329,6 +351,8 @@
 					}
 
 					$('.choosenBlock').append(block);
+
+					//Summernote
 					$('.summernote').summernote({
 						toolbar: [
 							// [groupName, [list of button]]
@@ -339,6 +363,22 @@
 							['para', ['paragraph']],
 						],
 						height: 80,
+					});
+
+					//Uploadcare
+					$(function()
+						{
+							// Initialisation du widget
+							var widget = uploadcare.Widget('.image_mag');
+
+							// Action après l'upload :
+							widget.onUploadComplete(function(info) {
+							console.log("File info!", info);
+
+							$("#img_show").attr ("src", info.cdnUrl);
+							$("#img_show").show();
+						});
+
 					});
 
 				}
