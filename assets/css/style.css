@@ -231,14 +231,8 @@
   border-top-right-radius: 4px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.choosenBlock .blockInput label {
-  height: 22px;
-  line-height: 24px;
-  text-align: center;
+  justify-content: left;
+  align-items: baseline;
 }
 
 .choosenBlockFooter .btn-complete {
@@ -257,31 +251,40 @@
   margin: 12px 0px 4px 0px;
 }
 
-.builderTextarea {
+/**.builderTextarea {
   width: 100%;
   min-height: 80px;
   margin: 10px auto;
   resize: none;
   border: none;
-}
+}**/
 
 .blockInputImage,
-.blockInputTexte {
-  margin: 10px;
-  width: 50%;
-}
-
 .blockInputSummernote {
   margin: 10px;
   width: 100%;
 }
 
-.blockInput .builderInput {
+.blockInputTexte,
+.blockInputSelect {
+  margin: 10px;
+  width: 48%;
+}
+
+.choosenBlock .choosenBlockContent {
+  width: 100%;
+  height: 22px;
+  margin-bottom: 10px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.choosenBlock .builderInput {
   width: 100%;
   height: 32px;
-  margin: 10px auto 10px auto;
-  border: none;
-  border-bottom: 1px solid #626262;
+  /**margin: 10px auto 10px auto;**/
+  border: 1px solid #e0e0e0;
+  /**border-bottom: 1px solid #626262;**/
 }
 
 .builderInputFile {
