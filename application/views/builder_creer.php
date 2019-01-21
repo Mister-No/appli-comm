@@ -303,18 +303,15 @@
 			//idBlockHtml = $(this).parent().parent().children('input[name="id_block_html"]').val();
 			idBlockContent = $(this).parent().parent().children('input[name="id_block_content"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
-			blockInput = $(this).parent().parent().children('.block_input').map(function(idx, elem) {
-				return $(elem).val();
-			}).get();
-			blockLabel = $(this).parent().parent().children('.block_label').map(function(idx, elem) {
-				return $(elem).val();
-			}).get();
-			blockContent = $(this).parent().parent().children('.block_content').map(function(idx, elem) {
-				return $(elem).val();
-			}).get();
-			cropInfos = $(this).children('.block_crop').map(function(idx, elem) {
-		    return $(elem).val();
+			blockInput = $(this).children('.block_input').map(function(idx, elem) {
+				var array1 = new Array();
+				var array2 = new Array();
+				array1 = [$(elem).val(), $(elem).data('col'), $(elem).data('label'), $(elem).data('crop')];
+				array2[0] = array1;
+				return array2;
 		  }).get();
+			i=0;
+			t=0;
 
 				$('.blockSelect').remove();
 
@@ -347,62 +344,74 @@
 					$('.blockSelect').remove();
 				});
 
-				for (var i = 0; i < blockInput.length; i++) {
+				for (var j = 0; j < blockInput.length; j++) {
 
-					if (blockInput[i] == 1) {
+					//Variables des différents blocks
+
+					if (blockInput[j][0] == 1) {
 						// BLOCK IMAGE
-						block = '<div class="blockInput">'+
-						'<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
-						'<input type="hidden" name="img'+i+'" data-crop="'+cropInfos[i]+'" class="image_mag" />'+
+						block = '<div class="blockInputImage">'+
+						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+						'<input id="image_mag'+i+'" type="hidden" name="img'+i+'" data-crop="'+blockInput[j][3]+'" />'+
 						'</div>';
 					}
 
-					if (blockInput[i] == 2) {
-						// BLOCK TEXTE WYZIWYG
-						block = '<div class="blockInput">'+
-						'<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
-						'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+i+'">'+blockContent[i]+'</textarea>'+
+					if (blockInput[j][0] == 2) {
+						// BLOCK TEXTE WYZIWYG SUMMMERNOTE
+						block = '<div class="blockInputSummernote">'+
+						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+						'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'"></textarea>'+
 						'</div>';
 					}
 
-					if (blockInput[i] == 3) {
+					if (blockInput[j][0] == 3) {
 						// BLOCK TEXTE BASIQUE
-						block = '<div class="blockInput">'+
-						'<label class="choosenBlockContent">'+blockLabel[i]+' : </label>'+
-						'<input type="text" class="builderInput choosenBlockContent" name="text'+i+'" placeholder="" value="'+blockContent[i]+'">'+
+						block = '<div class="blockInputTexte">'+
+						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+						'<input class="builderInput choosenBlockContent" name="text'+t+'" placeholder="" value="">'+
 						'</div>';
 					}
 
+					if (blockInput[j][0] == 4) {
+						// BLOCK SELECT
+					}
+
+					//Affichage des blocks
 					$('.choosenBlock').append(block);
 
-					//Summernote
-					$('.summernote').summernote({
-						toolbar: [
-							// [groupName, [list of button]]
-							['style', ['bold', 'italic', 'underline', 'clear']],
-							['font', ['strikethrough', 'superscript', 'subscript']],
-							['fontsize', ['fontsize']],
-							['color', ['color']],
-							['para', ['paragraph']],
-						],
-						height: 80,
-					});
+					//Activation des plug in et incrementation des variables
+					if (blockInput[j][0] == 1) {
+						//Uploadcare
+						$(function()
+							{
+								// Initialisation du widget
+								var widget = uploadcare.Widget('#image_mag'+i+'');
+								// Action après l'upload :
+								widget.onUploadComplete(function(info) {
+								console.log("File info!", info);
+								$("#img_show").attr ("src", info.cdnUrl);
+								$("#img_show").show();
+							});
 
-					//Uploadcare
-					$(function()
-						{
-							// Initialisation du widget
-							var widget = uploadcare.Widget('.image_mag');
-
-							// Action après l'upload :
-							widget.onUploadComplete(function(info) {
-							console.log("File info!", info);
-
-							$("#img_show").attr ("src", info.cdnUrl);
-							$("#img_show").show();
 						});
+						i++;
+					}
 
-					});
+					if (blockInput[j][0] == 2 || blockInput[j][0] == 3) {
+						//Summernote
+						$('.summernote').summernote({
+							toolbar: [
+								// [groupName, [list of button]]
+								['style', ['bold', 'italic', 'underline', 'clear']],
+								['font', ['strikethrough', 'superscript', 'subscript']],
+								['fontsize', ['fontsize']],
+								['color', ['color']],
+								['para', ['paragraph']],
+							],
+							height: 60,
+						});
+						t++;
+					}
 
 				}
 
