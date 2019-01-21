@@ -140,7 +140,7 @@
 
 			$('.blockSelect').remove();
 
-			chooseBlock = '<div class="page-container blockSelect fullHeight">'+
+			chooseBlock = '<div class="page-container blockSelect">'+
 											'<div class="main-content">'+
 												'<div class="row">'+
 													'<div class="closeBlockSelect col-lg-12">'+
@@ -155,10 +155,10 @@
 
 			$('.pace-done').append(chooseBlock);
 			$('.blockSelect').css('top', $(window).scrollTop());
-			//$('body').css('overflow', 'hidden');
+			$('body').css('overflow', 'hidden');
 
 			$('.closeIcon').click( function() {
-				//$('body').css('overflow', 'auto');
+				$('body').css('overflow', 'auto');
 				$('.blockSelect').css('top', '0');
 				$('.blockSelect').remove();
 			});
@@ -187,7 +187,7 @@
 			i=0;
 			t=0;
 
-			addBlock = '<div class="page-container blockSelect fullHeight">'+
+			addBlock = '<div class="page-container blockSelect">'+
 										'<div class="main-content">'+
 											'<div class="row">'+
 												'<div class="closeBlockSelect col-lg-12">'+
@@ -208,6 +208,8 @@
 									'</div>';
 
 			$('.pace-done').append(addBlock);
+			$('.blockSelect').css('top', $(window).scrollTop());
+			$('body').css('overflow', 'hidden');
 
 			$('#return').click( function() {
 				$('.newsBuilderAddBlock').click();
@@ -215,6 +217,8 @@
 
 			$('.closeIcon').click( function() {
 				$('.blockSelect').remove();
+				$('.blockSelect').css('top', '0');
+				$('body').css('overflow', 'auto');
 			});
 
 			for (var j = 0; j < blockInput.length; j++) {
@@ -315,7 +319,7 @@
 
 				$('.blockSelect').remove();
 
-				addBlock = '<div class="page-container blockSelect fullHeight">'+
+				addBlock = '<div class="page-container blockSelect">'+
 											'<div class="main-content">'+
 												'<div class="row">'+
 													'<div class="closeBlockSelect col-lg-12">'+
@@ -336,12 +340,12 @@
 
 				$('.pace-done').append(addBlock);
 				$('.blockSelect').css('top', $(window).scrollTop());
-				//$('body').css('overflow', 'hidden');
+				$('body').css('overflow', 'hidden');
 
 				$('.closeIcon').click( function() {
-					//$('body').css('overflow', 'auto');
-					$('.blockSelect').css('top', '0');
 					$('.blockSelect').remove();
+					$('body').css('overflow', 'auto');
+					$('.blockSelect').css('top', '0');
 				});
 
 				for (var j = 0; j < blockInput.length; j++) {

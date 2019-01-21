@@ -111,8 +111,8 @@
 .upBlock,
 .downBlock,
 .deleteBlock {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   opacity: 0.4;
   background-color: rgba(230, 230, 230, 0.7);
   display: flex;
@@ -138,15 +138,21 @@
 }
 
 .upIcon,
-.downIcon,
-.editIcon {
-  font-size: 20px;
+.downIcon {
+  font-size: 26px;
   color: #fff;
 }
 
-.deleteIcon {
+.editIcon {
   font-size: 28px;
   color: #fff;
+  margin: 4px 0px 0px 6px;
+}
+
+.deleteIcon {
+  font-size: 38px;
+  color: #fff;
+  margin-left: 4px;
 }
 
 .addIcon {
@@ -173,6 +179,7 @@
   top: 0;
   left: 0;
   z-index: 999;
+  overflow-y: scroll;
 }
 
 .closeBlockSelect{
@@ -195,6 +202,9 @@
 .choosenBlockContainer {
   display: flex;
   min-height: 80vh;
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
