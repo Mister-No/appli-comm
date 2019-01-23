@@ -16,12 +16,13 @@ class Builder extends CI_Controller {
     }
   }
 
-  public function campagne_creer()
+  public function campagne()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
       $this->load->model('My_builder');
-      $id_newsletter = $this->uri->segment(3, 0);
+      $etape = $this->uri->segment(3, 0);
+      $id_newsletter = $this->uri->segment(4, 0);
       $id_group = $_SESSION['id_group'];
       $data = array();
       $data_blocks = array();
@@ -116,11 +117,17 @@ class Builder extends CI_Controller {
 
       }
 
-      //print_r($data_blocks);
       $this->load->view('header', $data);
-      $this->load->view('builder_creer', $data_blocks);
-      $this->load->view('footer');
 
+      if ($etape == 'creation') {
+        $this->load->view('builder_creation', $data_blocks);
+      }
+
+      if ($etape == 'validation') {
+        $this->load->view('builder_validation');
+      }
+
+      $this->load->view('footer');
 
     } else {
         $this->load->view('login');
@@ -191,13 +198,13 @@ class Builder extends CI_Controller {
 
       //Block Top
       $data_content = array (
-        'id_block_html' => 5,
+        'id_block_html' => 1,
 			);
 			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
       $data_block = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => 5,
+        'id_block_html'    => 1,
         'id_block_content' => $id_block_content,
         'ordre'            => 1,
       );
@@ -206,13 +213,13 @@ class Builder extends CI_Controller {
 
       //Block Header
       $data_content = array (
-        'id_block_html' => 6,
+        'id_block_html' => 2,
       );
       $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
       $data_block = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => 6,
+        'id_block_html'    => 2,
         'id_block_content' => $id_block_content,
         'ordre'            => 2,
       );
@@ -221,7 +228,7 @@ class Builder extends CI_Controller {
 
       //Block Headline
       $data_content = array (
-        'id_block_html' => 7,
+        'id_block_html' => 3,
         'text0' => 'Seddre\'infos',
         'text1' => 1,
         'text2' => date('d/m/Y'),
@@ -231,7 +238,7 @@ class Builder extends CI_Controller {
 
       $data_block = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => 7,
+        'id_block_html'    => 3,
         'id_block_content' => $id_block_content,
         'ordre'            => 3,
       );
@@ -240,7 +247,7 @@ class Builder extends CI_Controller {
 
       //Block Image
       $data_content = array (
-        'id_block_html' => 1,
+        'id_block_html' => 4,
         'img0'  => 'img_1.png',
         'text0' => '#',
       );
@@ -248,7 +255,7 @@ class Builder extends CI_Controller {
 
       $data_block = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => 1,
+        'id_block_html'    => 4,
         'id_block_content' => $id_block_content,
         'ordre'            => 4,
       );
@@ -257,14 +264,14 @@ class Builder extends CI_Controller {
 
       //Block Titre
       $data_content = array (
-        'id_block_html' => 2,
+        'id_block_html' => 5,
         'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
       );
       $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
       $data_block = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => 2,
+        'id_block_html'    => 5,
         'id_block_content' => $id_block_content,
         'ordre'            => 5,
       );
@@ -273,7 +280,7 @@ class Builder extends CI_Controller {
 
       //Block Paragraphe
       $data_content = array (
-        'id_block_html' => 3,
+        'id_block_html' => 6,
         'text0' => '1. Vie du syndicat',
         'text1' => 'Bibliothèque',
         'text2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -284,7 +291,7 @@ class Builder extends CI_Controller {
 
       $data_block = array(
         'id_newsletter'    => $id_newsletter,
-        'id_block_html'    => 3,
+        'id_block_html'    => 6,
         'id_block_content' => $id_block_content,
         'ordre'            => 6,
       );
@@ -336,7 +343,7 @@ class Builder extends CI_Controller {
 
       $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-      redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+      redirect(base_url().'builder/campagne/creation/'.$id_newsletter.'.html');
 
     } else {
       $this->load->view('login');
@@ -428,7 +435,7 @@ class Builder extends CI_Controller {
           $d = new dateTime();
           $d = $d->format('YmdHis');
           $u = str_replace(' ', '', substr(microtime(), 2));
-          $img0 = 'img'.$d.$u;
+          $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
           $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img1.'.jpg';
@@ -449,7 +456,7 @@ class Builder extends CI_Controller {
           $d = new dateTime();
           $d = $d->format('YmdHis');
           $u = str_replace(' ', '', substr(microtime(), 2));
-          $img0 = 'img'.$d.$u;
+          $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
           $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img2.'.jpg';
@@ -551,7 +558,7 @@ class Builder extends CI_Controller {
           $d = new dateTime();
           $d = $d->format('YmdHis');
           $u = str_replace(' ', '', substr(microtime(), 2));
-          $img0 = 'img'.$d.$u;
+          $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
           $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img1.'.jpg';
@@ -572,7 +579,7 @@ class Builder extends CI_Controller {
           $d = new dateTime();
           $d = $d->format('YmdHis');
           $u = str_replace(' ', '', substr(microtime(), 2));
-          $img0 = 'img'.$d.$u;
+          $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
           $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$img2.'.jpg';

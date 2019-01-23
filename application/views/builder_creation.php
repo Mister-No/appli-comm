@@ -9,7 +9,7 @@
 					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne_creer.html" class="active">Créer</a>
+					<a href="<?=base_url();?>builder/campagne/creation/<?=$id_newsletter?>.html" class="active">Création</a>
 				</li>
 			</ul>
 		</div>
@@ -38,88 +38,78 @@
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
-						<a href="/builder/campagne_listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
+						<a href="/builder/campagne/validation/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	<script type="text/javascript">
 
-		var id_block_html;
-		var blockPlace;
-		var newBlockPlace;
+		//var id_block_html;
+		//var blockPlace;
 
 		$('.newsBuilderBlock').hover(function(){
-
-			//blockPlace = $(this).children('input').val();
-			id = $(this).children('input[name="id"]').val();
-			blockPlace = $(this).children('input[name="ordre"]').val();
 
 			$('.newsBuilderAddBlock').remove();
 			$('.optionsBlock').remove();
 
-			// BLOCK D'AJOUT
+			id = $(this).children('input[name="id"]').val();
+			idBlockHtml = $(this).children('input[name="id_block_html"]').val();
+			blockPlace = $(this).children('input[name="ordre"]').val();
+			blockPlaceAfter = Number(blockPlace)+Number(1);
 
-			block_before = '<div id="before" class="newsBuilderAddBlock">'+
-											'<div class="addBlock center-block">'+
-												'<i class="addIcon pg-plus"></i>'+
-											'</div>'+
-										'</div>';
+			if (idBlockHtml > 2 && idBlockHtml < 25) {
 
-			block_after = '<div id="after" class="newsBuilderAddBlock">'+
-											'<div class="addBlock center-block">'+
-												'<i class="addIcon pg-plus"></i>'+
-											'</div>'+
-										'</div>';
+				// BLOCKS D'AJOUT
 
-			$(this).before(block_before);
-			$(this).after(block_after);
+				block_before = '<div id="before" class="newsBuilderAddBlock">'+
+												'<div class="addBlock center-block">'+
+													'<input type="hidden" name="blockplace" value="'+blockPlace+'">'+
+													'<i class="addIcon pg-plus"></i>'+
+												'</div>'+
+											'</div>';
 
-			// BLOCK OPTIONS
+				block_after = '<div id="after" class="newsBuilderAddBlock">'+
+												'<div class="addBlock center-block">'+
+													'<input type="hidden" name="blockplace" value="'+blockPlaceAfter+'">'+
+													'<i class="addIcon pg-plus"></i>'+
+												'</div>'+
+											'</div>';
 
-			if (blockPlace > 1) {
-				upblock = '<button type="button" class="upBlock">'+
-										'<i class="upIcon fa fa-arrow-up"></i>'+
-									'</button>';
-			} else {
-				upblock = '';
-			}
+				// BLOCKS DE DEPLACEMENT
 
-			if (blockPlace < $('.newsBuilderBlock').length) {
-				downblock = '<button type="button" class="downBlock">'+
-											'<i class="downIcon fa fa-arrow-down"></i>'+
+				if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
+					upBlock = '<button type="button" class="upBlock">'+
+											'<i class="upIcon fa fa-arrow-up"></i>'+
 										'</button>';
-			} else {
-				downblock = '';
-			}
-
-			edit_block	=	'<div class="optionsBlock">'+
-											upblock+
-											'<button type="submit" class="deleteBlock">'+
-												'<i class="deleteIcon pg-close"></i>'+
-											'</button>'+
-											'<button type="button" class="editBlock">'+
-												'<i class="editIcon fa fa-edit"></i>'+
-											downblock+
-										'</div>';
-
-			$(this).append(edit_block);
-
-			// CALCUL DE LA PLACE DU BLOCK QUI VA ETRE AJOUTÉ
-
-			$('.newsBuilderAddBlock').hover( function() {
-
-				addBlockPlace = $(this).attr('id');
-
-				if (addBlockPlace == 'after') {
-					newBlockPlace = Number(blockPlace)+1;
-				} else if (addBlockPlace == 'before') {
-					newBlockPlace = Number(blockPlace);
 				} else {
-
+					upBlock = '';
 				}
 
-			});
+				if (blockPlace > 2 && blockPlace < $('.block').length-Number(3)) {
+					downBlock = '<button type="button" class="downBlock">'+
+												'<i class="downIcon fa fa-arrow-down"></i>'+
+											'</button>';
+				} else {
+					downBlock = '';
+				}
+
+				edit_block	=	'<div class="optionsBlock">'+
+												upBlock+
+												'<button type="submit" class="deleteBlock">'+
+													'<i class="deleteIcon pg-close"></i>'+
+												'</button>'+
+												'<button type="button" class="editBlock">'+
+													'<i class="editIcon fa fa-edit"></i>'+
+												'</button>'+
+												downBlock+
+											'</div>';
+
+				$(this).append(edit_block);
+				$(this).before(block_before);
+				$(this).after(block_after);
+
+			}
 
 			chooseblock();
 			upMoveBlock();
@@ -140,6 +130,8 @@
 
 			$('.blockSelect').remove();
 
+			blockPlace = $(this).children().children('input[name="blockplace"]').val();
+
 			chooseBlock = '<div class="page-container blockSelect">'+
 											'<div class="main-content">'+
 												'<div class="row">'+
@@ -147,6 +139,7 @@
 														'<i class="closeIcon pg-close"></i>'+
 													'</div>'+
 													'<div class="col-lg-8 newsBlocks clearFloat center-block">'+
+														'<input type="hidden" name="blockplace" value="'+blockPlace+'">'+
 														'<?=$builder_block_html?>'+
 													'</div>'+
 												'</div>'+
@@ -177,6 +170,7 @@
 
 			$('.blockSelect').remove();
 			idBlockHtml = $(this).children('input[name="id_block_html"]').val();
+			blockPlace = $(this).parent().children('input[name="blockplace"]').val();
 			blockInput = $(this).children('.block_input').map(function(idx, elem) {
 				var array1 = new Array();
 				var array2 = new Array();
@@ -197,7 +191,7 @@
 													'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 													'</div>'+
 													'<input type="hidden" name="id_block_html" value="'+idBlockHtml+'">'+
-													'<input type="hidden" name="ordre" value="'+newBlockPlace+'">'+
+													'<input type="hidden" name="ordre" value="'+blockPlace+'">'+
 													'<div class="col-xs-10 choosenBlockFooter panel-footer center-block text-right">'+
 														'<button id="return" type="button" class="btn btn-complete">RETOUR</button>'+
 														'<button type="submit" class="btn btn-success">AJOUTER</button>'+
@@ -302,15 +296,13 @@
 
 		$('.editBlock').unbind().click( function() {
 
-			//block = $(this).parent().parent();
 			idBlock = $(this).parent().parent().children('input[name="id_block"]').val();
-			//idBlockHtml = $(this).parent().parent().children('input[name="id_block_html"]').val();
 			idBlockContent = $(this).parent().parent().children('input[name="id_block_content"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
-			blockInput = $(this).children('.block_input').map(function(idx, elem) {
+			blockInput = $(this).parent().parent().children('.block_input').map(function(idx, elem) {
 				var array1 = new Array();
 				var array2 = new Array();
-				array1 = [$(elem).val(), $(elem).data('col'), $(elem).data('label'), $(elem).data('crop')];
+				array1 = [$(elem).val(), $(elem).data('col'), $(elem).data('label'), $(elem).data('crop'), $(elem).data('content')];
 				array2[0] = array1;
 				return array2;
 		  }).get();
@@ -364,7 +356,7 @@
 						// BLOCK TEXTE WYZIWYG SUMMMERNOTE
 						block = '<div class="blockInputSummernote">'+
 						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
-						'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'"></textarea>'+
+						'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'">'+blockInput[j][4]+'</textarea>'+
 						'</div>';
 					}
 
@@ -372,7 +364,7 @@
 						// BLOCK TEXTE BASIQUE
 						block = '<div class="blockInputTexte">'+
 						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
-						'<input class="builderInput choosenBlockContent" name="text'+t+'" placeholder="" value="">'+
+						'<input class="builderInput choosenBlockContent" name="text'+t+'" placeholder="" value="'+blockInput[j][4]+'">'+
 						'</div>';
 					}
 
@@ -432,16 +424,14 @@
 			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
 
-			$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
-
-				if (data=='ok') {
-					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
-				}
-
-			});
-
+			if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
+				$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+					if (data=='ok') {
+						window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+					}
+				});
+			}
 		});
-
 	}
 
 	// Fonction de deplacement du block vers le bas
@@ -453,16 +443,14 @@
 			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
 
-			$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
-
-				if (data=='ok') {
-					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
-				}
-
-			});
-
+			if (blockPlace > 2 && blockPlace < $('.block').length-Number(3)) {
+				$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+					if (data=='ok') {
+						window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+					}
+				});
+			}
 		});
-
 	}
 
 	// Fonction de suppression du block
