@@ -58,7 +58,7 @@
 			blockPlace = $(this).children('input[name="ordre"]').val();
 			blockPlaceAfter = Number(blockPlace)+Number(1);
 
-			if (idBlockHtml > 2 && idBlockHtml < 25) {
+			if (blockPlace > 2 && blockPlace < $('.block').length-Number(2)) {
 
 				// BLOCKS D'AJOUT
 
@@ -170,6 +170,7 @@
 
 			$('.blockSelect').remove();
 			idBlockHtml = $(this).children('input[name="id_block_html"]').val();
+			blockName = $(this).children('input[name="nom"]').val();
 			blockPlace = $(this).parent().children('input[name="blockplace"]').val();
 			blockInput = $(this).children('.block_input').map(function(idx, elem) {
 				var array1 = new Array();
@@ -189,6 +190,7 @@
 												'</div>'+
 												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/add_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 													'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
+													'<h4 class="col-xs-10"><strong>Ajouter un bloc</strong> '+blockName+'</h4>'+
 													'</div>'+
 													'<input type="hidden" name="id_block_html" value="'+idBlockHtml+'">'+
 													'<input type="hidden" name="ordre" value="'+blockPlace+'">'+
@@ -297,6 +299,7 @@
 		$('.editBlock').unbind().click( function() {
 
 			idBlock = $(this).parent().parent().children('input[name="id_block"]').val();
+			blockName = $(this).parent().parent().children('input[name="nom"]').val();
 			idBlockContent = $(this).parent().parent().children('input[name="id_block_content"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
 			blockInput = $(this).parent().parent().children('.block_input').map(function(idx, elem) {
@@ -319,6 +322,7 @@
 													'</div>'+
 													'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 														'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
+														'<h4 class="col-xs-10"><strong>Modifier le bloc</strong> '+blockName+'</h4>'+
 														'</div>'+
 														'<input type="hidden" name="id_block_content" value="'+idBlockContent+'">'+
 														'<input type="hidden" name="ordre" value="'+blockPlace+'">'+
@@ -427,7 +431,7 @@
 			if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
 				$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
 					if (data=='ok') {
-						window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+						window.location.href='<?=base_url();?>builder/campagne/creation/<?=$id_newsletter?>.html';
 					}
 				});
 			}
@@ -446,7 +450,7 @@
 			if (blockPlace > 2 && blockPlace < $('.block').length-Number(3)) {
 				$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
 					if (data=='ok') {
-						window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+						window.location.href='<?=base_url();?>builder/campagne/creation/<?=$id_newsletter?>.html';
 					}
 				});
 			}
@@ -469,7 +473,7 @@
 				if (data=='ok') {
 					block.remove();
 					$('.newsBuilderAddBlock').remove();
-					window.location.href='<?=base_url();?>builder/campagne_creer/<?=$id_newsletter?>.html';
+					window.location.href='<?=base_url();?>builder/campagne/creation/<?=$id_newsletter?>.html';
 				}
 
 			});

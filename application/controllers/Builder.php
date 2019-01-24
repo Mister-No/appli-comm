@@ -24,11 +24,11 @@ class Builder extends CI_Controller {
       $etape = $this->uri->segment(3, 0);
       $id_newsletter = $this->uri->segment(4, 0);
       $id_group = $_SESSION['id_group'];
+      $theme = 1;
       $data = array();
       $data_blocks = array();
       $replace_html = '';
       $builder_blocks = '';
-      $theme = 0;
 
       // NEWSLETTER
 
@@ -43,6 +43,7 @@ class Builder extends CI_Controller {
         $id_block_content = intval($row_newsletter->id_block_content);
         $nom_campagne = $row_newsletter->nom_campagne;
         $html = $row_newsletter->newsletter_block_html;
+        $nom_block = $row_newsletter->newsletter_block_nom;
         $ordre = $row_newsletter->newsletter_block_ordre;
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
@@ -68,6 +69,7 @@ class Builder extends CI_Controller {
           '{{id_block}}'         => $id_block,
           '{{id_block_html}}'    => $id_block_html,
           '{{id_block_content}}' => $id_block_content,
+          '{{nom}}'              => $nom_block,
           '{{ordre}}'            => $ordre,
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
@@ -105,7 +107,7 @@ class Builder extends CI_Controller {
 
       // BUILDER BLOCKS
 
-      $result_builder_block = $this->My_builder->get_builder_block($theme);
+      $result_builder_block = $this->My_builder->get_builder_block($id_group, $theme);
 
       foreach ($result_builder_block as $row_builder_block) {
 
@@ -480,7 +482,7 @@ class Builder extends CI_Controller {
 
         $this->My_common->insert_data('newsletter_has_block', $data);
 
-        redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+        redirect(base_url().'builder/campagne/creation/'.$id_newsletter.'.html');
 
       } else {
         // code...

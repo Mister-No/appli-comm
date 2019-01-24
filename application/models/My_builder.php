@@ -43,11 +43,13 @@ class My_builder extends CI_Model {
 	/********************************************************/
 	/*         SELECT BUILDER BLOCK				                  */
 	/********************************************************/
-	function get_builder_block($theme){
+	function get_builder_block($id_group, $theme){
 
 		$this->db->select();
 		$this->db->from('builder_block_type');
+		$this->db->where("builder_block_type.id_group", $id_group);
 		$this->db->where("builder_block_type.theme", $theme);
+		$this->db->where("builder_block_type.affichage", 1);
 
 		$query = $this->db->get();
 

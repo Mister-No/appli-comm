@@ -92,10 +92,11 @@
 		<tr>
 			<td align="center" valign="top">
 				<!-- Top -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
@@ -121,10 +122,11 @@
 				<!-- END Top -->
 
 				<!-- Header -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f3f5fb;">
+				<table class="block" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f3f5fb;">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
@@ -137,7 +139,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="img-center" width="210" style="font-size:0pt; line-height:0pt; text-align:center;">
-																<a href="#" target="_blank"><img src="{{base_url}}mediatheque/img/logo.png" width="210" height="67" border="0" alt="" /></a>
+																<a href="#" target="_blank"><img src="/mediatheque/newsletter/template_images/logo.png" width="210" height="67" border="0" alt="" /></a>
 															</td>
 															<td class="m-td" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 															<td align="right">
@@ -150,7 +152,7 @@
 																		<td>
 																			<table border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/img/ico_user.png" width="26" height="26" border="0" alt="" /></td>
+																					<td class="img" width="26" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/template_images/ico_user.png" width="26" height="26" border="0" alt="" /></td>
 																					<td class="img" width="10" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																					<td class="text-header" style="color:#9b9b9b; font-family:'Montserrat', Arial, sans-serif; font-size:14px; line-height:18px; text-align:left; font-weight:600;">
 																						<a href="#" target="_blank" class="link t-grey-4" style="text-decoration:none; color:#9b9b9b;"><span class="link t-grey-4" style="text-decoration:none; color:#9b9b9b;">ESPACE MEMBRE</span></a>
@@ -178,11 +180,12 @@
 				<!-- END Header -->
 
 				<!-- Headline -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre de la newsletter" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input[]" value="3" data-col="1" data-label="Numero de la newsletter" data-content="{{text1}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text2}}">
@@ -239,10 +242,11 @@
 				<!-- END Headline -->
 
 				<!-- Divider -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
@@ -272,10 +276,11 @@
 				<!-- END Divider -->
 
 				<!-- Image -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="700x450" data-content="{{img0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text0}}">
@@ -309,10 +314,11 @@
 				<!-- Image -->
 
 				<!-- Titre -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<tr>
@@ -344,11 +350,12 @@
 				</table>
 				<!-- END Titre -->
 
-				<!-- Texte -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<!-- Paragraphe -->
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -383,7 +390,7 @@
 														</tr>
 														<tr>
 															<td align="left">
-																<table border="0" cellspacing="0" cellpadding="0" style="min-width: 160px;">
+																<table border="0" cellspacing="0" cellpadding="0" style="min-width: 160px; margin-top:15px;">
 																	<tr>
 																		<td class="text-btn" style="padding: 10px 25px; color:#ffffff; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:20px; text-align:center; border-radius:20px;" bgcolor="#7cea1b">
 																			<a href="{{text4}}" target="_blank" class="t-white" style="text-decoration:none; color:#ffffff;"><span class="t-white" style="text-decoration:none; color:#ffffff;">{{text3}}</span></a>
@@ -405,7 +412,7 @@
 						</td>
 					</tr>
 				</table>
-				<!-- END Texte -->
+				<!-- END Paragraphe -->
 
 				<!-- Divider -->
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -437,10 +444,11 @@
 				<!-- END Divider -->
 
 				<!-- Signature -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nom et Prénom" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Fonction" data-content="{{text1}}">
@@ -511,18 +519,19 @@
 				<!-- END Divider -->
 
 				<!-- 2 Cols -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="330x250" data-content="{{img0}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image colonne 1" data-content="{{img1}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text0}}">
-					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text1}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text2}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text3}}">
-					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="2" data-label="Image colonne 2" data-crop="330x250" data-content="{{text4}}">
+					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image colonne 1" data-content="{{text0}}">
+					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text1}}">
+					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text2}}">
+					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text3}}">
+					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text4}}">
+					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="2" data-label="Image colonne 2" data-crop="330x250" data-content="{{img1}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Lien image colonne 2" data-content="{{text5}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre colonne 2" data-content="{{text6}}">
 					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text7}}">
@@ -575,7 +584,7 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
-																			<a href="{{text5}}" target="_blank"><img src="/mediatheque/newsletter/images/{{img0}}" width="330" height="250" border="0" alt="" /></a>
+																			<a href="{{text5}}" target="_blank"><img src="/mediatheque/newsletter/images/{{img1}}" width="330" height="250" border="0" alt="" /></a>
 																		</td>
 																	</tr>
 																	<tr>
@@ -620,10 +629,11 @@
 				<!-- END 2 Cols -->
 
 				<!-- Article - Image Left -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="450x500" data-content="{{img0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text0}}">
@@ -700,10 +710,11 @@
 				<!-- END Article - Image Left -->
 
 				<!-- Testimonial -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Texte" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="95x96" data-content="{{img0}}">
@@ -762,10 +773,11 @@
 				<!-- END Testimonial -->
 
 				<!-- Callout Alpha -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
@@ -848,10 +860,11 @@
 				<!-- END Callout Alpha -->
 
 				<!-- Callout Beta -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
@@ -936,18 +949,16 @@
 				<!-- END Divider -->
 
 				<!-- Blog Post 1 -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date" data-content="{{text1}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Thème" data-content="{{text2}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton 1" data-content="{{text3}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton 1" data-content="{{text4}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton 2" data-content="{{text5}}">
-					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton 2" data-content="{{text6}}">
+					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Mention" data-content="{{text2}}">
+					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien" data-content="{{text3}}">
 					<tr>
 						<td align="center" valign="top">
 							<table width="900" border="0" cellspacing="0" cellpadding="0" class="m-shell">
@@ -958,53 +969,25 @@
 												<td class="plr-20" style="padding: 18px 100px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="text-7 t-grey-5" style="font-family:'Montserrat', Arial, sans-serif; font-size:30px; line-height:36px; text-align:left; font-weight:300; color:#4a4a4a;">
-																{{text0}}
-															</td>
-														</tr>
-														<tr>
-															<td class="text t-grey-5" style="padding-bottom: 15px; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; font-weight:300; color:#4a4a4a;">
-																{{text1}} / <strong>{{text2}}</strong>
-															</td>
-														</tr>
-														<tr>
-															<td align="left">
-																<table border="0" cellspacing="0" cellpadding="0">
+															<td class="plr-20" style="border: 1px solid #99e2fa; padding: 20px 40px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<th class="column-top" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td align="left">
-																						<!-- Button -->
-																						<table border="0" cellspacing="0" cellpadding="0" style="min-width: 160px;">
-																							<tr>
-																								<td class="text-btn" style="padding: 10px 25px; color:#ffffff; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:20px; text-align:center; border-radius:20px;" bgcolor="#00b5f0">
-																									<a href="{{text4}}" target="_blank" class="link t-white" style="text-decoration:none; color:#ffffff;"><span class="link t-white" style="text-decoration:none; color:#ffffff;">{{text3}}</span></a>
-																								</td>
-																							</tr>
-																						</table>
-																						<!-- END Button -->
+																					<td class="text-2 t-grey-5 m-center" style="padding-bottom: 10px; font-family:'Montserrat', Arial, sans-serif; font-size:20px; line-height:34px; text-align:left; font-weight:300; color:#4a4a4a;">
+																						<strong>{{text0}}</strong>
+																					</td>
+																				</tr>
+																				<tr>
+																					<td class="text t-grey-5 m-center" style="font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; font-weight:300; color:#4a4a4a;">{{text1}}<br /><br />{{text2}}
 																					</td>
 																				</tr>
 																			</table>
 																		</th>
-																		<th class="column-top pb-30" valign="top" width="30" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
-																		<th class="column-top" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																				<tr>
-																					<td align="left">
-																						<!-- Button -->
-																						<table border="0" cellspacing="0" cellpadding="0" style="min-width: 160px;">
-																							<tr>
-																								<td class="text-btn" style="padding: 10px 25px; color:#ffffff; font-family:'Montserrat', Arial, sans-serif; font-size:16px; line-height:20px; text-align:center; border-radius:20px;" bgcolor="#00b5f0">
-																									<a href="{{text6}}" target="_blank" class="link t-white" style="text-decoration:none; color:#ffffff;"><span class="link t-white" style="text-decoration:none; color:#ffffff;"><img src="/mediatheque/newsletter/template_images/ico_arrow_white.png" width="11" height="14" border="0" alt="" />{{text5}}</span></a>
-																								</td>
-																							</tr>
-																						</table>
-																						<!-- END Button -->
-																					</td>
-																				</tr>
-																			</table>
+																		<th class="column pb-15" width="80" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;"></th>
+																		<th class="column" width="50" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+																			<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="{{text3}}" target="_blank"><img src="/mediatheque/newsletter/template_images/ico_arrow_green.png" width="50" height="50" border="0" alt="" /></a></div>
 																		</th>
 																	</tr>
 																</table>
@@ -1163,10 +1146,11 @@
 				<!-- END Divider -->
 
 				<!-- 3 Cols -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="210x250" data-content="{{img0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image colonne 1" data-content="{{text0}}">
@@ -1180,7 +1164,7 @@
 					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text7}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre bouton colonne 2" data-content="{{text8}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Lien bouton colonne 2" data-content="{{text9}}">
-					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="3" data-label="Image colonne 3" data-crop="210x250" data-content="{{img3}}">
+					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="3" data-label="Image colonne 3" data-crop="210x250" data-content="{{img2}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="3" data-label="Lien image colonne 3" data-content="{{text10}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="3" data-label="Titre colonne 3" data-content="{{text11}}">
 					<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="3" data-label="Texte colonne 3" data-content="{{text12}}">
@@ -1340,11 +1324,12 @@
 				</table>
 				<!-- END Divider -->
 
-				<!-- Person -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<!-- Editor -->
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="159x185" data-content="{{img0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text0}}">
@@ -1412,13 +1397,14 @@
 						</td>
 					</tr>
 				</table>
-				<!-- END Person -->
+				<!-- END Editor -->
 
 				<!-- Featured - Yellow -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -1490,10 +1476,11 @@
 				<!-- END Featured - Yellow -->
 
 				<!-- Featured - Teal -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -1565,10 +1552,11 @@
 				<!-- END Featured - Teal -->
 
 				<!-- Featured - Pink -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -1640,10 +1628,11 @@
 				<!-- END Featured - Pink -->
 
 				<!-- Featured - Blue -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -1715,10 +1704,11 @@
 				<!-- END Featured - Blue -->
 
 				<!-- Featured - Orange -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -1790,10 +1780,11 @@
 				<!-- END Featured - Orange -->
 
 				<!-- Featured - Green -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
@@ -1894,10 +1885,11 @@
 				<!-- END Divider -->
 
 				<!-- Highlight Alpha -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date" data-content="{{text1}}">
@@ -2037,10 +2029,11 @@
 				<!-- END Divider -->
 
 				<!-- Highlight Beta -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 					<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date" data-content="{{text1}}">
@@ -2187,10 +2180,11 @@
 				<!-- END Divider -->
 
 				<!-- Footer -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #45424e">
+				<table class="block" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #45424e">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
@@ -2250,10 +2244,11 @@
 				<!-- END Footer -->
 
 				<!-- Footer Bar -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #312d3b">
+				<table class="block" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #312d3b">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
@@ -2337,10 +2332,11 @@
 				<!-- END Footer Bar -->
 
 				<!-- Bottom -->
-				<table class="newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f5f5f5">
+				<table class="block" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f5f5f5">
 					<input type="hidden" name="id_block" value="{{id_block}}">
 					<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 					<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+					<input type="hidden" name="nom" value="{{nom}}">
 					<input type="hidden" name="ordre" value="{{ordre}}">
 					<tr>
 						<td align="center" valign="top">
