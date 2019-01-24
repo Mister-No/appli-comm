@@ -51,9 +51,11 @@
 		                <input type="text" class="form-control" name="expediteur" placeholder="Expediteur" required />
 		              </div>
 		            </div>
-		            <div class="col-md-6">
-
-		            </div>
+								<div class="form-group form-group-default form-group-default-select2 ">
+									<label class="">Thème :</label>
+										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme">
+	                </select>
+	              </div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
