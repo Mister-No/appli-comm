@@ -9,10 +9,13 @@
 					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne/creation/<?=$id_newsletter?>.html">Création</a>
+					<a href="<?=base_url();?>builder/campagne_informations/modification/<?=$id_newsletter?>.html">Informations</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne/validation/<?=$id_newsletter?>.html" class="active">Validation</a>
+					<a href="<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html">Newsletter</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>builder/campagne/validation/<?=$id_newsletter?>.html" class="active">Validation newsletter</a>
 				</li>
 			</ul>
 		</div>

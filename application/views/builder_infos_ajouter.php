@@ -9,7 +9,7 @@
 					<a href="<?=base_url();?>campagnes.html">CAMPAGNES</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/index.html" class="active">CRÉER</a>
+					<a href="<?=base_url();?>builder/campagne_informations/creation.html" class="active">Informations</a>
 				</li>
 			</ul>
 		</div>
@@ -54,6 +54,10 @@
 								<div class="form-group form-group-default form-group-default-select2 ">
 									<label class="">Thème :</label>
 										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme">
+											<option value=""></option>
+											<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
+												<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>
+											<?php endforeach; ?>
 	                </select>
 	              </div>
 		          </div>

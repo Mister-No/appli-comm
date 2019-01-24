@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  jeu. 24 jan. 2019 à 12:19
+-- Généré le :  jeu. 24 jan. 2019 à 15:48
 -- Version du serveur :  5.7.23
 -- Version de PHP :  5.6.37
 
@@ -183,12 +183,12 @@ CREATE TABLE `liste_cat` (
 --
 
 CREATE TABLE `newsletter` (
-  `id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_group` int(11) NOT NULL,
+  `theme` int(11) NOT NULL,
   `nom_campagne` varchar(100) DEFAULT NULL,
   `objet` varchar(100) DEFAULT NULL,
-  `expediteur` varchar(100) DEFAULT NULL,
-  `theme` int(11) NOT NULL,
-  `id_group` int(11) NOT NULL
+  `expediteur` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -198,7 +198,7 @@ CREATE TABLE `newsletter` (
 --
 
 CREATE TABLE `newsletter_block_content` (
-  `id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `id_block_html` int(11) NOT NULL,
   `img0` varchar(255) DEFAULT NULL,
   `img1` varchar(255) DEFAULT NULL,
@@ -277,12 +277,32 @@ INSERT INTO `newsletter_block_html` (`id`, `id_group`, `theme`, `nom`, `type`, `
 --
 
 CREATE TABLE `newsletter_has_block` (
-  `id` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `id_newsletter` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `id_block_html` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_newsletter` int(10) UNSIGNED NOT NULL,
+  `id_block_html` int(10) UNSIGNED NOT NULL,
   `id_block_content` int(11) NOT NULL,
   `ordre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `newsletter_themes`
+--
+
+CREATE TABLE `newsletter_themes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_group` int(11) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `newsletter_themes`
+--
+
+INSERT INTO `newsletter_themes` (`id`, `id_group`, `nom`) VALUES
+(1, 1, 'Seddre'),
+(2, 1, 'test');
 
 -- --------------------------------------------------------
 
@@ -380,6 +400,12 @@ ALTER TABLE `newsletter_has_block`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `newsletter_themes`
+--
+ALTER TABLE `newsletter_themes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -441,13 +467,13 @@ ALTER TABLE `liste_cat`
 -- AUTO_INCREMENT pour la table `newsletter`
 --
 ALTER TABLE `newsletter`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `newsletter_block_content`
 --
 ALTER TABLE `newsletter_block_content`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `newsletter_block_html`
@@ -459,7 +485,13 @@ ALTER TABLE `newsletter_block_html`
 -- AUTO_INCREMENT pour la table `newsletter_has_block`
 --
 ALTER TABLE `newsletter_has_block`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `newsletter_themes`
+--
+ALTER TABLE `newsletter_themes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`
