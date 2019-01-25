@@ -430,7 +430,7 @@ class Builder extends CI_Controller {
           copy($image_care, $image_original);
 
           $data_content = array (
-  					"img0" => $img0,
+  					"img0" => $img0.'.jpg',
   				);
 
   				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -451,7 +451,7 @@ class Builder extends CI_Controller {
           copy($image_care, $image_original);
 
           $data_content = array (
-            "img1" => $img1,
+            "img1" => $img1.'.jpg',
           );
 
           $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -472,7 +472,7 @@ class Builder extends CI_Controller {
           copy($image_care, $image_original);
 
           $data_content = array (
-  					"img2" => $img2,
+  					"img2" => $img2.'.jpg',
   				);
 
   				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -488,7 +488,7 @@ class Builder extends CI_Controller {
 
         $this->My_common->insert_data('newsletter_has_block', $data);
 
-        redirect(base_url().'builder/campagne/creation/'.$id_newsletter.'.html');
+        redirect(base_url().'builder/campagne/newsletter/'.$id_newsletter.'.html');
 
       } else {
         // code...
@@ -602,7 +602,7 @@ class Builder extends CI_Controller {
 
         }
 
-        redirect(base_url().'builder/campagne_creer/'.$id_newsletter.'.html');
+        redirect(base_url().'builder/campagne/newsletter/'.$id_newsletter.'.html');
 
       } else {
         // code...
