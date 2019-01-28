@@ -9,38 +9,52 @@ class Login extends CI_Controller {
 
 	public function verifier(){
 
-    $this->load->model('My_common');
+    // Mise en place des regles de verification du formulaire :
+    $this->form_validation->set_rules('username', 'Login', 'trim|required|min_length[3]|max_length[20]');
+    $this->form_validation->set_rules('password', 'Mot de passe', 'trim|required|min_length[4]|max_length[20]');
 
-    $result = $this->My_common->login($this->input->post('username'),$this->input->post('password'));
+    if ($this->form_validation->run() == FALSE) {
 
-		if($result){
-
-			foreach($result as $row) {
-
-				$_SESSION['is_connect'] = TRUE;
-				$_SESSION['user_id'] = $row->id;
-        $_SESSION['id_group'] = $row->id_group;
-				$_SESSION['is_admin'] = $row->admin;
-        $_SESSION['rang'] = $row->rang;
-				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
-
-        $this->load->model('My_users');
-
-        $result_user = $this->My_users->get_user($row->id);
-
-        foreach($result_user as $row_user) {
-
-          $_SESSION['entreprise'] = $row_user->entreprise;
-
-        }
-
-				echo 'ok';
-			}
+			// Retourne l'erreur si les regles ne sont pas respectées :
+      //echo validation_errors('<div class="error">', '</div>');
 
 		} else {
 
-			echo 2;
-		}
+      $this->load->model('My_common');
+
+      $result = $this->My_common->login($this->input->post('username'), $this->input->post('password'));
+
+  		if(count($result) == 1){
+
+  			foreach($result as $row) {
+
+  				$_SESSION['is_connect'] = TRUE;
+  				$_SESSION['user_id'] = $row->id;
+          $_SESSION['id_group'] = $row->id_group;
+  				$_SESSION['is_admin'] = $row->admin;
+          $_SESSION['rang'] = $row->rang;
+  				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
+
+          /**$this->load->model('My_users');
+
+          $result_user = $this->My_users->get_user($row->id);
+
+          foreach($result_user as $row_user) {
+
+            $_SESSION['entreprise'] = $row_user->entreprise;
+
+          }**/
+
+  				echo 'ok';
+  			}
+
+  		} else {
+
+        echo 2;
+
+  		}
+
+    }
 
 	}
 
@@ -73,7 +87,7 @@ class Login extends CI_Controller {
         $login = $row->login;
       }
 
-      $password = 123456/*mt_rand()*/;
+      $password = mt_rand();
 
       $crypt_password = sha1($password);
 
@@ -113,7 +127,7 @@ class Login extends CI_Controller {
       $this->email->clear();
 
       $this->email->from('pages@pages.fr', 'PAGES');
-      $this->email->to('noresihia@gmail.com');
+      $this->email->to($this->input->post('email'));
 
       $this->email->subject('Récupération de mot de passe');
       $this->email->message($message);

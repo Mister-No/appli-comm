@@ -113,7 +113,6 @@
   <script src="<?=base_url();?>assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
   <!-- END VENDOR JS -->
-  <script src=<?=base_url();?>"pages/js/pages.min.js"></script>
   <script>
 
   base_url = '<?=base_url();?>';

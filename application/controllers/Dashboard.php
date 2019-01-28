@@ -12,9 +12,9 @@ class Dashboard extends CI_Controller {
       $this->load->view('footer');
 
   	} else {
-
+			
       	$this->load->view('login');
-				
+
   	}
 	}
 

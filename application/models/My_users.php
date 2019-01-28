@@ -4,7 +4,7 @@ class My_users extends CI_Model {
   /********************************************/
   /* SELECT TOUTES LES UTILISATEURS           */
   /********************************************/
-function get_all_users($id_group){
+  function get_all_users($id_group){
 
     $this->db->select();
 		$this->db->from('users');
