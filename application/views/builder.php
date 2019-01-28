@@ -40,7 +40,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="clearFloat noPadding border center-block col-lg-8 newsBuilder">
+					<div class="body clearFloat noPadding border center-block col-lg-8 newsBuilder">
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
@@ -281,11 +281,11 @@
 					$('.summernote').summernote({
 						toolbar: [
 							// [groupName, [list of button]]
-							['style', ['bold', 'italic', 'underline', 'clear']],
-							['font', ['strikethrough', 'superscript', 'subscript']],
+							['style', ['bold', 'italic', 'underline']],
+							/**['font', ['strikethrough', 'superscript', 'subscript']],
 							['fontsize', ['fontsize']],
 							['color', ['color']],
-							['para', ['paragraph']],
+							['para', ['paragraph']],**/
 						],
 						height: 60,
 					});
@@ -408,11 +408,11 @@
 						$('.summernote').summernote({
 							toolbar: [
 								// [groupName, [list of button]]
-								['style', ['bold', 'italic', 'underline', 'clear']],
-								['font', ['strikethrough', 'superscript', 'subscript']],
+								['style', ['bold', 'italic', 'underline']],
+								/**['font', ['strikethrough', 'superscript', 'subscript']],
 								['fontsize', ['fontsize']],
 								['color', ['color']],
-								['para', ['paragraph']],
+								['para', ['paragraph']],**/
 							],
 							height: 60,
 						});

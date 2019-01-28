@@ -42,7 +42,7 @@
 }
 
 .newsBuilder {
-  width: 900px;
+  max-width: 900px;
   min-height: 200px;
   margin-bottom: 20px;
   display: flex;
@@ -326,4 +326,55 @@
 
 .uploadcare--widget {
   display: block;
+}
+
+@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
+  u + .body .gwfw { width: 100% !important; width: 100vw !important; }
+
+  .m-shell { width: 100% !important; min-width: 100% !important; }
+
+  .td { width: 100% !important; min-width: 100% !important; }
+
+  .m-br-15 { height: 15px !important; }
+
+  .m-td,
+  .m-hide { display: none !important; width: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; min-height: 0 !important; }
+
+  .m-block { display: block !important; }
+
+  .fluid-img img { width: 100% !important; max-width: 100% !important; height: auto !important; }
+
+  .column-top,
+  .column { float: left !important; width: 100% !important; display: block !important; }
+
+  .content-spacing { width: 15px !important; }
+
+  .m-bg { display: block !important; width: 100% !important; height: auto !important; background-position: center center !important; background-size: cover !important; }
+
+  .m-left { text-align: left !important; }
+  .m-center { text-align: center !important; }
+  .m-right { text-align: right !important; }
+
+  .left { margin-right: auto !important; }
+  .center { margin: 0 auto !important; }
+  .right { margin-left: auto !important; }
+
+  .h-auto { height: auto !important; }
+  .w-auto { width: auto !important; }
+  .w-full { width: 100% !important; }
+
+  .plr-0 { padding-left: 0px !important; padding-right: 0px !important; }
+  .plr-15 { padding-left: 15px !important; padding-right: 15px !important; }
+  .plr-20 { padding-left: 20px !important; padding-right: 20px !important; }
+
+  .pb-1 { padding-bottom: 1px !important; }
+  .pb-15 { padding-bottom: 15px !important; }
+  .pb-30 { padding-bottom: 30px !important; }
+
+  .text-6 { font-size: 16px !important; line-height: 22px !important; }
+  .text-7 { font-size: 24px !important; line-height: 36px !important; }
+  .text-8 { font-size: 32px !important; line-height: 38px !important; }
+  .text-9 { font-size: 15px !important; line-height: 21px !important; }
+
+  .pt-0 { padding-top: 0 !important; }
 }

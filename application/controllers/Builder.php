@@ -14,7 +14,7 @@ class Builder extends CI_Controller {
       $data_themes = array();
 
       $result_newsletter = $this->My_builder->get_newsletter($id_newsletter, $id_group);
-      $result_theme_newsletter = $this->My_builder->get_newsletter_themes($id_group);
+      $result_theme_newsletter = $this->My_builder->get_newsletter_themes_by_group($id_group);
 
       $data_themes = array(
         'result_theme_newsletter' => $result_theme_newsletter,
@@ -53,7 +53,6 @@ class Builder extends CI_Controller {
       $etape = $this->uri->segment(3, 0);
       $id_newsletter = $this->uri->segment(4, 0);
       $id_group = $_SESSION['id_group'];
-      $theme = 1;
       $data = array();
       $data_blocks = array();
       $replace_html = '';
@@ -352,6 +351,111 @@ class Builder extends CI_Controller {
       );
 
 			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+
+    } else {
+      $this->load->view('login');
+    }
+  }
+
+  public function newsletter_html()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_builder');
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+      $data = array();
+      $replace_html = '';
+      $head = '';
+      $blocks_html = '';
+      $end = '';
+      $result_newsletter = $this->My_builder->get_newsletter($id_newsletter, $id_group);
+      $result_theme = $this->My_builder->get_newsletter_theme($result_newsletter[0]->theme);
+
+      // BLOCK HEAD ET END
+
+      $replace = array(
+        '{{title}}' => $result_newsletter[0]->objet,
+      );
+
+      $head .= str_replace(
+        array_keys($replace),
+        array_values($replace),
+        $result_theme[0]->head_html
+      );
+      $end = $result_theme[0]->end_html;
+
+      // BLOCKS NEWSLETTER
+
+      foreach ($result_newsletter as $row_newsletter) {
+
+        $id_block = $row_newsletter->id_block;
+        $id_block_html = $row_newsletter->id_block_html;
+        $id_block_content = $row_newsletter->id_block_content;
+        $nom_campagne = $row_newsletter->nom_campagne;
+        $objet_campagne = $row_newsletter->objet;
+        $html = $row_newsletter->newsletter_block_html;
+        $nom_block = $row_newsletter->newsletter_block_nom;
+        $ordre = $row_newsletter->newsletter_block_ordre;
+        $img_link0 = $row_newsletter->newsletter_block_img0;
+        $img_link1 = $row_newsletter->newsletter_block_img1;
+        $img_link2 = $row_newsletter->newsletter_block_img2;
+        $text0 = $row_newsletter->newsletter_block_text0;
+        $text1 = $row_newsletter->newsletter_block_text1;
+        $text2 = $row_newsletter->newsletter_block_text2;
+        $text3 = $row_newsletter->newsletter_block_text3;
+        $text4 = $row_newsletter->newsletter_block_text4;
+        $text5 = $row_newsletter->newsletter_block_text5;
+        $text6 = $row_newsletter->newsletter_block_text6;
+        $text7 = $row_newsletter->newsletter_block_text7;
+        $text8 = $row_newsletter->newsletter_block_text8;
+        $text9 = $row_newsletter->newsletter_block_text9;
+        $text10 = $row_newsletter->newsletter_block_text10;
+        $text11 = $row_newsletter->newsletter_block_text11;
+        $text12 = $row_newsletter->newsletter_block_text12;
+        $text13 = $row_newsletter->newsletter_block_text13;
+        $text14 = $row_newsletter->newsletter_block_text14;
+
+        $replace = array(
+          '{{base_url}}'         => base_url(),
+          '{{id_block}}'         => $id_block,
+          '{{id_block_html}}'    => $id_block_html,
+          '{{id_block_content}}' => $id_block_content,
+          '{{nom}}'              => $nom_block,
+          '{{ordre}}'            => $ordre,
+          '{{img0}}'             => $img_link0,
+          '{{img1}}'             => $img_link1,
+          '{{img2}}'             => $img_link2,
+          '{{text0}}'            => $text0,
+          '{{text1}}'            => $text1,
+          '{{text2}}'            => $text2,
+          '{{text3}}'            => $text3,
+          '{{text4}}'            => $text4,
+          '{{text5}}'            => $text5,
+          '{{text6}}'            => $text6,
+          '{{text7}}'            => $text7,
+          '{{text8}}'            => $text8,
+          '{{text9}}'            => $text9,
+          '{{text10}}'           => $text10,
+          '{{text11}}'           => $text11,
+          '{{text12}}'           => $text12,
+          '{{text13}}'           => $text13,
+          '{{text14}}'           => $text14,
+        );
+
+        $blocks_html .= str_replace(
+          array_keys($replace),
+          array_values($replace),
+          $html
+        );
+
+      }
+
+      // NEWSLETTER
+
+      $newsletter = $head.$blocks_html.$end;
+
+      echo $newsletter;
 
     } else {
       $this->load->view('login');

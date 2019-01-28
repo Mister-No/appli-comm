@@ -40,7 +40,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="clearFloat noPadding border center-block col-lg-8 newsBuilder noHover">
+					<div class="body clearFloat noPadding border center-block col-lg-8 newsBuilder noHover">
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
