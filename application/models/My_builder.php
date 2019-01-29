@@ -16,6 +16,22 @@ class My_builder extends CI_Model {
 	}
 
 	/********************************************************/
+	/*         SELECT NEWSLETTER THEMES BY GROUP	          */
+	/********************************************************/
+	function get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, $type){
+
+		$this->db->select('id');
+		$this->db->from('newsletter_block_html');
+		$this->db->where("newsletter_block_html.id_group", $id_group);
+		$this->db->where("newsletter_block_html.theme", $theme);
+		$this->db->where("newsletter_block_html.type", $type);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
 	/*         SELECT NEWSLETTER THEME 			                */
 	/********************************************************/
 	function get_newsletter_theme($id_theme){
