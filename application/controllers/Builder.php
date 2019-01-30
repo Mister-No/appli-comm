@@ -68,8 +68,10 @@ class Builder extends CI_Controller {
         $id_block_html = $row_newsletter->id_block_html;
         $id_block_content = $row_newsletter->id_block_content;
         $nom_campagne = $row_newsletter->nom_campagne;
+        $theme = $row_newsletter->theme;
         $html = $row_newsletter->newsletter_block_html;
         $nom_block = $row_newsletter->newsletter_block_nom;
+        $type = $row_newsletter->newsletter_block_type;
         $ordre = $row_newsletter->newsletter_block_ordre;
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
@@ -97,6 +99,7 @@ class Builder extends CI_Controller {
           '{{id_block_content}}' => $id_block_content,
           '{{nom}}'              => $nom_block,
           '{{ordre}}'            => $ordre,
+          '{{type}}'             => $type,
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
           '{{img2}}'             => $img_link2,
@@ -166,7 +169,7 @@ class Builder extends CI_Controller {
   {
     if ($_SESSION["is_connect"] == TRUE){
 
-      $id_group = $_SESSION['id_group'];
+      $this->load->model('My_builder');
       $data = array();
       $data_block = array();
 
@@ -177,6 +180,9 @@ class Builder extends CI_Controller {
         'theme'           => $this->input->post ('theme'),
         'id_group'        => $_SESSION['id_group'],
       );
+
+      $id_group = $_SESSION['id_group'];
+      $theme = $this->input->post ('theme');
 
 			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
 

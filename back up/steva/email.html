@@ -91,6 +91,7 @@
 								<!-- Pre Header -->
 								<tr>
 									<input type="hidden" name="id_block" value="{{id_block}}">
+									<input type="hidden" name="type" value="{{type}}">
 									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 									<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 									<input type="hidden" name="nom" value="{{nom}}">
@@ -102,10 +103,14 @@
 								<!-- Header -->
 								<tr>
 									<input type="hidden" name="id_block" value="{{id_block}}">
+									<input type="hidden" name="type" value="{{type}}">
 									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 									<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 									<input type="hidden" name="nom" value="{{nom}}">
 									<input type="hidden" name="ordre" value="{{ordre}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre de la newsletter" data-content="{{text0}}">
+									<input class="block_input" type="hidden" name="block_input[]" value="3" data-col="1" data-label="Numero de la newsletter" data-content="{{text1}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text2}}">
 									<td class="pb20" style="padding-bottom: 27px;">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
@@ -126,7 +131,7 @@
 															<td align="right" width="517">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#141f2c" class="center">
 																	<tr>
-																		<td class="text-header2 pl100" valign="bottom" style="padding: 142px 16px 20px 20px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:right; min-width:auto !important;">Newsletter</td>
+																		<td class="text-header2 pl100" valign="bottom" style="padding: 142px 16px 20px 20px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:right; min-width:auto !important;">{{text0}} n&deg; {{text1}} - {{text2}}</td>
 																	</tr>
 																</table>
 															</td>
@@ -154,7 +159,7 @@
 												<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="text-title pb20 m-center pl0" style="padding-left: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:27px; font-weight:600; letter-spacing:2px; text-align:left; min-width:auto !important;">{{text0}} <br /> n° {{text1}} <br> {{text2}} </td>
+															<td class="text-title pb20 m-center pl0" style="padding-left: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:27px; font-weight:600; letter-spacing:2px; text-align:left; min-width:auto !important;">Nos publications <br /> de la semaine</td>
 														</tr>
 													</table>
 												</th>

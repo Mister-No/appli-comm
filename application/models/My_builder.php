@@ -20,7 +20,7 @@ class My_builder extends CI_Model {
 	/********************************************************/
 	function get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, $type){
 
-		$this->db->select('id');
+		$this->db->select('newsletter_block_html.id');
 		$this->db->from('newsletter_block_html');
 		$this->db->where("newsletter_block_html.id_group", $id_group);
 		$this->db->where("newsletter_block_html.theme", $theme);
