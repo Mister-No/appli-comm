@@ -572,7 +572,7 @@ class Builder extends CI_Controller {
 
         // Ajout et enregistrement des images
 
-        if (!empty($this->input->post ("img0")))
+        if (!empty($_POST["img0"]))
         {
 
           $d = new dateTime();
@@ -593,7 +593,7 @@ class Builder extends CI_Controller {
 
         }
 
-        if (!empty($this->input->post ("img1")))
+        if (!empty($_POST["img1"]))
         {
 
           $d = new dateTime();
@@ -614,7 +614,7 @@ class Builder extends CI_Controller {
 
         }
 
-        if (!empty($this->input->post ("img2")))
+        if (!empty($_POST["img2"]))
         {
 
           $d = new dateTime();
@@ -696,7 +696,7 @@ class Builder extends CI_Controller {
 
         // Ajout et enregistrement des images
 
-        if (!empty($this->input->post ("img0")))
+        if (!empty($_POST["img0"]))
         {
 
           $d = new dateTime();
@@ -717,7 +717,7 @@ class Builder extends CI_Controller {
 
         }
 
-        if (!empty($this->input->post ("img1")))
+        if (!empty($_POST["img1"]))
         {
 
           $d = new dateTime();
@@ -738,7 +738,7 @@ class Builder extends CI_Controller {
 
         }
 
-        if (!empty($this->input->post ("img2")))
+        if (!empty($_POST["img2"]))
         {
 
           $d = new dateTime();

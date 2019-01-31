@@ -61,11 +61,11 @@
 
 			id = $(this).children('input[name="id"]').val();
 			idBlockHtml = $(this).children('input[name="id_block_html"]').val();
-			idBlockType = $(this).children('input[name="type"]').val();
+			blockType = $(this).children('input[name="type"]').val();
 			blockPlace = $(this).children('input[name="ordre"]').val();
 			blockPlaceAfter = Number(blockPlace)+Number(1);
 
-			if (idBlockType > 2 && idBlockType < 25) {
+			if (blockType != 1 && blockType != 2 && blockType != 25 && blockType != 26 && blockType != 27) {
 
 				// BLOCKS D'AJOUT
 
@@ -85,7 +85,7 @@
 
 				// BLOCKS DE DEPLACEMENT
 
-				if (idBlockType > 3 && idBlockType < 26) {
+				if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
 					upBlock = '<button type="button" class="upBlock">'+
 											'<i class="upIcon fa fa-arrow-up"></i>'+
 										'</button>';
@@ -93,7 +93,7 @@
 					upBlock = '';
 				}
 
-				if (idBlockType > 2 && idBlockType < 25) {
+				if (blockPlace > 2 && blockPlace < $('.block').length-Number(3)) {
 					downBlock = '<button type="button" class="downBlock">'+
 												'<i class="downIcon fa fa-arrow-down"></i>'+
 											'</button>';

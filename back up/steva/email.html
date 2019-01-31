@@ -84,9 +84,7 @@
 		<tr>
 			<td align="center" valign="top">
 				<table width="800" border="0" cellspacing="0" cellpadding="0" class="m-shell">
-					<tr>
-						<td class="td" style="width:900px; min-width:900px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
 
 								<!-- Pre Header -->
 								<tr>
@@ -100,7 +98,7 @@
 								</tr>
 								<!-- END Pre Header -->
 
-								<!-- Header -->
+							<!-- Header -->
 								<tr>
 									<input type="hidden" name="id_block" value="{{id_block}}">
 									<input type="hidden" name="type" value="{{type}}">
@@ -353,43 +351,27 @@
 											</tr>
 											<!-- END 2 Cols Image -->
 
-											<!-- Title -->
+											<!-- Title+Images -->
 											<tr>
-												<input type="hidden" name="id_block" value="{{id_block}}">
-												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-												<input type="hidden" name="nom" value="{{nom}}">
-												<input type="hidden" name="ordre" value="{{ordre}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<td class="h1 pb20" style="padding: 0 10px 22px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:36px; text-align:center; font-weight:normal; min-width:auto !important;">{{text0}}</td>
-											</tr>
-											<!-- End Title -->
-											<!-- 2 cols Images -->
-											<tr>
-												<input type="hidden" name="id_block" value="{{id_block}}">
-												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-												<input type="hidden" name="nom" value="{{nom}}">
-												<input type="hidden" name="ordre" value="{{ordre}}">
-												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="347x195" data-content="{{img0}}">
-												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 2" data-crop="347x195" data-content="{{img1}}">
-												<td class="plr15 pb20" style="padding: 0 25px 25px;">
+												<td class="plr15 pb20" style="padding: 25px 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td class="h1 pb20" style="padding: 0 10px 22px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:36px; text-align:center; font-weight:normal; min-width:auto !important;">Sur l'intranet, focus sur nos Villa Beausoleil aux couleurs de No&euml;l !</td>
+														</tr>
 														<tr>
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/madiatheque/newsletter/images/steva/{{img0}}" width="347" height="195" border="0" alt="" /></td>
+																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/img_4.jpg" width="347" height="195" border="0" alt="" /></td>
+																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="images/img_4.jpg" width="347" height="195" border="0" alt="" /></td>
 																	</tr>
 																</table>
 															</th>
-															<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-															<th class="column fluid-img img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="/madiatheque/newsletter/images/steva/{{img1}}" width="347" height="195" border="0" alt="" /></th>
 														</tr>
 													</table>
 												</td>
 											</tr>
-											<!-- END 2 cols Images -->
+											<!-- END Title+Images -->
 
 											<!-- 2 Blue Cols -->
 											<tr>
@@ -688,13 +670,21 @@
 											</tr>
 											<!-- END Title+Right Image -->
 
-											<!-- Image+Text+Button -->
+											<!-- Image -->
 											<tr>
 												<td class="plr15 pb20" style="padding: 0 25px 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="fluid-img pb20" style="padding-bottom: 25px; font-size:0pt; line-height:0pt; text-align:left;"><img src="images/img_10.jpg" width="747" height="399" border="0" alt="" /></td>
+															<td class="fluid-img pb20" style="padding-bottom: 25px; font-size:0pt; line-height:0pt; text-align:left;"><img src="images/img_10.jpg" width="900px" height="400px" border="0" alt="" /></td>
 														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- End Image -->
+											<!-- Text+Button -->
+											<tr>
+												<td class="plr15 pb20" style="padding: 0 25px;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">Soci&eacute;t&eacute;</td>
 														</tr>
@@ -705,7 +695,7 @@
 															</td>
 														</tr>
 														<tr>
-															<td class="pb20" align="left" style="padding-bottom: 27px; border-bottom: 1px solid #141f2c;">
+															<td class="pb20" align="left" style="padding-bottom: 27px;">
 																<!-- Button -->
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -718,11 +708,39 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Image+Text+Button -->
-
+											<!-- END Text+Button -->
+											<!-- Divider -->
+											<tr>
+												<input type="hidden" name="id_block" value="{{id_block}}">
+												<input type="hidden" name="type" value="{{type}}">
+												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+												<input type="hidden" name="nom" value="{{nom}}">
+												<input type="hidden" name="ordre" value="{{ordre}}">
+												<td align="center" valign="top">
+													<table width="900" border="0" cellspacing="0" cellpadding="0" class="m-shell">
+														<tr>
+															<td class="td" style="width:900px; min-width:900px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="plr-20" style="padding: 40px 0px;">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td class="img" height="1" bgcolor="#9b9b9b" style="font-size:0pt; line-height:0pt; text-align:left;">&nbsp;</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- END Divider -->
 											<!-- 3 Cols -->
 											<tr>
-												<td class="pb0" style="padding-bottom: 27px;">
+												<td class="plr15 pb20" style="padding-bottom: 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="plr15" style="padding: 0 25px;">
@@ -995,9 +1013,7 @@
 									<td class="text-bottom plr15" style="padding: 10px 10px; color:#4a4a4a; font-family:'Source Sans Pro', Arial, sans-serif; font-size:11px; line-height:18px; font-weight:200; text-align:center; min-width:auto !important;"><a href="http://example.com/" target="_blank" class="link-u3" style="color:#4a4a4a; text-decoration:underline;"><span class="link-u3" style="color:#4a4a4a; text-decoration:underline;">Se d&eacute;sabonner</span></a></td>
 								</tr>
 								<!-- END Footer -->
-							</table>
-						</td>
-					</tr>
+
 				</table>
 			</td>
 		</tr>

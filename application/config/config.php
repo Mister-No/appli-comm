@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://app.comm/';
+//$config['base_url'] = 'http://newsletter.studio-brik.com/';
 
 /*
 |--------------------------------------------------------------------------
