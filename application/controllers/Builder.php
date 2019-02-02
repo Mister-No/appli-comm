@@ -136,7 +136,7 @@ class Builder extends CI_Controller {
 
       // BUILDER BLOCKS
 
-      $result_builder_block = $this->My_builder->get_builder_block($id_group, $theme);
+      $result_builder_block = $this->My_builder->get_builder_block($theme);
 
       foreach ($result_builder_block as $row_builder_block) {
 
@@ -191,7 +191,7 @@ class Builder extends CI_Controller {
       //Block Top
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 1);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 1);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -211,7 +211,7 @@ class Builder extends CI_Controller {
       //Block Header
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 2);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 2);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -231,7 +231,7 @@ class Builder extends CI_Controller {
       //Block Headline
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 3);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 3);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -254,7 +254,7 @@ class Builder extends CI_Controller {
       //Block Image
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 4);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 4);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -276,7 +276,7 @@ class Builder extends CI_Controller {
       //Block Titre
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 5);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 5);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -297,7 +297,7 @@ class Builder extends CI_Controller {
       //Block Paragraphe
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 6);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 6);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -322,7 +322,7 @@ class Builder extends CI_Controller {
       //Block Footer
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 25);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 25);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -342,7 +342,7 @@ class Builder extends CI_Controller {
       //Block Footer bar
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 26);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 26);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -362,7 +362,7 @@ class Builder extends CI_Controller {
       //Block Bottom
 
       //Récupération id du block par type
-      $result_html_block = $this->My_builder->get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, 27);
+      $result_html_block = $this->My_builder->get_newsletter_block_html_by_theme_and_type($theme, 27);
 
       $data_content = array (
         'id_block_html' => $result_html_block[0]->id,
@@ -581,7 +581,7 @@ class Builder extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$entreprise.'/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -602,7 +602,7 @@ class Builder extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$entreprise.'/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -623,7 +623,7 @@ class Builder extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$entreprise.'/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -705,7 +705,7 @@ class Builder extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$entreprise.'/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -726,7 +726,7 @@ class Builder extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$entreprise.'/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -747,7 +747,7 @@ class Builder extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/images/'.$entreprise.'/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 

@@ -8,7 +8,8 @@ class My_builder extends CI_Model {
 
 		$this->db->select();
 		$this->db->from('newsletter_themes');
-		$this->db->where("newsletter_themes.id_group", $id_group);
+		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter_themes.id', 'left');
+		$this->db->where("group_has_theme.id_group", $id_group);
 
 		$query = $this->db->get();
 
@@ -18,11 +19,10 @@ class My_builder extends CI_Model {
 	/********************************************************/
 	/*         SELECT NEWSLETTER THEMES BY GROUP	          */
 	/********************************************************/
-	function get_newsletter_block_html_by_themes_and_group_and_type($theme, $id_group, $type){
+	function get_newsletter_block_html_by_theme_and_type($theme, $type){
 
 		$this->db->select('newsletter_block_html.id');
 		$this->db->from('newsletter_block_html');
-		$this->db->where("newsletter_block_html.id_group", $id_group);
 		$this->db->where("newsletter_block_html.theme", $theme);
 		$this->db->where("newsletter_block_html.type", $type);
 
@@ -87,11 +87,10 @@ class My_builder extends CI_Model {
 	/********************************************************/
 	/*         SELECT BUILDER BLOCK				                  */
 	/********************************************************/
-	function get_builder_block($id_group, $theme){
+	function get_builder_block($theme){
 
 		$this->db->select();
 		$this->db->from('builder_block_type');
-		$this->db->where("builder_block_type.id_group", $id_group);
 		$this->db->where("builder_block_type.theme", $theme);
 		$this->db->where("builder_block_type.affichage", 1);
 

@@ -44,7 +44,7 @@
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
-						<a href="/builder/campagne_listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
+						<a href="/builder/newsletter_html/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
 					</div>
 				</div>
 			</div>
