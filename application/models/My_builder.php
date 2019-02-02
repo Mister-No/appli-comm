@@ -17,14 +17,14 @@ class My_builder extends CI_Model {
 	}
 
 	/********************************************************/
-	/*         SELECT NEWSLETTER THEMES BY GROUP	          */
+	/*         SELECT NEWSLETTER THEMES BY TEMPLATE	          */
 	/********************************************************/
-	function get_newsletter_block_html_by_theme_and_type($theme, $type){
+	function get_id_block_html_by_theme_and_template($theme, $template){
 
 		$this->db->select('newsletter_block_html.id');
 		$this->db->from('newsletter_block_html');
 		$this->db->where("newsletter_block_html.theme", $theme);
-		$this->db->where("newsletter_block_html.type", $type);
+		$this->db->where("newsletter_block_html.template", $template);
 
 		$query = $this->db->get();
 

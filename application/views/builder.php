@@ -65,7 +65,7 @@
 			blockPlace = $(this).children('input[name="ordre"]').val();
 			blockPlaceAfter = Number(blockPlace)+Number(1);
 
-			if (blockType != 1 && blockType != 2 && blockType != 25 && blockType != 26 && blockType != 27) {
+			if (blockType != 1) {
 
 				// BLOCKS D'AJOUT
 
@@ -83,7 +83,7 @@
 												'</div>'+
 											'</div>';
 
-				// BLOCKS DE DEPLACEMENT
+				// OPTION DE DEPLACEMENT
 
 				if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
 					upBlock = '<button type="button" class="upBlock">'+
@@ -101,18 +101,28 @@
 					downBlock = '';
 				}
 
-				edit_block	=	'<div class="optionsBlock">'+
+				// OPTION D'ÉDITION
+
+				if (blockType != 1 && blockType != 2) {
+					editBlock = '<button type="button" class="editBlock">'+
+												'<i class="editIcon fa fa-edit"></i>'+
+											'</button>'+;
+				} else {
+					editBlock = '';
+				}
+
+				// BLOCK D'OPTIONS
+
+				options_block	=	'<div class="optionsBlock">'+
 												upBlock+
 												'<button type="submit" class="deleteBlock">'+
 													'<i class="deleteIcon pg-close"></i>'+
 												'</button>'+
-												'<button type="button" class="editBlock">'+
-													'<i class="editIcon fa fa-edit"></i>'+
-												'</button>'+
+												editBlock+
 												downBlock+
 											'</div>';
 
-				$(this).append(edit_block);
+				$(this).append(options_block);
 				$(this).before(block_before);
 				$(this).after(block_after);
 

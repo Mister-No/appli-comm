@@ -85,24 +85,21 @@
 			<td align="center" valign="top">
 				<table width="800" border="0" cellspacing="0" cellpadding="0" class="m-shell">
 
-
 								<!-- Pre Header -->
-								<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
-									<input type="hidden" name="id_block" value="{{id_block}}">
-									<input type="hidden" name="type" value="{{type}}">
-									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-									<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-									<input type="hidden" name="nom" value="{{nom}}">
-									<input type="hidden" name="ordre" value="{{ordre}}">
 									<tr>
+										<input type="hidden" name="id_block" value="{{id_block}}">
+										<input type="hidden" name="type" value="{{type}}">
+										<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+										<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+										<input type="hidden" name="nom" value="{{nom}}">
+										<input type="hidden" name="ordre" value="{{ordre}}">
 										<td class="text-top ptb20 plr15" style="padding: 22px 10px 25px 15px; color:#6b6775; font-family:'Source Sans Pro', Arial, sans-serif; font-size:12px; line-height:16px; font-weight:400; text-align:center; min-width:auto !important;"><a href="http://example.com/" target="_blank" class="link" style="color:#6b6775; text-decoration:none;"><span class="link" style="color:#6b6775; text-decoration:none;">Voir cette newsletter en ligne</span></a></td>
 									</tr>
-								</table>
 
 								<!-- END Pre Header -->
 
-							<!-- Header -->
-								<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+								<!-- Header -->
+								<tr>
 									<input type="hidden" name="id_block" value="{{id_block}}">
 									<input type="hidden" name="type" value="{{type}}">
 									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
@@ -112,65 +109,61 @@
 									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre de la newsletter" data-content="{{text0}}">
 									<input class="block_input" type="hidden" name="block_input[]" value="3" data-col="1" data-label="Numero de la newsletter" data-content="{{text1}}">
 									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text2}}">
-									<tr>
-										<td class="pb20" style="padding-bottom: 27px;">
-											<table width="900px" border="0" cellspacing="0" cellpadding="0">
-												<tr>
-													<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-														<table border="0" cellspacing="0" cellpadding="0" class="center">
-															<tr>
-																<td class="img-center pl0" style="padding-bottom: 20px; padding-left: 75px; font-size:0pt; line-height:0pt; text-align:center;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/logo.jpg" width="140" height="44" border="0" alt="" /></a></td>
-															</tr>
-															<tr>
-																<td class="text-header pl0" style="padding-left: 113px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:left; min-width:auto !important;">Architecte <br /> d'une retraite <br /> heureuse.</td>
-															</tr>
-														</table>
-													</th>
-													<th class="column" width="10" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-													<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-														<table width="100%" border="0" cellspacing="0" cellpadding="0">
-															<tr>
-																<td align="right" width="517">
-																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="center" style="background-color: #141f2c;">
-																		<tr>
-																			<td class="text-header2 pl100" valign="bottom" style="padding: 142px 16px 20px 20px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:right; min-width:auto !important;">{{text0}} n&deg; {{text1}} - {{text2}}</td>
-																		</tr>
-																	</table>
-																</td>
-															</tr>
-														</table>
-													</th>
-												</tr>
-											</table>
-										</td>
-									</tr>
-								</table>
+									<td class="pb20" style="padding-bottom: 27px;">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+													<table border="0" cellspacing="0" cellpadding="0" class="center">
+														<tr>
+															<td class="img-center pl0" style="padding-bottom: 20px; padding-left: 75px; font-size:0pt; line-height:0pt; text-align:center;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/logo.jpg" width="140" height="44" border="0" alt="" /></a></td>
+														</tr>
+														<tr>
+															<td class="text-header pl0" style="padding-left: 113px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:left; min-width:auto !important;">Architecte <br /> d'une retraite <br /> heureuse.</td>
+														</tr>
+													</table>
+												</th>
+												<th class="column" width="10" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
+												<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td align="right" width="517">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="center" style="background-color: #141f2c;">
+																	<tr>
+																		<td class="text-header2 pl100" valign="bottom" style="padding: 142px 16px 20px 20px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:right; min-width:auto !important;">{{text0}} n&deg; {{text1}} - {{text2}}</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</th>
+											</tr>
+										</table>
+									</td>
+								</tr>
 								<!-- END Header -->
 								<!-- Headline -->
-								<table class="block newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
 									<input type="hidden" name="id_block" value="{{id_block}}">
 									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 									<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 									<input type="hidden" name="ordre" value="{{ordre}}">
 									<input type="hidden" name="nom" value="{{nom}}">
-									<tr>
-										<td class="pb20" style="padding-bottom: 27px;">
-											<table width="100%" border="0" cellspacing="0" cellpadding="0">
-												<tr>
-													<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-														<table width="100%" border="0" cellspacing="0" cellpadding="0">
-															<tr>
-																<td class="text-title pb20 m-center pl0" style="padding-left: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:27px; font-weight:600; letter-spacing:2px; text-align:left; min-width:auto !important;">Nos publications <br /> de la semaine</td>
-															</tr>
-														</table>
-													</th>
-													<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-													<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="/mediatheque/newsletter/steva/templates_images/img_1.jpg" width="167" height="165" border="0" alt="" /></th>
-												</tr>
-											</table>
-										</td>
-									</tr>
-								</table>
+									<td class="pb20" style="padding-bottom: 27px;">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td class="text-title pb20 m-center pl0" style="padding-left: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:27px; font-weight:600; letter-spacing:2px; text-align:left; min-width:auto !important;">Nos publications <br /> de la semaine</td>
+														</tr>
+													</table>
+												</th>
+												<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
+												<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="/mediatheque/newsletter/steva/templates_images/img_1.jpg" width="167" height="165" border="0" alt="" /></th>
+											</tr>
+										</table>
+									</td>
+								</tr>
 
 								<!-- END Headline -->
 
@@ -805,7 +798,6 @@
 													</td>
 												</tr>
 											</table>
-
 											<!-- End Image -->
 											<!-- Text+Button -->
 											<tr class="block newsBuilderBlock">
