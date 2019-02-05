@@ -85,25 +85,29 @@
 
 				// OPTION DE DEPLACEMENT
 
-				if ($('.blockPlace').index(this) > 0) {
-					upBlock = '<button type="button" class="upBlock">'+
-											'<i class="upIcon fa fa-arrow-up"></i>'+
-										'</button>';
-				} else {
-					upBlock = '';
-				}
+				if (blockType != 1 && blockType != 3 && blockType != 6 && blockType != 8) {
 
-				if ($('.blockPlace').index(this) < $('.blockPlace').length-Number(1)) {
-					downBlock = '<button type="button" class="downBlock">'+
-												'<i class="downIcon fa fa-arrow-down"></i>'+
+					if ($('.blockPlace').index(this) > 0) {
+						upBlock = '<button type="button" class="upBlock">'+
+												'<i class="upIcon fa fa-arrow-up"></i>'+
 											'</button>';
-				} else {
-					downBlock = '';
+					} else {
+						upBlock = '';
+					}
+
+					if ($('.blockPlace').index(this) < $('.blockPlace').length-Number(1)) {
+						downBlock = '<button type="button" class="downBlock">'+
+													'<i class="downIcon fa fa-arrow-down"></i>'+
+												'</button>';
+					} else {
+						downBlock = '';
+					}
+
 				}
 
 				// OPTION D'ÉDITION
 
-				if (blockType != 1 && blockType != 2) {
+				if (blockType != 1 && blockType != 5 && blockType != 7 && blockType != 8) {
 					modBlock = '<button type="button" class="editBlock">'+
 												'<i class="editIcon fa fa-edit"></i>'+
 											'</button>';
@@ -111,13 +115,21 @@
 					modBlock = '';
 				}
 
+				// OPTION DE SUPPRESSION
+
+				if (blockType != 1 && blockType != 4 && blockType != 6 && blockType != 7) {
+					eraseBlock = '<button type="submit" class="deleteBlock">'+
+													'<i class="deleteIcon pg-close"></i>'+
+												'</button>';
+				} else {
+					eraseBlock = '';
+				}
+
 				// BLOCK D'OPTIONS
 
 				options_block	=	'<div class="optionsBlock">'+
 												upBlock+
-												'<button type="submit" class="deleteBlock">'+
-													'<i class="deleteIcon pg-close"></i>'+
-												'</button>'+
+												eraseBlock+
 												modBlock+
 												downBlock+
 											'</div>';
@@ -391,6 +403,7 @@
 
 					if (blockInput[j][0] == 4) {
 						// BLOCK SELECT
+						
 					}
 
 					//Affichage des blocks
