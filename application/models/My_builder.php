@@ -17,6 +17,22 @@ class My_builder extends CI_Model {
 	}
 
 	/********************************************************/
+	/*         SELECT NEWSLETTER THEMES BY GROUP	          */
+	/********************************************************/
+	function get_newsletter_themes_by_id_newsletter($id){
+
+		$this->db->select('newsletter_themes.nom');
+		$this->db->from('newsletter_themes');
+		$this->db->join('newsletter', 'newsletter.theme = newsletter_themes.id', 'left');
+		$this->db->where("newsletter.id", $id);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
 	/*         SELECT NEWSLETTER THEMES BY TEMPLATE	          */
 	/********************************************************/
 	function get_id_block_html_by_theme_and_template($theme, $template){

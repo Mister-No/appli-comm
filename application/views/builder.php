@@ -403,7 +403,7 @@
 
 					if (blockInput[j][0] == 4) {
 						// BLOCK SELECT
-						
+
 					}
 
 					//Affichage des blocks

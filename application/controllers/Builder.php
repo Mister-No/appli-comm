@@ -557,9 +557,9 @@ class Builder extends CI_Controller {
 
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
-      $entreprise = $_SESSION['entreprise'];
       $id_block_html = $this->input->post ('id_block_html');
       $ordre = $this->input->post ('ordre');
+      $result_theme = $this->My_builder->get_newsletter_themes_by_id_newsletter($id_newsletter);
 
       if (!empty($id_newsletter)) {
 
@@ -613,7 +613,7 @@ class Builder extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -634,7 +634,7 @@ class Builder extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -655,7 +655,7 @@ class Builder extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'images/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -699,7 +699,7 @@ class Builder extends CI_Controller {
 
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
-      $entreprise = $_SESSION['entreprise'];
+      $result_theme = $this->My_builder->get_newsletter_themes_by_id_newsletter($id_newsletter);
       $id_block_content = $this->input->post ('id_block_content');
 
       if (!empty($id_newsletter) && !empty($id_block_content)) {
@@ -737,7 +737,7 @@ class Builder extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -758,7 +758,7 @@ class Builder extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -779,7 +779,7 @@ class Builder extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$entreprise.'/images/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 

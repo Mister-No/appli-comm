@@ -48,6 +48,22 @@ class My_users extends CI_Model {
 
   }
 
+  /********************************************/
+  /*         SELECT UN UTILISATEUR            */
+  /********************************************/
+  function get_user_entreprise($id_group){
+
+    $this->db->select();
+    $this->db->from('entreprises');
+    $this->db->where('entreprises.id_group', $id_group);
+    $this->db->where('entreprises.id_parent', 0);
+
+    $query = $this->db->get();
+
+    return $query->result();
+
+  }
+
   /******************************************/
   /*  VERIFIE L'EXISTANCE D'UN UTILISATEUR  */
   /******************************************/
