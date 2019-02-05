@@ -85,30 +85,30 @@
 
 				// OPTION DE DEPLACEMENT
 
-				if ($('.blockPlace').first()) {
-					upBlock = '';
-				} else {
+				if ($('.blockPlace').index(this) > 0) {
 					upBlock = '<button type="button" class="upBlock">'+
 											'<i class="upIcon fa fa-arrow-up"></i>'+
 										'</button>';
+				} else {
+					upBlock = '';
 				}
 
-				if ($('.blockPlace').last()) {
-					downBlock = '';
-				} else {
+				if ($('.blockPlace').index(this) < $('.blockPlace').length-Number(1)) {
 					downBlock = '<button type="button" class="downBlock">'+
 												'<i class="downIcon fa fa-arrow-down"></i>'+
 											'</button>';
+				} else {
+					downBlock = '';
 				}
 
 				// OPTION D'ÉDITION
 
 				if (blockType != 1 && blockType != 2) {
-					editBlock = '<button type="button" class="editBlock">'+
+					modBlock = '<button type="button" class="editBlock">'+
 												'<i class="editIcon fa fa-edit"></i>'+
 											'</button>';
 				} else {
-					editBlock = '';
+					modBlock = '';
 				}
 
 				// BLOCK D'OPTIONS
@@ -118,7 +118,7 @@
 												'<button type="submit" class="deleteBlock">'+
 													'<i class="deleteIcon pg-close"></i>'+
 												'</button>'+
-												editBlock+
+												modBlock+
 												downBlock+
 											'</div>';
 
@@ -126,13 +126,13 @@
 				$(this).before(block_before);
 				$(this).after(block_after);
 
-			}
+				chooseblock();
+				upMoveBlock();
+				downMoveBlock();
+				editBlock();
+				deleteBlock();
 
-			chooseblock();
-			upMoveBlock();
-			downMoveBlock();
-			editBlock();
-			deleteBlock();
+			}
 
 		});
 
