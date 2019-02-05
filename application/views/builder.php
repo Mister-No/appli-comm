@@ -85,20 +85,20 @@
 
 				// OPTION DE DEPLACEMENT
 
-				if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
+				if ($('.blockPlace').first()) {
+					upBlock = '';
+				} else {
 					upBlock = '<button type="button" class="upBlock">'+
 											'<i class="upIcon fa fa-arrow-up"></i>'+
 										'</button>';
-				} else {
-					upBlock = '';
 				}
 
-				if (blockPlace > 2 && blockPlace < $('.block').length-Number(3)) {
+				if ($('.blockPlace').last()) {
+					downBlock = '';
+				} else {
 					downBlock = '<button type="button" class="downBlock">'+
 												'<i class="downIcon fa fa-arrow-down"></i>'+
 											'</button>';
-				} else {
-					downBlock = '';
 				}
 
 				// OPTION D'ÉDITION
@@ -106,7 +106,7 @@
 				if (blockType != 1 && blockType != 2) {
 					editBlock = '<button type="button" class="editBlock">'+
 												'<i class="editIcon fa fa-edit"></i>'+
-											'</button>'+;
+											'</button>';
 				} else {
 					editBlock = '';
 				}
