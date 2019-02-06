@@ -35,7 +35,7 @@ class Login extends CI_Controller {
           $_SESSION['rang'] = $row->rang;
   				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
 
-          /**$this->load->model('My_users');
+          $this->load->model('My_users');
 
           $result_entreprise = $this->My_users->get_user_entreprise($row->id_group);
 
@@ -43,7 +43,7 @@ class Login extends CI_Controller {
 
             $_SESSION['entreprise'] = $row_entreprise->raison_sociale;
 
-          }**/
+          }
 
   				echo 'ok';
   			}

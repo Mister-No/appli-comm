@@ -655,7 +655,7 @@ class Builder extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'images/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
