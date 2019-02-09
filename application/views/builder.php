@@ -204,12 +204,13 @@
 			blockInput = $(this).children('.block_input').map(function(idx, elem) {
 				var array1 = new Array();
 				var array2 = new Array();
-				array1 = [$(elem).val(), $(elem).data('col'), $(elem).data('label'), $(elem).data('crop')];
+				array1 = [$(elem).val(), $(elem).data('col'), $(elem).data('label'), $(elem).data('crop'), $(elem).data('select')];
 				array2[0] = array1;
 				return array2;
 		  }).get();
 			i=0;
 			t=0;
+			s=0;
 
 			addBlock = '<div class="page-container blockSelect">'+
 										'<div class="main-content">'+
@@ -252,30 +253,42 @@
 
 				if (blockInput[j][0] == 1) {
 					// BLOCK IMAGE
-					block = '<div class="blockInputImage">'+
-					'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+					block = '<div class="blockInputImage form-group">'+
+					'<label class="control-label">'+blockInput[j][2]+' : </label>'+
 					'<input id="image_mag'+i+'" type="hidden" name="img'+i+'" data-crop="'+blockInput[j][3]+'" />'+
 					'</div>';
 				}
 
 				if (blockInput[j][0] == 2) {
 					// BLOCK TEXTE WYZIWYG SUMMMERNOTE
-					block = '<div class="blockInputSummernote">'+
-					'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+					block = '<div class="blockInputSummernote form-group">'+
+					'<label class="control-label">'+blockInput[j][2]+' : </label>'+
 					'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'"></textarea>'+
 					'</div>';
 				}
 
 				if (blockInput[j][0] == 3) {
 					// BLOCK TEXTE BASIQUE
-					block = '<div class="blockInputTexte">'+
-					'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
-					'<input class="builderInput choosenBlockContent" name="text'+t+'" placeholder="" value="">'+
+					block = '<div class="blockInputTexte form-group form-group-default">'+
+					'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+					'<input class="form-control" name="text'+t+'" placeholder="" value="">'+
 					'</div>';
 				}
 
 				if (blockInput[j][0] == 4) {
+					array_select = blockInput[j][4].split(',');
+					for (var z = 0; z < array_select.length; z++) {
+						console.log(array_select[z]);
+					}
+
 					// BLOCK SELECT
+					block = '<div class="blockInputTexte form-group form-group-default-select2">'+
+										'<label class="control-label">'+blockInput[j][2]+'</label>'+
+										'<select class="full-width" data-placeholder="Choisir un thème" init-plugin="select2" name="select'+j+'">'+
+											'<option value="1">test 1</option>'+
+											'<option value="2">test 2</option>'+
+										'</select>'+
+									'</div>';
 				}
 
 				//Affichage des blocks
@@ -313,6 +326,12 @@
 						height: 60,
 					});
 					t++;
+				}
+
+				if (blockInput[j][0] == 4) {
+					//Select 2
+
+					s++;
 				}
 
 			}
