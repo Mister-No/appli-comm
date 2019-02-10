@@ -276,19 +276,18 @@
 				}
 
 				if (blockInput[j][0] == 4) {
+					options = '';
 					array_select = blockInput[j][4].split(',');
-					for (var z = 0; z < array_select.length; z++) {
-						console.log(array_select[z]);
-					}
-
 					// BLOCK SELECT
-					block = '<div class="blockInputTexte form-group form-group-default-select2">'+
+					select_open = '<div class="blockInputTexte form-group form-group-default-select2">'+
 										'<label class="control-label">'+blockInput[j][2]+'</label>'+
-										'<select class="full-width" data-placeholder="Choisir un thème" init-plugin="select2" name="select'+j+'">'+
-											'<option value="1">test 1</option>'+
-											'<option value="2">test 2</option>'+
-										'</select>'+
-									'</div>';
+										'<select class="full-width" data-placeholder="Choisir un thème" init-plugin="select2" name="select'+j+'">';
+
+					for (var s = 0; s < array_select.length; s++) {
+						options += '<option value="'+s+'">'+array_select[s]+'</option>';
+					}
+					select_closed =	'</select></div>';
+					block = select_open+options+select_closed;
 				}
 
 				//Affichage des blocks
