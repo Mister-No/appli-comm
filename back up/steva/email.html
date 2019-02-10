@@ -157,7 +157,7 @@
 												<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 													<table border="0" cellspacing="0" cellpadding="0" class="center">
 														<tr>
-															<td class="img-center pl0" style="padding-bottom: 20px; padding-left: 75px; font-size:0pt; line-height:0pt; text-align:center;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/logo.jpg" width="140" height="44" border="0" alt="" /></a></td>
+															<td class="img-center pl0" style="padding-bottom: 20px; padding-left: 75px; font-size:0pt; line-height:0pt; text-align:center;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/logo.jpg" width="140" height="44" border="0" alt="" /></a></td>
 														</tr>
 														<tr>
 															<td class="text-header pl0" style="padding-left: 113px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:left; min-width:auto !important;">Architecte <br /> d'une retraite <br /> heureuse.</td>
@@ -210,7 +210,7 @@
 																</table>
 															</th>
 															<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></a></th>
+															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></a></th>
 														</tr>
 													</table>
 												</td>
@@ -236,7 +236,7 @@
 																</table>
 															</th>
 															<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></a></th>
+															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></a></th>
 														</tr>
 													</table>
 												</td>
@@ -255,17 +255,18 @@
 												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
 															<th class="column ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td class="plr15" style="padding: 0 26px;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/linkedin.jpg" width="20" height="22" border="0" alt="" /></a></td>
+																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/linkedin.jpg" width="20" height="22" border="0" alt="" /></a></td>
 																				</tr>
 																				<tr>
 																					<td class="h2 pb20" style="padding-bottom: 15px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; letter-spacing:1px; text-align:left; font-weight:normal; min-width:auto !important;">{{text0}}</td>
@@ -310,10 +311,11 @@
 												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
 															<th class="column-dir ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -321,7 +323,7 @@
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
-																						<a href="" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/linkedin.jpg" width="20" height="22" border="0" alt="" />
+																						<a href="" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/linkedin.jpg" width="20" height="22" border="0" alt="" />
 																					</a>
 																				</td>
 																				</tr>
@@ -372,10 +374,11 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="900px" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -384,7 +387,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="/mediatheque/newsletter/steva/template_images/instagram_white.jpg" width="18" height="18" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/template_images/instagram_white.jpg" width="18" height="18" border="0" alt="" />
 																						</a>
 																					</td>
 																				</tr>
@@ -434,10 +437,11 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
 															<th class="column-dir" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -446,7 +450,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="/mediatheque/newsletter/steva/images/instagram_white.jpg" width="18" height="18" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/instagram_white.jpg" width="18" height="18" border="0" alt="" />
 																						</a>
 																					</td>
 																				</tr>
@@ -496,10 +500,11 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="262" border="0" alt="" /></th>
+															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="262" border="0" alt="" /></th>
 															<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -508,7 +513,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="/mediatheque/newsletter/steva/template_images/instagram.jpg" width="18" height="18" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/template_images/instagram.jpg" width="18" height="18" border="0" alt="" />
 																				 		</a>
 																					</td>
 																				</tr>
@@ -556,10 +561,11 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="262" border="0" alt="" /></th>
+															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="262" border="0" alt="" /></th>
 															<th class="column-dir" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -568,7 +574,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="/mediatheque/newsletter/steva/template_images/instagram.jpg" width="18" height="18" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/template_images/instagram.jpg" width="18" height="18" border="0" alt="" />
 																						</a>
 																					</td>
 																				</tr>
@@ -616,10 +622,11 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text2}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="214" border="0" alt="" /></th>
+															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="214" border="0" alt="" /></th>
 															<th class="column ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -628,7 +635,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="/mediatheque/newsletter/steva/template_images/twitter.jpg" width="22" height="22" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/template_images/twitter.jpg" width="22" height="22" border="0" alt="" />
 																						</a>
 																					</td>
 																				</tr>
@@ -672,10 +679,11 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text2}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td width="100%" class="pb0" style="padding-bottom: 22px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="400" height="214" border="0" alt="" /></th>
+															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="214" border="0" alt="" /></th>
 															<th class="column-dir ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -684,7 +692,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="/mediatheque/newsletter/steva/template_images/twitter.jpg" width="22" height="22" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/template_images/twitter.jpg" width="22" height="22" border="0" alt="" />
 																						</a>
 																					</td>
 																				</tr>
@@ -737,10 +745,10 @@
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr style="float:left;">
-																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
+																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
 																	</tr>
 																	<tr style="float:right;">
-																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
+																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
 																	</tr>
 																</table>
 															</th>
@@ -762,6 +770,7 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter" data-content="{{select0}}">
 												<td class="pb0" style="padding-bottom: 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
@@ -770,7 +779,7 @@
 																	<tr>
 																		<td class="img-center pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:center;">
 																			<a href="http://example.com/" target="_blank">
-																				<img src="/meditheque/newsletter/steva/template_images/instagram_yellow.jpg" width="18" height="18" border="0" alt="" />
+																				<img src="{{base_url}}meditheque/newsletter/steva/template_images/instagram_yellow.jpg" width="18" height="18" border="0" alt="" />
 																			</a>
 																		</td>
 																	</tr>
@@ -824,7 +833,7 @@
 															<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
 															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;">
 																<a href="http://example.com/" target="_blank">
-																	<img src="/mediatheque/newsletter/steva/template_images/img_14.jpg" width="278" height="167" border="0" alt="" />
+																	<img src="{{base_url}}mediatheque/newsletter/steva/template_images/img_14.jpg" width="278" height="167" border="0" alt="" />
 																</a>
 															</th>
 														</tr>
@@ -860,7 +869,7 @@
 																		<th class="column" valign="top" width="347" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
+																					<td class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text8 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;"><strong>{{text0}}<span class="m-hide"><br /></span> </strong>{{text1}}</td>
@@ -882,7 +891,7 @@
 																		<th class="column" align="right" valign="top" width="347" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img1}}" width="348" height="196" border="0" alt="" /></td>
+																					<td class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="348" height="196" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text8 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;"><strong>{{text4}}<span class="m-hide"><br /></span> </strong>{{text5}}</td>
@@ -928,7 +937,7 @@
 																</table>
 															</th>
 															<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="/mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></th>
+															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></th>
 														</tr>
 													</table>
 												</td>
@@ -947,7 +956,7 @@
 												<td width="100%" class="plr15 pb20" style="padding: 0 25px 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="fluid-img pb20" style="padding-bottom: 25px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="800px" height="400px" border="0" alt="" /></td>
+															<td class="fluid-img pb20" style="padding-bottom: 25px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="800px" height="400px" border="0" alt="" /></td>
 														</tr>
 													</table>
 												</td>
@@ -1064,7 +1073,7 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="216" height="126" border="0" alt="" /></td>
+																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="216" height="126" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text0}}</td>
@@ -1091,7 +1100,7 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img1}}" width="216" height="126" border="0" alt="" /></td>
+																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="216" height="126" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text4}}</td>
@@ -1118,7 +1127,7 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img2}}" width="216" height="126" border="0" alt="" /></td>
+																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img2}}" width="216" height="126" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text8}}e</td>
@@ -1169,7 +1178,7 @@
 																</table>
 															</th>
 															<th class="column" width="20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="/mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></th>
+															<th class="column img-right m-center" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/img_1.jpg" width="167" height="165" border="0" alt="" /></th>
 														</tr>
 													</table>
 												</td>
@@ -1205,7 +1214,7 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img0}}" width="216" height="130" border="0" alt="" /></td>
+																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="216" height="130" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text11 pb20 m-center" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;">{{text0}}</td>
@@ -1227,7 +1236,7 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img1}}" width="216" height="130" border="0" alt="" /></td>
+																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="216" height="130" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text11 pb20 m-center" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;">{{text3}}</td>
@@ -1249,7 +1258,7 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="/mediatheque/newsletter/steva/images/{{img2}}" width="216" height="130" border="0" alt="" /></td>
+																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img2}}" width="216" height="130" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
 																					<td class="text11 pb20 m-center" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;">{{text6}}</td>
@@ -1294,7 +1303,7 @@
 												<th class="column" valign="bottom" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="img m-center pl0 pt0 pb20" style="padding: 0 0 20px 30px; font-size:0pt; line-height:0pt; text-align:left;" valign="top"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/flogo.jpg" width="160" height="50" border="0" alt="" /></a></td>
+															<td class="img m-center pl0 pt0 pb20" style="padding: 0 0 20px 30px; font-size:0pt; line-height:0pt; text-align:left;" valign="top"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/flogo.jpg" width="160" height="50" border="0" alt="" /></a></td>
 														</tr>
 													</table>
 												</th>
@@ -1327,15 +1336,15 @@
 																<!-- Socials -->
 																<table border="0" cellspacing="0" cellpadding="0" class="center">
 																	<tr>
-																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/ico_fb.jpg" width="10" height="15" border="0" alt="" />
+																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/ico_fb.jpg" width="10" height="15" border="0" alt="" />
 																		</a>
 																		</td>
 																		<td class="img" width="8" style="font-size:0pt; line-height:0pt; text-align:left;">&nbsp;</td>
-																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/ico_li.jpg" width="15" height="15" border="0" alt="" /></a></td>
+																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/ico_li.jpg" width="15" height="15" border="0" alt="" /></a></td>
 																		<td class="img" width="8" style="font-size:0pt; line-height:0pt; text-align:left;">&nbsp;</td>
-																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/ico_tw.jpg" width="15" height="15" border="0" alt="" /></a></td>
+																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/ico_tw.jpg" width="15" height="15" border="0" alt="" /></a></td>
 																		<td class="img" width="8" style="font-size:0pt; line-height:0pt; text-align:left;">&nbsp;</td>
-																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="/mediatheque/newsletter/steva/template_images/ico_in.jpg" width="15" height="15" border="0" alt="" /></a></td>
+																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/ico_in.jpg" width="15" height="15" border="0" alt="" /></a></td>
 																	</tr>
 																</table>
 																<!-- END Socials -->

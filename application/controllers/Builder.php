@@ -91,6 +91,10 @@ class Builder extends CI_Controller {
         $text12 = $row_newsletter->newsletter_block_text12;
         $text13 = $row_newsletter->newsletter_block_text13;
         $text14 = $row_newsletter->newsletter_block_text14;
+        $select0 = $row_newsletter->newsletter_block_select0;
+        $select1 = $row_newsletter->newsletter_block_select1;
+        $select2 = $row_newsletter->newsletter_block_select2;
+        $select3 = $row_newsletter->newsletter_block_select3;
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -118,6 +122,10 @@ class Builder extends CI_Controller {
           '{{text12}}'           => $text12,
           '{{text13}}'           => $text13,
           '{{text14}}'           => $text14,
+          '{{select0}}'          => $select0,
+          '{{select1}}'          => $select1,
+          '{{select2}}'          => $select2,
+          '{{select3}}'          => $select3,
         );
 
         $replace_html .= str_replace(
@@ -498,6 +506,10 @@ class Builder extends CI_Controller {
         $text12 = $row_newsletter->newsletter_block_text12;
         $text13 = $row_newsletter->newsletter_block_text13;
         $text14 = $row_newsletter->newsletter_block_text14;
+        $select0 = $row_newsletter->newsletter_block_select0;
+        $select1 = $row_newsletter->newsletter_block_select1;
+        $select2 = $row_newsletter->newsletter_block_select2;
+        $select3 = $row_newsletter->newsletter_block_select3;
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -524,6 +536,10 @@ class Builder extends CI_Controller {
           '{{text12}}'           => $text12,
           '{{text13}}'           => $text13,
           '{{text14}}'           => $text14,
+          '{{select0}}'          => $select0,
+          '{{select1}}'          => $select1,
+          '{{select2}}'          => $select2,
+          '{{select3}}'          => $select3,
         );
 
         $blocks_html .= str_replace(
@@ -598,6 +614,10 @@ class Builder extends CI_Controller {
           'text12'        => $this->input->post ('text12'),
   				'text13'        => $this->input->post ('text13'),
           'text14'        => $this->input->post ('text14'),
+          'select0'         => $this->input->post ('select0'),
+          'select1'         => $this->input->post ('select1'),
+          'select2'         => $this->input->post ('select2'),
+          'select3'         => $this->input->post ('select3'),
   			);
 
   			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
@@ -722,6 +742,10 @@ class Builder extends CI_Controller {
           'text12'        => $this->input->post ('text12'),
   				'text13'        => $this->input->post ('text13'),
           'text14'        => $this->input->post ('text14'),
+          'select0'         => $this->input->post ('select0'),
+          'select1'         => $this->input->post ('select1'),
+          'select2'         => $this->input->post ('select2'),
+          'select3'         => $this->input->post ('select3'),
   			);
 
   			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -844,6 +868,10 @@ class Builder extends CI_Controller {
           'text12'    => $result_block[0]->newsletter_block_text12,
           'text13'    => $result_block[0]->newsletter_block_text13,
           'text14'    => $result_block[0]->newsletter_block_text14,
+          'select0'   => $result_block[0]->newsletter_block_select0,
+          'select1'   => $result_block[0]->newsletter_block_select1,
+          'select2'   => $result_block[0]->newsletter_block_select2,
+          'select3'   => $result_block[0]->newsletter_block_select3,
         );
 
         $block_content = json_encode($data);
