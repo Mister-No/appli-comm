@@ -35,12 +35,13 @@ class My_builder extends CI_Model {
 	/********************************************************/
 	/*         SELECT NEWSLETTER THEMES BY TEMPLATE	          */
 	/********************************************************/
-	function get_id_block_html_by_theme_and_template($theme, $template){
+	function get_id_block_html_by_theme_and_template($theme){
 
-		$this->db->select('newsletter_block_html.id');
+		$this->db->select('newsletter_block_html.id,newsletter_block_html.nom,newsletter_block_html.theme,newsletter_block_html.template_ordre,newsletter_block_html.template_type');
 		$this->db->from('newsletter_block_html');
 		$this->db->where("newsletter_block_html.theme", $theme);
-		$this->db->where("newsletter_block_html.template", $template);
+		$this->db->where("newsletter_block_html.template_ordre !=", NULL);
+		$this->db->order_by('newsletter_block_html.template_ordre', 'ASC');
 
 		$query = $this->db->get();
 
@@ -75,7 +76,7 @@ class My_builder extends CI_Model {
 		//$this->db->join('newsletter_block_content', 'builder_block.id = newsletter_block_content.id_block', 'left');
 		$this->db->where("newsletter.id", $id_newsletter);
     $this->db->where("newsletter.id_group", $id_group);
-		$this->db->order_by ('newsletter_has_block.ordre', 'ASC');
+		$this->db->order_by('newsletter_has_block.ordre', 'ASC');
 
 		$query = $this->db->get();
 

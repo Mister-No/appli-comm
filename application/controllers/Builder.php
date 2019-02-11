@@ -180,17 +180,16 @@ class Builder extends CI_Controller {
       $this->load->model('My_builder');
       $data = array();
       $data_block = array();
-
+      $id_group = $_SESSION['id_group'];
+      $theme = $this->input->post ('theme');
+      $i = 1;
       $data = array(
         'nom_campagne'    => $this->input->post ('nom_campagne'),
         'objet'           => $this->input->post ('objet'),
         'expediteur'      => $this->input->post ('expediteur'),
-        'theme'           => $this->input->post ('theme'),
+        'theme'           => $theme,
         'id_group'        => $_SESSION['id_group'],
       );
-
-      $id_group = $_SESSION['id_group'];
-      $theme = $this->input->post ('theme');
 
 			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
 
@@ -199,9 +198,160 @@ class Builder extends CI_Controller {
       //Block Top
 
       //Récupération id du block du template par ordre
-      $result_html_block = $this->My_builder->get_id_block_html_by_theme_and_template($theme, 1);
+      $result_html_block = $this->My_builder->get_id_block_html_by_theme_and_template($theme);
 
-      $data_content = array (
+      foreach ($result_html_block as $block) {
+
+        if (!empty($block->id)) {
+
+          switch ($block->template) {
+            case 1:
+
+            $data_content = array (
+              'id_block_html' => $block->id,
+            );
+
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $block->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i++,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            break;
+
+            case 2:
+
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+              'text0' => 'Newsletter',
+              'text1' => 1,
+              'text2' => date('d/m/Y'),
+            );
+
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $block->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i++,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            break;
+
+            case 3:
+
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+              'text0'         => 'Newsletter',
+              'text1'         => 1,
+              'text2'         => date('d/m/Y'),
+            );
+
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $block->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i++,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            break;
+
+            case 4:
+
+            $data_content = array (
+              'id_block_html' => $block->id,
+              'img0'  => 'img_1.png',
+              'img1'  => 'img_2.png',
+              'img2'  => 'img_3.png',
+              'text0' => 'Lorem ipsum dolor sit amet',
+              'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text2' => 'En savoir +',
+              'text3' => '#',
+              'text4' => 'Lorem ipsum dolor sit amet',
+              'text5' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text6' => 'En savoir +',
+              'text7' => '#',
+              'text8' => 'Lorem ipsum dolor sit amet',
+              'text9' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text10' => 'En savoir +',
+              'text11' => '#',
+            );
+
+      			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $block->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $i++,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            break;
+
+            case 5:
+
+            $data_content = array (
+              'id_block_html' => $block->id,
+              'img0'  => 'img_1.png',
+              'img1'  => 'img_2.png',
+              'img2'  => 'img_3.png',
+              'text0' => 'Lorem ipsum dolor sit amet',
+              'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text2' => 'En savoir +',
+              'text3' => '#',
+              'text4' => 'Lorem ipsum dolor sit amet',
+              'text5' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text6' => 'En savoir +',
+              'text7' => '#',
+              'text8' => 'Lorem ipsum dolor sit amet',
+              'text9' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text10' => 'En savoir +',
+              'text11' => '#',
+            );
+
+        			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $block->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => $i++,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+              break;
+
+
+
+            default:
+              // code...
+              break;
+          }
+
+        /**echo '<pre>';
+        print_r($data_block);
+        echo '</pre>';**/
+
+        }
+
+      }
+
+      /**$data_content = array (
         'id_block_html' => $result_html_block[0]->id,
 			);
 
@@ -214,7 +364,7 @@ class Builder extends CI_Controller {
         'ordre'            => 1,
       );
 
-      $this->My_common->insert_data('newsletter_has_block', $data_block);
+      //$this->My_common->insert_data('newsletter_has_block', $data_block);
 
       //Block Header
 
@@ -417,7 +567,7 @@ class Builder extends CI_Controller {
 
         $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-      }
+      }**/
 
       redirect(base_url().'builder/campagne/newsletter/'.$id_newsletter.'.html');
 
