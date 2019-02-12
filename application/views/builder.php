@@ -492,14 +492,24 @@
 
 			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+			blockType = $(this).parent().parent().children('input[name="type"]').val();
 
-			if (blockPlace > 3 && blockPlace < $('.block').length-Number(2)) {
-				$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
-					if (data=='ok') {
-						window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
-					}
-				});
+			if (blockType != 1 && blockType != 3 && blockType != 6 && blockType != 8) {
+
+				//if ($('.blockPlace').index(this) > 0) {
+
+					$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+						if (data=='ok') {
+							window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
+						}
+					});
+
+				//} else {
+
+				//}
+
 			}
+
 		});
 	}
 
@@ -511,14 +521,24 @@
 
 			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+			blockType = $(this).parent().parent().children('input[name="type"]').val();
 
-			if (blockPlace > 2 && blockPlace < $('.block').length-Number(3)) {
-				$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
-					if (data=='ok') {
-						window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
-					}
-				});
+			if (blockType != 1 && blockType != 3 && blockType != 6 && blockType != 8) {
+
+				//if ($('.blockPlace').index(this) < $('.blockPlace').length-Number(1)) {
+
+					$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+						if (data=='ok') {
+							window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
+						}
+					});
+
+				//} else {
+
+				//}
+
 			}
+
 		});
 	}
 
@@ -532,16 +552,23 @@
 			id_block = $(this).parent().parent().children('input[name="id_block"]').val();
 			id_block_content = $(this).parent().parent().children('input[name="id_block_content"]').val();
 			blockPlace = $(this).parent().parent().children('input[name="ordre"]').val();
+			blockType = $(this).parent().parent().children('input[name="type"]').val();
 
-			$.post('<?=base_url();?>builder/delete/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
+			if (blockType != 1 && blockType != 4 && blockType != 6 && blockType != 7) {
 
-				if (data=='ok') {
-					block.remove();
-					$('.newsBuilderAddBlock').remove();
-					window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
-				}
+				$.post('<?=base_url();?>builder/delete/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
 
-			});
+					if (data=='ok') {
+						block.remove();
+						$('.newsBuilderAddBlock').remove();
+						window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
+					}
+
+				});
+
+			} else {
+
+			}
 
 		});
 
