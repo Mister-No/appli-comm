@@ -52,7 +52,7 @@
       <div class="login-container bg-white">
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
           <img src="<?=base_url();?>assets/img/logo.png" alt="logo" data-src="<?=base_url();?>assets/img/logo.png" data-src-retina="<?=base_url();?>assets/img/logo_2x.png" width="78" height="22">
-          <p class="p-t-35">Bonjour, veuillez vous identifier!</p>
+          <p class="p-t-35">Bonjour, veuillez vous identifier !</p>
           <div class="erreur alert alert-danger">
             <strong class="message"></strong>
             <button class="close"></button>

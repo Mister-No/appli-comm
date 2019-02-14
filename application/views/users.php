@@ -17,6 +17,13 @@
     <div class="main-content">
         <div class="row">
           <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-md-12">
+								 <a href="<?=base_url();?>users/ajouter.html" class="btn btn-success">AJOUTER UN UTILISATEUR</a>
+								</div>
+							</div>
+						</div>
             <div class="panel-heading">
               <div class="panel-title">
                     Vos Utilisateurs

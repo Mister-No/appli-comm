@@ -2,22 +2,6 @@
 class My_builder extends CI_Model {
 
 	/********************************************************/
-	/*        				 SELECT ALL CAMPAGNES	   			        */
-	/********************************************************/
-	function get_all_campagnes(){
-
-		$this->db->select();
-		$this->db->from('newsletter');
-		//$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter_themes.id', 'left');
-		//$this->db->where("group_has_theme.id_group", $id_group);
-		$this->db->order_by('newsletter.nom_campagne', 'ASC');
-
-		$query = $this->db->get();
-
-		return $query->result();
-	}
-
-	/********************************************************/
 	/*         SELECT NEWSLETTER THEMES BY GROUP	          */
 	/********************************************************/
 	function get_newsletter_themes_by_group($id_group){
@@ -49,14 +33,30 @@ class My_builder extends CI_Model {
 	}
 
 	/********************************************************/
-	/*         SELECT NEWSLETTER THEMES BY TEMPLATE	          */
+	/*         SELECT NEWSLETTER TEMPLATE	BY THEMES          */
 	/********************************************************/
-	function get_id_block_html_by_theme_and_template($theme, $template){
+	function get_id_block_html_by_theme_and_template($theme){
 
-		$this->db->select('newsletter_block_html.id');
+		$this->db->select();
 		$this->db->from('newsletter_block_html');
 		$this->db->where("newsletter_block_html.theme", $theme);
-		$this->db->where("newsletter_block_html.template", $template);
+		$this->db->where("newsletter_block_html.template !=", NULL);
+		$this->db->order_by('newsletter_block_html.template', 'ASC');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
+	/*         SELECT NEWSLETTER TEMPLATE	CONTENT         */
+	/********************************************************/
+	function get_template_content($id){
+
+		$this->db->select();
+		$this->db->from('newsletter_template_content');
+		$this->db->join('newsletter_block_html_template_has_content', 'newsletter_block_html_template_has_content.template_block_content = newsletter_template_content.id', 'left');
+		$this->db->where("newsletter_block_html_template_has_content.template_block_html", $id);
 
 		$query = $this->db->get();
 

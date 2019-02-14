@@ -72,6 +72,7 @@
 </head>
 <body class="body" style="padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#ffffff; -webkit-text-size-adjust:none;">
 	<table width="" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" class="gwfw" style="margin:0 auto;">
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet" />
 		<style type="text/css" media="screen">
 			/* Mobile styles */
 			@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
@@ -139,59 +140,57 @@
 							</table>
 								<!-- END Pre Header -->
 
-							<!-- Headline -->
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-								<input type="hidden" name="id_block" value="{{id_block}}">
-								<input type="hidden" name="type" value="{{type}}">
-								<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-								<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-								<input type="hidden" name="nom" value="{{nom}}">
-								<input type="hidden" name="ordre" value="{{ordre}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre de la newsletter" data-content="{{text0}}">
-								<input class="block_input" type="hidden" name="block_input[]" value="3" data-col="1" data-label="Numero de la newsletter" data-content="{{text1}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text2}}">
-								<tr>
-									<td class="pb20" style="padding-bottom: 27px;">
-										<table width="100%" border="0" cellspacing="0" cellpadding="0">
-											<tr>
-												<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-													<table border="0" cellspacing="0" cellpadding="0" class="center">
-														<tr>
-															<td class="img-center pl0" style="padding-bottom: 20px; padding-left: 75px; font-size:0pt; line-height:0pt; text-align:center;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/logo.jpg" width="140" height="44" border="0" alt="" /></a></td>
-														</tr>
-														<tr>
-															<td class="text-header pl0" style="padding-left: 113px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:left; min-width:auto !important;">Architecte <br /> d'une retraite <br /> heureuse.</td>
-														</tr>
-													</table>
-												</th>
-												<th class="column" width="10" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
-												<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-														<tr>
-															<td align="right" width="517">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="center" style="background-color:#141f2c;">
-																	<tr>
-																		<td class="text-header2 pl100" valign="bottom" style="padding: 142px 16px 20px 20px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:right;">{{text0}} n&deg; {{text1}} - {{text2}}</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-													</table>
-												</th>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</table>
-							<!-- End Headline -->
-
 								<!-- Content -->
 								<tr>
 									<td>
 										<table border="0" cellspacing="0" cellpadding="0">
 
-											<!-- Titre -->
+											<!-- Headline -->
+											<tr class="newsBuilderBlock">
+												<input type="hidden" name="id_block" value="{{id_block}}">
+												<input type="hidden" name="type" value="{{type}}">
+												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+												<input type="hidden" name="nom" value="{{nom}}">
+												<input type="hidden" name="ordre" value="{{ordre}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre de la newsletter" data-content="{{text0}}">
+												<input class="block_input" type="hidden" name="block_input[]" value="3" data-col="1" data-label="Numero de la newsletter" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text2}}">
+												<td width="100%" class="pb20" style="padding-bottom: 27px;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+																<table border="0" cellspacing="0" cellpadding="0" class="center">
+																	<tr>
+																		<td class="img-center pl0" style="padding-bottom: 20px; padding-left: 75px; font-size:0pt; line-height:0pt; text-align:center;"><a href="http://example.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/logo.jpg" width="140" height="44" border="0" alt="" /></a></td>
+																	</tr>
+																	<tr>
+																		<td class="text-header pl0" style="padding-left: 113px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:left; min-width:auto !important;">Architecte <br /> d'une retraite <br /> heureuse.</td>
+																	</tr>
+																</table>
+															</th>
+															<th class="column" width="10" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">&nbsp;</th>
+															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td align="right" width="517">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="center" style="background-color:#141f2c;">
+																				<tr>
+																					<td class="text-header2 pl100" valign="bottom" style="padding: 142px 16px 20px 20px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:400; text-align:right;">{{text0}} n&deg; {{text1}} - {{text2}}</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																</table>
+															</th>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- End Headline -->
+
 											<!-- Contenu 2 -->
+											<!-- Titre -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -244,8 +243,8 @@
 											</tr>
 											<!-- END Titre 1 -->
 
-											<!-- 2 big blue Cols -->
 											<!-- Contenu 6-2-4-5-1-9 -->
+											<!-- 2 big blue Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
@@ -254,14 +253,18 @@
 												<input type="hidden" name="ordre" value="{{ordre}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x400" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content='{{text1}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th width="400px" height="400px" class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="400px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -301,8 +304,8 @@
 												</td>
 											</tr>
 											<!-- END 2 big blue Cols -->
-											<!-- 2 big blue Cols -->
 											<!-- Contenu 6-2-4-5-1-9 -->
+											<!-- 2 big blue Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
@@ -311,14 +314,18 @@
 												<input type="hidden" name="ordre" value="{{ordre}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x400" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content='{{text1}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th width="400px" height="400px" class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="400px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column-dir ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -364,25 +371,28 @@
 											</tr>
 											<!-- END 2 big blue Cols -->
 
-											<!-- 2 big White Cols -->
 											<!-- Contenu 6-2-4-5-1-9 -->
+											<!-- 2 big White Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
-												<input type="hidden" name="type" value="{{type}}">
 												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
-												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x262" data-content="{{img0}}">
+												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x400" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content='{{text1}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="900px" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th width="400px" height="400px" class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="400px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -428,25 +438,28 @@
 												</td>
 											</tr>
 											<!-- END 2 big White Cols -->
-											<!-- 2 big White Cols -->
 											<!-- Contenu 6-2-4-5-1-9 -->
+											<!-- 2 big White Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
-												<input type="hidden" name="type" value="{{type}}">
 												<input type="hidden" name="id_block_html" value="{{id_block_html}}">
 												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
-												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x262" data-content="{{img0}}">
+												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x400" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content='{{text1}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="400" border="0" alt="" /></th>
+															<th width="400px" height="400px" class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="400px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column-dir" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -455,7 +468,7 @@
 																				<tr>
 																					<td class="img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
 																						<a href="http://example.com/" target="_blank">
-																							<img src="{{base_url}}mediatheque/newsletter/steva/images/social_network/white/{{select0}}.jpg" width="18" height="18" border="0" alt="" />
+																							<img src="{{base_url}}mediatheque/newsletter/steva/template_images/social_network/white/{{select0}}.jpg" width="18" height="18" border="0" alt="" />
 																						</a>
 																					</td>
 																				</tr>
@@ -492,8 +505,8 @@
 											</tr>
 											<!-- END 2 big White Cols -->
 
-											<!-- 2 small Blue Cols -->
 											<!-- Contenu 6-2-11-5-1-9 -->
+											<!-- 2 small Blue Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -510,7 +523,11 @@
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="262" border="0" alt="" /></th>
+															<th width="400px" height="262px" class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="262px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column pb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -554,8 +571,8 @@
 												</td>
 											</tr>
 											<!-- END 2 small Blue Cols -->
-											<!-- 2 small blue Cols -->
 											<!-- Contenu 6-2-11-5-1-9 -->
+											<!-- 2 small blue Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -572,7 +589,11 @@
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#141f2c" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="262" border="0" alt="" /></th>
+															<th width="400px" height="262px" class="column fluid-img pb20" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="262px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column-dir" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -617,8 +638,8 @@
 											</tr>
 											<!-- END 2 small Blue Cols -->
 
-											<!-- 2 small white Cols -->
 											<!-- Contenu 6-2-11-5-1-9 -->
+											<!-- 2 small white Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -626,15 +647,20 @@
 												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
-												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x214" data-content="{{img0}}">
+												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x262" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text1}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text2}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 												<td width="100%" class="pb20" style="padding-bottom: 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="214" border="0" alt="" /></th>
+															<th width="400px" height="214px" class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="214px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -651,13 +677,16 @@
 																					<td class="h3 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; letter-spacing:1px; text-align:left; font-weight:normal; min-width:auto !important;">{{text0}}</td>
 																				</tr>
 																				<tr>
+																					<td class="text3 pb20" style="padding-bottom: 15px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:300; font-style:italic; text-align:left; min-width:auto !important;">{{text1}}</td>
+																				</tr>
+																				<tr>
 																					<td align="left">
 																						<!-- Button -->
 																						<table border="0" cellspacing="0" cellpadding="0">
 																							<tr>
 																								<td class="text-btn2" bgcolor="#141f2c" style="padding: 9px 26px; border: 1px solid #141f2c; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:12px; line-height:16px; font-weight:600; letter-spacing:1px; text-align:left; min-width:auto !important;">
-																									<a href="{{text2}}" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;">
-																										<span class="link-white" style="color:#ffffff; text-decoration:none;">{{text1}}</span>
+																									<a href="{{text3}}" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;">
+																										<span class="link-white" style="color:#ffffff; text-decoration:none;">{{text2}}</span>
 																									</a>
 																								</td>
 																							</tr>
@@ -675,8 +704,8 @@
 												</td>
 											</tr>
 											<!-- END 2 small white Cols -->
-											<!-- 2 small white Cols -->
 											<!-- Contenu 6-2-11-5-1-9 -->
+											<!-- 2 small white Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -684,15 +713,20 @@
 												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
-												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x214" data-content="{{img0}}">
+												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x262" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text1}}">
-												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text2}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 												<td width="100%" class="pb0" style="padding-bottom: 22px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction:rtl;">
 														<tr>
-															<th class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400" height="214" border="0" alt="" /></th>
+															<th width="400px" height="214px" class="column fluid-img" style="padding:0; margin:0; font-weight:normal; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text3}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="400px" height="214px" border="0" alt="" />
+																</a>
+															</th>
 															<th class="column-dir ptb20" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -709,13 +743,16 @@
 																					<td class="h3 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; letter-spacing:1px; text-align:left; font-weight:normal; min-width:auto !important;">{{text0}}</td>
 																				</tr>
 																				<tr>
+																					<td class="text3 pb20" style="padding-bottom: 15px; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:300; font-style:italic; text-align:left; min-width:auto !important;">{{text1}}</td>
+																				</tr>
+																				<tr>
 																					<td align="left">
 																						<!-- Button -->
 																						<table border="0" cellspacing="0" cellpadding="0">
 																							<tr>
 																								<td class="text-btn2" bgcolor="#141f2c" style="padding: 9px 26px; border: 1px solid #141f2c; color:#ffffff; font-family:'Source Sans Pro', Arial, sans-serif; font-size:12px; line-height:16px; font-weight:600; letter-spacing:1px; text-align:left; min-width:auto !important;">
-																									<a href="{{text2}}" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;">
-																										<span class="link-white" style="color:#ffffff; text-decoration:none;">{{text1}}</span>
+																									<a href="{{text3}}" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;">
+																										<span class="link-white" style="color:#ffffff; text-decoration:none;">{{text2}}</span>
 																									</a>
 																								</td>
 																							</tr>
@@ -734,8 +771,8 @@
 											</tr>
 											<!-- END 2 small white Cols -->
 
-											<!-- Title+Images -->
 											<!-- Contenu 2-6-7 -->
+											<!-- Title+Images -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -746,7 +783,7 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="348x196" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="348x196" data-content="{{img1}}">
-												<td class="plr15 pb20" style="padding: 25px 25px;">
+												<td  width="100%" class="plr15 pb20" style="padding: 25px 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="h1 pb20" style="padding: 0 10px 22px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:21px; line-height:36px; text-align:center; font-weight:normal; min-width:auto !important;">{{text0}}</td>
@@ -758,7 +795,7 @@
 																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
 																	</tr>
 																	<tr style="float:right;">
-																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
+																		<td class="fluid-img m-center pb20" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="348" height="196" border="0" alt="" /></td>
 																	</tr>
 																</table>
 															</th>
@@ -768,8 +805,8 @@
 											</tr>
 											<!-- END Title+Images -->
 
-											<!-- Testimonial -->
 											<!-- Contenu 2-11-5-1-9 -->
+											<!-- Testimonial -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -782,7 +819,7 @@
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
-												<td class="pb0" style="padding-bottom: 27px;">
+												<td  width="100%" class="pb0" style="padding-bottom: 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="plr15 ptb20" bgcolor="#ffe4b3" style="padding: 38px 0 40px;">
@@ -790,7 +827,7 @@
 																	<tr>
 																		<td class="img-center pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:center;">
 																			<a href="http://example.com/" target="_blank">
-																				<img src="{{base_url}}meditheque/newsletter/steva/template_images/social_network/yellow/{{select0}}.jpg" width="18" height="18" border="0" alt="" />
+																				<img src="{{base_url}}mediatheque/newsletter/steva/template_images/social_network/yellow/{{select0}}.jpg" width="18" height="18" border="0" alt="" />
 																			</a>
 																		</td>
 																	</tr>
@@ -831,7 +868,7 @@
 												<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
-												<td class="ptb20" style="padding: 0 0 27px 0;">
+												<td  width="100%" class="ptb20" style="padding: 0 0 27px 0;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
@@ -853,8 +890,8 @@
 											</tr>
 											<!-- END Titre 2 -->
 
-											<!-- 2 Cols Image+Text -->
 											<!-- Contenu 6-2-4-5-1-6-2-4-5-1 -->
+											<!-- 2 Cols Image+Text -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -864,15 +901,15 @@
 												<input type="hidden" name="ordre" value="{{ordre}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="348x196" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content='{{text1}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 2" data-crop="348x196" data-content="{{img1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 2" data-content="{{text4}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 2" data-content="{{text5}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 2" data-content='{{text5}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 2" data-content="{{text6}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 2" data-content="{{text7}}">
-												<tdclass="pb0" style="padding-bottom: 27px;">
+												<td  width="100%" class="pb0" style="padding-bottom: 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="plr15" style="padding: 0 25px;">
@@ -881,7 +918,11 @@
 																		<th class="column" valign="top" width="347" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348" height="196" border="0" alt="" /></td>
+																					<td width="348px" height="196px" class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text3}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="348px" height="196px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text8 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;"><strong>{{text0}}<span class="m-hide"><br /></span> </strong>{{text1}}</td>
@@ -903,7 +944,11 @@
 																		<th class="column" align="right" valign="top" width="347" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="348" height="196" border="0" alt="" /></td>
+																					<td width="348px" height="196px" class="fluid-img pb20" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text7}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="348px" height="196px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text8 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;"><strong>{{text4}}<span class="m-hide"><br /></span> </strong>{{text5}}</td>
@@ -956,8 +1001,8 @@
 											</tr>
 											<!-- END Titre 3 -->
 
-											<!-- Image -->
 											<!-- Contenu 6 -->
+											<!-- Image -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -966,18 +1011,23 @@
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="800x400" data-content="{{img0}}">
+												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text1}}">
 												<td width="100%" class="plr15 pb20" style="padding: 0 25px 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="fluid-img pb20" style="padding-bottom: 25px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="800px" height="400px" border="0" alt="" /></td>
+															<td class="fluid-img pb20" style="padding-bottom: 25px; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text1}}">
+																	<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="100%" height="400px" border="0" alt="" />
+																</a>
+															</td>
 														</tr>
 													</table>
 												</td>
 											</tr>
 											<!-- END Image -->
 
-											<!-- Text+Button -->
 											<!-- Contenu 2-3-4-5-1 -->
+											<!-- Text+Button -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 											  <input type="hidden" name="type" value="{{type}}">
@@ -987,7 +1037,7 @@
 											  <input type="hidden" name="ordre" value="{{ordre}}">
 											  <input type="hidden" class="block_input" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 											  <input type="hidden" class="block_input" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
-											  <input type="hidden" class="block_input" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+											  <input type="hidden" class="block_input" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content='{{text2}}'>
 											  <input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
 											  <input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
 												<td width="100%" class="plr15 pb20" style="padding: 0 25px 27px;">
@@ -996,7 +1046,7 @@
 															<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text0}}</td>
 														</tr>
 														<tr>
-															<td class="text10 pb20" style="padding-bottom: 25px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">
+															<td class="text10 pb20" style="color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:600; text-align:left; min-width:auto !important;">
 																{{text1}}
 															</td>
 														</tr>
@@ -1055,8 +1105,8 @@
 											</tr>
 											<!-- END Divider -->
 
-											<!-- 3 Cols -->
 											<!-- Contenu 6-2-4-5-1-7-2-4-5-1-8-2-4-5-1 -->
+											<!-- 3 Cols -->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -1066,20 +1116,20 @@
 												<input type="hidden" name="ordre" value="{{ordre}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="216X126" data-content="{{img0}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text0}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text1}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content='{{text1}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text3}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 2" data-crop="216X126" data-content="{{img1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 2" data-content="{{text4}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 2" data-content="{{text5}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 2" data-content='{{text5}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 2" data-content="{{text6}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 2" data-content="{{text7}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 3" data-crop="216X126" data-content="{{img2}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 3" data-content="{{text8}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 3" data-content="{{text9}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 3" data-content='{{text9}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 3" data-content="{{text10}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 3" data-content="{{text11}}">
-												<td class="pb0" style="padding-bottom: 27px;">
+												<td  width="100%" class="pb0" style="padding-bottom: 27px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="plr15" style="padding: 0 25px;">
@@ -1088,7 +1138,11 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="216" height="126" border="0" alt="" /></td>
+																					<td width="216px" height="126px" class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text3}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="216px" height="126px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text0}}</td>
@@ -1115,7 +1169,11 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="216" height="126" border="0" alt="" /></td>
+																					<td width="216px" height="126px" class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text7}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="216px" height="126px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text4}}</td>
@@ -1142,10 +1200,14 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img2}}" width="216" height="126" border="0" alt="" /></td>
+																					<td width="216px" height="126px" class="fluid-img pb20" style="padding-bottom: 18px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text11}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img2}}" width="216px" height="126px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
-																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text8}}e</td>
+																					<td class="text9 pb20" style="padding-bottom: 15px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:18px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">{{text8}}</td>
 																				</tr>
 																				<tr>
 																					<td class="text10 pb20" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:300; text-align:left; min-width:auto !important;">
@@ -1200,8 +1262,8 @@
 											</tr>
 											<!-- END Titre 4 -->
 
-											<!-- 3 Cols Logos-->
 											<!-- Contenu 6-2-4-5-1-7-2-4-5-1-8-2-4-5-1 -->
+											<!-- 3 Cols Logos-->
 											<tr class="blockPlace newsBuilderBlock">
 												<input type="hidden" name="id_block" value="{{id_block}}">
 												<input type="hidden" name="type" value="{{type}}">
@@ -1210,18 +1272,18 @@
 												<input type="hidden" name="nom" value="{{nom}}">
 												<input type="hidden" name="ordre" value="{{ordre}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="216X130" data-content="{{img0}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text0}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content='{{text0}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text1}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text2}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 2" data-crop="216X130" data-content="{{img1}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 2" data-content="{{text3}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 2" data-content='{{text3}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 2" data-content="{{text4}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 2" data-content="{{text5}}">
 												<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 3" data-crop="216X130" data-content="{{img2}}">
-												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 3" data-content="{{text6}}">
+												<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 3" data-content='{{text6}}'>
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 3" data-content="{{text7}}">
 												<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 3" data-content="{{text8}}">
-												<td class="plr15" style="padding: 0 25px;">
+												<td width="100%" class="plr15" style="padding: 0 25px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td class="pb20" style="padding-bottom: 27px;">
@@ -1230,7 +1292,11 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="216" height="130" border="0" alt="" /></td>
+																					<td width="216px" height="130px" class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text2}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img0}}" width="216px" height="130px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text11 pb20 m-center" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;">{{text0}}</td>
@@ -1252,7 +1318,11 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="216" height="130" border="0" alt="" /></td>
+																					<td width="216px" height="130px" class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text5}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img1}}" width="216px" height="130px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text11 pb20 m-center" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;">{{text3}}</td>
@@ -1274,7 +1344,11 @@
 																		<th class="column-top" width="216" valign="top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/steva/images/{{img2}}" width="216" height="130" border="0" alt="" /></td>
+																					<td width="216px" height="130px" class="img m-center pb20" style="padding-bottom: 12px; font-size:0pt; line-height:0pt; text-align:left;">
+																						<a href="{{text8}}">
+																							<img src="{{base_url}}mediatheque/newsletter/steva/images/{{img2}}" width="216px" height="130px" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text11 pb20 m-center" style="padding-bottom: 27px; color:#141f2c; font-family:'Source Sans Pro', Arial, sans-serif; font-size:14px; line-height:27px; font-weight:400; text-align:left; min-width:auto !important;">{{text6}}</td>

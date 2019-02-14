@@ -31,7 +31,7 @@
 			<div class="row">
 		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
-		        <div class="panel-title">CRÉER UNE CAMPAGNE</div>
+		        <div class="panel-title">MODIFIER UNE CAMPAGNE</div>
 						<div class="panel-controls">
 							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
@@ -69,7 +69,7 @@
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="submit" class="btn btn-success">AJOUTER</button>
+		          <button type="submit" class="btn btn-success">MODIFIER</button>
 		        </div>
 		      </form>
 		    </div>

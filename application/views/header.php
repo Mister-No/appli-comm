@@ -127,7 +127,7 @@ UPLOADCARE_PREVIEW_STEP = true;
           <ul>
             <li>
               <a href="<?=base_url();?>dashboard.html"><span class="title">Accueil</span>
-              <span class=" arrow"></span></a>
+              </a>
             </li>
             <li class="mega">
               <a href="javascript:;"><span class="title">Campagnes</span>
@@ -142,35 +142,15 @@ UPLOADCARE_PREVIEW_STEP = true;
                     </div>
                     <div class="col-md-3 ">
                       <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes.html">Voir les campagnes</a></div>
-                      <ul class="sub-menu">
-                        <li> <a href="#">Campagne 1</a> </li>
-                        <li> <a href="#">Campagne 2</a> </li>
-                        <li> <a href="#">Campagne 3</a> </li>
-                        <li> <a href="#">Campagne 4</a> </li>
-                        <li> <a href="#">Campagne 5</a> </li>
-                        <li> <a href="#">Campagne 6</a> </li>
-                        <li> <a href="#">Campagne 7</a> </li>
-                        <li class="active"> <a href="#">Campagne 8</a> </li>
-                      </ul>
                     </div>
                     <div class="col-md-3">
                     <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes_archivees.html">Campagnes archivées</a></div>
-                      <ul class="sub-menu">
-                        <li> <a href="#">Campagne 1</a> </li>
-                        <li> <a href="#">Campagne 2</a> </li>
-                        <li> <a href="#">Campagne 3</a> </li>
-                        <li> <a href="#">Campagne 4</a> </li>
-                        <li> <a href="#">Campagne 5</a> </li>
-                        <li> <a href="#">Campagne 6</a> </li>
-                        <li> <a href="#">Campagne 7</a> </li>
-                        <li class="active"> <a href="#">Campagne 8</a> </li>
-                      </ul>
                     </div>
                 </div>
               </div>
             </ul>
           </li>
-          <li class="mega">
+          <!--<li class="mega">
             <a href="javascript:;"><span class="title">Statistiques</span>
             <span class=" arrow"></span></a>
             <ul class="mega">
@@ -217,7 +197,7 @@ UPLOADCARE_PREVIEW_STEP = true;
                 </div>
               </div>
             </ul>
-          </li>
+          </li>-->
           <li class="mega">
             <a href="javascript:;"><span class="title">Listes</span>
             <span class=" arrow"></span></a>
@@ -226,41 +206,12 @@ UPLOADCARE_PREVIEW_STEP = true;
                 <div class="row">
                   <div class="col-md-3 ">
                     <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Voir les listes</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Liste 1</a> </li>
-                      <li> <a href="#">Liste 2</a> </li>
-                      <li> <a href="#">Liste 3</a> </li>
-                      <li> <a href="#">Liste 4</a> </li>
-                      <li> <a href="#">Liste 5</a> </li>
-                      <li> <a href="#">Liste 6</a> </li>
-                      <li> <a href="#">Liste 7</a> </li>
-                      <li class="active"> <a href="#">Liste 8</a> </li>
-                    </ul>
                   </div>
                   <div class="col-md-3">
                     <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes/ajouter.html">Ajouter des listes</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Liste 1</a> </li>
-                      <li> <a href="#">Liste 2</a> </li>
-                      <li> <a href="#">Liste 3</a> </li>
-                      <li> <a href="#">Liste 4</a> </li>
-                      <li> <a href="#">Liste 5</a> </li>
-                      <li> <a href="#">Liste 6</a> </li>
-                      <li> <a href="#">Liste 7</a> </li>
-                      <li class="active"> <a href="#">Liste 8</a> </li>
-                    </ul>
                   </div>
                   <div class="col-md-3">
                     <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Modifier des listes</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Liste 1</a> </li>
-                      <li> <a href="#">Liste 2</a> </li>
-                      <li> <a href="#">Liste 3</a> </li>
-                      <li> <a href="#">Liste 4</a> </li>
-                      <li> <a href="#">Liste 5</a> </li>
-                      <li> <a href="#">Liste 6</a> </li>
-                      <li> <a href="#">Liste 7</a> </li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -273,156 +224,43 @@ UPLOADCARE_PREVIEW_STEP = true;
               <div class="container">
                 <div class="row">
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises.html">Gérer les entreprises</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Entreprise 1</a> </li>
-                      <li> <a href="#">Entreprise 2</a> </li>
-                      <li> <a href="#">Entreprise 3</a> </li>
-                      <li> <a href="#">Entreprise 4</a> </li>
-                      <li> <a href="#">Entreprise 5</a> </li>
-                      <li> <a href="#">Entreprise 6</a> </li>
-                      <li> <a href="#">Entreprise 7</a> </li>
-                    </ul>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises.html">Gérer les entreprises</a>
+                    </div>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts.html">Gérer les contacts</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Contact 1</a> </li>
-                      <li> <a href="#">Contact 2</a> </li>
-                      <li> <a href="#">Contact 3</a> </li>
-                      <li> <a href="#">Contact 4</a> </li>
-                      <li> <a href="#">Contact 5</a> </li>
-                      <li> <a href="#">Contact 6</a> </li>
-                      <li> <a href="#">Contact 7</a> </li>
-                      <li class="active"> <a href="#">Contact 8</a> </li>
-                    </ul>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts.html">Gérer les contacts</a>
+                    </div>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises/ajouter.html">Ajouter une entreprise</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Entreprise 1</a> </li>
-                      <li> <a href="#">Entreprise 2</a> </li>
-                      <li> <a href="#">Entreprise 3</a> </li>
-                      <li> <a href="#">Entreprise 4</a> </li>
-                      <li> <a href="#">Entreprise 5</a> </li>
-                      <li> <a href="#">Entreprise 6</a> </li>
-                      <li> <a href="#">Entreprise 7</a> </li>
-                    </ul>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises/ajouter.html">Ajouter une entreprise</a>
+                    </div>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/ajouter.html">Ajouter un contact</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Contact 1</a> </li>
-                      <li> <a href="#">Contact 2</a> </li>
-                      <li> <a href="#">Contact 3</a> </li>
-                      <li> <a href="#">Contact 4</a> </li>
-                      <li> <a href="#">Contact 5</a> </li>
-                      <li> <a href="#">Contact 6</a> </li>
-                      <li> <a href="#">Contact 7</a> </li>
-                    </ul>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/ajouter.html">Ajouter un contact</a>
+                    </div>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/importer.html">Importer un contact</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Contact 1</a> </li>
-                      <li> <a href="#">Contact 2</a> </li>
-                      <li> <a href="#">Contact 3</a> </li>
-                      <li> <a href="#">Contact 4</a> </li>
-                      <li> <a href="#">Contact 5</a> </li>
-                      <li> <a href="#">Contact 6</a> </li>
-                      <li> <a href="#">Contact 7</a> </li>
-                    </ul>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/importer.html">Importer un contact</a>
+                    </div>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/exporter.html">Exporter un contact</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Contact 1</a> </li>
-                      <li> <a href="#">Contact 2</a> </li>
-                      <li> <a href="#">Contact 3</a> </li>
-                      <li> <a href="#">Contact 4</a> </li>
-                      <li> <a href="#">Contact 5</a> </li>
-                      <li> <a href="#">Contact 6</a> </li>
-                      <li> <a href="#">Contact 7</a> </li>
-                    </ul>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/exporter.html">Exporter un contact</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </ul>
           </li>
           <li class="mega">
-            <a href="javascript:;"><span class="title">Catégories</span>
-            <span class=" arrow"></span></a>
-            <ul class="mega">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-3 ">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories.html">Voir les catégories</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Catégorie 1</a> </li>
-                      <li> <a href="#">Catégorie 2</a> </li>
-                      <li> <a href="#">Catégorie 3</a> </li>
-                      <li> <a href="#">Catégorie 4</a> </li>
-                      <li> <a href="#">Catégorie 5</a> </li>
-                      <li> <a href="#">Catégorie 6</a> </li>
-                      <li> <a href="#">Catégorie 7</a> </li>
-                      <li class="active"> <a href="#">Catégorie 8</a> </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </ul>
+            <a href="<?=base_url();?>categories.html"><span class="title">Catégories</span>
+            </a>
           </li>
 
           <?php  if ($_SESSION['is_admin'] == 1) { ?>
 
           <li class="mega">
-            <a href="javascript:;"><span class="title">Utilisateurs</span>
-            <span class=" arrow"></span></a>
-            <ul class="mega">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-3 ">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>users.html">Voir les Utilisateurs</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Utilisateur 1</a> </li>
-                      <li> <a href="#">Utilisateur 2</a> </li>
-                      <li> <a href="#">Utilisateur 3</a> </li>
-                      <li> <a href="#">Utilisateur 4</a> </li>
-                      <li> <a href="#">Utilisateur 5</a> </li>
-                      <li> <a href="#">Utilisateur 6</a> </li>
-                      <li> <a href="#">Utilisateur 7</a> </li>
-                      <li class="active"> <a href="#">Utilisateur 8</a> </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>users.html">Gérer les Utilisateurs</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Utilisateur 1</a> </li>
-                      <li> <a href="#">Utilisateur 2</a> </li>
-                      <li> <a href="#">Utilisateur 3</a> </li>
-                      <li> <a href="#">Utilisateur 4</a> </li>
-                      <li> <a href="#">Utilisateur 5</a> </li>
-                      <li> <a href="#">Utilisateur 6</a> </li>
-                      <li> <a href="#">Utilisateur 7</a> </li>
-                      <li class="active"> <a href="#">Utilisateur 8</a> </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>users/ajouter.html">Ajouter des Utilisateurs</a></div>
-                    <ul class="sub-menu">
-                      <li> <a href="#">Utilisateur 1</a> </li>
-                      <li> <a href="#">Utilisateur 2</a> </li>
-                      <li> <a href="#">Utilisateur 3</a> </li>
-                      <li> <a href="#">Utilisateur 4</a> </li>
-                      <li> <a href="#">Utilisateur 5</a> </li>
-                      <li> <a href="#">Utilisateur 6</a> </li>
-                      <li> <a href="#">Utilisateur 7</a> </li>
-                      <li class="active"> <a href="#">Utilisateur 8</a> </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </ul>
+            <a href="<?=base_url();?>users.html"><span class="title">Utilisateurs</span>
+            </a>
           </li>
 
         <?php } ?>

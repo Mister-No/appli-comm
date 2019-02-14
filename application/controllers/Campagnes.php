@@ -7,7 +7,14 @@ class Campagnes extends CI_Controller {
 	{
 		if ($_SESSION["is_connect"] == TRUE){
 
-			require(APPPATH.'libraries/Mailin.php');
+			$this->load->model('My_builder');
+
+			$result_campagnes = $this->My_builder->get_all_campagnes();
+
+			$data = array(
+				'result_campagnes' => $result_campagnes,
+			);
+			/**require(APPPATH.'libraries/Mailin.php');
 	      	$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
 
 			$data = array(
@@ -17,18 +24,18 @@ class Campagnes extends CI_Controller {
 
 			$result = $mailin->get_campaigns_v2($data);
 
-	        $data = array(
-	            "result" => $result,
-	        );
+      $data = array(
+          "result" => $result,
+      );**/
 
-					$this->load->view('header', $data);
-	        $this->load->view('campagnes');
-	        $this->load->view('footer');
+			$this->load->view('header', $data);
+      $this->load->view('campagnes');
+      $this->load->view('footer');
 
 
-    	} else {
-        	$this->load->view('login');
-    	}
+  	} else {
+      	$this->load->view('login');
+  	}
 	}
 
 	public function listes()

@@ -64,24 +64,35 @@
 			blockType = $(this).children('input[name="type"]').val();
 			blockPlace = $(this).children('input[name="ordre"]').val();
 			blockPlaceAfter = Number(blockPlace)+Number(1);
+			upBlock = '';
+			downBlock = '';
+			eraseBlock = '';
+			modBlock = '';
+			block_before = '';
+			block_after = '';
+			options_block	=	'';
 
 			if (blockType != 1) {
 
 				// BLOCKS D'AJOUT
 
-				block_before = '<div id="before" class="newsBuilderAddBlock">'+
-												'<div class="addBlock center-block">'+
-													'<input type="hidden" name="blockplace" value="'+blockPlace+'">'+
-													'<i class="addIcon pg-plus"></i>'+
-												'</div>'+
-											'</div>';
+				if (blockPlace > 3) {
 
-				block_after = '<div id="after" class="newsBuilderAddBlock">'+
-												'<div class="addBlock center-block">'+
-													'<input type="hidden" name="blockplace" value="'+blockPlaceAfter+'">'+
-													'<i class="addIcon pg-plus"></i>'+
-												'</div>'+
-											'</div>';
+					block_before = '<div id="before" class="newsBuilderAddBlock">'+
+													'<div class="addBlock center-block">'+
+														'<input type="hidden" name="blockplace" value="'+blockPlace+'">'+
+														'<i class="addIcon pg-plus"></i>'+
+													'</div>'+
+												'</div>';
+
+					block_after = '<div id="after" class="newsBuilderAddBlock">'+
+													'<div class="addBlock center-block">'+
+														'<input type="hidden" name="blockplace" value="'+blockPlaceAfter+'">'+
+														'<i class="addIcon pg-plus"></i>'+
+													'</div>'+
+												'</div>';
+
+				}
 
 				// OPTION DE DEPLACEMENT
 
@@ -91,16 +102,12 @@
 						upBlock = '<button type="button" class="upBlock">'+
 												'<i class="upIcon fa fa-arrow-up"></i>'+
 											'</button>';
-					} else {
-						upBlock = '';
 					}
 
 					if ($('.blockPlace').index(this) < $('.blockPlace').length-Number(1)) {
 						downBlock = '<button type="button" class="downBlock">'+
 													'<i class="downIcon fa fa-arrow-down"></i>'+
 												'</button>';
-					} else {
-						downBlock = '';
 					}
 
 				}
@@ -111,8 +118,6 @@
 					modBlock = '<button type="button" class="editBlock">'+
 												'<i class="editIcon fa fa-edit"></i>'+
 											'</button>';
-				} else {
-					modBlock = '';
 				}
 
 				// OPTION DE SUPPRESSION
@@ -121,8 +126,6 @@
 					eraseBlock = '<button type="submit" class="deleteBlock">'+
 													'<i class="deleteIcon pg-close"></i>'+
 												'</button>';
-				} else {
-					eraseBlock = '';
 				}
 
 				// BLOCK D'OPTIONS
@@ -396,25 +399,25 @@
 
 					if (blockInput[j][0] == 1) {
 						// BLOCK IMAGE
-						block = '<div class="blockInputImage">'+
-						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+						block = '<div class="blockInputImage form-group">'+
+						'<label class="control-label">'+blockInput[j][2]+' : </label>'+
 						'<input id="image_mag'+i+'" type="hidden" name="img'+i+'" data-crop="'+blockInput[j][3]+'" />'+
 						'</div>';
 					}
 
 					if (blockInput[j][0] == 2) {
 						// BLOCK TEXTE WYZIWYG SUMMMERNOTE
-						block = '<div class="blockInputSummernote">'+
-						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
+						block = '<div class="blockInputSummernote form-group">'+
+						'<label class="control-label">'+blockInput[j][2]+' : </label>'+
 						'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'">'+blockInput[j][5]+'</textarea>'+
 						'</div>';
 					}
 
 					if (blockInput[j][0] == 3) {
 						// BLOCK TEXTE BASIQUE
-						block = '<div class="blockInputTexte">'+
-						'<label class="choosenBlockContent">'+blockInput[j][2]+' : </label>'+
-						'<input class="builderInput choosenBlockContent" name="text'+t+'" placeholder="" value="'+blockInput[j][5]+'">'+
+						block = '<div class="blockInputTexte form-group form-group-default">'+
+						'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+						'<input class="form-control" name="text'+t+'" placeholder="" value="'+blockInput[j][5]+'">'+
 						'</div>';
 					}
 

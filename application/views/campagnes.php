@@ -98,7 +98,30 @@
 	                  </thead>
 	                  <tbody>
 
-										<?php foreach ($result["data"]["campaign_records"] as $row) {
+										<?php
+
+										foreach ($result_campagnes as $row_campagnes) {
+
+											echo '<tr>
+															<td class="v-align-middle semi-bold">
+																' . $row_campagnes->nom_campagne . '
+															</td>
+															<td class="v-align-middle">
+																'.$row_campagnes->objet.'
+															</td>
+															<td class="v-align-middle">
+
+															</td>
+															<td class="v-align-middle">
+																<div class="btn-group">
+																	<a class="btn btn-success" href="' . base_url() . 'builder/campagne/newsletter/' . $row_campagnes->id . '"><i class="fa fa-edit"></i></a>
+																</div>
+															</td>
+				                    </tr>';
+
+										}
+
+										/**foreach ($result["data"]["campaign_records"] as $row) {
 
 											echo '<tr>
 															<td class="v-align-middle">' . $row['campaign_name'] . '</td>
@@ -128,7 +151,8 @@
 															</td>
 				                    </tr>';
 
-										} ?>
+										}**/
+										 ?>
 
                   </tbody>
                 </table>
