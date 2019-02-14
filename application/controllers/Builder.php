@@ -95,6 +95,21 @@ class Builder extends CI_Controller {
         $select2 = $row_newsletter->newsletter_block_select2;
         $select3 = $row_newsletter->newsletter_block_select3;
 
+        /**for ($i=0; $i < 15; $i++) {
+          if (empty($text.$i)) {
+            '{{display'.$i.'}}' = 'display_item'.$i;
+          }
+          switch ($replace['{{select'.$i.'}}']) {
+            case 'value':
+              // code...
+              break;
+
+            default:
+              // code...
+              break;
+          }
+        }**/
+
         $replace = array(
           '{{base_url}}'         => base_url(),
           '{{id_block}}'         => $id_block,
@@ -124,6 +139,24 @@ class Builder extends CI_Controller {
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
+          '{{display0}}'         => (!empty($text0))?'':'display0',
+          '{{display1}}'         => (!empty($text1))?'':'display1',
+          '{{display2}}'         => (!empty($text2))?'':'display2',
+          '{{display3}}'         => (!empty($text3))?'':'display3',
+          '{{display4}}'         => (!empty($text4))?'':'display4',
+          '{{display5}}'         => (!empty($text5))?'':'display5',
+          '{{display6}}'         => (!empty($text6))?'':'display6',
+          '{{display7}}'         => (!empty($text7))?'':'display7',
+          '{{display8}}'         => (!empty($text8))?'':'display8',
+          '{{display9}}'         => (!empty($text9))?'':'display9',
+          '{{display10}}'        => (!empty($text10))?'':'display10',
+          '{{display11}}'        => (!empty($text11))?'':'display11',
+          '{{display12}}'        => (!empty($text12))?'':'display12',
+          '{{display13}}'        => (!empty($text13))?'':'display13',
+          '{{url0}}'             => (!empty($select0))?'':'url0',
+          '{{url1}}'             => (!empty($select1))?'':'url1',
+          '{{url2}}'             => (!empty($select2))?'':'url2',
+          '{{url3}}'             => (!empty($select3))?'':'url3',
         );
 
         $replace_html .= str_replace(
@@ -517,6 +550,7 @@ class Builder extends CI_Controller {
           '{{id_block_content}}' => $id_block_content,
           '{{nom}}'              => $nom_block,
           '{{ordre}}'            => $ordre,
+          '{{type}}'             => $type,
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
           '{{img2}}'             => $img_link2,
@@ -538,6 +572,24 @@ class Builder extends CI_Controller {
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
+          '{{display0}}'         => (!empty($text0))?'':'display0',
+          '{{display1}}'         => (!empty($text1))?'':'display1',
+          '{{display2}}'         => (!empty($text2))?'':'display2',
+          '{{display3}}'         => (!empty($text3))?'':'display3',
+          '{{display4}}'         => (!empty($text4))?'':'display4',
+          '{{display5}}'         => (!empty($text5))?'':'display5',
+          '{{display6}}'         => (!empty($text6))?'':'display6',
+          '{{display7}}'         => (!empty($text7))?'':'display7',
+          '{{display8}}'         => (!empty($text8))?'':'display8',
+          '{{display9}}'         => (!empty($text9))?'':'display9',
+          '{{display10}}'        => (!empty($text10))?'':'display10',
+          '{{display11}}'        => (!empty($text11))?'':'display11',
+          '{{display12}}'        => (!empty($text12))?'':'display12',
+          '{{display13}}'        => (!empty($text13))?'':'display13',
+          '{{url0}}'             => (!empty($select0))?'':'url0',
+          '{{url1}}'             => (!empty($select1))?'':'url1',
+          '{{url2}}'             => (!empty($select2))?'':'url2',
+          '{{url3}}'             => (!empty($select3))?'':'url3',
         );
 
         $blocks_html .= str_replace(

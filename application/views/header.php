@@ -78,7 +78,7 @@ UPLOADCARE_PREVIEW_STEP = true;
         <div class="brand inline">
           <img src="<?=base_url();?>assets/img/logo.png" alt="logo" data-src="<?=base_url();?>assets/img/logo.png" data-src-retina="<?=base_url();?>assets/img/logo_2x.png" width="78" height="22">
         </div>
-        <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a> </div>
+        <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Rechercher</a> </div>
     </div>
     <div class=" pull-right">
       <!-- START User Info-->
