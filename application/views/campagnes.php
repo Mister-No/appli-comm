@@ -12,7 +12,7 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid container-fixed-lg">
+<!--<div class="container-fluid container-fixed-lg">
 	<div class="erreur alert alert-danger">
 		<strong class="message"></strong>
 		<button class="close"></button>
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div>-->
 <div class="container-fluid container-fixed-lg">
 	<div class="page-container">
     <div class="main-content">

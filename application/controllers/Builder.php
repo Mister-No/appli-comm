@@ -595,29 +595,29 @@ class Builder extends CI_Controller {
 
         // Ajout du block et contenu
 
-        /**$data_content = array (
+        $data_content = array (
           'id_block_html' => $id_block_html,
-  				'text0'         => str_replace('"','&#34;', $this->input->post ('text0')),
-  				'text1'         => str_replace('"','&#34;', $this->input->post ('text1')),
-          'text2'         => str_replace('"','&#34;', $this->input->post ('text2')),
-  				'text3'         => str_replace('"','&#34;', $this->input->post ('text3')),
-          'text4'         => str_replace('"','&#34;', $this->input->post ('text4')),
-  				'text5'         => str_replace('"','&#34;', $this->input->post ('text5')),
-          'text6'         => str_replace('"','&#34;', $this->input->post ('text6')),
-  				'text7'         => str_replace('"','&#34;', $this->input->post ('text7')),
-          'text8'         => str_replace('"','&#34;', $this->input->post ('text8')),
-  				'text9'         => str_replace('"','&#34;', $this->input->post ('text9')),
-          'text10'        => str_replace('"','&#34;', $this->input->post ('text10')),
-  				'text11'        => str_replace('"','&#34;', $this->input->post ('text11')),
-          'text12'        => str_replace('"','&#34;', $this->input->post ('text12')),
-  				'text13'        => str_replace('"','&#34;', $this->input->post ('text13')),
+  				'text0'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text0'))),
+  				'text1'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text1'))),
+          'text2'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text2'))),
+  				'text3'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text3'))),
+          'text4'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text4'))),
+  				'text5'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text5'))),
+          'text6'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text6'))),
+  				'text7'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text7'))),
+          'text8'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text8'))),
+  				'text9'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text9'))),
+          'text10'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text10'))),
+  				'text11'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text11'))),
+          'text12'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text12'))),
+  				'text13'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text13'))),
           'select0'       => $this->input->post ('select0'),
           'select1'       => $this->input->post ('select1'),
           'select2'       => $this->input->post ('select2'),
           'select3'       => $this->input->post ('select3'),
-  			);**/
+  			);
 
-        $data_content = array (
+        /**$data_content = array (
         'id_block_html' => $id_block_html,
         'text0'         => $this->input->post ('text0'),
         'text1'         => $this->input->post ('text1'),
@@ -641,7 +641,7 @@ class Builder extends CI_Controller {
         'select1'       => $this->input->post ('select1'),
         'select2'       => $this->input->post ('select2'),
         'select3'       => $this->input->post ('select3'),
-        );
+      );**/
 
   			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
@@ -750,28 +750,24 @@ class Builder extends CI_Controller {
         // Ajout du block et contenu
 
         $data_content = array (
-        'text0'         => $this->input->post ('text0'),
-        'text1'         => $this->input->post ('text1'),
-        'text2'         => $this->input->post ('text2'),
-        'text3'         => $this->input->post ('text3'),
-        'text4'         => $this->input->post ('text4'),
-        'text5'         => $this->input->post ('text5'),
-        'text6'         => $this->input->post ('text6'),
-        'text7'         => $this->input->post ('text7'),
-        'text8'         => $this->input->post ('text8'),
-        'text9'         => $this->input->post ('text9'),
-        'text10'        => $this->input->post ('text10'),
-        'text11'        => $this->input->post ('text11'),
-        'text12'        => $this->input->post ('text12'),
-        'text13'        => $this->input->post ('text13'),
-        'select0'       => $this->input->post ('select0'),
-        'select1'       => $this->input->post ('select1'),
-        'select2'       => $this->input->post ('select2'),
-        'select3'       => $this->input->post ('select3'),
-        'select0'       => $this->input->post ('select0'),
-        'select1'       => $this->input->post ('select1'),
-        'select2'       => $this->input->post ('select2'),
-        'select3'       => $this->input->post ('select3'),
+  				'text0'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text0'))),
+  				'text1'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text1'))),
+          'text2'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text2'))),
+  				'text3'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text3'))),
+          'text4'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text4'))),
+  				'text5'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text5'))),
+          'text6'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text6'))),
+  				'text7'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text7'))),
+          'text8'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text8'))),
+  				'text9'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text9'))),
+          'text10'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text10'))),
+  				'text11'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text11'))),
+          'text12'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text12'))),
+  				'text13'        => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text13'))),
+          'select0'       => $this->input->post ('select0'),
+          'select1'       => $this->input->post ('select1'),
+          'select2'       => $this->input->post ('select2'),
+          'select3'       => $this->input->post ('select3'),
   			);
 
   			$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
