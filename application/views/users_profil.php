@@ -130,8 +130,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'users/update.html';
-		urlRedirect = 'users.html';
+		urlCheck = '<?=base_url();?>'+'users/update.html';
+		urlRedirect = '<?=base_url();?>'+'users.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 
@@ -142,8 +142,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'users/update_password.html';
-		urlRedirect = 'users.html';
+		urlCheck = '<?=base_url();?>'+'users/update_password.html';
+		urlRedirect = '<?=base_url();?>'+'users.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

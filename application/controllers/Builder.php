@@ -95,20 +95,34 @@ class Builder extends CI_Controller {
         $select2 = $row_newsletter->newsletter_block_select2;
         $select3 = $row_newsletter->newsletter_block_select3;
 
-        /**for ($i=0; $i < 15; $i++) {
-          if (empty($text.$i)) {
-            '{{display'.$i.'}}' = 'display_item'.$i;
-          }
-          switch ($replace['{{select'.$i.'}}']) {
-            case 'value':
-              // code...
-              break;
+        // Choix Select
 
-            default:
-              // code...
-              break;
-          }
-        }**/
+        switch ($select0) {
+
+          case 0:
+            $url0 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url0 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url0 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url0 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
+
+        $url1 = '';
+        $url2 = '';
+        $url3 = '';
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -153,10 +167,10 @@ class Builder extends CI_Controller {
           '{{display11}}'        => (!empty($text11))?'':'display11',
           '{{display12}}'        => (!empty($text12))?'':'display12',
           '{{display13}}'        => (!empty($text13))?'':'display13',
-          '{{url0}}'             => (!empty($select0))?'':'url0',
-          '{{url1}}'             => (!empty($select1))?'':'url1',
-          '{{url2}}'             => (!empty($select2))?'':'url2',
-          '{{url3}}'             => (!empty($select3))?'':'url3',
+          '{{url0}}'             => $url0,
+          '{{url1}}'             => $url1,
+          '{{url2}}'             => $url2,
+          '{{url3}}'             => $url3,
         );
 
         $replace_html .= str_replace(
@@ -543,6 +557,35 @@ class Builder extends CI_Controller {
         $select2 = $row_newsletter->newsletter_block_select2;
         $select3 = $row_newsletter->newsletter_block_select3;
 
+        // Choix Select
+
+        switch ($select0) {
+
+          case 0:
+            $url0 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url0 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url0 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url0 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
+
+        $url1 = '';
+        $url2 = '';
+        $url3 = '';
+
         $replace = array(
           '{{base_url}}'         => base_url(),
           '{{id_block}}'         => $id_block,
@@ -550,7 +593,6 @@ class Builder extends CI_Controller {
           '{{id_block_content}}' => $id_block_content,
           '{{nom}}'              => $nom_block,
           '{{ordre}}'            => $ordre,
-          '{{type}}'             => $type,
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
           '{{img2}}'             => $img_link2,
@@ -586,10 +628,10 @@ class Builder extends CI_Controller {
           '{{display11}}'        => (!empty($text11))?'':'display11',
           '{{display12}}'        => (!empty($text12))?'':'display12',
           '{{display13}}'        => (!empty($text13))?'':'display13',
-          '{{url0}}'             => (!empty($select0))?'':'url0',
-          '{{url1}}'             => (!empty($select1))?'':'url1',
-          '{{url2}}'             => (!empty($select2))?'':'url2',
-          '{{url3}}'             => (!empty($select3))?'':'url3',
+          '{{url0}}'             => $url0,
+          '{{url1}}'             => $url1,
+          '{{url2}}'             => $url2,
+          '{{url3}}'             => $url3,
         );
 
         $blocks_html .= str_replace(

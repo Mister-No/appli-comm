@@ -94,10 +94,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'listes/add.html';
-		urlRedirect = 'listes.html';
-
-		console.log(data);
+		urlCheck = '<?=base_url();?>'+'listes/add.html';
+		urlRedirect = '<?=base_url();?>'+'listes.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

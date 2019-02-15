@@ -175,10 +175,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'campagnes/list_add_recap.html';
-		urlRedirect = 'campagnes/listes_recap.html ';
-
-		console.log(data);
+		urlCheck = '<?=base_url();?>'+'campagnes/list_add_recap.html';
+		urlRedirect = '<?=base_url();?>'+'campagnes/listes_recap.html ';
 
 		check_exist(urlCheck, urlRedirect, data);
 

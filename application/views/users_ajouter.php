@@ -96,8 +96,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'users/add.html';
-		urlRedirect = 'users.html';
+		urlCheck = '<?=base_url();?>'+'users/add.html';
+		urlRedirect = '<?=base_url();?>'+'users.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

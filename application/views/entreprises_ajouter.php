@@ -119,12 +119,12 @@
 	<script type="text/javascript">
 
 	var id_ent = null;
-	var urlSelect = 'select_all_ent';
+	var urlSelect = '<?=base_url();?>'+'select_all_ent';
 
 	select ('#select_business', id_ent, urlSelect);
 
 	var id_ent = null;
-	var urlSelect = 'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'select_all_cat';
 
 	select ('#select_category', id_ent, urlSelect);
 
@@ -133,8 +133,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'entreprises/add.html';
-		urlRedirect = 'entreprises.html';
+		urlCheck = '<?=base_url();?>'+'entreprises/add.html';
+		urlRedirect = '<?=base_url();?>'+'entreprises.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

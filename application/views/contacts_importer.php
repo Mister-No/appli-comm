@@ -60,7 +60,7 @@
 	<script type="text/javascript">
 
 	var id_ent = null;
-	var urlSelect = 'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'select_all_cat';
 
 	select ('#select_category', id_ent, urlSelect);
 

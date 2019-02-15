@@ -103,8 +103,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'listes/update.html';
-		urlRedirect = 'listes.html';
+		urlCheck = '<?=base_url();?>'+'listes/update.html';
+		urlRedirect = '<?=base_url();?>'+'listes.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

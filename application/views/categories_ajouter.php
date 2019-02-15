@@ -65,7 +65,7 @@
 <script type="text/javascript">
 
 	var id = null;
-	var urlSelect = 'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'select_all_cat';
 
 	select ('#select_category', id, urlSelect);
 
@@ -74,8 +74,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'categories/add.html';
-		urlRedirect = 'categories.html';
+		urlCheck = '<?=base_url();?>'+'categories/add.html';
+		urlRedirect = '<?=base_url();?>'+'categories.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

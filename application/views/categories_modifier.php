@@ -81,8 +81,8 @@
 			e.preventDefault();
 
 			data = $(this).serialize();
-			urlCheck = 'categories/update.html';
-			urlRedirect = 'categories.html';
+			urlCheck = '<?=base_url();?>'+'categories/update.html';
+			urlRedirect = '<?=base_url();?>'+'categories.html';
 
 			check_exist(urlCheck, urlRedirect, data);
 

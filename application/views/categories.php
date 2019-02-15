@@ -190,8 +190,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'categories/add.html';
-		urlRedirect = 'categories.html';
+		urlCheck = '<?=base_url();?>'+'categories/add.html';
+		urlRedirect = '<?=base_url();?>'+'categories.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 
@@ -202,8 +202,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'categories/update.html';
-		urlRedirect = 'categories.html';
+		urlCheck = '<?=base_url();?>'+'categories/update.html';
+		urlRedirect = '<?=base_url();?>'+'categories.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 
@@ -214,8 +214,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'categories/move.html';
-		urlRedirect = 'categories.html';
+		urlCheck = '<?=base_url();?>'+'categories/move.html';
+		urlRedirect = '<?=base_url();?>'+'categories.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

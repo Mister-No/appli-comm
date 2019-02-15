@@ -151,7 +151,7 @@ class Users extends CI_Controller  {
   					'email' 			=> $this->input->post('email'),
             'nom' 				=> $this->input->post('nom'),
   					'prenom' 			=> $this->input->post('prenom'),
-            'entreprise'  => $entreprise,
+            //'entreprise'  => $entreprise,
   					'rang' 			  => $this->input->post('rang'),
   					'admin' 			=> $admin,
             'actif' 			=> $actif,

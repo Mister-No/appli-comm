@@ -124,12 +124,12 @@
 	<?php $id_ent = $row->id_parent; ?>
 
 	var id = '<?=$id_ent?>';
-	var urlSelect = 'select_all_ent';
+	var urlSelect = '<?=base_url();?>'+'select_all_ent';
 
 	select ('#select_business', id, urlSelect);
 
 	var id = <?php echo json_encode ($result_cat); ?>;
-	var urlSelect = 'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'select_all_cat';
 
 	select ('#select_category', id, urlSelect);
 
@@ -138,8 +138,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'entreprises/update.html';
-		urlRedirect = 'entreprises.html';
+		urlCheck = '<?=base_url();?>'+'entreprises/update.html';
+		urlRedirect = '<?=base_url();?>'+'entreprises.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

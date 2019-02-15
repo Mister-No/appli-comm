@@ -165,7 +165,7 @@
 	<script type="text/javascript">
 
 	var id = <?=$row->id_group?>;
-	var urlSelect = 'select_all_clients';
+	var urlSelect = '<?=base_url();?>'+'select_all_clients';
 
 	select ('#select_business', id, urlSelect);
 
@@ -174,8 +174,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'users/update.html';
-		urlRedirect = 'users.html';
+		urlCheck = '<?=base_url();?>'+'users/update.html';
+		urlRedirect = '<?=base_url();?>'+'users.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 
@@ -186,8 +186,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'users/update_password.html';
-		urlRedirect = 'users.html';
+		urlCheck = '<?=base_url();?>'+'users/update_password.html';
+		urlRedirect = '<?=base_url();?>'+'users.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

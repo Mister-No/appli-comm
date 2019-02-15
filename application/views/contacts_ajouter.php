@@ -133,12 +133,12 @@
 	<script type="text/javascript">
 
 	var id = null;
-	var urlSelect = 'select_all_ent';
+	var urlSelect = '<?=base_url();?>'+'select_all_ent';
 
 	select ('#select_business', id, urlSelect);
 
 	var id = null;
-	var urlSelect = 'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'select_all_cat';
 
 	select ('#select_category', id, urlSelect);
 
@@ -147,8 +147,8 @@
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'contacts/add.html';
-		urlRedirect = 'contacts.html';
+		urlCheck = '<?=base_url();?>'+'contacts/add.html';
+		urlRedirect = '<?=base_url();?>'+'contacts.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 

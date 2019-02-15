@@ -19,9 +19,9 @@ $(document).ready(function()
 
 function select (item, id, urlSelect) {
 
-	var base_url = 'http://localhost/appli-comm/common/' + urlSelect;
+	//var base_url = 'http://localhost/appli-comm/common/' + urlSelect;
 
-  $.post(base_url, function(data) {
+  $.post(urlSelect, function(data) {
 
     $(item).prop( 'disabled' , false );
 
