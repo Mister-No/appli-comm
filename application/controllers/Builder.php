@@ -645,6 +645,15 @@ class Builder extends CI_Controller {
       // NEWSLETTER
 
       $newsletter = $head.$blocks_html.$end;
+      $search = "/(<input)(.*?)(>)/";
+      $replace = '';
+      $newsletter = preg_replace($search,$replace,$newsletter);
+      $search = "/§§§§/";
+      $replace = '"';
+      $newsletter = preg_replace($search,$replace,$newsletter);
+      $search = "/§§/";
+      $replace = '\'';
+      $newsletter = preg_replace($search,$replace,$newsletter);
 
       echo $newsletter;
 

@@ -18,7 +18,6 @@
 	<meta name="x-apple-disable-message-reformatting" />
     <!--[if !mso]><!-->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--<![endif]-->
 	<title>Newsletter {{title}}</title>
 	<!--[if gte mso 9]>
@@ -1527,12 +1526,5 @@
 			</td>
 		</tr>
 	</table>
-	<script type="text/javascript">
-		$('.text_to_replace').each( function (){
-			text_to_replace = $(this).text();
-			text_replaced = text_to_replace.replace(/§§§§§/g, '"').replace(/§§/g, '\'');
-			$(this).text(text_replaced);
-		});
-	</script>
 </body>
 </html>

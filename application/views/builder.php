@@ -54,11 +54,11 @@
 		//var id_block_html;
 		//var blockPlace;
 
-		/**$('.text_to_replace').each( function (){
+		$('.text_to_replace').each( function (){
 			text_to_replace = $(this).text();
 			text_replaced = text_to_replace.replace(/§§§§§/g, '"').replace(/§§/g, '\'');
 			$(this).text(text_replaced);
-		});**/
+		});
 
 		$('.newsBuilderBlock').hover(function(){
 

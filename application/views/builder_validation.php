@@ -50,7 +50,9 @@
 			</div>
 		</div>
 	<script type="text/javascript">
-
-
-
+		$('.text_to_replace').each( function (){
+			text_to_replace = $(this).text();
+			text_replaced = text_to_replace.replace(/§§§§§/g, '"').replace(/§§/g, '\'');
+			$(this).text(text_replaced);
+		});
 	</script>
