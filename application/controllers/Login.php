@@ -34,6 +34,7 @@ class Login extends CI_Controller {
   				$_SESSION['is_admin'] = $row->admin;
           $_SESSION['rang'] = $row->rang;
   				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
+          //$_SESSION['send_in_blue'] = $row->nom." ".$row->prenom;
 
           $this->load->model('My_users');
 

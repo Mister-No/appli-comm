@@ -56,7 +56,7 @@
 
 		$('.text_to_replace').each( function (){
 			text_to_replace = $(this).text();
-			text_replaced = text_to_replace.replace(/§§§§§/g, '"').replace(/§§/g, '\'');
+			text_replaced = text_to_replace.replace(/#&§#&§/g, '"');
 			$(this).text(text_replaced);
 		});
 
@@ -263,25 +263,35 @@
 				if (blockInput[j][0] == 1) {
 					// BLOCK IMAGE
 					block = '<div class="blockInputImage form-group">'+
-					'<label class="control-label">'+blockInput[j][2]+' : </label>'+
-					'<input id="image_mag'+i+'" type="hidden" name="img'+i+'" data-crop="'+blockInput[j][3]+'" />'+
-					'</div>';
+										'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+										'<input id="image_mag'+i+'" type="hidden" name="img'+i+'" data-crop="'+blockInput[j][3]+'" />'+
+									'</div>';
 				}
 
-				if (blockInput[j][0] == 2) {
+				/**if (blockInput[j][0] == 2) {
 					// BLOCK TEXTE WYZIWYG SUMMMERNOTE
 					block = '<div class="blockInputSummernote form-group">'+
-					'<label class="control-label">'+blockInput[j][2]+' : </label>'+
-					'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'"></textarea>'+
-					'</div>';
+										'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+										'<div class="summernote-wrapper">'+
+											'<textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'"></textarea>'+
+										'</div>'+
+									'</div>';
+				}**/
+
+				if (blockInput[j][0] == 2) {
+					// BLOCK TEXTAREA
+					block = '<div class="blockInputTextarea form-group form-group-default">'+
+										'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+											'<textarea class="form-control" name="text'+t+'"></textarea>'+
+									'</div>';
 				}
 
 				if (blockInput[j][0] == 3) {
 					// BLOCK TEXTE BASIQUE
 					block = '<div class="blockInputTexte form-group form-group-default">'+
-					'<label class="control-label">'+blockInput[j][2]+' : </label>'+
-					'<input class="form-control" name="text'+t+'" placeholder="" value="">'+
-					'</div>';
+										'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+										'<input class="form-control" name="text'+t+'" placeholder="" value="">'+
+									'</div>';
 				}
 
 				if (blockInput[j][0] == 4) {
@@ -321,17 +331,17 @@
 
 				if (blockInput[j][0] == 2 || blockInput[j][0] == 3) {
 					//Summernote
-					$('.summernote').summernote({
+					/**$('.summernote').summernote({
 						toolbar: [
 							// [groupName, [list of button]]
 							['style', ['bold', 'italic', 'underline']],
-							/**['font', ['strikethrough', 'superscript', 'subscript']],
-							['fontsize', ['fontsize']],
-							['color', ['color']],
-							['para', ['paragraph']],**/
+							//['font', ['strikethrough', 'superscript', 'subscript']],
+							//['fontsize', ['fontsize']],
+							//['color', ['color']],
+							//['para', ['paragraph']],
 						],
 						height: 60,
-					});
+					});**/
 					t++;
 				}
 
@@ -411,12 +421,20 @@
 						'</div>';
 					}
 
-					if (blockInput[j][0] == 2) {
+					/**if (blockInput[j][0] == 2) {
 						// BLOCK TEXTE WYZIWYG SUMMMERNOTE
 						block = '<div class="blockInputSummernote form-group">'+
 						'<label class="control-label">'+blockInput[j][2]+' : </label>'+
 						'<div class="summernote-wrapper"><textarea class="builderTextarea choosenBlockContent summernote" name="text'+t+'">'+blockInput[j][5]+'</textarea>'+
 						'</div>';
+					}**/
+
+					if (blockInput[j][0] == 2) {
+						// BLOCK TEXTAREA
+						block = '<div class="blockInputTextarea form-group form-group-default">'+
+											'<label class="control-label">'+blockInput[j][2]+' : </label>'+
+												'<textarea class="form-control" name="text'+t+'">'+blockInput[j][5]+'</textarea>'+
+										'</div>';
 					}
 
 					if (blockInput[j][0] == 3) {
@@ -468,17 +486,22 @@
 
 					if (blockInput[j][0] == 2 || blockInput[j][0] == 3) {
 						//Summernote
-						$('.summernote').summernote({
+						/**$('.summernote').summernote({
 							toolbar: [
 								// [groupName, [list of button]]
 								['style', ['bold', 'italic', 'underline']],
-								/**['font', ['strikethrough', 'superscript', 'subscript']],
-								['fontsize', ['fontsize']],
-								['color', ['color']],
-								['para', ['paragraph']],**/
+								//['font', ['strikethrough', 'superscript', 'subscript']],
+								//['fontsize', ['fontsize']],
+								//['color', ['color']],
+								//['para', ['paragraph']],
 							],
 							height: 60,
-						});
+						});**/
+							$('input[name="text'+t+'"]').each( function (){
+								text_to_replace = $(this).val();
+								text_replaced = text_to_replace.replace(/#&§#&§/g, '"');
+								$(this).val(text_replaced);
+							});
 						t++;
 					}
 

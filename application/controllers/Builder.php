@@ -76,20 +76,22 @@ class Builder extends CI_Controller {
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
-        $text0 = $row_newsletter->newsletter_block_text0;
-        $text1 = $row_newsletter->newsletter_block_text1;
-        $text2 = $row_newsletter->newsletter_block_text2;
-        $text3 = $row_newsletter->newsletter_block_text3;
-        $text4 = $row_newsletter->newsletter_block_text4;
-        $text5 = $row_newsletter->newsletter_block_text5;
-        $text6 = $row_newsletter->newsletter_block_text6;
-        $text7 = $row_newsletter->newsletter_block_text7;
-        $text8 = $row_newsletter->newsletter_block_text8;
-        $text9 = $row_newsletter->newsletter_block_text9;
-        $text10 = $row_newsletter->newsletter_block_text10;
-        $text11 = $row_newsletter->newsletter_block_text11;
-        $text12 = $row_newsletter->newsletter_block_text12;
-        $text13 = $row_newsletter->newsletter_block_text13;
+        //$text0 = addcslashes($row_newsletter->newsletter_block_text0, '"\\/');
+        $text0 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text0);
+        //$text0 = $row_newsletter->newsletter_block_text0;
+        $text1 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text1);
+        $text2 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text2);
+        $text3 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text3);
+        $text4 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text4);
+        $text5 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text5);
+        $text6 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text6);
+        $text7 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text7);
+        $text8 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text8);
+        $text9 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text9);
+        $text10 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text10);
+        $text11 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text11);
+        $text12 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text12);
+        $text13 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text13);
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -650,9 +652,9 @@ class Builder extends CI_Controller {
       $newsletter = preg_replace($search,$replace,$newsletter);
       $search = "/§§§§/";
       $replace = '"';
-      $newsletter = preg_replace($search,$replace,$newsletter);
-      $search = "/§§/";
-      $replace = '\'';
+      //$newsletter = preg_replace($search,$replace,$newsletter);
+      //$search = "/§§/";
+      //$replace = '\'';
       $newsletter = preg_replace($search,$replace,$newsletter);
 
       echo $newsletter;
@@ -853,7 +855,7 @@ class Builder extends CI_Controller {
         // Ajout du block et contenu
 
         $data_content = array (
-  				'text0'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text0'))),
+  				'text0'         => htmlspecialchars ($this->input->post ('text0'), ENT_NOQUOTES),
   				'text1'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text1'))),
           'text2'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text2'))),
   				'text3'         => str_replace('\'','§§', str_replace('"','§§§§', $this->input->post ('text3'))),

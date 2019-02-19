@@ -153,7 +153,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="text-center">
+										<div class="text-center pointer">
 											<strong onclick="add_cat(' . $row['id'] . ');"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter une sous-catégorie</strong>
 										</div>
 	            		</div>

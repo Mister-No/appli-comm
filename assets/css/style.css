@@ -28,6 +28,10 @@
   float: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .headerSubmit {
   text-shadow: none !important;
   font-weight: bold !important;
@@ -186,7 +190,7 @@
 .deleteIcon {
   font-size: 38px;
   color: #fff;
-  margin: -2px 0px 0px 4px;
+  margin: -2px 0px 0px 2px;
 }
 
 .addIcon {
@@ -311,23 +315,22 @@
   margin: 12px 0px 4px 0px;
 }
 
-/**.builderTextarea {
-  width: 100%;
-  min-height: 80px;
-  margin: 10px auto;
-  resize: none;
-  border: none;
-}**/
-
 .blockInputImage,
 .blockInputSummernote {
-  margin: 10px;
-  width: 100%;
+  margin: 1%;
+  width: 98%;
+}
+
+.blockInputTextarea {
+  min-height: 120px;
+  margin: 1%;
+  width: 98%;
+  resize: none;
 }
 
 .blockInputTexte,
 .blockInputSelect {
-  margin: 10px;
+  margin: 1%;
   width: 48%;
 }
 
