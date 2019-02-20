@@ -9,10 +9,13 @@
 					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne_creer.html">Créer</a>
+					<a href="<?=base_url();?>campagnes/informations/modification/<?=$id_newsletter?>.html">Informations</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne_listes.html" class="active">Listes de contacts</a>
+					<a href="<?=base_url();?>campagnes/newsletter/<?=$id_newsletter?>.html">Newsletter</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>campagnes/listes/<?=$id_newsletter?>.html" class="active">Listes de contacts</a>
 				</li>
 			</ul>
 		</div>
@@ -29,7 +32,7 @@
 				<div class="col-md-12">
 				<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 					<div class="panel-heading">
-						<div class="panel-title">Sélectionner une liste de contacts</div>
+						<div class="panel-title">Sélectionner des contacts</div>
 						<div class="panel-controls">
 							<ul>
 							<li><input id="check_all_list" type="checkbox" name="id_list[]" value=""></li>

@@ -7,9 +7,9 @@ class Dashboard extends CI_Controller {
 
 		if ($_SESSION['is_connect'] == TRUE){
 
-			$this->load->model('My_builder');
+			$this->load->model('My_campagnes');
 
-			$result_campagnes = $this->My_builder->get_all_campagnes();
+			$result_campagnes = $this->My_campagnes->get_all_campagnes();
 
 			$data = array(
 				'result_campagnes' => $result_campagnes,

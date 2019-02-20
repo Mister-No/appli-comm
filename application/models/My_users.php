@@ -1,6 +1,21 @@
 <?php
 class My_users extends CI_Model {
 
+  /********************************************************/
+  /* SELECT TOUTES LES INFOS DU GROUPE DE L'UTILISATEUR   */
+  /********************************************************/
+  function get_group_infos($id_group){
+
+    $this->db->select();
+    $this->db->from('group_infos');
+    $this->db->where("group_infos.id_group = $id_group");
+
+    $query = $this->db->get();
+
+    return $query->result();
+
+  }
+
   /********************************************/
   /* SELECT TOUTES LES UTILISATEURS           */
   /********************************************/

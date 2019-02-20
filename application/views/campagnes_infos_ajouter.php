@@ -9,13 +9,7 @@
 					<a href="<?=base_url();?>campagnes.html">CAMPAGNES</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne_informations/modification/<?=$id_newsletter?>.html" class="active">Informations</a>
-				</li>
-				<li>
-					<a href="<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html">Newsletter</a>
-				</li>
-				<li>
-					<a href="<?=base_url();?>builder/campagne/validation/<?=$id_newsletter?>.html">Validation newsletter</a>
+					<a href="<?=base_url();?>campagnes/informations/creation.html" class="active">Informations</a>
 				</li>
 			</ul>
 		</div>
@@ -31,7 +25,7 @@
 			<div class="row">
 		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
-		        <div class="panel-title">MODIFIER UNE CAMPAGNE</div>
+		        <div class="panel-title">CRÉER UNE CAMPAGNE</div>
 						<div class="panel-controls">
 							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
@@ -40,36 +34,36 @@
 							</ul>
 						</div>
 		      </div>
-		      <form id="form" method="post" class="validate" action="<?=base_url();?>builder/update_newsletter/<?=$id_newsletter?>.html">
+		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/add_newsletter.html">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-12">
 									<div class="form-group form-group-default">
 		                <label class="control-label">Nom de la campagne :</label>
-		                <input type="text" class="form-control" name="nom_campagne" placeholder="Nom de la campagne" value="<?=$nom_campagne?>"/>
+		                <input type="text" class="form-control" name="nom_campagne" placeholder="Nom de la campagne" />
 		              </div>
 									<div class="form-group form-group-default">
 										<label class="control-label">Objet de l'email :</label>
-										<input type="text" class="form-control" name="objet" placeholder="Objet de l'email" value="<?=$objet_campagne?>" />
+										<input type="text" class="form-control" name="objet" placeholder="Objet de l'email" />
 									</div>
 		            	<div class="form-group form-group-default">
 		                <label class="control-label">Expediteur :</label>
-		                <input type="text" class="form-control" name="expediteur" placeholder="Expediteur" value="<?=$expediteur_campagne?>" required />
+		                <input type="text" class="form-control" name="expediteur" placeholder="Expediteur" required />
 		              </div>
 		            </div>
 								<div class="form-group form-group-default form-group-default-select2 ">
 									<label class="">Thème :</label>
-										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme" disabled>
+										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme">
 											<option value=""></option>
 											<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
-												<option value="<?=$row_theme_newsletter->id?>" <?php echo ($theme_campagne == $row_theme_newsletter->id)? 'selected="selected"': ''; ?>><?=$row_theme_newsletter->nom?></option>
+												<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>
 											<?php endforeach; ?>
 	                </select>
 	              </div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="submit" class="btn btn-success">MODIFIER</button>
+		          <button type="submit" class="btn btn-success">AJOUTER</button>
 		        </div>
 		      </form>
 		    </div>

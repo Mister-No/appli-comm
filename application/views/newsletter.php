@@ -9,13 +9,10 @@
 					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne_informations/modification/<?=$id_newsletter?>.html">Informations</a>
+					<a href="<?=base_url();?>campagnes/informations/modification/<?=$id_newsletter?>.html">Informations</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html" class="active">Newsletter</a>
-				</li>
-				<li>
-					<a href="<?=base_url();?>builder/campagne/validation/<?=$id_newsletter?>.html">Validation newsletter</a>
+					<a href="<?=base_url();?>campagnes/newsletter/<?=$id_newsletter?>.html" class="active">Newsletter</a>
 				</li>
 			</ul>
 		</div>
@@ -44,7 +41,8 @@
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
-						<a href="/builder/campagne/validation/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
+						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
+						<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
 					</div>
 				</div>
 			</div>
@@ -227,7 +225,7 @@
 												'<div class="closeBlockSelect col-lg-12">'+
 													'<i class="closeIcon pg-close"></i>'+
 												'</div>'+
-												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/add_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
+												'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>campagnes/add_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 													'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 													'<h4 class="col-xs-10"><strong>Ajouter un bloc</strong> '+blockName+'</h4>'+
 													'</div>'+
@@ -385,7 +383,7 @@
 													'<div class="closeBlockSelect col-lg-12">'+
 														'<i class="closeIcon pg-close"></i>'+
 													'</div>'+
-													'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>builder/update_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
+													'<form class="col-lg-8 choosenBlockContainer clearFloat center-block" action="<?=base_url();?>campagnes/update_block/<?=$id_newsletter?>.html" method="post" enctype="multipart/form-data">'+
 														'<div class="col-xs-10 center-block choosenBlock clearFloat">'+
 														'<h4 class="col-xs-10"><strong>Modifier le bloc</strong> '+blockName+'</h4>'+
 														'</div>'+
@@ -530,9 +528,9 @@
 
 				//if ($('.blockPlace').index(this) > 0) {
 
-					$.post('<?=base_url();?>builder/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+					$.post('<?=base_url();?>campagnes/block_move_up/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
 						if (data=='ok') {
-							window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
+							window.location.href='<?=base_url();?>campagnes/newsletter/<?=$id_newsletter?>.html';
 						}
 					});
 
@@ -559,9 +557,9 @@
 
 				//if ($('.blockPlace').index(this) < $('.blockPlace').length-Number(1)) {
 
-					$.post('<?=base_url();?>builder/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
+					$.post('<?=base_url();?>campagnes/block_move_down/<?=$id_newsletter?>.html', {'id_block': id_block, 'ordre': blockPlace}, function(data) {
 						if (data=='ok') {
-							window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
+							window.location.href='<?=base_url();?>campagnes/newsletter/<?=$id_newsletter?>.html';
 						}
 					});
 
@@ -588,12 +586,12 @@
 
 			if (blockType != 1 && blockType != 4 && blockType != 6 && blockType != 7) {
 
-				$.post('<?=base_url();?>builder/delete/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
+				$.post('<?=base_url();?>campagnes/delete/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
 
 					if (data=='ok') {
 						block.remove();
 						$('.newsBuilderAddBlock').remove();
-						window.location.href='<?=base_url();?>builder/campagne/newsletter/<?=$id_newsletter?>.html';
+						window.location.href='<?=base_url();?>campagnes/newsletter/<?=$id_newsletter?>.html';
 					}
 
 				});

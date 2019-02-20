@@ -137,7 +137,7 @@ UPLOADCARE_PREVIEW_STEP = true;
                   <div class="row">
                     <div class="col-md-3">
                       <div class="sub-menu-heading bold">
-                        <a href="<?=base_url();?>builder/campagne_informations/creation.html">Créer une campagne</a>
+                        <a href="<?=base_url();?>campagnes/informations/creation.html">Créer une campagne</a>
                       </div>
                     </div>
                     <div class="col-md-3 ">
