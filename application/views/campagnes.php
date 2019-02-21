@@ -100,7 +100,7 @@
 
 										<?php
 
-										/**foreach ($result_campagnes as $row_campagnes) {
+										foreach ($result_campagnes as $row_campagnes) {
 
 											echo '<tr>
 															<td class="v-align-middle semi-bold">
@@ -119,9 +119,9 @@
 															</td>
 				                    </tr>';
 
-										}**/
+										}
 
-										foreach ($result["data"]["campaign_records"] as $row) {
+										/**foreach ($result["data"]["campaign_records"] as $row) {
 
 											echo '<tr>
 															<td class="v-align-middle">' . $row['campaign_name'] . '</td>
@@ -151,7 +151,7 @@
 															</td>
 				                    </tr>';
 
-										}
+										}**/
 										 ?>
 
                   </tbody>

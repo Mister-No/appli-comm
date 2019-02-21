@@ -40,26 +40,48 @@
 		            <div class="col-md-12">
 									<div class="form-group form-group-default">
 		                <label class="control-label">Nom de la campagne :</label>
-		                <input type="text" class="form-control" name="nom_campagne" placeholder="Nom de la campagne" />
+		                <input type="text" class="form-control" name="nom_campagne" placeholder="" />
 		              </div>
 									<div class="form-group form-group-default">
 										<label class="control-label">Objet de l'email :</label>
-										<input type="text" class="form-control" name="objet" placeholder="Objet de l'email" />
+										<input type="text" class="form-control" name="objet" placeholder="" />
 									</div>
 		            	<div class="form-group form-group-default">
 		                <label class="control-label">Expediteur :</label>
-		                <input type="text" class="form-control" name="expediteur" placeholder="Expediteur" required />
+		                <input type="text" class="form-control" name="expediteur" placeholder="" required />
 		              </div>
+									<div class="form-group form-group-default">
+										<label class="control-label">Envoi programmé :</label>
+										<input id="envoi_programme" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_programme" />
+									</div>
+									<div class="form-group form-group-default">
+										<div class="form-input-group">
+											<label>Date</label>
+											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi">
+										</div>
+										<!--<div class="input-group-append ">
+											<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+										</div>-->
+									</div>
+									<div class="form-group form-group-default">
+										<div class="form-input-group bootstrap-timepicker">
+											<label>Heure</label>
+											<input id="timepicker" type="text" class="form-control" name="heure_envoi">
+										</div>
+										<!--<div class="input-group-append">
+											<span class="input-group-text"><i class="pg-clock"></i></span>
+										</div>-->
+									</div>
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Thème :</label>
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+												<option value=""></option>
+												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
+													<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>
+												<?php endforeach; ?>
+										</select>
+									</div>
 		            </div>
-								<div class="form-group form-group-default form-group-default-select2 ">
-									<label class="">Thème :</label>
-										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme">
-											<option value=""></option>
-											<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
-												<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>
-											<?php endforeach; ?>
-	                </select>
-	              </div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
@@ -72,6 +94,14 @@
 	</div>
 	<script type="text/javascript">
 
+	/**$('#envoi_programme').change( function() {
+		if ($(this).val() == '') {
+			$('.date_heure').addClass('showblock');
+		} else {
+			$('.date_heure').removeClass('hideblock');
+		}
+	});
+	$('#envoi_programme').change();
 	/**$('#form').submit(function(e) {
 
 		e.preventDefault();
@@ -83,5 +113,9 @@
 		check_exist(urlCheck, urlRedirect, data);
 
 	});**/
+
+	$('#datepicker-component2').change( function() {
+		console.log($(this).val());
+	});
 
 	</script>

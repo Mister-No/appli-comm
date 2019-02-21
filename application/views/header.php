@@ -29,8 +29,16 @@
 <link class="main-stylesheet" rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/summernote/css/summernote.css">
-
+<link href="<?=base_url();?>assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
 <script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="<?=base_url();?>assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="<?=base_url();?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="<?=base_url();?>assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+<script src="<?=base_url();?>assets/plugins/bootstrap-typehead/typeahead.bundle.min.js"></script>
+<script src="<?=base_url();?>assets/plugins/bootstrap-typehead/typeahead.jquery.min.js"></script>
+<script src="<?=base_url();?>assets/plugins/handlebars/handlebars-v4.0.5.js"></script>
+<script src="<?=base_url();?>assets/js/form_elements.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
 
 <script>

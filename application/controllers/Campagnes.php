@@ -70,6 +70,9 @@ class Campagnes extends CI_Controller {
           'nom_campagne'        => $result_newsletter[0]->nom_campagne,
           'objet_campagne'      => $result_newsletter[0]->objet,
           'expediteur_campagne' => $result_newsletter[0]->expediteur,
+          'envoi_programme'      => $result_newsletter[0]->envoi_programme,
+          'date_envoi'      => $result_newsletter[0]->date_envoi,
+          'heure_envoi'      => $result_newsletter[0]->heure_envoi,
           'theme_campagne'      => $result_newsletter[0]->theme,
         );
 
@@ -106,6 +109,9 @@ class Campagnes extends CI_Controller {
         $id_block_html = $row_newsletter->id_block_html;
         $id_block_content = $row_newsletter->id_block_content;
         $nom_campagne = $row_newsletter->nom_campagne;
+        $envoi_programme = $row_newsletter->envoi_programme;
+        $date_envoi = $row_newsletter->date_envoi;
+        $heure_envoi = $row_newsletter->heure_envoi;
         $theme = $row_newsletter->theme;
         $html = $row_newsletter->newsletter_block_html;
         $nom_block = $row_newsletter->newsletter_block_nom;
@@ -298,6 +304,9 @@ class Campagnes extends CI_Controller {
         'nom_campagne'    => $this->input->post ('nom_campagne'),
         'objet'           => $this->input->post ('objet'),
         'expediteur'      => $this->input->post ('expediteur'),
+        'envoi_programme' => $this->input->post ('envoi_programme'),
+        'date_envoi'      => $this->input->post ('date_envoi'),
+        'heure_envoi'      => $this->input->post ('heure_envoi'),
         'theme'           => $this->input->post ('theme'),
         'id_group'        => $_SESSION['id_group'],
         'id_sib'          => ''/**$result['data']**/,
@@ -595,6 +604,9 @@ class Campagnes extends CI_Controller {
         'nom_campagne'    => $this->input->post ('nom_campagne'),
         'objet'           => $this->input->post ('objet'),
         'expediteur'      => $this->input->post ('expediteur'),
+        'envoi_programme' => $this->input->post ('envoi_programme'),
+        'date_envoi'      => $this->input->post ('date_envoi'),
+        'heure_envoi'      => $this->input->post ('heure_envoi'),
       );
 
 			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);

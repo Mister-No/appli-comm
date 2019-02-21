@@ -30,7 +30,7 @@
         // Basic Sample using Bloodhound
         // constructs the suggestion engine
 
-        var countries = new Bloodhound({
+        /**var countries = new Bloodhound({
           datumTokenizer: Bloodhound.tokenizers.whitespace,
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           prefetch: 'http://revox.io/json/countries-list.json'
@@ -78,7 +78,7 @@
         /* Time picker
          * https://github.com/m3wolf/bootstrap3-timepicker
          */
-        $('#timepicker').timepicker().on('show.timepicker', function(e) {
+        /**$('#timepicker').timepicker().on('show.timepicker', function(e) {
             var widget = $('.bootstrap-timepicker-widget');
             widget.find('.glyphicon-chevron-up').removeClass().addClass('pg-arrow_maximize');
             widget.find('.glyphicon-chevron-down').removeClass().addClass('pg-arrow_minimize');
@@ -91,25 +91,25 @@
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
         //Input mask - Input helper
-        $(function($) {
+        /**$(function($) {
             $("#date").mask("99/99/9999");
             $("#phone").mask("(999) 999-9999");
             $("#tin").mask("99-9999999");
             $("#ssn").mask("999-99-9999");
-        });
+        });**/
         //Autonumeric plug-in - automatic addition of dollar signs,etc controlled by tag attributes
-        $('.autonumeric').autoNumeric('init');
+        //$('.autonumeric').autoNumeric('init');
 
         //Drag n Drop up-loader
-        $("div#myId").dropzone({
+        /**$("div#myId").dropzone({
             url: "/file/post"
-        });
+        });**/
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
-        $('.custom-tag-input').tagsinput({
+        /**$('.custom-tag-input').tagsinput({
 
-        });
+        });**/
 
-        var myCustomTemplates = {
+        /**var myCustomTemplates = {
                 "font-styles": function(locale) {
                     return '<li class="dropdown">' + '<a data-toggle="dropdown" class="btn btn-default dropdown-toggle ">' + '<span class="editor-icon editor-icon-headline"></span>' + '<span class="current-font">Normal</span>' + '<b class="caret"></b>' + '</a>' + '<ul class="dropdown-menu">' + '<li><a tabindex="-1" data-wysihtml5-command-value="p" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">Normal</a></li>' + '<li><a tabindex="-1" data-wysihtml5-command-value="h1" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">1</a></li>' + '<li><a tabindex="-1" data-wysihtml5-command-value="h2" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">2</a></li>' + '<li><a tabindex="-1" data-wysihtml5-command-value="h3" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">3</a></li>' + '<li><a tabindex="-1" data-wysihtml5-command-value="h4" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">4</a></li>' + '<li><a tabindex="-1" data-wysihtml5-command-value="h5" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">5</a></li>' + '<li><a tabindex="-1" data-wysihtml5-command-value="h6" data-wysihtml5-command="formatBlock" href="javascript:;" unselectable="on">6</a></li>' + '</ul>' + '</li>';
                 },
@@ -131,15 +131,15 @@
                 html: function(locale) {
                     return '<li>' + '<div class="btn-group">' + '<a tabindex="-1" title="Edit HTML" data-wysihtml5-action="change_view" class="btn  btn-default" href="javascript:;" unselectable="on">' + '<i class="editor-icon editor-icon-html"></i>' + '</a>' + '</div>' + '</li>'
                 }
-            }
+            }**/
             //TODO: chrome doesn't apply the plugin on load
-        setTimeout(function() {
+        /**setTimeout(function() {
             $('#wysiwyg5').wysihtml5({
                 html: true,
                 stylesheets: ["pages/css/editor.css"],
                 customTemplates: myCustomTemplates
             });
-        }, 500);
+        }, 500);**/
 
 
         $('#summernote').summernote({

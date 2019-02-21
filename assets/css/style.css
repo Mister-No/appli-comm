@@ -12,10 +12,7 @@
 .display10,
 .display11,
 .display12,
-.display13 {
-  display: none;
-}
-
+.display13,
 .erreur,
 .success,
 .edit_cat,

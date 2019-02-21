@@ -54,6 +54,28 @@
 		                <input type="text" class="form-control" name="expediteur" placeholder="Expediteur" value="<?=$expediteur_campagne?>" required />
 		              </div>
 		            </div>
+								<div class="form-group form-group-default">
+									<label class="control-label">Envoi programmé :</label>
+									<input id="envoi_programme" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_programme" value="<?=$envoi_programme?>">
+								</div>
+								<div class="form-group form-group-default">
+									<div class="form-input-group">
+										<label>Date</label>
+										<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi" value="<?=$date_envoi?>">
+									</div>
+									<!--<div class="input-group-append ">
+										<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+									</div>-->
+								</div>
+								<div class="form-group form-group-default">
+									<div class="form-input-group bootstrap-timepicker">
+										<label>Heure</label>
+										<input id="timepicker" type="text" class="form-control" name="heure_envoi" value="<?=$heure_envoi?>">
+									</div>
+									<!--<div class="input-group-append">
+										<span class="input-group-text"><i class="pg-clock"></i></span>
+									</div>-->
+								</div>
 								<div class="form-group form-group-default form-group-default-select2 ">
 									<label class="">Thème :</label>
 										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme" disabled>
