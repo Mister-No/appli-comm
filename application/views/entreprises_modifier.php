@@ -3,7 +3,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>entreprises.html">Entreprises</a>
@@ -124,12 +124,12 @@
 	<?php $id_ent = $row->id_parent; ?>
 
 	var id = '<?=$id_ent?>';
-	var urlSelect = '<?=base_url();?>'+'select_all_ent';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_ent';
 
 	select ('#select_business', id, urlSelect);
 
 	var id = <?php echo json_encode ($result_cat); ?>;
-	var urlSelect = '<?=base_url();?>'+'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_cat';
 
 	select ('#select_category', id, urlSelect);
 

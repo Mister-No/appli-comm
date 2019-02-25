@@ -111,6 +111,11 @@ function check_exist(urlCheck, urlRedirect, data) {
 				$('.erreur').css('display', 'block');
 				$('.message').empty().html('Un nouveau mot de passe vous à été envoyé par mail');
 
+			} else if (data == 8) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Merci de remplir les champs obligatoire');
+
 			} else {
 
 				window.location.href = urlRedirect;

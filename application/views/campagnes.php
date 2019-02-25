@@ -3,7 +3,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>campagnes.html" class="active">Campagnes</a>
@@ -114,7 +114,7 @@
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'builder/campagne/newsletter/' . $row_campagnes->id . '"><i class="fa fa-edit"></i></a>
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id . '"><i class="fa fa-edit"></i></a>
 																</div>
 															</td>
 				                    </tr>';

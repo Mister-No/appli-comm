@@ -12,9 +12,9 @@ class Common extends CI_Controller  {
 
       $id_group = $_SESSION['id_group'];
 
-      if ($id_group == 0) {
+      /**if ($id_group == 0) {
         $id_group = 'rien';
-      }
+      }**/
 
       $result = $this->My_entreprises->get_all_ent($id_group);
 

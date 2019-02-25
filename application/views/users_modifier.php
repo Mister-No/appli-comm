@@ -3,7 +3,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>users.html">Utilisateurs</a>
@@ -165,7 +165,7 @@
 	<script type="text/javascript">
 
 	var id = <?=$row->id_group?>;
-	var urlSelect = '<?=base_url();?>'+'select_all_clients';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_clients';
 
 	select ('#select_business', id, urlSelect);
 

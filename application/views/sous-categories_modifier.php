@@ -3,7 +3,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>categories.html" class="active">Catégories</a>
@@ -72,7 +72,7 @@
 	<script type="text/javascript">
 
 		var id = <?=$row->id_parent?>;
-		var urlSelect = '<?=base_url();?>'+'select_all_parent_cat';
+		var urlSelect = '<?=base_url();?>'+'common/select_all_parent_cat';
 
 		select ('#select_category', id, urlSelect);
 

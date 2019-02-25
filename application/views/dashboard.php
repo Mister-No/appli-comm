@@ -4,7 +4,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>dashboard.html" class="active">Accueil</a>

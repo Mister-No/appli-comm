@@ -3,7 +3,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>campagnes.html">CAMPAGNES</a>
@@ -40,7 +40,7 @@
 		            <div class="col-md-12">
 									<div class="form-group form-group-default">
 		                <label class="control-label">Nom de la campagne :</label>
-		                <input type="text" class="form-control" name="nom_campagne" placeholder="" />
+		                <input type="text" class="form-control" name="nom_campagne" placeholder="" required />
 		              </div>
 									<div class="form-group form-group-default">
 										<label class="control-label">Objet de l'email :</label>
@@ -74,7 +74,7 @@
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 ">
 										<label class="">Thème :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme" required>
 												<option value=""></option>
 												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
 													<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>

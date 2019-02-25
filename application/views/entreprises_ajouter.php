@@ -3,7 +3,7 @@
 		<div class="inner">
 			<ul class="breadcrumb">
 				<li>
-					<p>Pages</p>
+					<p>Shuttle</p>
 				</li>
 				<li>
 					<a href="<?=base_url();?>entreprises.html">Entreprises</a>
@@ -119,12 +119,12 @@
 	<script type="text/javascript">
 
 	var id_ent = null;
-	var urlSelect = '<?=base_url();?>'+'select_all_ent';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_ent';
 
 	select ('#select_business', id_ent, urlSelect);
 
 	var id_ent = null;
-	var urlSelect = '<?=base_url();?>'+'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_cat';
 
 	select ('#select_category', id_ent, urlSelect);
 

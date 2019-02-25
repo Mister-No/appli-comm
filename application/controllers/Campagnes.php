@@ -266,289 +266,295 @@ class Campagnes extends CI_Controller {
       $data_block = array();
       $id_group = $_SESSION['id_group'];
 
-      //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
+      if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
-      $infos_group = $this->My_users->get_group_infos($id_group);
+        //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+        $infos_group = $this->My_users->get_group_infos($id_group);
 
-      $data = array(
-        "category"=> "",
-        "from_name"=> $_SESSION['user_nom'],
-        "from_email"=> "aurelien@studio-brik.com",
-        "name"=> $this->input->post ('nom_campagne'),
-        "bat"=> "aurelien@studio-brik.com",
-        "html_content"=> "<html><body></body></html>",
-        "html_url"=> "",
-        "listid"=> array(),
-        "scheduled_date"=> "",
-        "subject"=> $this->input->post ('objet'),
-        "reply_to"=> $this->input->post ('expediteur'),
-        "to_field"=>"[PRENOM] [NOM]",
-        'exclude_list'=> array(),
-        "attachment_url"=> "",
-        "inline_image"=> 0,
-        "mirror_active"=> 0,
-        "send_now"=> 0,
-        "utm_campaign"=> "",
-      );
+        require(APPPATH.'libraries/Mailin.php');
+        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-      $result = $mailin->create_campaign($data);
-
-      //var_dump($result);
-
-      //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
-
-      $data = array(
-        'nom_campagne'    => $this->input->post ('nom_campagne'),
-        'objet'           => $this->input->post ('objet'),
-        'expediteur'      => $this->input->post ('expediteur'),
-        'envoi_programme' => $this->input->post ('envoi_programme'),
-        'date_envoi'      => $this->input->post ('date_envoi'),
-        'heure_envoi'      => $this->input->post ('heure_envoi'),
-        'theme'           => $this->input->post ('theme'),
-        'id_group'        => $_SESSION['id_group'],
-        'id_sib'          => ''/**$result['data']**/,
-      );
-
-      $id_group = $_SESSION['id_group'];
-      $theme = $this->input->post ('theme');
-
-			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
-
-      //if ($result['code'] == 'success') {
-
-        //CRÉATION DU TEMPLATE DE BASE
-
-        //Block Top
-
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 1);
-
-        $data_content = array (
-          'id_block_html' => $result_html_block[0]->id,
-  			);
-
-  			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-        $data_block = array(
-          'id_newsletter'    => $id_newsletter,
-          'id_block_html'    => $result_html_block[0]->id,
-          'id_block_content' => $id_block_content,
-          'ordre'            => 1,
+        $data = array(
+          "category"=> "",
+          "from_name"=> $_SESSION['user_nom'],
+          "from_email"=> "aurelien@studio-brik.com",
+          "name"=> $this->input->post ('nom_campagne'),
+          "bat"=> "aurelien@studio-brik.com",
+          "html_content"=> "<html><body></body></html>",
+          "html_url"=> "",
+          "listid"=> array(),
+          "scheduled_date"=> "",
+          "subject"=> $this->input->post ('objet'),
+          "reply_to"=> $this->input->post ('expediteur'),
+          "to_field"=>"[PRENOM] [NOM]",
+          'exclude_list'=> array(),
+          "attachment_url"=> "",
+          "inline_image"=> 0,
+          "mirror_active"=> 0,
+          "send_now"=> 0,
+          "utm_campaign"=> "",
         );
 
-        $this->My_common->insert_data('newsletter_has_block', $data_block);
+        $result = $mailin->create_campaign($data);
 
-        //Block Header
+        //var_dump($result);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 2);
+        //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
 
-        if (count($result_html_block) > 0) {
+        $data = array(
+          'nom_campagne'    => $this->input->post ('nom_campagne'),
+          'objet'           => $this->input->post ('objet'),
+          'expediteur'      => $this->input->post ('expediteur'),
+          'envoi_programme' => $this->input->post ('envoi_programme'),
+          'date_envoi'      => $this->input->post ('date_envoi'),
+          'heure_envoi'      => $this->input->post ('heure_envoi'),
+          'theme'           => $this->input->post ('theme'),
+          'id_group'        => $_SESSION['id_group'],
+          'id_sib'          => ''/**$result['data']**/,
+        );
+
+        $id_group = $_SESSION['id_group'];
+        $theme = $this->input->post ('theme');
+
+  			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
+
+        //if ($result['code'] == 'success') {
+
+          //CRÉATION DU TEMPLATE DE BASE
+
+          //Block Top
+
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 1);
 
           $data_content = array (
             'id_block_html' => $result_html_block[0]->id,
     			);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+    			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
           $data_block = array(
             'id_newsletter'    => $id_newsletter,
             'id_block_html'    => $result_html_block[0]->id,
             'id_block_content' => $id_block_content,
-            'ordre'            => 2,
+            'ordre'            => 1,
           );
 
           $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-        }
+          //Block Header
 
-        //Block Headline
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 2);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 3);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+      			);
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-            'text0' => 'Newsletter',
-            'text1' => 1,
-            'text2' => date('d/m/Y'),
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 2,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 3,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Headline
 
-        //Block Image
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 3);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 4);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+              'text0' => 'Newsletter',
+              'text1' => 1,
+              'text2' => date('d/m/Y'),
+            );
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-            'img0'  => 'img_1.png',
-            'text0' => '#',
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 3,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 4,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Image
 
-        //Block Titre
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 4);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 5);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+              'img0'  => 'img_1.png',
+              'text0' => '#',
+            );
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-            'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 4,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 5,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Titre
 
-        //Block Paragraphe
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 5);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 6);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+              'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+            );
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-            'text0' => '1. Lorem ipsum dolor sit amet',
-            'text1' => 'Lorem ipsum',
-            'text2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            'text3' => 'En savoir +',
-            'text4' => '#',
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 5,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 6,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Paragraphe
 
-        //Block Footer
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 6);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 7);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+              'text0' => '1. Lorem ipsum dolor sit amet',
+              'text1' => 'Lorem ipsum',
+              'text2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'text3' => 'En savoir +',
+              'text4' => '#',
+            );
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 6,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 7,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Footer
 
-        //Block Footer bar
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 7);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 8);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+            );
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 7,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 8,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Footer bar
 
-        //Block Bottom
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 8);
 
-        //Récupération id du block du template par ordre
-        $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 9);
+          if (count($result_html_block) > 0) {
 
-        if (count($result_html_block) > 0) {
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+            );
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-          );
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 8,
+            );
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 9,
-          );
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
 
-        }
+          //Block Bottom
 
-        redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 9);
 
-      //} else {
+          if (count($result_html_block) > 0) {
 
-      //}
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+            );
+
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 9,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+          }
+
+          redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+
+        //} else {
+
+        //}
+
+      } else {
+        echo 8;
+      }
 
     } else {
       $this->load->view('login');
