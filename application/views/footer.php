@@ -1,7 +1,9 @@
 	<footer class="main-footer sticky footer-type-1">
 		<div class="footer-inner">
 			<div class="footer-text">
-				by &copy; <?=date('Y')?> <a href="http://coxdigital.fr" target="_blank">STUDIO BRIK</a>
+				<p>
+					&copy; <?=date('Y')?> by <a href="http://coxdigital.fr" target="_blank">STUDIO BRIK</a>
+				</p>
 			</div>
 		</div>
 	</footer>

@@ -77,6 +77,21 @@ class My_campagnes extends CI_Model {
 		return $query->result();
 	}
 
+	/********************************************************/
+	/*         SELECT ID SEND IN BLUE 			                */
+	/********************************************************/
+	function get_id_send_in_blue($id_newsletter){
+
+		$this->db->select('id_sib');
+		$this->db->from('newsletter');
+		$this->db->where('newsletter.id', $id_newsletter);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
   /************************************************/
 	/*         SELECT NEWSLETTER BLOCK              */
 	/************************************************/
