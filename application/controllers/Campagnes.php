@@ -278,9 +278,9 @@ class Campagnes extends CI_Controller {
         $data = array(
           "category"=> "",
           "from_name"=> $_SESSION['user_nom'],
-          "from_email"=> "aurelien@studio-brik.com",
+          "from_email"=> "contact@studio-brik.com",
           "name"=> $this->input->post ('nom_campagne'),
-          "bat"=> "aurelien@studio-brik.com",
+          "bat"=> "contact@studio-brik.com",
           "html_content"=> "<html><body></body></html>",
           "html_url"=> "",
           "listid"=> array(),
@@ -586,9 +586,9 @@ class Campagnes extends CI_Controller {
         "id"=> $result_newsletter[0]->id_sendinblue,
         "category"=> "",
         "from_name"=> $_SESSION['user_nom'],
-        "from_email"=> "aurelien@studio-brik.com",
+        "from_email"=> "contact@studio-brik.com",
         "name"=> $this->input->post ('nom_campagne'),
-        "bat"=> "aurelien@studio-brik.com",
+        "bat"=> "contact@studio-brik.com",
         "html_content"=> "<html><body></body></html>",
         "html_url"=> "",
         "listid"=> array(),
@@ -1253,6 +1253,109 @@ class Campagnes extends CI_Controller {
   }
 
   public function listes()
+	{
+		if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_categories');
+      $this->load->model('My_listes');
+      $this->load->model('My_users');
+
+			$id_newsletter = $this->uri->segment(3, 0);
+
+      $id_group = $_SESSION["id_group"];
+
+      $result_liste = $this->My_listes->get_all_listes($id_group);
+
+			$tab_cat = array();
+			$tab_child_cat = array();
+
+      foreach ($result_liste as $row_liste) {
+
+				$result_parent_cat = $this->My_listes->get_cat_parent_by_liste($row_liste->id);
+
+        foreach ($result_parent_cat as $row_parent_cat) {
+
+				 $result_child_cat = $this->My_categories->get_child_cat($row_parent_cat->id);
+
+				 foreach ($result_child_cat as $row_child_cat) {
+					 $tab_child_cat[] = [
+						 'id' => $row_child_cat->id,
+						 'titre' => $row_child_cat->titre,
+						];
+				 }
+
+				 $tab_cat[] = [
+          'id' => $row_parent_cat->id,
+          'titre_cat_parent' => $row_parent_cat->titre,
+					'child_cat' => $tab_child_cat
+           ];
+				   $tab_child_cat = array();
+      	 }
+
+				$result[] = [
+				'id' => $row_liste->id,
+				'titre' => $row_liste->titre,
+				'cat' => $tab_cat,
+				];
+				$tab_cat = array();
+      }
+      echo '<pre>';
+      print_r($result);
+      echo '</pre>';
+			// Affichage des catégories pour la creation de listes
+
+			$result_cat_parent = $this->My_categories->get_all_parent_cat($id_group);
+
+			$result_cat = array();
+
+			foreach ($result_cat_parent as $row) {
+
+				$result_cat_child = $this->My_categories->get_child_cat($row->id);
+
+				$tab_cat = array();
+				foreach ($result_cat_child as $row_cat) {
+					$tab_cat[] = [
+						'id' => $row_cat->id,
+						'id_parent' => $row_cat->id,
+						'titre' => $row_cat->titre
+					];
+				}
+
+				$result_cat[] = [
+					'id' => $row->id,
+					'titre' => $row->titre,
+					'child' => $tab_cat
+				];
+
+				}
+        echo '<pre>';
+        print_r($result_cat);
+        echo '</pre>';
+			// Informations sur la campagne
+
+      /**$infos_group = $this->My_users->get_group_infos($id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+			$campagne = $mailin->get_campaigns_v2(array("id" => $id_newsletter));
+
+      $data = array(
+    		'result' => $result,
+    		'result_cat' => $result_cat,
+    		'campagne' => $campagne['data']
+    	);
+
+    	$this->load->view('header', $data);
+      $this->load->view('campagnes_listes');
+      $this->load->view('footer');**/
+
+    } else {
+        $this->load->view('login');
+    }
+	}
+
+  /**public function listes()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -1277,7 +1380,7 @@ class Campagnes extends CI_Controller {
     } else {
         $this->load->view('login');
     }
-  }
+  }**/
 
 
 }
