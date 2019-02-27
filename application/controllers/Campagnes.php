@@ -1421,7 +1421,7 @@ class Campagnes extends CI_Controller {
       );
 
       $this->load->view('header', $data);
-      $this->load->view('campagnes_envoi');
+      $this->load->view('campagnes_envoi_ajouter');
       $this->load->view('footer');
 
     } else {

@@ -46,33 +46,40 @@
 		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/add_newsletter.html">
 		        <div class="panel-body">
 		          <div class="row">
-		            <div class="col-md-12">
+		            <div class="col-md-6">
 									<div class="form-group form-group-default">
 										<label class="control-label">Envoi programmé :</label>
 										<input id="envoi_programme" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_programme" />
 									</div>
-									<div class="form-group form-group-default">
+									<div class="form-group form-group-default form-group-default-select2 date_heure">
+										<label class="">Heure :</label>
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+												<?php for ($i=0; $i < 24; $i++) {
+													echo '<option value="'.$i.'">'.$i.'</option>';
+												} ?>
+										</select>
+									</div>
+		            </div>
+								<div class="col-md-6">
+									<div class="form-group form-group-default date_heure">
 										<div class="form-input-group">
 											<label>Date</label>
-											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi">
+											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi" value="">
 										</div>
 										<!--<div class="input-group-append ">
 											<span class="input-group-text"><i class="fa fa-calendar"></i></span>
 										</div>-->
 									</div>
-									<div class="form-group form-group-default form-group-default-select2 ">
-										<label class="">Heure :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
-												<option value=""></option>
-										</select>
-									</div>
-									<div class="form-group form-group-default form-group-default-select2 ">
+									<div class="form-group form-group-default form-group-default-select2 date_heure">
 										<label class="">Minutes :</label>
 											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
-												<option value=""></option>
+												<?php for ($i=0; $i < 12; $i++) {
+													$minutes = $i*5;
+													echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+												} ?>
 										</select>
 									</div>
-		            </div>
+								</div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
@@ -85,14 +92,27 @@
 	</div>
 	<script type="text/javascript">
 
-	/**$('#envoi_programme').change( function() {
-		if ($(this).val() == '') {
-			$('.date_heure').addClass('showblock');
-		} else {
-			$('.date_heure').removeClass('hideblock');
-		}
+	// date_us_to_fr
+
+  $('#datepicker-component2').change( function() {
+
+    my_date = $(this).val();
+
+    jour = my_date.substr(0,2);
+  	mois = my_date.substr(3,2);
+  	annee = my_date.substr(6,8);
+
+  	my_date = mois+'/'+jour+'/'+annee;
+
+    $(this).val(my_date);
+
+  });
+
+	$('#envoi_programme').change( function() {
+		$('.date_heure').toggle();
 	});
 	$('#envoi_programme').change();
+
 	/**$('#form').submit(function(e) {
 
 		e.preventDefault();
@@ -105,8 +125,5 @@
 
 	});**/
 
-	$('#datepicker-component2').change( function() {
-		console.log($(this).val());
-	});
 
 	</script>

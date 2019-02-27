@@ -40,7 +40,7 @@
 		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/update_newsletter/<?=$id_newsletter?>.html">
 		        <div class="panel-body">
 		          <div class="row">
-		            <div class="col-md-12">
+		            <div class="col-md-6">
 									<div class="form-group form-group-default">
 		                <label class="control-label">Nom de la campagne :</label>
 		                <input type="text" class="form-control" name="nom_campagne" placeholder="Nom de la campagne" value="<?=$nom_campagne?>"/>
@@ -49,20 +49,22 @@
 										<label class="control-label">Objet de l'email :</label>
 										<input type="text" class="form-control" name="objet" placeholder="Objet de l'email" value="<?=$objet_campagne?>" />
 									</div>
-		            	<div class="form-group form-group-default">
-		                <label class="control-label">Expediteur :</label>
-		                <input type="text" class="form-control" name="expediteur" placeholder="Expediteur" value="<?=$expediteur_campagne?>" required />
-		              </div>
 		            </div>
-								<div class="form-group form-group-default form-group-default-select2 ">
-									<label class="">Thème :</label>
-										<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme" disabled>
-											<option value=""></option>
-											<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
-												<option value="<?=$row_theme_newsletter->id?>" <?php echo ($theme_campagne == $row_theme_newsletter->id)? 'selected="selected"': ''; ?>><?=$row_theme_newsletter->nom?></option>
-											<?php endforeach; ?>
-	                </select>
-	              </div>
+								<div class="col-md-6">
+									<div class="form-group form-group-default">
+										<label class="control-label">Expediteur :</label>
+										<input type="text" class="form-control" name="expediteur" placeholder="Expediteur" value="<?=$expediteur_campagne?>" required />
+									</div>
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Thème :</label>
+											<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme" disabled>
+												<option value=""></option>
+												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
+													<option value="<?=$row_theme_newsletter->id?>" <?php echo ($theme_campagne == $row_theme_newsletter->id)? 'selected="selected"': ''; ?>><?=$row_theme_newsletter->nom?></option>
+												<?php endforeach; ?>
+		                </select>
+		              </div>
+								</div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">

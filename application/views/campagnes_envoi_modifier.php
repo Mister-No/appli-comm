@@ -6,10 +6,19 @@
 					<p>Shuttle</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes.html">CAMPAGNES</a>
+					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes/informations/creation.html" class="active">Informations</a>
+					<a href="<?=base_url();?>campagnes/informations/modification/<?=$id_newsletter?>.html">Informations</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>campagnes/newsletter/<?=$id_newsletter?>.html">Newsletter</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>campagnes/listes/<?=$id_newsletter?>.html">Listes</a>
+				</li>
+				<li>
+					<a href="<?=base_url();?>campagnes/envoi/<?=$id_newsletter?>.html" class="active">Envoi</a>
 				</li>
 			</ul>
 		</div>
@@ -25,7 +34,7 @@
 			<div class="row">
 		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
-		        <div class="panel-title">CRÉER UNE CAMPAGNE</div>
+		        <div class="panel-title">Programmer l'envoi</div>
 						<div class="panel-controls">
 							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
@@ -39,26 +48,35 @@
 		          <div class="row">
 		            <div class="col-md-6">
 									<div class="form-group form-group-default">
-		                <label class="control-label">Nom de la campagne :</label>
-		                <input type="text" class="form-control" name="nom_campagne" placeholder="" required />
-		              </div>
-									<div class="form-group form-group-default">
-										<label class="control-label">Objet de l'email :</label>
-										<input type="text" class="form-control" name="objet" placeholder="" />
+										<label class="control-label">Envoi programmé :</label>
+										<input id="envoi_programme" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_programme" />
+									</div>
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Heure :</label>
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+												<?php for ($i=0; $i < 24; $i++) {
+													echo '<option value="'.$i.'">'.$i.'</option>';
+												} ?>
+										</select>
 									</div>
 		            </div>
 								<div class="col-md-6">
 									<div class="form-group form-group-default">
-										<label class="control-label">Expediteur :</label>
-										<input type="text" class="form-control" name="expediteur" placeholder="" required />
+										<div class="form-input-group">
+											<label>Date</label>
+											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi">
+										</div>
+										<!--<div class="input-group-append ">
+											<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+										</div>-->
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 ">
-										<label class="">Thème :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme" required>
-												<option value=""></option>
-												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
-													<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>
-												<?php endforeach; ?>
+										<label class="">Minutes :</label>
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+												<?php for ($i=0; $i < 12; $i++) {
+													$minutes = $i*5;
+													echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+												} ?>
 										</select>
 									</div>
 								</div>
