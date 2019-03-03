@@ -34,7 +34,7 @@
 
 		<?php foreach ($result as $row) {
 
-						echo '<form method="post" class="validate" action="'. base_url() . 'campagnes/listes_add">
+						echo '<form method="post" class="validate" action="'. base_url() . 'campagnes/listes_add/'.$id_newsletter.'.html">
 									 <input type="hidden" name="id_campagne" value="' . $id_newsletter . '">
 								   <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 										<div class="panel-heading">
@@ -101,7 +101,7 @@
 
 	<script type="text/javascript">
 
-	$('#form').submit(function(e) {
+	/**$('#form').submit(function(e) {
 
 		e.preventDefault();
 
@@ -111,6 +111,6 @@
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});
+	});**/
 
 	</script>
