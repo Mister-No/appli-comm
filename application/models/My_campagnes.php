@@ -49,9 +49,40 @@ class My_campagnes extends CI_Model {
 	}
 
 	/********************************************************/
+	/*         SELECT NEWSLETTER TEMPLATE	BY THEMES          */
+	/********************************************************/
+	function get_id_block_html_by_theme_and_template($theme){
+
+		$this->db->select();
+		$this->db->from('newsletter_block_html');
+		$this->db->where("newsletter_block_html.theme", $theme);
+		$this->db->where("newsletter_block_html.template !=", NULL);
+		$this->db->order_by('newsletter_block_html.template', 'ASC');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
+	/*         SELECT NEWSLETTER TEMPLATE	CONTENT         */
+	/********************************************************/
+	function get_template_content($id){
+
+		$this->db->select();
+		$this->db->from('newsletter_template_content');
+		$this->db->join('newsletter_block_html_template_has_content', 'newsletter_block_html_template_has_content.template_block_content = newsletter_template_content.id', 'left');
+		$this->db->where("newsletter_block_html_template_has_content.template_block_html", $id);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
 	/*         SELECT NEWSLETTER THEMES BY TEMPLATE	          */
 	/********************************************************/
-	function get_id_block_html_by_theme_and_template($theme, $template){
+	/**function get_id_block_html_by_theme_and_template($theme, $template){
 
 		$this->db->select('newsletter_block_html.id');
 		$this->db->from('newsletter_block_html');
