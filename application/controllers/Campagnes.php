@@ -136,6 +136,7 @@ class Campagnes extends CI_Controller {
         $text11 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text11);
         $text12 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text12);
         $text13 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text13);
+        $text14 = str_replace('"','#&§#&§', $row_newsletter->newsletter_block_text14);
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -195,10 +196,14 @@ class Campagnes extends CI_Controller {
           '{{text11}}'           => $text11,
           '{{text12}}'           => $text12,
           '{{text13}}'           => $text13,
+          '{{text14}}'           => $text14,
           '{{select0}}'          => $select0,
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
+          '{{displayimg0}}'      => (!empty($img_link0))?'':'displayimg0',
+          '{{displayimg1}}'      => (!empty($img_link1))?'':'displayimg1',
+          '{{displayimg2}}'      => (!empty($img_link2))?'':'displayimg2',
           '{{display0}}'         => (!empty($text0))?'':'display0',
           '{{display1}}'         => (!empty($text1))?'':'display1',
           '{{display2}}'         => (!empty($text2))?'':'display2',
@@ -213,6 +218,7 @@ class Campagnes extends CI_Controller {
           '{{display11}}'        => (!empty($text11))?'':'display11',
           '{{display12}}'        => (!empty($text12))?'':'display12',
           '{{display13}}'        => (!empty($text13))?'':'display13',
+          '{{display14}}'        => (!empty($text13))?'':'display14',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -775,6 +781,7 @@ class Campagnes extends CI_Controller {
         $text11 = $row_newsletter->newsletter_block_text11;
         $text12 = $row_newsletter->newsletter_block_text12;
         $text13 = $row_newsletter->newsletter_block_text13;
+        $text14 = $row_newsletter->newsletter_block_text14;
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -833,10 +840,14 @@ class Campagnes extends CI_Controller {
           '{{text11}}'           => $text11,
           '{{text12}}'           => $text12,
           '{{text13}}'           => $text13,
+          '{{text14}}'           => $text14,
           '{{select0}}'          => $select0,
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
+          '{{displayimg0}}'      => (!empty($img_link0))?'':'displayimg0',
+          '{{displayimg1}}'      => (!empty($img_link1))?'':'displayimg1',
+          '{{displayimg2}}'      => (!empty($img_link2))?'':'displayimg2',
           '{{display0}}'         => (!empty($text0))?'':'display0',
           '{{display1}}'         => (!empty($text1))?'':'display1',
           '{{display2}}'         => (!empty($text2))?'':'display2',
@@ -851,6 +862,7 @@ class Campagnes extends CI_Controller {
           '{{display11}}'        => (!empty($text11))?'':'display11',
           '{{display12}}'        => (!empty($text12))?'':'display12',
           '{{display13}}'        => (!empty($text13))?'':'display13',
+          '{{display14}}'        => (!empty($text13))?'':'display14',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -959,6 +971,7 @@ class Campagnes extends CI_Controller {
           'text11'        => $this->input->post ('text11'),
           'text12'        => $this->input->post ('text12'),
           'text13'        => $this->input->post ('text13'),
+          'text14'        => $this->input->post ('text14'),
           'select0'       => $this->input->post ('select0'),
           'select1'       => $this->input->post ('select1'),
           'select2'       => $this->input->post ('select2'),
@@ -1090,6 +1103,7 @@ class Campagnes extends CI_Controller {
           'text11'        => $this->input->post ('text11'),
           'text12'        => $this->input->post ('text12'),
           'text13'        => $this->input->post ('text13'),
+          'text14'        => $this->input->post ('text14'),
           'select0'       => $this->input->post ('select0'),
           'select1'       => $this->input->post ('select1'),
           'select2'       => $this->input->post ('select2'),
@@ -1217,6 +1231,7 @@ class Campagnes extends CI_Controller {
           'text11'    => $result_block[0]->newsletter_block_text11,
           'text12'    => $result_block[0]->newsletter_block_text12,
           'text13'    => $result_block[0]->newsletter_block_text13,
+          'text14'    => $result_block[0]->newsletter_block_text14,
           'select0'   => $result_block[0]->newsletter_block_select0,
           'select1'   => $result_block[0]->newsletter_block_select1,
           'select2'   => $result_block[0]->newsletter_block_select2,
