@@ -51,7 +51,7 @@ class My_campagnes extends CI_Model {
 	/********************************************************/
 	/*         SELECT NEWSLETTER TEMPLATE	BY THEMES          */
 	/********************************************************/
-	function get_id_block_html_by_theme_and_template($theme){
+	/**function get_id_block_html_by_theme_and_template($theme){
 
 		$this->db->select();
 		$this->db->from('newsletter_block_html');
@@ -82,7 +82,7 @@ class My_campagnes extends CI_Model {
 	/********************************************************/
 	/*         SELECT NEWSLETTER THEMES BY TEMPLATE	          */
 	/********************************************************/
-	/**function get_id_block_html_by_theme_and_template($theme, $template){
+	function get_id_block_html_by_theme_and_template($theme, $template){
 
 		$this->db->select('newsletter_block_html.id');
 		$this->db->from('newsletter_block_html');

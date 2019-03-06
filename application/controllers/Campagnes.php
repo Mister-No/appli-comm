@@ -266,8 +266,9 @@ class Campagnes extends CI_Controller {
       $data_block = array();
       $id_group = $_SESSION['id_group'];
       $theme = $this->input->post ('theme');
+
       //CRÉATION DU TEMPLATE DE BASE
-$data_content = array();
+      /**$data_content = array();
       //Block Top
 
       //Récupération id du block du template par ordre
@@ -307,7 +308,7 @@ $data_content = array();
               'select3' => $contenu->content,
             ];**/
 
-            switch ($contenu->type) {
+            /**switch ($contenu->type) {
               case 1:
                 $i=0;
                 echo 'img'.$i.'= '.$contenu->content;
@@ -329,7 +330,7 @@ $data_content = array();
             print_r($contenu->content);
             echo '</pre>';**/
 
-          }
+          /**}
           $img = '';
           $text = '';
           $select = '';
@@ -360,10 +361,10 @@ $data_content = array();
 
 
 
-      }
+      }**/
 
 
-      /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
+      if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
         //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
 
@@ -420,20 +421,24 @@ $data_content = array();
           //Récupération id du block du template par ordre
           $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 1);
 
-          $data_content = array (
-            'id_block_html' => $result_html_block[0]->id,
-    			);
+          if (count($result_html_block) > 0) {
 
-    			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            $data_content = array (
+              'id_block_html' => $result_html_block[0]->id,
+      			);
 
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter,
-            'id_block_html'    => $result_html_block[0]->id,
-            'id_block_content' => $id_block_content,
-            'ordre'            => 1,
-          );
+      			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter,
+              'id_block_html'    => $result_html_block[0]->id,
+              'id_block_content' => $id_block_content,
+              'ordre'            => 1,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+          }
 
           //Block Header
 
@@ -646,7 +651,7 @@ $data_content = array();
 
       } else {
         echo 8;
-      }**/
+      }
 
     } else {
       $this->load->view('login');

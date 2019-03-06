@@ -57,7 +57,7 @@
 											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme" required>
 												<option value=""></option>
 												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
-													<option value="<?=$row_theme_newsletter->id?>"><?=$row_theme_newsletter->nom?></option>
+													<option value="<?=$row_theme_newsletter->id_theme?>"><?=$row_theme_newsletter->nom?></option>
 												<?php endforeach; ?>
 										</select>
 									</div>
