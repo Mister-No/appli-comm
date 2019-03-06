@@ -161,7 +161,7 @@
 												<th class="column" width="450" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/image2.jpg" width="450" height="530" border="0" alt="" /></td>
+															<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img0}}" width="450" height="530" border="0" alt="" /></td>
 														</tr>
 													</table>
 												</th>
@@ -220,21 +220,21 @@
 																			{{text1}}
 																		</td>
 																	</tr>
-																	<tr>
-																			<td align="left">
-																				<table border="0" cellspacing="0" cellpadding="0">
-																					<tr>
-																						<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
-																							<a href="{{text3}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																								<span class="link" style="color:#2c479e; text-decoration:none;">
-																									<b>{{text2}}</b>
-																								</span>
-																							</a>
-																						</td>
-																					</tr>
-																				</table>
-																			</td>
-																		</tr>
+																	<tr class="{{display2}}">
+																		<td align="left">
+																			<table border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
+																						<a href="{{text3}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
+																							<span class="link" style="color:#2c479e; text-decoration:none;">
+																								<b>{{text2}}</b>
+																							</span>
+																						</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
 																</table>
 															</td>
 														</tr>
@@ -371,7 +371,7 @@
 																			{{text0}}
 																			<br><br>
 																			<table border="0" cellspacing="0" cellpadding="0">
-																				<tr>
+																				<tr class="{{display1}}">
 																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
 																						<a href="{{text2}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
 																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text1}}
@@ -423,7 +423,7 @@
 															<td valign="top" style="padding: 27px 0px 0px 0px;" class="p0">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="text3 h-auto p30-15" height="220" bgcolor="#fef0ea"  style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:19px; line-height:30px; text-align:left; min-width:auto !important;">{{text0}}</td>
+																		<td class="text3 h-auto p30-15" height="220" bgcolor="#fef0ea"  style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:19px; line-height:30px; text-align:left; min-width:auto !important;">Rejoignez notre communauté sur Facebook !</td>
 																	</tr>
 																</table>
 															</td>
@@ -465,13 +465,16 @@
 								<input type="hidden" name="ordre" value="{{ordre}}">
 								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
 								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton 1" data-content="{{text2}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton 1" data-content="{{text3}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton 2" data-content="{{text4}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton 2" data-content="{{text5}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton 3" data-content="{{text6}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton 3" data-content="{{text7}}">
 								<tr>
 									<td bgcolor="#f8f9fc" >
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
-
 												<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
@@ -483,21 +486,48 @@
 																			{{text1}}
 																		</td>
 																	</tr>
-
-																	<tr>
-																			<td align="center">
-																				<table border="0" cellspacing="0" cellpadding="0">
-																					<tr>
-																						<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
-																							<a href="{{text3}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																								<span class="link" style="color:#2c479e; text-decoration:none;">{{text2}}
-																								</span>
-																							</a>
-																						</td>
-																					</tr>
-																				</table>
-																			</td>
-																		</tr>
+																	<tr class="{{display2}}">
+																		<td align="center">
+																			<table border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
+																						<a href="{{text3}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
+																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text2}}
+																							</span>
+																						</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<tr class="{{display4}}">
+																		<td align="center">
+																			<table border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500; border-top: 4px solid #f8f9fc;">
+																						<a href="{{text5}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
+																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text4}}
+																							</span>
+																						</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<tr class="{{display6}}">
+																		<td align="center">
+																			<table border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500; border-top: 4px solid #f8f9fc;">
+																						<a href="{{text7}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
+																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text6}}
+																							</span>
+																						</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
 																</table>
 															</td>
 														</tr>
@@ -522,12 +552,10 @@
 								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text0}}">
 								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre colonne 1" data-content="{{text1}}">
 								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text2}}">
-								<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select0}}">
 								<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="2" data-label="Image colonne 2" data-crop="345x220" data-content="{{img1}}">
 								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre colonne 2" data-content="{{text3}}">
 								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre colonne 2" data-content="{{text4}}">
 								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text5}}">
-								<input class="block_input" type="hidden" name="block_input_select[]" value="4" data-col="1" data-label="Réseaux social" data-select="Facebook,Instagram,Twitter,Linkedin" data-content="{{select1}}">
 								<tr>
 									<td style="padding: 40px 80px 40px 80px;" class="p30-15">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -554,7 +582,7 @@
 																				</tr>
 																			</table>
 																		</td>
-																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/social_network/blue/{{select0}}.jpg" width="8" height="16" border="0" alt="" /></a></td>
+																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.png" width="8" height="16" border="0" alt="" /></a></td>
 																	</tr>
 																</table>
 															</td>
@@ -566,11 +594,11 @@
 														</tr>
 													</table>
 												</th>
-												<th style="padding-bottom:35px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width=""></th>
+												<th style="padding-bottom:35px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="60"></th>
 												<th class="column-top" width="345" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="fluid-img" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img0}}" width="345" height="220" border="0" alt="" /></td>
+															<td class="fluid-img" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img1}}" width="345" height="220" border="0" alt="" /></td>
 														</tr>
 														<tr>
 															<td style="padding-bottom: 12px;">
@@ -591,7 +619,7 @@
 																				</tr>
 																			</table>
 																		</td>
-																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/steva/template_images/social_network/blue/{{select1}}.jpg" width="8" height="16" border="0" alt="" /></a></td>
+																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.png" width="8" height="16" border="0" alt="" /></a></td>
 																	</tr>
 																</table>
 															</td>
@@ -652,7 +680,7 @@
 																<a href="{{text0}}" class="link" style="color:#2c479e; text-decoration:none;">{{text2}}</a><br><br>
 															</td>
 														</tr>
-														<tr>
+														<tr class="{{display3}}">
 															<td align="left">
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -681,7 +709,7 @@
 																<a href="{{text5}}" class="link" style="color:#2c479e; text-decoration:none;">{{text7}}</a><br><br>
 															</td>
 														</tr>
-														<tr>
+														<tr class="{{display8}}">
 															<td align="left">
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -710,7 +738,7 @@
 																<a href="{{text10}}" class="link" style="color:#2c479e; text-decoration:none;">{{text12}}</a> <br><br>
 															</td>
 														</tr>
-														<tr>
+														<tr class="{{display13}}">
 															<td align="left">
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
