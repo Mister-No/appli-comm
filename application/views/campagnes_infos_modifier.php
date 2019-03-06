@@ -60,7 +60,7 @@
 											<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme" disabled>
 												<option value=""></option>
 												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
-													<option value="<?=$row_theme_newsletter->id?>" <?php echo ($theme_campagne == $row_theme_newsletter->id)? 'selected="selected"': ''; ?>><?=$row_theme_newsletter->nom?></option>
+													<option value="<?=$row_theme_newsletter->id?>" <?php echo ($theme_campagne == $row_theme_newsletter->id_theme)? 'selected="selected"': ''; ?>><?=$row_theme_newsletter->nom?></option>
 												<?php endforeach; ?>
 		                </select>
 		              </div>
