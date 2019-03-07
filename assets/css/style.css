@@ -328,6 +328,10 @@
   resize: none;
 }
 
+.textarea {
+  min-height: 100px !important;
+}
+
 .blockInputTexte,
 .blockInputSelect {
   margin: 1%;

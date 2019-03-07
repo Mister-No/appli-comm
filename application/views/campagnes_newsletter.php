@@ -42,7 +42,9 @@
 					</div>
 					<div class="panel-footer text-right">
 						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
-						<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
+						<?php if ($_SESSION['id_group'] == 0): ?>
+							<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
@@ -280,7 +282,7 @@
 					// BLOCK TEXTAREA
 					block = '<div class="blockInputTextarea form-group form-group-default">'+
 										'<label class="control-label">'+blockInput[j][2]+' : </label>'+
-											'<textarea class="form-control" name="text'+t+'"></textarea>'+
+											'<textarea class="form-control textarea" name="text'+t+'"></textarea>'+
 									'</div>';
 				}
 
@@ -431,7 +433,7 @@
 						// BLOCK TEXTAREA
 						block = '<div class="blockInputTextarea form-group form-group-default">'+
 											'<label class="control-label">'+blockInput[j][2]+' : </label>'+
-												'<textarea class="form-control" name="text'+t+'">'+blockInput[j][5]+'</textarea>'+
+												'<textarea class="form-control textarea" name="text'+t+'">'+blockInput[j][5]+'</textarea>'+
 										'</div>';
 					}
 

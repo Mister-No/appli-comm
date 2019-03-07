@@ -35,6 +35,7 @@
 		img { -ms-interpolation-mode: bicubic; /* Allow smoother rendering of resized image in Internet Explorer */ }
 		.mcnPreviewText { display: none !important; }
 
+		.displayimg0, .displayimg1, .displayimg2, .display0, .display1, .display2, .display3, .display4, .display5, .display6, .display7, .display8, .display9, .display10, .display11, .display12, .display13 { display: none; }
 
 		/* Mobile styles */
 		@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
@@ -114,7 +115,7 @@
 					<tr>
 						<td class="td" style="width:900px; min-width:900px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 
-              <!-- Header -->
+							<!-- Header -->
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<input type="hidden" name="id_block" value="{{id_block}}">
 								<input type="hidden" name="type" value="{{type}}">
@@ -122,25 +123,25 @@
 								<input type="hidden" name="id_block_content" value="{{id_block_content}}">
 								<input type="hidden" name="nom" value="{{nom}}">
 								<input type="hidden" name="ordre" value="{{ordre}}">
-									<tr>
-										<td style="padding: 22px 15px; border-bottom: 2px solid #ededed; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:12px; line-height:16px; text-align:center; min-width:auto !important;" class="text-top">
-											<a href="{{mirror}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;"><span class="link" style="color:#2c479e; text-decoration:none;">Voir cette newsletter en ligne</span></a>
-										</td>
-									</tr>
-									<tr>
-										<td class="p30-15" style="padding: 34px 15px;">
-											<table width="100%" border="0" cellspacing="0" cellpadding="0">
-												<tr>
-													<td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/logo.jpg" width="217" height="138" border="0" alt="" /></a></td>
-												</tr>
-												<tr>
-													<td class="text-yellow" style="color:#ffb900; font-family:'Raleway', Arial, sans-serif; font-size:20px; line-height:24px; text-align:center; text-transform:uppercase; min-width:auto !important;">UNE MAISON, DE BELLES HISTOIRES</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-								</table>
-								<!-- END Header -->
+								<tr>
+									<td style="padding: 22px 15px; border-bottom: 2px solid #ededed; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:12px; line-height:16px; text-align:center; min-width:auto !important;" class="text-top">
+										<a href="{{mirror}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;"><span class="link" style="color:#2c479e; text-decoration:none;">Voir cette newsletter en ligne</span></a>
+									</td>
+								</tr>
+								<tr>
+									<td class="p30-15" style="padding: 34px 15px;">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center;"><a href="https://www.villabeausoleil.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/logo.jpg" width="217" height="138" border="0" alt="" /></a></td>
+											</tr>
+											<tr>
+												<td class="text-yellow" style="color:#ffb900; font-family:'Raleway', Arial, sans-serif; font-size:20px; line-height:24px; text-align:center; text-transform:uppercase; min-width:auto !important;">UNE MAISON, DE BELLES HISTOIRES</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- END Header -->
 
 							<!-- Mot du chef de villa -->
 							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">
@@ -282,7 +283,7 @@
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
 												<td class="text3 center" style="padding-bottom: 0px; padding-top:40px; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:20px; line-height:30px; min-width:auto !important; text-align:center;">
-													{{text0}}
+													<b>{{text0}}</b>
 												</td>
 											</tr>
 										</table>
@@ -368,13 +369,13 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td class="text3 h-auto p30-15" height="220" bgcolor="#ffe48b"  style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:20px; line-height:30px; text-align:left; min-width:auto !important;">
-																			{{text0}}
+																			<b>{{text0}}</b>
 																			<br><br>
 																			<table border="0" cellspacing="0" cellpadding="0">
 																				<tr class="{{display1}}">
 																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
 																						<a href="{{text2}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text1}}
+																							<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text1}}</b>
 																							</span>
 																						</a>
 																					</td>
@@ -423,7 +424,7 @@
 															<td valign="top" style="padding: 27px 0px 0px 0px;" class="p0">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="text3 h-auto p30-15" height="220" bgcolor="#fef0ea"  style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:19px; line-height:30px; text-align:left; min-width:auto !important;">Rejoignez notre communauté sur Facebook !</td>
+																		<td class="text3 h-auto p30-15" height="220" bgcolor="#fef0ea"  style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:20px; line-height:30px; text-align:left; min-width:auto !important;"><b>Rejoignez notre communauté sur Facebook !</b></td>
 																	</tr>
 																</table>
 															</td>
@@ -456,7 +457,7 @@
 							<!-- END Section Pink -->
 
 							<!-- Paragraphe -->
-							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0">
+							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">
 								<input type="hidden" name="id_block" value="{{id_block}}">
 								<input type="hidden" name="type" value="{{type}}">
 								<input type="hidden" name="id_block_html" value="{{id_block_html}}">
@@ -492,7 +493,7 @@
 																				<tr>
 																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
 																						<a href="{{text3}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text2}}
+																							<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text2}}</b>
 																							</span>
 																						</a>
 																					</td>
@@ -506,7 +507,7 @@
 																				<tr>
 																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500; border-top: 4px solid #f8f9fc;">
 																						<a href="{{text5}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text4}}
+																							<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text4}}</b>
 																							</span>
 																						</a>
 																					</td>
@@ -520,7 +521,7 @@
 																				<tr>
 																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500; border-top: 4px solid #f8f9fc;">
 																						<a href="{{text7}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																							<span class="link" style="color:#2c479e; text-decoration:none;">{{text6}}
+																							<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text6}}</b>
 																							</span>
 																						</a>
 																					</td>
@@ -549,13 +550,15 @@
 								<input type="hidden" name="nom" value="{{nom}}">
 								<input type="hidden" name="ordre" value="{{ordre}}">
 								<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="345x220" data-content="{{img0}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text0}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre colonne 1" data-content="{{text1}}">
-								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text2}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien facebook colonne 1" data-content="{{text0}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text1}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre colonne 1" data-content="{{text2}}">
+								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text3}}">
 								<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="2" data-label="Image colonne 2" data-crop="345x220" data-content="{{img1}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre colonne 2" data-content="{{text3}}">
-								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre colonne 2" data-content="{{text4}}">
-								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text5}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien facebook colonne 2" data-content="{{text4}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre colonne 2" data-content="{{text5}}">
+								<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre colonne 2" data-content="{{text6}}">
+								<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text7}}">
 								<tr>
 									<td style="padding: 40px 80px 40px 80px;" class="p30-15">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -563,33 +566,45 @@
 												<th class="column-top" width="345" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr class="{{displayimg0}}">
-															<td class="fluid-img" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img0}}" width="345" height="220" border="0" alt="" /></td>
+															<td class="fluid-img" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text0}}">
+																	<img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img0}}" width="345" height="220" border="0" alt="" />
+																</a>
+															</td>
 														</tr>
 														<tr>
 															<td style="padding-bottom: 12px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td valign="top" class="img" width="58" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico.png" width="46" height="46" border="0" alt="" /></td>
+																		<td valign="top" class="img" width="58" style="font-size:0pt; line-height:0pt; text-align:left;">
+																			<a href="{{text0}}">
+																				<img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico.png" width="46" height="46" border="0" alt="" />
+																			</a>
+																		</td>
 																		<td valign="top">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
 																					<td class="text" style="padding-bottom: px; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">
-																						<strong>{{text0}}</strong>
+																						<strong>{{text1}}</strong>
 																					</td>
 																				</tr>
 																				<tr>
-																					<td class="text-small" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:11px; line-height:16px; text-align:left; font-weight:500; min-width:auto !important;">{{text1}}</td>
+																					<td class="text-small" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:11px; line-height:16px; text-align:left; font-weight:500; min-width:auto !important;">{{text2}}</td>
 																				</tr>
 																			</table>
 																		</td>
-																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.png" width="8" height="16" border="0" alt="" /></a></td>
+																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;">
+																			<a href="{{text0}}" target="_blank">
+																			<img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.png" width="8" height="16" border="0" alt="" />
+																		</a>
+																	</td>
 																	</tr>
 																</table>
 															</td>
 														</tr>
 														<tr>
 															<td class="text" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">
-																{{text2}}
+																{{text3}}
 															</td>
 														</tr>
 													</table>
@@ -598,35 +613,47 @@
 												<th class="column-top" width="345" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr class="{{displayimg1}}">
-															<td class="fluid-img" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img1}}" width="345" height="220" border="0" alt="" /></td>
+															<td class="fluid-img" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text4}}">
+																	<img src="{{base_url}}mediatheque/newsletter/beausoleil/images/{{img1}}" width="345" height="220" border="0" alt="" />
+																</a>
+															</td>
 														</tr>
 														<tr>
 															<td style="padding-bottom: 12px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td valign="top" class="img" width="58" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico.png" width="46" height="46" border="0" alt="" /></td>
+																		<td valign="top" class="img" width="58" style="font-size:0pt; line-height:0pt; text-align:left;">
+																			<a href="{{text4}}">
+																				<img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico.png" width="46" height="46" border="0" alt="" />
+																			</a>
+																		</td>
 																		<td valign="top">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
 																					<td class="text" style="padding-bottom: px; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">
-																						<strong>{{text3}}</strong>
+																						<strong>{{text5}}</strong>
 																					</td>
 																				</tr>
 																				<tr>
 																					<td class="text-small" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:11px; line-height:16px; text-align:left; font-weight:500; min-width:auto !important;">
-																						{{text4}}
+																						{{text6}}
 																					</td>
 																				</tr>
 																			</table>
 																		</td>
-																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.png" width="8" height="16" border="0" alt="" /></a></td>
+																		<td valign="top" class="img right" width="30" style="font-size:0pt; line-height:0pt; text-align:right;">
+																			<a href="{{text4}}" target="_blank">
+																				<img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.png" width="8" height="16" border="0" alt="" />
+																			</a>
+																		</td>
 																	</tr>
 																</table>
 															</td>
 														</tr>
 														<tr>
 															<td class="text" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">
-																{{text5}}
+																{{text7}}
 															</td>
 														</tr>
 													</table>
@@ -686,7 +713,7 @@
 																	<tr>
 																		<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
 																			<a href="{{text4}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																				<span class="link" style="color:#2c479e; text-decoration:none;">{{text3}}
+																				<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text3}}</b>
 																				</span>
 																			</a>
 																		</td>
@@ -715,7 +742,7 @@
 																	<tr>
 																		<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
 																			<a href="{{text9}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																				<span class="link" style="color:#2c479e; text-decoration:none;">{{text8}}
+																				<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text8}}</b>
 																				</span>
 																			</a>
 																		</td>
@@ -744,7 +771,7 @@
 																	<tr>
 																		<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
 																			<a href="{{text14}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
-																				<span class="link" style="color:#2c479e; text-decoration:none;">{{text13}}
+																				<span class="link" style="color:#2c479e; text-decoration:none;"><b>{{text13}}</b>
 																				</span>
 																			</a>
 																		</td>
@@ -780,7 +807,7 @@
 																<th class="column" width="228" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
-																			<td class="img m-center" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/footer_logo.jpg" width="228" height="69" border="0" alt="" /></a></td>
+																			<td class="img m-center" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="https://www.villabeausoleil.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/footer_logo.jpg" width="228" height="69" border="0" alt="" /></a></td>
 																		</tr>
 																	</table>
 																</th>
@@ -803,7 +830,7 @@
 																						<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																							<table class="center" border="0" cellspacing="0" cellpadding="0" style="text-align:center;">
 																								<tr>
-																									<td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.jpg" width="17" height="16" border="0" alt="" /></a></td>
+																									<td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="https://www.facebook.com/steva.steva.12327" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_facebook.jpg" width="17" height="16" border="0" alt="" /></a></td>
 																									<td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="https://fr.linkedin.com/company/groupe-steva" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_linkedin.jpg" width="17" height="16" border="0" alt="" /></a></td>
 																									<td class="img" width="22" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="https://twitter.com/groupesteva?lang=fr" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_twitter.jpg" width="17" height="16" border="0" alt="" /></a></td>
 																									<td class="img" width="17" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="https://www.instagram.com/villa.beausoleil/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/beausoleil/template_images/ico_instagram.jpg" width="17" height="16" border="0" alt="" /></a></td>

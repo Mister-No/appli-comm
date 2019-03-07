@@ -4,12 +4,12 @@ class My_campagnes extends CI_Model {
 	/********************************************************/
 	/*        				 SELECT ALL CAMPAGNES	   			        */
 	/********************************************************/
-	function get_all_campagnes(){
+	function get_all_campagnes($id_group){
 
-		$this->db->select();
+		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, envoi_programme, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
-		//$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter_themes.id', 'left');
-		//$this->db->where("group_has_theme.id_group", $id_group);
+		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
+		$this->db->where("group_has_theme.id_group", $id_group);
 		$this->db->order_by('newsletter.nom_campagne', 'ASC');
 
 		$query = $this->db->get();

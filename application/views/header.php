@@ -98,7 +98,7 @@ UPLOADCARE_PREVIEW_STEP = true;
         <div class="dropdown pull-right">
           <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="thumbnail-wrapper d32 circular inline m-t-5">
-              <img src="<?=base_url();?>assets/img/profiles/avatar.jpg" alt="" data-src="<?=base_url();?>assets/img/profiles/avatar.jpg" data-src-retina="<?=base_url();?>assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+              <!--<img src="<?=base_url();?>assets/img/profiles/avatar.jpg" alt="" data-src="<?=base_url();?>assets/img/profiles/avatar.jpg" data-src-retina="<?=base_url();?>assets/img/profiles/avatar_small2x.jpg" width="32" height="32">-->
             </span>
           </button>
           <ul class="dropdown-menu profile-dropdown" role="menu">
