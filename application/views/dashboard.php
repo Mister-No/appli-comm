@@ -68,7 +68,13 @@
 														</td>
 														<td class="v-align-middle">
 															<div class="btn-group">
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '"><i class="fa fa-edit"></i></a>
+																<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '">
+																	<i class="fa fa-edit"></i>
+																</a>
+																<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter . '">
+																	<i class="fa fa-copy">
+																	</i>
+																</a>
 															</div>
 														</td>
 													</tr>';

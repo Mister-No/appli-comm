@@ -1539,7 +1539,7 @@ class Campagnes extends CI_Controller {
     }
   }
 
-  public function envoi()
+  public function envoyer()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -1576,7 +1576,7 @@ class Campagnes extends CI_Controller {
     }
   }
 
-  public function envoyer()
+  public function send()
 	{
 		if ($_SESSION["is_connect"] == TRUE){
 
@@ -1644,5 +1644,124 @@ class Campagnes extends CI_Controller {
         	$this->load->view('login');
     	}
 	}
+
+  public function duplicate()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_campagnes');
+      $this->load->model('My_users');
+      $data = array();
+      $data_block = array();
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION['id_group'];
+
+      $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+
+      /**echo '<pre>';
+      var_dump($result_newsletter);
+      echo '</pre>';**/
+
+      //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
+
+      $infos_group = $this->My_users->get_group_infos($id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+      $data = array(
+        "category"=> "",
+        "from_name"=> $_SESSION['user_nom'],
+        "from_email"=> "contact@studio-brik.com",
+        "name"=> $result_newsletter[0]->nom_campagne.' copie',
+        "bat"=> "contact@studio-brik.com",
+        "html_content"=> "<html><body></body></html>",
+        "html_url"=> "",
+        "listid"=> array(),
+        "scheduled_date"=> "",
+        "subject"=> $result_newsletter[0]->objet,
+        "reply_to"=> $result_newsletter[0]->expediteur,
+        "to_field"=>"[PRENOM] [NOM]",
+        'exclude_list'=> array(),
+        "attachment_url"=> "",
+        "inline_image"=> 0,
+        "mirror_active"=> 0,
+        "send_now"=> 0,
+        "utm_campaign"=> "",
+      );
+
+      $result = $mailin->create_campaign($data);
+
+      if ($result['code'] == 'success') {
+
+        //COPIE DE LA NEWSLETTER
+
+        //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
+
+        $data = array(
+          'nom_campagne'    => $result_newsletter[0]->nom_campagne.' copie',
+          'objet'           => $result_newsletter[0]->objet,
+          'expediteur'      => $result_newsletter[0]->expediteur,
+          'theme'           => $result_newsletter[0]->theme,
+          'envoi_programme' => $result_newsletter[0]->envoi_programme,
+          'date_envoi'      => $result_newsletter[0]->date_envoi,
+          'heure_envoi'     => $result_newsletter[0]->heure_envoi,
+          'id_group'        => $_SESSION['id_group'],
+          'id_sib'          => $result['data']['id'],
+        );
+
+        //$theme = $result_newsletter[0]->theme;
+
+        $id_newsletter = $this->My_common->insert_data('newsletter', $data);
+
+        foreach ($result_newsletter as $row_newsletter) {
+
+          $data_content = array (
+            'id_block_html' => $row_newsletter->id_block_html,
+            'img0'          => $row_newsletter->newsletter_block_img0,
+            'img1'          => $row_newsletter->newsletter_block_img1,
+            'img2'          => $row_newsletter->newsletter_block_img2,
+            'text0'         => $row_newsletter->newsletter_block_text0,
+            'text1'         => $row_newsletter->newsletter_block_text1,
+            'text2'         => $row_newsletter->newsletter_block_text2,
+            'text3'         => $row_newsletter->newsletter_block_text3,
+            'text4'         => $row_newsletter->newsletter_block_text4,
+            'text5'         => $row_newsletter->newsletter_block_text5,
+            'text6'         => $row_newsletter->newsletter_block_text6,
+            'text7'         => $row_newsletter->newsletter_block_text7,
+            'text8'         => $row_newsletter->newsletter_block_text8,
+            'text9'         => $row_newsletter->newsletter_block_text9,
+            'text10'        => $row_newsletter->newsletter_block_text10,
+            'text11'        => $row_newsletter->newsletter_block_text11,
+            'text12'        => $row_newsletter->newsletter_block_text12,
+            'text13'        => $row_newsletter->newsletter_block_text13,
+            'text14'        => $row_newsletter->newsletter_block_text14,
+            'select0'       => $row_newsletter->newsletter_block_select0,
+            'select1'       => $row_newsletter->newsletter_block_select1,
+            'select2'       => $row_newsletter->newsletter_block_select2,
+          );
+
+          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+          $data_block = array(
+            'id_newsletter'    => $id_newsletter,
+            'id_block_html'    => $row_newsletter->id_block_html,
+            'id_block_content' => $id_block_content,
+            'ordre'            => $row_newsletter->newsletter_block_ordre,
+          );
+
+          $this->My_common->insert_data('newsletter_has_block', $data_block);
+        }
+
+        redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+
+      } else {
+
+      }
+
+    } else {
+      $this->load->view('login');
+    }
+  }
 
 }
