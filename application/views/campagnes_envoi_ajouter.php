@@ -18,7 +18,7 @@
 					<a href="<?=base_url();?>campagnes/listes/<?=$id_newsletter?>.html">Listes</a>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes/envoi/<?=$id_newsletter?>.html" class="active">Envoi</a>
+					<a href="<?=base_url();?>campagnes/envoi/<?=$id_newsletter?>.html" class="active">Envoyer</a>
 				</li>
 			</ul>
 		</div>
@@ -43,7 +43,7 @@
 							</ul>
 						</div>
 		      </div>
-		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/add_newsletter.html">
+		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/send/<?=$id_newsletter?>.html">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">
@@ -53,7 +53,7 @@
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 date_heure">
 										<label class="">Heure :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="heure_envoi">
 												<?php for ($i=0; $i < 24; $i++) {
 													echo '<option value="'.$i.'">'.$i.'</option>';
 												} ?>
@@ -72,7 +72,7 @@
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 date_heure">
 										<label class="">Minutes :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="theme">
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="minute_envoi">
 												<?php for ($i=0; $i < 12; $i++) {
 													$minutes = $i*5;
 													echo '<option value="'.$minutes.'">'.$minutes.'</option>';
@@ -83,7 +83,7 @@
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="submit" class="btn btn-success">AJOUTER</button>
+		          <button type="submit" class="btn btn-success">ENVOYER</button>
 		        </div>
 		      </form>
 		    </div>

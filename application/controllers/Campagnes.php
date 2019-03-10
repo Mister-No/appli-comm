@@ -1466,13 +1466,20 @@ class Campagnes extends CI_Controller {
 
         $result_contact = $this->My_categories->get_contact_by_cat($value);
 
-        echo '<pre>';
-        var_dump($result_contact);
-        echo '</pre>';
-        if (isset($_POST['nom'][$key])){
-                  $csv .= $_POST['nom'][$key].';'.$_POST['prenom'][$key].';'.$value.'\n';
-        } else {
-                  $csv .= ';;'.$value.'\n';
+        foreach ($result_contact as $row_contact) {
+          if (count($row_contact->nom) > 0){
+            $csv .= $row_contact->nom.';'.$row_contact->prenom.';'.$row_contact->email.'\n';
+          } else {
+            $csv .= ';;'.$row_contact->email.'\n';
+          }
+        }
+
+        if (count($result_contact) > 0) {
+          $data_contact = array(
+            'id_newsletter'				  => $id_newsletter,
+            'id_contact'            => $result_contact[0]->id,
+          );
+          $this->My_common->insert_data('newsletter_has_contacts', $data_contact);
         }
 
       }
@@ -1498,7 +1505,7 @@ class Campagnes extends CI_Controller {
 
 			$campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
-      /**$data = array(
+      $data = array(
         'body' => $csv,
         'name' => 'liste_'.$campagne['data'][0]['id'],
       );
@@ -1511,28 +1518,30 @@ class Campagnes extends CI_Controller {
 
       if ($code == 'success'){
 
-        $data = array(
-          'id'				  => $id_campagne,
+        $data_campagne = array(
+          'id'				  => $data_campagne[0]->id_sendinblue,
           'listid'			=> array($id_liste),
           'send_now'		=> 0,
-          'html_url'		=> base_url().'campagnes/preview/'.$id_newsletter.'html',
+          'html_url'		=> base_url().'campagnes/preview/'.$id_newsletter.'.html',
         );
-
-        $result = $mailin->update_campaign($data);
+        /**echo '<pre>';
+        print_r($data);
+        echo '</pre>';**/
+        $result = $mailin->update_campaign($data_campagne);
 
         $code = $result['code'];
 
-        if ($code == 'success'){
+        //if ($code == 'success'){
 
-          redirect(base_url().'campagnes/envoi/'.$id_newsletter.'.html');
+          redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
 
-        } else {
+        //} else {
 
           //echo "Erreur";
 
-        }
+        //}
 
-      }**/
+      }
 
     } else {
         $this->load->view('login');
@@ -1553,8 +1562,6 @@ class Campagnes extends CI_Controller {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
       $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
-
-      $infos_group = $this->My_users->get_group_infos($id_group);
 
       require(APPPATH.'libraries/Mailin.php');
       $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
@@ -1580,65 +1587,52 @@ class Campagnes extends CI_Controller {
 	{
 		if ($_SESSION["is_connect"] == TRUE){
 
-			$this->load->model('My_listes');
+      $this->load->model('My_users');
+      $this->load->model('My_campagnes');
 
-			$id_campagne = $_POST["id_campagne"];
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION["id_group"];
+      ($this->input->post ('envoi_programme')=='on')?$envoi_programme = 1:$envoi_programme = 0;
+      $date_envoi = $this->My_common->date_fr_mysql($this->input->post ('date_envoi'));
+      $heure_envoi = $this->input->post ('heure_envoi') .':'.$this->input->post ('minute_envoi');
 
-			$email_array = array();
-			$nom_array = array();
+      $data = array(
+        'envoi_programme'      => $envoi_programme,
+        'date_envoi'           => $date_envoi,
+        'heure_envoi'          => $heure_envoi,
+      );
 
+      $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
 
-			$csv = "NAME;SURNAME;EMAIL\n";
+      // Informations sur la campagne
 
-			foreach ($_POST["email"] as $key => $value) {
+      $infos_group = $this->My_users->get_group_infos($id_group);
+      $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
 
-				if (isset($_POST["nom"][$key])){
-                	$csv .= $_POST["nom"][$key].";".$_POST["prenom"][$key].";".$value."\n";
-				} else {
-                	$csv .= ";;".$value."\n";
-				}
-			}
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-			require(APPPATH.'libraries/Mailin.php');
-	    $mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
-
-
-		    $data = array(
-	        "body" => $csv,
-	        "name" => "liste_".$id_campagne,
-		    );
-
-		    $result = $mailin->import_users($data);
-
-		    $id_liste = $result["data"]["list_id"][0];
-
-		    $code = $result["code"];
-
-		    if ($code == "success"){
+      $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
 				$data = array(
-					"id"				=>$id_campagne,
-					"listid"			=>array($id_liste),
-					"send_now"			=>1,
-					"html_url"			=>"http://coxdigital.fr/newsletter/assets/export_html.php?template_name=maquette&saveCode=".$id_campagne,
+					'id'				    => $campagne['data'][0]['id'],
+          'scheduled_date'=> $date_envoi.' '.$heure_envoi,
+					'send_now'			=> 1,
 				);
 
 				$result = $mailin->update_campaign($data);
 
-				$code = $result["code"];
+				$code = $result['code'];
 
-				if ($code == "success"){
+				if ($code == 'success'){
 
-					redirect (base_url()."campagnes.html");
+          redirect(base_url().'campagnes.html');
 
 				} else {
 
-					print_r($result);
-					echo "Erreur";
+					//echo "Erreur";
 
 				}
-
-		    }
 
     	} else {
         	$this->load->view('login');

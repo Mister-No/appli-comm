@@ -55,6 +55,54 @@ function login_recup($username){
   }
 }
 
+/******************************************/
+/*          Fonction de date              */
+/******************************************/
+
+function date_mysql_fr($date){
+    if ($date != "0000-00-00" && $date != "" && $date != null){
+        $my_date =  Datetime::createFromFormat('Y-m-d', $date)->format('d/m/Y');
+        return $my_date;
+    } else {
+        return null;
+    }
+}
+
+function date_fr_mysql($date){
+    if ($date != null && $date != '0000-00-00' && trim($date) != '') {
+        $my_date =  Datetime::createFromFormat('d/m/Y', $date)->format('Y-m-d');
+        return $my_date;
+    } else {
+        return null;
+    }
+}
+
+function date_us_mysql($date){
+    if ($date != null && $date != '0000-00-00' && trim($date) != '') {
+        $my_date =  Datetime::createFromFormat('m/d/Y', $date)->format('Y-m-d');
+        return $my_date;
+    } else {
+        return null;
+    }
+}
+
+function date_mysql_us($date){
+    if ($date != "0000-00-00" && $date != "" && $date != null){
+        $my_date =  Datetime::createFromFormat('Y-m-d', $date)->format('m/d/Y');
+        return $my_date;
+    } else {
+        return null;
+    }
+}
+
+function date_mysql_time_fr($date){
+    if ($date != null && $date != '0000-00-00 00:00:00' && trim($date) != '') {
+        $my_date =  Datetime::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y à H:i');
+    } else {
+        return null;
+    }
+}
+
   /****************************************************************/
 	/*       Insere des données dans la base		                		*/
 	/****************************************************************/
