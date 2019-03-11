@@ -504,7 +504,7 @@
 							});
 							$('textarea').each( function (){
 								text_to_replace = $(this).html();
-								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\n");
+								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\r");
 								$(this).val(text_replaced);
 							});
 						t++;

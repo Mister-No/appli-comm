@@ -9,8 +9,8 @@ class Dashboard extends CI_Controller {
 
 			$this->load->model('My_campagnes');
 			$id_group = $_SESSION['id_group'];
-			
-			$result_campagnes = $this->My_campagnes->get_all_campagnes($id_group);
+
+			$result_campagnes = $this->My_campagnes->get_unsent_campagnes($id_group);
 
 			$data = array(
 				'result_campagnes' => $result_campagnes,

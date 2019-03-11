@@ -149,10 +149,19 @@ UPLOADCARE_PREVIEW_STEP = true;
                       </div>
                     </div>
                     <div class="col-md-3 ">
-                      <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes.html">Voir les campagnes</a></div>
+                      <div class="sub-menu-heading bold">
+                        <a href="<?=base_url();?>campagnes/en_cours.html">Voir les campagnes en cours</a>
+                      </div>
+                    </div>
+                    <div class="col-md-3 ">
+                      <div class="sub-menu-heading bold">
+                        <a href="<?=base_url();?>campagnes/envoyees.html">Voir les campagnes envoyées</a>
+                      </div>
                     </div>
                     <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>campagnes_archivees.html">Campagnes archivées</a></div>
+                      <div class="sub-menu-heading bold">
+                        <a href="<?=base_url();?>campagnes/archivees.html">Voir les campagnes archivées</a>
+                      </div>
                     </div>
                 </div>
               </div>

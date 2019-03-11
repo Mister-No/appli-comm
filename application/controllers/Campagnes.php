@@ -3,7 +3,7 @@
 class Campagnes extends CI_Controller {
 
   // AFFICHAGE DES CAMPAGNES
-  public function index()
+  public function en_cours()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -22,7 +22,7 @@ class Campagnes extends CI_Controller {
       );
       $result = $mailin->get_campaigns_v2($data_campagne);
 
-      $result_campagnes = $this->My_campagnes->get_all_campagnes($id_group);
+      $result_campagnes = $this->My_campagnes->get_unsent_campagnes($id_group);
 
       $data = array(
         'result' => $result,
@@ -30,9 +30,79 @@ class Campagnes extends CI_Controller {
       );
 
       $this->load->view('header', $data);
-      $this->load->view('campagnes');
+      $this->load->view('campagnes_en_cours');
       $this->load->view('footer');
 
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function envoyees()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_campagnes');
+      $this->load->model('My_users');
+      $id_group = $_SESSION['id_group'];
+
+      $infos_group = $this->My_users->get_group_infos($id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+      $data_campagne = array(
+        'type' => '',
+        'status' => '',
+      );
+      $result = $mailin->get_campaigns_v2($data_campagne);
+
+      $result_campagnes = $this->My_campagnes->get_sent_campagnes($id_group);
+
+      $data = array(
+        'result' => $result,
+        'result_campagnes' => $result_campagnes,
+      );
+
+      $this->load->view('header', $data);
+      $this->load->view('campagnes_envoyees');
+      $this->load->view('footer');
+
+    } else {
+        $this->load->view('login');
+    }
+  }
+
+  public function archivees()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_campagnes');
+      $this->load->model('My_users');
+      $id_group = $_SESSION['id_group'];
+
+      $infos_group = $this->My_users->get_group_infos($id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+      $data_campagne = array(
+        'type' => '',
+        'status' => '',
+      );
+      $result = $mailin->get_campaigns_v2($data_campagne);
+
+      $result_campagnes = $this->My_campagnes->get_archived_campagnes($id_group);
+
+      $data = array(
+        'result' => $result,
+        'result_campagnes' => $result_campagnes,
+      );
+
+      $this->load->view('header', $data);
+      $this->load->view('campagnes_archivees');
+      $this->load->view('footer');
 
     } else {
         $this->load->view('login');
@@ -481,6 +551,7 @@ class Campagnes extends CI_Controller {
           'theme'           => $this->input->post ('theme'),
           'id_group'        => $_SESSION['id_group'],
           'id_sib'          => $result['data']['id'],
+          'date_creation'   => date('Y-m-d'),
         );
 
         $id_group = $_SESSION['id_group'];
@@ -847,21 +918,21 @@ class Campagnes extends CI_Controller {
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
-        $text0 = $row_newsletter->newsletter_block_text0;
-        $text1 = $row_newsletter->newsletter_block_text1;
-        $text2 = $row_newsletter->newsletter_block_text2;
-        $text3 = $row_newsletter->newsletter_block_text3;
-        $text4 = $row_newsletter->newsletter_block_text4;
-        $text5 = $row_newsletter->newsletter_block_text5;
-        $text6 = $row_newsletter->newsletter_block_text6;
-        $text7 = $row_newsletter->newsletter_block_text7;
-        $text8 = $row_newsletter->newsletter_block_text8;
-        $text9 = $row_newsletter->newsletter_block_text9;
-        $text10 = $row_newsletter->newsletter_block_text10;
-        $text11 = $row_newsletter->newsletter_block_text11;
-        $text12 = $row_newsletter->newsletter_block_text12;
-        $text13 = $row_newsletter->newsletter_block_text13;
-        $text14 = $row_newsletter->newsletter_block_text14;
+        $text0 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text0));
+        $text1 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text1));
+        $text2 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text2));
+        $text3 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text3));
+        $text4 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text4));
+        $text5 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text5));
+        $text6 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text6));
+        $text7 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text7));
+        $text8 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text8));
+        $text9 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text9));
+        $text10 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text10));
+        $text11 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text11));
+        $text12 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text12));
+        $text13 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text13));
+        $text14 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text14));
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -1530,6 +1601,7 @@ class Campagnes extends CI_Controller {
 
 			$tab_cat = array();
 			$tab_child_cat = array();
+      $result = array();
 
       foreach ($result_liste as $row_liste) {
 
@@ -1903,5 +1975,25 @@ class Campagnes extends CI_Controller {
       $this->load->view('login');
     }
   }
+
+  public function delete()
+	{
+
+		if ($_SESSION["is_connect"] == TRUE){
+
+			require(APPPATH.'libraries/Mailin.php');
+
+				$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
+      	$data = array( "id"=>$this->input->post('id') );
+      	$mailin->delete_campaign($data);
+
+      	file_get_contents('http://coxdigital.fr/newsletter/assets/delete_folder.php?folder=maquette&id='.$this->input->post('id').'&token=unpg-23498674730722840757940');
+
+			redirect('campagnes');
+
+    	} else {
+        	$this->load->view('login');
+    	}
+	}
 
 }
