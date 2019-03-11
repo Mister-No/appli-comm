@@ -55,7 +55,8 @@
 										<label class="">Heure :</label>
 											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="heure_envoi">
 												<?php for ($i=0; $i < 24; $i++) {
-													echo '<option value="'.$i.'">'.$i.'</option>';
+													($i<10)?$heure = '0'.$i:$heure = $i;
+													echo '<option value="'.$heure.'">'.$heure.'</option>';
 												} ?>
 										</select>
 									</div>
@@ -74,7 +75,7 @@
 										<label class="">Minutes :</label>
 											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="minute_envoi">
 												<?php for ($i=0; $i < 12; $i++) {
-													$minutes = $i*5;
+													($i<2)?$minutes = '0'.$i*5:$minutes = $i*5;
 													echo '<option value="'.$minutes.'">'.$minutes.'</option>';
 												} ?>
 										</select>

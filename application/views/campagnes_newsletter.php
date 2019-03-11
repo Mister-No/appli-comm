@@ -502,6 +502,11 @@
 								text_replaced = text_to_replace.replace(/#&§#&§/g, '"');
 								$(this).val(text_replaced);
 							});
+							$('textarea').each( function (){
+								text_to_replace = $(this).html();
+								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\n");
+								$(this).val(text_replaced);
+							});
 						t++;
 					}
 

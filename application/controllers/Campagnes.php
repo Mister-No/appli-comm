@@ -144,6 +144,11 @@ class Campagnes extends CI_Controller {
 
         // Choix Select
 
+        $url0 = '';
+        $url1 = '';
+        $url2 = '';
+        $url3 = '';
+
         switch ($select0) {
 
           case 0:
@@ -167,9 +172,74 @@ class Campagnes extends CI_Controller {
             break;
         }
 
-        $url1 = '';
-        $url2 = '';
-        $url3 = '';
+        switch ($select1) {
+
+          case 0:
+            $url1 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url1 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url1 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url1 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
+
+        switch ($select2) {
+
+          case 0:
+            $url2 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url2 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url2 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url2 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
+
+        switch ($select3) {
+
+          case 0:
+            $url3 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url3 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url3 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url3 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -799,6 +869,11 @@ class Campagnes extends CI_Controller {
 
         // Choix Select
 
+        $url0 = '';
+        $url1 = '';
+        $url2 = '';
+        $url3 = '';
+
         switch ($select0) {
 
           case 0:
@@ -822,9 +897,74 @@ class Campagnes extends CI_Controller {
             break;
         }
 
-        $url1 = '';
-        $url2 = '';
-        $url3 = '';
+        switch ($select1) {
+
+          case 0:
+            $url1 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url1 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url1 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url1 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
+
+        switch ($select2) {
+
+          case 0:
+            $url2 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url2 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url2 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url2 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
+
+        switch ($select3) {
+
+          case 0:
+            $url3 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            break;
+
+          case 1:
+            $url3 = 'https://www.instagram.com/villa.beausoleil/?hl=fr';
+            break;
+
+          case 2:
+            $url3 = 'https://twitter.com/groupesteva';
+            break;
+
+          case 3:
+            $url3 = 'https://fr.linkedin.com/company/groupe-steva';
+            break;
+
+          default:
+            // code...
+            break;
+        }
 
         $replace = array(
           '{{base_url}}'         => base_url(),
@@ -890,7 +1030,8 @@ class Campagnes extends CI_Controller {
       // NEWSLETTER
 
       $newsletter = $head.$blocks_html.$end;
-      $search = "/(<input)(.*?)(>)/";
+      $search = "/<form.*?<\/form>/is";
+      //$search = "/(<input)(.*?)(>)/";
       $replace = '';
       $newsletter = preg_replace($search,$replace,$newsletter);
       $search = "/§§§§/";
@@ -1522,7 +1663,6 @@ class Campagnes extends CI_Controller {
           'id'				  => $data_campagne[0]->id_sendinblue,
           'listid'			=> array($id_liste),
           'send_now'		=> 0,
-          'html_url'		=> base_url().'campagnes/preview/'.$id_newsletter.'.html',
         );
         /**echo '<pre>';
         print_r($data);
@@ -1531,15 +1671,15 @@ class Campagnes extends CI_Controller {
 
         $code = $result['code'];
 
-        //if ($code == 'success'){
+        if ($code == 'success'){
 
           redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
 
-        //} else {
+        } else {
 
           //echo "Erreur";
 
-        //}
+        }
 
       }
 
@@ -1595,6 +1735,7 @@ class Campagnes extends CI_Controller {
       ($this->input->post ('envoi_programme')=='on')?$envoi_programme = 1:$envoi_programme = 0;
       $date_envoi = $this->My_common->date_fr_mysql($this->input->post ('date_envoi'));
       $heure_envoi = $this->input->post ('heure_envoi') .':'.$this->input->post ('minute_envoi');
+      $scheduled_date = $date_envoi.' '.$heure_envoi.':00';
 
       $data = array(
         'envoi_programme'      => $envoi_programme,
@@ -1615,18 +1756,23 @@ class Campagnes extends CI_Controller {
       $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
 				$data = array(
-					'id'				    => $campagne['data'][0]['id'],
-          'scheduled_date'=> $date_envoi.' '.$heure_envoi,
-					'send_now'			=> 1,
+					'id'				      => $campagne['data'][0]['id'],
+          'scheduled_date'  => $scheduled_date,
+          'html_content'		=> '',
+					//'send_now'		   	=> 1,
 				);
 
 				$result = $mailin->update_campaign($data);
 
 				$code = $result['code'];
 
+              $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+        echo '<pre>';
+        print_r($campagne);
+        echo '</pre>';
 				if ($code == 'success'){
 
-          redirect(base_url().'campagnes.html');
+          //redirect(base_url().'campagnes.html');
 
 				} else {
 
