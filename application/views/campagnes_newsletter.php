@@ -42,6 +42,7 @@
 					</div>
 					<div class="panel-footer text-right">
 						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
+						<a href="/campagnes/informations/<?=$id_newsletter?>.html" class="btn btn-complete">INFORMATIONS</a>
 						<?php if ($_SESSION['id_group'] == 0): ?>
 							<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
 						<?php endif; ?>
@@ -593,7 +594,7 @@
 
 			if (blockType != 1 && blockType != 4 && blockType != 6 && blockType != 7) {
 
-				$.post('<?=base_url();?>campagnes/delete/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
+				$.post('<?=base_url();?>campagnes/delete_block/<?=$id_newsletter?>.html', {'id_block': id_block, 'id_block_content': id_block_content, 'ordre': blockPlace}, function(data) {
 
 					if (data=='ok') {
 						block.remove();

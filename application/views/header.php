@@ -40,6 +40,7 @@
 <script src="<?=base_url();?>assets/plugins/handlebars/handlebars-v4.0.5.js"></script>
 <script src="<?=base_url();?>assets/js/form_elements.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js"></script>
+<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 <script>
 UPLOADCARE_PUBLIC_KEY = '2b7ba941611069fbc4ca';

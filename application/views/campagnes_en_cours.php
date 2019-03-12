@@ -110,10 +110,13 @@
 																'.$row_campagnes->objet.'
 															</td>
 															<td class="v-align-middle">
-
+																En cours
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/informations/modification/' . $row_campagnes->id_newsletter . '">
+																		<i class="fa fa-file"></i>
+																	</a>
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '">
 																		<i class="fa fa-edit">
 																		</i>
@@ -122,7 +125,10 @@
 																		<i class="fa fa-copy">
 																		</i>
 																	</a>
-																	<button class="btn btn-success " onclick="delete_item(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" ><i class="fa fa-trash"></i></button>
+																	<button class="btn btn-success " onclick="delete_item(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
+																		<i class="fa fa-trash">
+																		</i>
+																	</button>
 																</div>
 															</td>
 				                    </tr>';

@@ -124,6 +124,15 @@ function date_mysql_time_fr($date){
   }
 
   /****************************************************************/
+  /* suppression by champs detail dans la base                 			    */
+  /****************************************************************/
+  function delete_data_detail($table, $champs, $id){
+
+      $query = $this->db->delete($table, array($champs => $id));
+
+  }
+
+  /****************************************************************/
 	/*  mise a jour des données dans la base		                    */
 	/****************************************************************/
 	function update_data($table, $champs, $id, $data){

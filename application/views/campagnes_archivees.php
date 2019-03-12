@@ -110,7 +110,7 @@
 																'.$row_campagnes->objet.'
 															</td>
 															<td class="v-align-middle">
-
+																Archivée
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">

@@ -190,6 +190,7 @@ class Campagnes extends CI_Controller {
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
+        $img_link3 = $row_newsletter->newsletter_block_img3;
         //$text0 = addcslashes($row_newsletter->newsletter_block_text0, '"\\/');
         $text0 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text0));
         //$text0 = $row_newsletter->newsletter_block_text0;
@@ -313,6 +314,7 @@ class Campagnes extends CI_Controller {
 
         $replace = array(
           '{{base_url}}'         => base_url(),
+          '{{id_newsletter}}'    => $id_newsletter,
           '{{id_block}}'         => $id_block,
           '{{id_block_html}}'    => $id_block_html,
           '{{id_block_content}}' => $id_block_content,
@@ -322,6 +324,7 @@ class Campagnes extends CI_Controller {
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
           '{{img2}}'             => $img_link2,
+          '{{img3}}'             => $img_link3,
           '{{text0}}'            => $text0,
           '{{text1}}'            => $text1,
           '{{text2}}'            => $text2,
@@ -341,24 +344,25 @@ class Campagnes extends CI_Controller {
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
-          '{{displayimg0}}'      => (!empty($img_link0))?'':'displayimg0',
-          '{{displayimg1}}'      => (!empty($img_link1))?'':'displayimg1',
-          '{{displayimg2}}'      => (!empty($img_link2))?'':'displayimg2',
-          '{{display0}}'         => (!empty($text0))?'':'display0',
-          '{{display1}}'         => (!empty($text1))?'':'display1',
-          '{{display2}}'         => (!empty($text2))?'':'display2',
-          '{{display3}}'         => (!empty($text3))?'':'display3',
-          '{{display4}}'         => (!empty($text4))?'':'display4',
-          '{{display5}}'         => (!empty($text5))?'':'display5',
-          '{{display6}}'         => (!empty($text6))?'':'display6',
-          '{{display7}}'         => (!empty($text7))?'':'display7',
-          '{{display8}}'         => (!empty($text8))?'':'display8',
-          '{{display9}}'         => (!empty($text9))?'':'display9',
-          '{{display10}}'        => (!empty($text10))?'':'display10',
-          '{{display11}}'        => (!empty($text11))?'':'display11',
-          '{{display12}}'        => (!empty($text12))?'':'display12',
-          '{{display13}}'        => (!empty($text13))?'':'display13',
-          '{{display14}}'        => (!empty($text13))?'':'display14',
+          '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none',
+          '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none',
+          '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none',
+          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none',
+          '{{display0}}'         => (!empty($text0))?'':'display:none',
+          '{{display1}}'         => (!empty($text1))?'':'display:none',
+          '{{display2}}'         => (!empty($text2))?'':'display:none',
+          '{{display3}}'         => (!empty($text3))?'':'display:none',
+          '{{display4}}'         => (!empty($text4))?'':'display:none',
+          '{{display5}}'         => (!empty($text5))?'':'display:none',
+          '{{display6}}'         => (!empty($text6))?'':'display:none',
+          '{{display7}}'         => (!empty($text7))?'':'display:none',
+          '{{display8}}'         => (!empty($text8))?'':'display:none',
+          '{{display9}}'         => (!empty($text9))?'':'display:none',
+          '{{display10}}'        => (!empty($text10))?'':'display:none',
+          '{{display11}}'        => (!empty($text11))?'':'display:none',
+          '{{display12}}'        => (!empty($text12))?'':'display:none',
+          '{{display13}}'        => (!empty($text13))?'':'display:none',
+          '{{display14}}'        => (!empty($text13))?'':'display:none',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -411,7 +415,7 @@ class Campagnes extends CI_Controller {
       $data = array();
       $data_block = array();
       $id_group = $_SESSION['id_group'];
-      $theme = $this->input->post ('theme');
+      //$theme = $this->input->post ('theme');
 
       //CRÉATION DU TEMPLATE DE BASE
       /**$data_content = array();
@@ -542,24 +546,32 @@ class Campagnes extends CI_Controller {
 
         $result = $mailin->create_campaign($data);
 
-        //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
-
-        $data = array(
-          'nom_campagne'    => $this->input->post ('nom_campagne'),
-          'objet'           => $this->input->post ('objet'),
-          'expediteur'      => $this->input->post ('expediteur'),
-          'theme'           => $this->input->post ('theme'),
-          'id_group'        => $_SESSION['id_group'],
-          'id_sib'          => $result['data']['id'],
-          'date_creation'   => date('Y-m-d'),
-        );
-
-        $id_group = $_SESSION['id_group'];
-        $theme = $this->input->post ('theme');
-
-  			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
-
         if ($result['code'] == 'success') {
+
+          //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
+
+          $data = array(
+            'nom_campagne'    => $this->input->post ('nom_campagne'),
+            'objet'           => $this->input->post ('objet'),
+            'expediteur'      => $this->input->post ('expediteur'),
+            'theme'           => $this->input->post ('theme'),
+            'id_group'        => $_SESSION['id_group'],
+            'id_sib'          => $result['data']['id'],
+            'date_creation'   => date('Y-m-d'),
+          );
+
+          $theme = $this->input->post ('theme');
+    			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
+
+          $result_theme = $this->My_campagnes->get_newsletter_theme($theme);
+
+          mkdir('mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter);
+
+          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/img_1.png';
+
+          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/img_1.png';
+
+          copy($image_template, $image_copy);
 
           //CRÉATION DU TEMPLATE DE BASE
 
@@ -571,6 +583,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
       			);
 
@@ -595,6 +608,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
       			);
 
@@ -619,6 +633,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
               'text0' => 'Newsletter',
               'text1' => 1,
@@ -646,6 +661,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
               'img0'  => 'img_1.png',
               'text0' => '#',
@@ -672,6 +688,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
               'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
             );
@@ -698,6 +715,7 @@ class Campagnes extends CI_Controller {
 
             if ($theme == 3) {
               $data_content = array (
+                'id_newsletter' => $id_newsletter,
                 'id_block_html' => $result_html_block[0]->id,
                 'text0' => 'Lorem ipsum dolor sit amet',
                 'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
@@ -706,6 +724,7 @@ class Campagnes extends CI_Controller {
               );
             } else {
               $data_content = array (
+                'id_newsletter' => $id_newsletter,
                 'id_block_html' => $result_html_block[0]->id,
                 'text0' => '1. Lorem ipsum dolor sit amet',
                 'text1' => 'Lorem ipsum',
@@ -736,6 +755,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
             );
 
@@ -760,6 +780,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
             );
 
@@ -784,6 +805,7 @@ class Campagnes extends CI_Controller {
           if (count($result_html_block) > 0) {
 
             $data_content = array (
+              'id_newsletter' => $id_newsletter,
               'id_block_html' => $result_html_block[0]->id,
             );
 
@@ -918,6 +940,7 @@ class Campagnes extends CI_Controller {
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
+        $img_link3 = $row_newsletter->newsletter_block_img3;
         $text0 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text0));
         $text1 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text1));
         $text2 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text2));
@@ -1039,6 +1062,7 @@ class Campagnes extends CI_Controller {
 
         $replace = array(
           '{{base_url}}'         => base_url(),
+          '{{id_newsletter}}'    => $id_newsletter,
           '{{id_block}}'         => $id_block,
           '{{id_block_html}}'    => $id_block_html,
           '{{id_block_content}}' => $id_block_content,
@@ -1047,6 +1071,7 @@ class Campagnes extends CI_Controller {
           '{{img0}}'             => $img_link0,
           '{{img1}}'             => $img_link1,
           '{{img2}}'             => $img_link2,
+          '{{img3}}'             => $img_link3,
           '{{text0}}'            => $text0,
           '{{text1}}'            => $text1,
           '{{text2}}'            => $text2,
@@ -1066,24 +1091,25 @@ class Campagnes extends CI_Controller {
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
-          '{{displayimg0}}'      => (!empty($img_link0))?'':'displayimg0',
-          '{{displayimg1}}'      => (!empty($img_link1))?'':'displayimg1',
-          '{{displayimg2}}'      => (!empty($img_link2))?'':'displayimg2',
-          '{{display0}}'         => (!empty($text0))?'':'display0',
-          '{{display1}}'         => (!empty($text1))?'':'display1',
-          '{{display2}}'         => (!empty($text2))?'':'display2',
-          '{{display3}}'         => (!empty($text3))?'':'display3',
-          '{{display4}}'         => (!empty($text4))?'':'display4',
-          '{{display5}}'         => (!empty($text5))?'':'display5',
-          '{{display6}}'         => (!empty($text6))?'':'display6',
-          '{{display7}}'         => (!empty($text7))?'':'display7',
-          '{{display8}}'         => (!empty($text8))?'':'display8',
-          '{{display9}}'         => (!empty($text9))?'':'display9',
-          '{{display10}}'        => (!empty($text10))?'':'display10',
-          '{{display11}}'        => (!empty($text11))?'':'display11',
-          '{{display12}}'        => (!empty($text12))?'':'display12',
-          '{{display13}}'        => (!empty($text13))?'':'display13',
-          '{{display14}}'        => (!empty($text13))?'':'display14',
+          '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none',
+          '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none',
+          '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none',
+          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none',
+          '{{display0}}'         => (!empty($text0))?'':'display:none',
+          '{{display1}}'         => (!empty($text1))?'':'display:none',
+          '{{display2}}'         => (!empty($text2))?'':'display:none',
+          '{{display3}}'         => (!empty($text3))?'':'display:none',
+          '{{display4}}'         => (!empty($text4))?'':'display:none',
+          '{{display5}}'         => (!empty($text5))?'':'display:none',
+          '{{display6}}'         => (!empty($text6))?'':'display:none',
+          '{{display7}}'         => (!empty($text7))?'':'display:none',
+          '{{display8}}'         => (!empty($text8))?'':'display:none',
+          '{{display9}}'         => (!empty($text9))?'':'display:none',
+          '{{display10}}'        => (!empty($text10))?'':'display:none',
+          '{{display11}}'        => (!empty($text11))?'':'display:none',
+          '{{display12}}'        => (!empty($text12))?'':'display:none',
+          '{{display13}}'        => (!empty($text13))?'':'display:none',
+          '{{display14}}'        => (!empty($text13))?'':'display:none',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -1101,11 +1127,13 @@ class Campagnes extends CI_Controller {
       // NEWSLETTER
 
       $newsletter = $head.$blocks_html.$end;
-      $search = "/<form.*?<\/form>/is";
-      //$search = "/(<input)(.*?)(>)/";
+      $search = '/<form.*?<\/form>/is';
       $replace = '';
       $newsletter = preg_replace($search,$replace,$newsletter);
-      $search = "/§§§§/";
+      //$search = '/<tr class="display.*?<\/tr>/is';
+      //$replace = '';
+      //$newsletter = preg_replace($search,$replace,$newsletter);
+      $search = '/§§§§/';
       $replace = '"';
       //$newsletter = preg_replace($search,$replace,$newsletter);
       //$search = "/§§/";
@@ -1178,6 +1206,7 @@ class Campagnes extends CI_Controller {
   			);**/
 
         $data_content = array (
+          'id_newsletter' => $id_newsletter,
           'id_block_html' => $id_block_html,
           'text0'         => $this->input->post ('text0'),
           'text1'         => $this->input->post ('text1'),
@@ -1217,7 +1246,7 @@ class Campagnes extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1238,7 +1267,7 @@ class Campagnes extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1259,7 +1288,7 @@ class Campagnes extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images//campagne_'.$id_newsletter.'/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1268,6 +1297,27 @@ class Campagnes extends CI_Controller {
   				);
 
   				$this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        if (!empty($_POST["img3"]))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img2 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img3");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images//campagne_'.$id_newsletter.'/'.$img3.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+            "img3" => $img3.'.jpg',
+          );
+
+          $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
 
         }
 
@@ -1349,7 +1399,7 @@ class Campagnes extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1370,7 +1420,7 @@ class Campagnes extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1391,12 +1441,33 @@ class Campagnes extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
           $data_content = array (
             "img2" => $img2.'.jpg',
+          );
+
+          $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+
+        }
+
+        if (!empty($_POST["img3"]))
+        {
+
+          $d = new dateTime();
+          $d = $d->format('YmdHis');
+          $u = str_replace(' ', '', substr(microtime(), 2));
+          $img2 = 'img'.$d.$u;
+          $image_care = $this->input->post ("img3");
+
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img3.'.jpg';
+
+          copy($image_care, $image_original);
+
+          $data_content = array (
+            "img3" => $img3.'.jpg',
           );
 
           $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
@@ -1439,6 +1510,7 @@ class Campagnes extends CI_Controller {
           'img_link0' => $result_block[0]->newsletter_block_img0,
           'img_link1' => $result_block[0]->newsletter_block_img1,
           'img_link2' => $result_block[0]->newsletter_block_img2,
+          'img_link3' => $result_block[0]->newsletter_block_img3,
           'text0'     => $result_block[0]->newsletter_block_text0,
           'text1'     => $result_block[0]->newsletter_block_text1,
           'text2'     => $result_block[0]->newsletter_block_text2,
@@ -1541,7 +1613,7 @@ class Campagnes extends CI_Controller {
     }
   }
 
-  public function delete()
+  public function delete_block()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -1933,6 +2005,7 @@ class Campagnes extends CI_Controller {
             'img0'          => $row_newsletter->newsletter_block_img0,
             'img1'          => $row_newsletter->newsletter_block_img1,
             'img2'          => $row_newsletter->newsletter_block_img2,
+            'img3'          => $row_newsletter->newsletter_block_img3,
             'text0'         => $row_newsletter->newsletter_block_text0,
             'text1'         => $row_newsletter->newsletter_block_text1,
             'text2'         => $row_newsletter->newsletter_block_text2,
@@ -1951,6 +2024,7 @@ class Campagnes extends CI_Controller {
             'select0'       => $row_newsletter->newsletter_block_select0,
             'select1'       => $row_newsletter->newsletter_block_select1,
             'select2'       => $row_newsletter->newsletter_block_select2,
+            'select3'       => $row_newsletter->newsletter_block_select3,
           );
 
           $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
@@ -1981,19 +2055,47 @@ class Campagnes extends CI_Controller {
 
 		if ($_SESSION["is_connect"] == TRUE){
 
-			require(APPPATH.'libraries/Mailin.php');
+      $this->load->model('My_campagnes');
+      $this->load->model('My_users');
+      $data = array();
+      $data_block = array();
+      $id_newsletter = $this->input->post ('id');
+      $id_group = $_SESSION['id_group'];
 
-				$mailin = new Mailin("https://api.sendinblue.com/v2.0",API_key);
-      	$data = array( "id"=>$this->input->post('id') );
-      	$mailin->delete_campaign($data);
+      $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
 
-      	file_get_contents('http://coxdigital.fr/newsletter/assets/delete_folder.php?folder=maquette&id='.$this->input->post('id').'&token=unpg-23498674730722840757940');
+      //RECUPERATION DES INFOS DE LA CAMPAGNE CHEZ SEND IN BLUE
 
-			redirect('campagnes');
+      $infos_group = $this->My_users->get_group_infos($id_group);
 
-    	} else {
-        	$this->load->view('login');
-    	}
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+    	$data = array( 'id'=> $infos_group[0]->api_sib_key );
+    	$mailin->delete_campaign($data);
+
+      $this->My_common->delete_data('newsletter', $id_newsletter);
+      $this->My_common->delete_data_detail('newsletter_has_block', 'id_newsletter', $id_newsletter);
+      $this->My_common->delete_data_detail('newsletter_block_content', 'id_newsletter', $id_newsletter);
+      $this->My_common->delete_data_detail('newsletter_has_contacts', 'id_newsletter', $id_newsletter);
+
+      $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
+      $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter;
+
+      foreach(scandir($dir) as $file) {
+          if ('.' === $file || '..' === $file) continue;
+          if (is_dir("$dir/$file")) rmdir_recursive("$dir/$file");
+          else unlink("$dir/$file");
+      }
+      rmdir($dir);
+
+      redirect(base_url().'campagnes/en_cours.html');
+
+  	} else {
+      	$this->load->view('login');
+  	}
+
 	}
+
 
 }
