@@ -899,7 +899,7 @@ class Campagnes extends CI_Controller {
 
   public function preview()
   {
-    if ($_SESSION["is_connect"] == TRUE){
+    //if ($_SESSION["is_connect"] == TRUE){
 
       $this->load->model('My_campagnes');
       $id_newsletter = $this->uri->segment(3, 0);
@@ -1142,9 +1142,9 @@ class Campagnes extends CI_Controller {
 
       echo $newsletter;
 
-    } else {
+    /**} else {
       $this->load->view('login');
-    }
+    }**/
   }
 
   public function add_block()
@@ -1900,14 +1900,16 @@ class Campagnes extends CI_Controller {
       $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
 				$data = array(
-					'id'				      => $campagne['data'][0]['id'],
+					'id'				      => $data_campagne[0]->id_sendinblue,
           'scheduled_date'  => $scheduled_date,
-          'html_content'		=> '',
+          'html_url'		    => base_url().'campagnes/preview/'.$id_newsletter.'.html',
 					//'send_now'		   	=> 1,
 				);
 
 				$result = $mailin->update_campaign($data);
-
+        echo '<pre>';
+        print_r($result);
+        echo '</pre>';
 				$code = $result['code'];
 
               $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
@@ -2115,6 +2117,5 @@ class Campagnes extends CI_Controller {
   	}
 
 	}
-
 
 }
