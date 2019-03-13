@@ -6,7 +6,7 @@
 					<p>Shuttle</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes.html">Campagnes</a>
+					<a href="<?=base_url();?>campagnes/en_cours.html">Campagnes</a>
 				</li>
 				<li>
 					<a href="<?=base_url();?>campagnes/informations/modification/<?=$id_newsletter?>.html">Informations</a>

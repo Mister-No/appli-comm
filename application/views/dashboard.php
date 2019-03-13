@@ -135,7 +135,7 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<h4 class="modal-title">Voulez-vous vraiment supprimer cette campagene?</h4>
+								<h4 class="modal-title">Voulez-vous vraiment supprimer cette campagne?</h4>
 							</div>
 							<form action="<?=base_url();?>campagnes/delete.html" method="POST">
 								<input type="hidden" name="id" id="id">

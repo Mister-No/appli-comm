@@ -344,25 +344,25 @@ class Campagnes extends CI_Controller {
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
-          '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none',
-          '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none',
-          '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none',
-          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none',
-          '{{display0}}'         => (!empty($text0))?'':'display:none',
-          '{{display1}}'         => (!empty($text1))?'':'display:none',
-          '{{display2}}'         => (!empty($text2))?'':'display:none',
-          '{{display3}}'         => (!empty($text3))?'':'display:none',
-          '{{display4}}'         => (!empty($text4))?'':'display:none',
-          '{{display5}}'         => (!empty($text5))?'':'display:none',
-          '{{display6}}'         => (!empty($text6))?'':'display:none',
-          '{{display7}}'         => (!empty($text7))?'':'display:none',
-          '{{display8}}'         => (!empty($text8))?'':'display:none',
-          '{{display9}}'         => (!empty($text9))?'':'display:none',
-          '{{display10}}'        => (!empty($text10))?'':'display:none',
-          '{{display11}}'        => (!empty($text11))?'':'display:none',
-          '{{display12}}'        => (!empty($text12))?'':'display:none',
-          '{{display13}}'        => (!empty($text13))?'':'display:none',
-          '{{display14}}'        => (!empty($text13))?'':'display:none',
+          '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none;mso-hide:all; ',
+          '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none;mso-hide:all; ',
+          '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
+          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
+          '{{display0}}'         => (!empty($text0))?'':'display:none;mso-hide:all; ',
+          '{{display1}}'         => (!empty($text1))?'':'display:none;mso-hide:all; ',
+          '{{display2}}'         => (!empty($text2))?'':'display:none;mso-hide:all; ',
+          '{{display3}}'         => (!empty($text3))?'':'display:none;mso-hide:all; ',
+          '{{display4}}'         => (!empty($text4))?'':'display:none;mso-hide:all; ',
+          '{{display5}}'         => (!empty($text5))?'':'display:none;mso-hide:all; ',
+          '{{display6}}'         => (!empty($text6))?'':'display:none;mso-hide:all; ',
+          '{{display7}}'         => (!empty($text7))?'':'display:none;mso-hide:all; ',
+          '{{display8}}'         => (!empty($text8))?'':'display:none;mso-hide:all; ',
+          '{{display9}}'         => (!empty($text9))?'':'display:none;mso-hide:all; ',
+          '{{display10}}'        => (!empty($text10))?'':'display:none;mso-hide:all; ',
+          '{{display11}}'        => (!empty($text11))?'':'display:none;mso-hide:all; ',
+          '{{display12}}'        => (!empty($text12))?'':'display:none;mso-hide:all; ',
+          '{{display13}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
+          '{{display14}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -1091,25 +1091,25 @@ class Campagnes extends CI_Controller {
           '{{select1}}'          => $select1,
           '{{select2}}'          => $select2,
           '{{select3}}'          => $select3,
-          '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none',
-          '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none',
-          '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none',
-          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none',
-          '{{display0}}'         => (!empty($text0))?'':'display:none',
-          '{{display1}}'         => (!empty($text1))?'':'display:none',
-          '{{display2}}'         => (!empty($text2))?'':'display:none',
-          '{{display3}}'         => (!empty($text3))?'':'display:none',
-          '{{display4}}'         => (!empty($text4))?'':'display:none',
-          '{{display5}}'         => (!empty($text5))?'':'display:none',
-          '{{display6}}'         => (!empty($text6))?'':'display:none',
-          '{{display7}}'         => (!empty($text7))?'':'display:none',
-          '{{display8}}'         => (!empty($text8))?'':'display:none',
-          '{{display9}}'         => (!empty($text9))?'':'display:none',
-          '{{display10}}'        => (!empty($text10))?'':'display:none',
-          '{{display11}}'        => (!empty($text11))?'':'display:none',
-          '{{display12}}'        => (!empty($text12))?'':'display:none',
-          '{{display13}}'        => (!empty($text13))?'':'display:none',
-          '{{display14}}'        => (!empty($text13))?'':'display:none',
+          '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none;mso-hide:all; ',
+          '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none;mso-hide:all; ',
+          '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
+          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
+          '{{display0}}'         => (!empty($text0))?'':'display:none;mso-hide:all; ',
+          '{{display1}}'         => (!empty($text1))?'':'display:none;mso-hide:all; ',
+          '{{display2}}'         => (!empty($text2))?'':'display:none;mso-hide:all; ',
+          '{{display3}}'         => (!empty($text3))?'':'display:none;mso-hide:all; ',
+          '{{display4}}'         => (!empty($text4))?'':'display:none;mso-hide:all; ',
+          '{{display5}}'         => (!empty($text5))?'':'display:none;mso-hide:all; ',
+          '{{display6}}'         => (!empty($text6))?'':'display:none;mso-hide:all; ',
+          '{{display7}}'         => (!empty($text7))?'':'display:none;mso-hide:all; ',
+          '{{display8}}'         => (!empty($text8))?'':'display:none;mso-hide:all; ',
+          '{{display9}}'         => (!empty($text9))?'':'display:none;mso-hide:all; ',
+          '{{display10}}'        => (!empty($text10))?'':'display:nonemso-hide:all; ;',
+          '{{display11}}'        => (!empty($text11))?'':'display:nonemso-hide:all; ',
+          '{{display12}}'        => (!empty($text12))?'':'display:none;mso-hide:all; ',
+          '{{display13}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
+          '{{display14}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -1939,7 +1939,8 @@ class Campagnes extends CI_Controller {
       $data_block = array();
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
-
+      $image = '';
+      $image_copy = '';
       $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
 
       /**echo '<pre>';
@@ -1994,13 +1995,31 @@ class Campagnes extends CI_Controller {
           'id_sib'          => $result['data']['id'],
         );
 
-        //$theme = $result_newsletter[0]->theme;
+        $id_newsletter_copy = $this->My_common->insert_data('newsletter', $data);
 
-        $id_newsletter = $this->My_common->insert_data('newsletter', $data);
+        // CREATION DU NOUVEAU DOSSIER
+
+        $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
+
+        mkdir('mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter_copy);
+
+        // COPIE DES IMAGES VERS LA NOUVELLE NEWSLETTER
+
+        $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/';
+
+        $dir_copy = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter_copy.'/';
+
+        foreach(scandir($dir) as $file) {
+          if ('.' === $file || '..' === $file) continue;
+          copy($dir.$file, $dir_copy.$file);
+        }
+
+        // COPIE DES DONNEES
 
         foreach ($result_newsletter as $row_newsletter) {
 
           $data_content = array (
+            'id_newsletter' => $id_newsletter_copy,
             'id_block_html' => $row_newsletter->id_block_html,
             'img0'          => $row_newsletter->newsletter_block_img0,
             'img1'          => $row_newsletter->newsletter_block_img1,
@@ -2030,7 +2049,7 @@ class Campagnes extends CI_Controller {
           $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
           $data_block = array(
-            'id_newsletter'    => $id_newsletter,
+            'id_newsletter'    => $id_newsletter_copy,
             'id_block_html'    => $row_newsletter->id_block_html,
             'id_block_content' => $id_block_content,
             'ordre'            => $row_newsletter->newsletter_block_ordre,
@@ -2039,7 +2058,7 @@ class Campagnes extends CI_Controller {
           $this->My_common->insert_data('newsletter_has_block', $data_block);
         }
 
-        redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+        redirect(base_url().'campagnes/newsletter/'.$id_newsletter_copy.'.html');
 
       } else {
 

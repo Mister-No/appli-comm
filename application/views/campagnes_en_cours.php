@@ -90,6 +90,7 @@
 	                <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
 	                  <thead>
 	                    <tr>
+												<th>Id</th>
 	                      <th>Nom</th>
 	                      <th>Objet</th>
 	                      <th>Statut</th>
@@ -103,6 +104,9 @@
 										foreach ($result_campagnes as $row_campagnes) {
 
 											echo '<tr>
+															<td class="v-align-middle semi-bold">
+																' . $row_campagnes->id_newsletter . '
+															</td>
 															<td class="v-align-middle semi-bold">
 																' . $row_campagnes->nom_campagne . '
 															</td>
@@ -180,7 +184,7 @@
 		      <div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">Voulez-vous vraiment supprimer cette campagene?</h4>
+		          <h4 class="modal-title">Voulez-vous vraiment supprimer cette campagne?</h4>
 		        </div>
 		        <form action="<?=base_url();?>campagnes/delete.html" method="POST">
 		          <input type="hidden" name="id" id="id">
