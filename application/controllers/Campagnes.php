@@ -1902,20 +1902,22 @@ class Campagnes extends CI_Controller {
 				$data = array(
 					'id'				      => $data_campagne[0]->id_sendinblue,
           'scheduled_date'  => $scheduled_date,
-          'html_url'		    => base_url().'campagnes/preview/'.$id_newsletter.'.html',
+          'html_content'		=> base_url().'campagnes/preview/'.$id_newsletter.'.html',
 					//'send_now'		   	=> 1,
 				);
 
-				$result = $mailin->update_campaign($data);
+				/**$result = $mailin->update_campaign($data);
         echo '<pre>';
         print_r($result);
         echo '</pre>';
 				$code = $result['code'];
 
-              $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+        $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
         echo '<pre>';
         print_r($campagne);
-        echo '</pre>';
+        echo '</pre>';**/
+
+        echo $this->preview();
 				if ($code == 'success'){
 
           //redirect(base_url().'campagnes.html');
