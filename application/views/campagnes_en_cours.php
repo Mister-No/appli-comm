@@ -6,7 +6,7 @@
 					<p>Shuttle</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes/en_cours.html" class="active">Campagnes</a>
+					<a href="<?=base_url();?>campagnes/en_cours.html" class="active">Campagnes en cours</a>
 				</li>
 			</ul>
 		</div>
@@ -66,7 +66,7 @@
           <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
             <div class="panel-heading">
               <div class="panel-title">
-                    Vos Campagnes
+                    Vos Campagnes en cours
               </div>
 							<div class="panel-controls">
 								<ul>
@@ -199,3 +199,22 @@
 		  </div>
     </div>
   </div>
+	<script type="text/javascript">
+		$('#tableWithSearch').dataTable( {
+				"pageLength": 30,
+				"order": [[0, 'desc']],
+				"sDom": "<t><'row'<p i>>",
+				"destroy": true,
+				"scrollCollapse": true,
+				"oLanguage": {
+						"sLengthMenu": "_MENU_ ",
+						"sInfo": "Affiche <b>_START_ à _END_</b> of _TOTAL_ entrées"
+				},
+				"iDisplayLength": 30
+		} );
+
+		// search box for table
+		$('#search-table').keyup(function() {
+				table.fnFilter($(this).val());
+		});
+	</script>

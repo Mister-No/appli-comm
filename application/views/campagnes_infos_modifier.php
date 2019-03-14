@@ -37,7 +37,7 @@
 							</ul>
 						</div>
 		      </div>
-		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/update_newsletter/<?=$id_newsletter?>.html">
+		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/update_informations/<?=$id_newsletter?>.html">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">

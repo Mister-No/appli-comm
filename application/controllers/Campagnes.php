@@ -837,7 +837,7 @@ class Campagnes extends CI_Controller {
     }
   }
 
-  public function update_newsletter()
+  public function update_informations()
   {
     if ($_SESSION["is_connect"] == TRUE){
 
@@ -2072,6 +2072,44 @@ class Campagnes extends CI_Controller {
       $this->load->view('login');
     }
   }
+
+  public function archive()
+	{
+
+		if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_campagnes');
+      $this->load->model('My_users');
+      $data = array();
+      $data_block = array();
+      $id_newsletter = $this->input->post ('id');
+      $id_group = $_SESSION['id_group'];
+
+      $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+
+      //RECUPERATION DES INFOS DE LA CAMPAGNE CHEZ SEND IN BLUE
+
+      $infos_group = $this->My_users->get_group_infos($id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+    	$data = array( 'id'=> $infos_group[0]->api_sib_key );
+    	$mailin->delete_campaign($data);
+
+      $data = array(
+        'archive'    => 1,
+      );
+
+			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+
+      redirect(base_url().'campagnes/archivees.html');
+
+  	} else {
+      	$this->load->view('login');
+  	}
+
+	}
 
   public function delete()
 	{

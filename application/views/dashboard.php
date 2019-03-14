@@ -20,7 +20,7 @@
 				<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 					<div class="panel-heading">
 						<div class="panel-title">
-									Vos Campagnes
+									Vos Campagnes en cours
 						</div>
 						<div class="panel-controls">
 							<ul>
@@ -154,6 +154,20 @@
 
 		 $('#tableWithSearch').dataTable( {
 				 "pageLength": 30,
-				 "order": [[0, 'desc']]
+				 "order": [[0, 'desc']],
+				 "sDom": "<t><'row'<p i>>",
+				 "destroy": true,
+				 "scrollCollapse": true,
+				 "oLanguage": {
+						 "sLengthMenu": "_MENU_ ",
+						 "sInfo": "Affiche <b>_START_ à _END_</b> sur _TOTAL_ entrées"
+				 },
+				 "iDisplayLength": 5
 		 } );
+
+		 // search box for table
+		 $('#search-table').keyup(function() {
+				 table.fnFilter($(this).val());
+		 });
+
 		 </script>

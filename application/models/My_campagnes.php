@@ -11,6 +11,7 @@ class My_campagnes extends CI_Model {
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
 		$this->db->where("group_has_theme.id_group", $id_group);
 		$this->db->where("newsletter.envoi", NULL);
+		$this->db->where("newsletter.archive", NULL);
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 
 		$query = $this->db->get();
@@ -28,6 +29,7 @@ class My_campagnes extends CI_Model {
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
 		$this->db->where("group_has_theme.id_group", $id_group);
 		$this->db->where("newsletter.envoi", 1);
+		$this->db->where("newsletter.envoi", NULL);
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 
 		$query = $this->db->get();
@@ -44,6 +46,7 @@ class My_campagnes extends CI_Model {
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
 		$this->db->where("group_has_theme.id_group", $id_group);
+		$this->db->where("newsletter.envoi", 1);
 		$this->db->where("newsletter.archive", 1);
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 

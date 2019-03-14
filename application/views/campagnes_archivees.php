@@ -6,7 +6,7 @@
 					<p>Shuttle</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes/archivees.html" class="active">Campagnes</a>
+					<a href="<?=base_url();?>campagnes/archivees.html" class="active">Campagnes archivées</a>
 				</li>
 			</ul>
 		</div>
@@ -66,7 +66,7 @@
           <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
             <div class="panel-heading">
               <div class="panel-title">
-                    Vos Campagnes
+                    Vos Campagnes archivées
               </div>
 							<div class="panel-controls">
 								<ul>
@@ -104,27 +104,36 @@
 
 											echo '<tr>
 															<td class="v-align-middle semi-bold">
+																' . $row_campagnes->id_newsletter . '
+															</td>
+															<td class="v-align-middle semi-bold">
 																' . $row_campagnes->nom_campagne . '
 															</td>
 															<td class="v-align-middle">
 																'.$row_campagnes->objet.'
 															</td>
 															<td class="v-align-middle">
-																Archivée
+																En cours
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/informations/modification/' . $row_campagnes->id_newsletter . '">
+																		<i class="fa fa-file"></i>
+																	</a>
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '">
-																		<i class="fa fa-edit">
-																		</i>
+																		<i class="fa fa-edit"></i>
 																	</a>
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter . '">
 																		<i class="fa fa-copy">
 																		</i>
 																	</a>
+																	<button class="btn btn-success " onclick="delete_item(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
+																		<i class="fa fa-trash">
+																		</i>
+																	</button>
 																</div>
 															</td>
-				                    </tr>';
+														</tr>';
 
 										}
 
@@ -188,3 +197,22 @@
 		  </div>
     </div>
   </div>
+	<script type="text/javascript">
+		$('#tableWithSearch').dataTable( {
+				"pageLength": 30,
+				"order": [[0, 'desc']],
+				"sDom": "<t><'row'<p i>>",
+				"destroy": true,
+				"scrollCollapse": true,
+				"oLanguage": {
+						"sLengthMenu": "_MENU_ ",
+						"sInfo": "Affiche <b>_START_ à _END_</b> sur _TOTAL_ entrées"
+				},
+				"iDisplayLength": 30
+		} );
+
+		// search box for table
+		$('#search-table').keyup(function() {
+				table.fnFilter($(this).val());
+		});
+	</script>
