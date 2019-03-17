@@ -43,10 +43,10 @@
 	                <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
 	                  <thead>
 	                    <tr>
+												<th>E-Mail</th>
 	                      <th>Nom</th>
 	                      <th>Catégorie</th>
 	                      <th>Entreprise</th>
-	                      <th>E-Mail</th>
 	                      <th>Actions</th>
 	                    </tr>
 	                  </thead>
@@ -55,20 +55,18 @@
 										<?php foreach ($result as $row) {
 
 											echo '<tr>
-															<td class="v-align-middle semi-bold">
-																<a href="' . base_url() . 'contacts/modifier/' . $row['id'] . '">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
+															<td class="v-align-middle">
+																<a href=' . base_url() . 'contacts/modifier/' . $row['id'] . '">' . $row['email'] . '</a>
 															</td>
+															<td class="v-align-middle semi-bold">' . $row['nom'] . ' ' . $row['prenom'] . '</td>
 															<td class="v-align-middle">' . $row['categorie'] . '</td>
 															<td class="v-align-middle">' . $row['raison_sociale'] . '</td>
-															<td class="v-align-middle">
-																<a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a>
-															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
 																	<a class="btn btn-success" href="' . base_url() . 'contacts/modifier/' . $row['id'] . '"><i class="fa fa-edit"></i></a>
 																</div>
 																<div class="btn-group">
-																	<button class="btn btn-success " onclick="delete_item (\''.$row['id'].'\', \''.$row['nom'].'\')" ><i class="fa fa-trash"></i></button>
+																	<button class="btn btn-success " onclick="popin (\''.$row['id'].'\', \''.$row['nom'].'\')" ><i class="fa fa-trash"></i></button>
 																</div>
 															</td>
 				                    </tr>';

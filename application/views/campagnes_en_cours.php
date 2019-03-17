@@ -129,7 +129,7 @@
 																		<i class="fa fa-copy">
 																		</i>
 																	</a>
-																	<button class="btn btn-success " onclick="delete_item(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
+																	<button class="btn btn-success " onclick="popin(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
 																		<i class="fa fa-trash">
 																		</i>
 																	</button>

@@ -36,7 +36,7 @@ function select (item, id, urlSelect) {
 
 /** Fonction d'affichaqge d'un message permettant l'affichage d'un message de confirmation de suppression **/
 
-function delete_item (id, titre, id_parent)
+function popin (id, titre, id_parent)
 {
 	$(".modal").find ("#id").val(id);
 	if (id_parent != '') {

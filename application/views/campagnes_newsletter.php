@@ -41,11 +41,35 @@
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
-						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
 						<a href="/campagnes/informations/<?=$id_newsletter?>.html" class="btn btn-complete">INFORMATIONS</a>
+						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
 						<?php if ($_SESSION['id_group'] == 0): ?>
+							<button type="button" class="btn btn-complete" onclick="bat_popin( '<?=$id_newsletter?>', '<?=$nom_campagne?>')">BAT</button>
 							<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
 						<?php endif; ?>
+					</div>
+				</div>
+				<div class="modal fade" id="modal-delete">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title">Envoyer un mail test</h4>
+							</div>
+							<form action="<?=base_url();?>campagnes/bat/<?=$id_newsletter?>.html" method="POST">
+								<input type="hidden" name="id" id="id">
+								<div class="modal-body">
+									<div class="form-group form-group-default">
+										<label class="control-label">EMAIL :</label>
+										<input type="text" class="form-control" name="email" placeholder="" required />
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
+									<button type="submit" class="btn btn-info">ENVOYER</button>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -610,6 +634,16 @@
 
 		});
 
+	}
+
+	function bat_popin (id, titre, id_parent)
+	{
+		$(".modal").find ("#id").val(id);
+		if (id_parent != '') {
+			$(".modal").find ("#id_parent").val(id_parent);
+		}
+		//$(".modal-body").empty().append (titre);
+		$('#modal-delete').modal('show', {backdrop: 'fade'});
 	}
 
 	</script>

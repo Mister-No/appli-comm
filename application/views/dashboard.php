@@ -82,7 +82,7 @@
 																	<i class="fa fa-copy">
 																	</i>
 																</a>
-																<button class="btn btn-success " onclick="delete_item(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
+																<button class="btn btn-success " onclick="popin(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
 																	<i class="fa fa-trash">
 																	</i>
 																</button>
@@ -105,7 +105,7 @@
 
 																<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row["id"] . '"><i class="fa fa-copy"></i></a>
 
-																<button class="btn btn-success " onclick="delete_item(\''.$row['id'].'\', \''.$row['campaign_name'].'\')" ><i class="fa fa-trash"></i></button>
+																<button class="btn btn-success " onclick="popin(\''.$row['id'].'\', \''.$row['campaign_name'].'\')" ><i class="fa fa-trash"></i></button>
 
 															</div>
 															<div class="btn-group">

@@ -102,36 +102,36 @@ class Contacts extends CI_Controller  {
 
       $id = $this->uri->segment(3, 0);
 
-          $result = $this->My_contacts->get_ent_by_id($id);
-          $resultc = $this->My_contacts->get_cat_by_id($id);
+      $result = $this->My_contacts->get_ent_by_id($id);
+      $resultc = $this->My_contacts->get_cat_by_id($id);
 
-          $civ_val1 = '';
-          $civ_val2 = '';
-          foreach ($result as $row) {
-            if ($row->civ == 2) { $civ_val2 = 'selected';}
-            if ($row->civ == 1) { $civ_val1 = 'selected';}
-          }
-
-          $result_cat = '';
-
-          foreach ($resultc as $rowc) {
-            $result_cat[] = $rowc->id_cat;
-          }
-
-          $data = array(
-              'result'     => $result,
-              'civ_val1'   => $civ_val1,
-              'civ_val2'   => $civ_val2,
-              'result_cat' => $result_cat,
-            );
-
-          $this->load->view('header', $data);
-          $this->load->view('contacts_modifier');
-          $this->load->view('footer');
-
-      } else {
-          $this->load->view('login');
+      $civ_val1 = '';
+      $civ_val2 = '';
+      foreach ($result as $row) {
+        if ($row->civ == 2) { $civ_val2 = 'selected';}
+        if ($row->civ == 1) { $civ_val1 = 'selected';}
       }
+
+      $result_cat = '';
+
+      foreach ($resultc as $rowc) {
+        $result_cat[] = $rowc->id_cat;
+      }
+
+      $data = array(
+          'result'     => $result,
+          'civ_val1'   => $civ_val1,
+          'civ_val2'   => $civ_val2,
+          'result_cat' => $result_cat,
+        );
+
+      $this->load->view('header', $data);
+      $this->load->view('contacts_modifier');
+      $this->load->view('footer');
+
+    } else {
+        $this->load->view('login');
+    }
   }
 
   public function add()
@@ -143,7 +143,7 @@ class Contacts extends CI_Controller  {
 
       $id_group = $_SESSION["id_group"];
 
-			$result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group);
+			$result = $this->My_contacts->check_exist($this->input->post('email'), $id_group);
 
 			if (count($result) > 0) {
 
@@ -171,15 +171,15 @@ class Contacts extends CI_Controller  {
 					'cedex' 			=> $this->input->post('cedex'),
 				);
 
-		        $id = $this->My_common->insert_data ('contacts', $data);
+	        $id = $this->My_common->insert_data ('contacts', $data);
 
-		        foreach ($_POST['id_cat'] as $key => $value) {
-		        	$data =array (
-		        		'id_contact' => $id,
-		        		'id_cat' => $value,
-		        	);
-		        	$this->My_common->insert_data ('contacts_cat', $data);
-		        }
+	        foreach ($_POST['id_cat'] as $key => $value) {
+	        	$data =array (
+	        		'id_contact' => $id,
+	        		'id_cat' => $value,
+	        	);
+	        	$this->My_common->insert_data ('contacts_cat', $data);
+	        }
 
 		        echo 'ok';
 		    }
@@ -203,53 +203,53 @@ class Contacts extends CI_Controller  {
 
       $id_group = $_SESSION["id_group"];
 
-      $result = $this->My_contacts->check_exist($this->input->post('email'), $this->input->post('nom'), $id_group, $this->input->post('id'));
+      $result = $this->My_contacts->check_exist($this->input->post('email'), $id_group, $this->input->post('id'));
 
-    			if (count($result) > 0) {
+			if (count($result) > 0) {
 
-    		       echo 1;
+		     echo 1;
 
-            } else {
+      } else {
 
-              $data = array(
-                'id' 		      => $this->input->post('id'),
-                'id_ent' 			=> $this->input->post('id_ent'),
-                'civ' 				=> $this->input->post('civ'),
-                'nom' 				=> $this->input->post('nom'),
-                'prenom' 			=> $this->input->post('prenom'),
-                'fonction' 		=> $this->input->post('fonction'),
-                'tel' 				=> $this->input->post('tel'),
-                'fax' 				=> $this->input->post('fax'),
-                'mobile' 			=> $this->input->post('mobile'),
-                'email' 			=> $this->input->post('email'),
-                'num_voie' 		=> $this->input->post('num_voie'),
-                'nom_voie' 		=> $this->input->post('nom_voie'),
-                'lieu_dit' 		=> $this->input->post('lieu_dit'),
-                'bp' 				  => $this->input->post('bp'),
-                'cp' 				  => $this->input->post('cp'),
-                'ville' 			=> $this->input->post('ville'),
-                'cedex' 			=> $this->input->post('cedex'),
-              );
+        $data = array(
+          'id' 		      => $this->input->post('id'),
+          'id_ent' 			=> $this->input->post('id_ent'),
+          'civ' 				=> $this->input->post('civ'),
+          'nom' 				=> $this->input->post('nom'),
+          'prenom' 			=> $this->input->post('prenom'),
+          'fonction' 		=> $this->input->post('fonction'),
+          'tel' 				=> $this->input->post('tel'),
+          'fax' 				=> $this->input->post('fax'),
+          'mobile' 			=> $this->input->post('mobile'),
+          'email' 			=> $this->input->post('email'),
+          'num_voie' 		=> $this->input->post('num_voie'),
+          'nom_voie' 		=> $this->input->post('nom_voie'),
+          'lieu_dit' 		=> $this->input->post('lieu_dit'),
+          'bp' 				  => $this->input->post('bp'),
+          'cp' 				  => $this->input->post('cp'),
+          'ville' 			=> $this->input->post('ville'),
+          'cedex' 			=> $this->input->post('cedex'),
+        );
 
-              $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
+        $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
 
-              foreach ($_POST['id_cat'] as $key => $value) {
-                $data =array (
-                  'id_contact' => $this->input->post('id'),
-                  'id_cat' => $value,
-                );
-                $this->My_common->insert_data('contacts_cat', $data);
-              }
+        foreach ($_POST['id_cat'] as $key => $value) {
+          $data =array (
+            'id_contact' => $this->input->post('id'),
+            'id_cat' => $value,
+          );
+          $this->My_common->insert_data('contacts_cat', $data);
+        }
 
-              echo 'ok';
+        echo 'ok';
 
-           }
+     }
 
-    	} else {
+  	} else {
 
-        echo 3;
+      echo 3;
 
-    	}
+  	}
 
 	}
 
@@ -336,7 +336,7 @@ class Contacts extends CI_Controller  {
 							$nom 	= $row['B'];
 
 							// On verifie si le contact est déjà dans la base :
-							$result = $this->My_contacts->check_exist ($email, $nom, $_SESSION['id_group']);
+							$result = $this->My_contacts->check_exist ($email, $_SESSION['id_group']);
 
 							if (count($result) > 0){
 

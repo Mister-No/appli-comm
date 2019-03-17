@@ -44,6 +44,17 @@
 						</div>
 		      </div>
 		      <form id="form" method="post" class="validate" action="<?=base_url();?>campagnes/send/<?=$id_newsletter?>.html">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-group-default">
+										<label class="control-label">Envoi immédiat :</label>
+										<input id="envoi_immediat" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_immediat" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">
@@ -56,7 +67,11 @@
 											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="heure_envoi">
 												<?php for ($i=0; $i < 24; $i++) {
 													($i<10)?$heure = '0'.$i:$heure = $i;
-													echo '<option value="'.$heure.'">'.$heure.'</option>';
+													if (date('H') == $heure) {
+														echo '<option value="'.$heure.'" selected="selected">'.$heure.'</option>';
+													} else {
+														echo '<option value="'.$heure.'">'.$heure.'</option>';
+													}
 												} ?>
 										</select>
 									</div>
@@ -65,7 +80,7 @@
 									<div class="form-group form-group-default date_heure">
 										<div class="form-input-group">
 											<label>Date</label>
-											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi" value="">
+											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi" value="<?=date('Y/m/d')?>" >
 										</div>
 										<!--<div class="input-group-append ">
 											<span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -76,7 +91,11 @@
 											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="minute_envoi">
 												<?php for ($i=0; $i < 12; $i++) {
 													($i<2)?$minutes = '0'.$i*5:$minutes = $i*5;
-													echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+													if (date('i') == $minutes) {
+														echo '<option value="'.$minutes.'" selected="selected">'.$minutes.'</option>';
+													} else {
+														echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+													}
 												} ?>
 										</select>
 									</div>
@@ -84,10 +103,31 @@
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="submit" class="btn btn-success">ENVOYER</button>
+		          <button type="button" class="btn btn-success" onclick="popin( '<?=$id_newsletter?>', '<?=$nom_campagne?>')">ENVOYER</button>
 		        </div>
 		      </form>
 		    </div>
+			</div>
+			<div class="modal fade" id="modal-delete">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Voulez-vous vraiment envoyer cette campagne?</h4>
+						</div>
+						<form action="<?=base_url();?>campagnes/delete.html" method="POST">
+		          <input type="hidden" name="id" id="id">
+							<input type="hidden" name="id" id="id">
+							<input type="hidden" name="id" id="id">
+							<input type="hidden" name="id" id="id">
+		          <div class="modal-body"></div>
+		          <div class="modal-footer">
+		            <button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
+		            <button type="submit" class="btn btn-info">ENVOYER</button>
+		          </div>
+		        </form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -109,11 +149,35 @@
 
   });
 
-	$('#envoi_programme').change( function() {
-		$('.date_heure').toggle();
+	$('#envoi_immediat').change( function() {
+		if ($(this).attr('checked')) {
+    	$('#envoi_programme').attr('false');
+    } else {
+	    $('#envoi_programme').attr('true');
+	 	}
 	});
-	$('#envoi_programme').change();
 
+	$('#envoi_programme').change( function() {
+		if ($(this).attr('checked')) {
+    	$('#envoi_immediat').attr('false');
+    } else {
+	    $('#envoi_immediat').attr('true');
+	 	}
+	});
+
+	function send_popin (id, titre, id_parent)
+	{
+		$(".modal").find ("#id").val(id);
+		if (id_parent != '') {
+			$(".modal").find ("#id_parent").val(id_parent);
+		}
+		$(".modal-body").empty().append (titre);
+		$('#modal-delete').modal('show', {backdrop: 'fade'});
+
+
+	}
+
+	var initTableWithSearch = function() {};
 	/**$('#form').submit(function(e) {
 
 		e.preventDefault();

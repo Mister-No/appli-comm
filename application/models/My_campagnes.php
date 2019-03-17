@@ -6,7 +6,7 @@ class My_campagnes extends CI_Model {
 	/********************************************************/
 	function get_unsent_campagnes($id_group){
 
-		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, envoi_programme, date_envoi, heure_envoi, id_sib, id_theme');
+		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, type_envoi, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
 		$this->db->where("group_has_theme.id_group", $id_group);
@@ -24,12 +24,12 @@ class My_campagnes extends CI_Model {
 	/********************************************************/
 	function get_sent_campagnes($id_group){
 
-		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, envoi_programme, date_envoi, heure_envoi, id_sib, id_theme');
+		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, type_envoi, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
 		$this->db->where("group_has_theme.id_group", $id_group);
 		$this->db->where("newsletter.envoi", 1);
-		$this->db->where("newsletter.envoi", NULL);
+		$this->db->where("newsletter.archive", NULL);
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 
 		$query = $this->db->get();
@@ -42,7 +42,7 @@ class My_campagnes extends CI_Model {
 	/********************************************************/
 	function get_archived_campagnes($id_group){
 
-		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, envoi_programme, date_envoi, heure_envoi, id_sib, id_theme');
+		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, type_envoi, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
 		$this->db->where("group_has_theme.id_group", $id_group);
@@ -166,7 +166,7 @@ class My_campagnes extends CI_Model {
 	/************************************************/
 	function get_newsletter($id_newsletter, $id_group){
 
-		$this->db->select('newsletter.id as id_newsletter, newsletter.id_sib as id_sendinblue, newsletter.expediteur as expediteur, newsletter.objet as objet, newsletter.theme as theme, newsletter.nom_campagne as nom_campagne, newsletter.envoi_programme as envoi_programme, newsletter.date_envoi as date_envoi, newsletter.heure_envoi as heure_envoi, newsletter_block_html.id as id_block_html, newsletter_block_html.nom as newsletter_block_nom, newsletter_has_block.id as id_block, newsletter_has_block.id_block_content as id_block_content, newsletter_has_block.ordre as newsletter_block_ordre, newsletter_block_html.type as newsletter_block_type, newsletter_block_html.block_html as newsletter_block_html, newsletter_block_content.img0 as newsletter_block_img0, newsletter_block_content.img1 as newsletter_block_img1, newsletter_block_content.img2 as newsletter_block_img2, newsletter_block_content.img3 as newsletter_block_img3, newsletter_block_content.text0 as newsletter_block_text0, newsletter_block_content.text1 as newsletter_block_text1, newsletter_block_content.text2 as newsletter_block_text2, newsletter_block_content.text3 as newsletter_block_text3, newsletter_block_content.text4 as newsletter_block_text4, newsletter_block_content.text5 as newsletter_block_text5, newsletter_block_content.text6 as newsletter_block_text6, newsletter_block_content.text7 as newsletter_block_text7, newsletter_block_content.text8 as newsletter_block_text8, newsletter_block_content.text9 as newsletter_block_text9, newsletter_block_content.text10 as newsletter_block_text10, newsletter_block_content.text11 as newsletter_block_text11, newsletter_block_content.text12 as newsletter_block_text12, newsletter_block_content.text13 as newsletter_block_text13, newsletter_block_content.text14 as newsletter_block_text14, newsletter_block_content.select0 as newsletter_block_select0, newsletter_block_content.select1 as newsletter_block_select1, newsletter_block_content.select2 as newsletter_block_select2, newsletter_block_content.select3 as newsletter_block_select3');
+		$this->db->select('newsletter.id as id_newsletter, newsletter.id_sib as id_sendinblue, newsletter.expediteur as expediteur, newsletter.objet as objet, newsletter.theme as theme, newsletter.nom_campagne as nom_campagne, newsletter.type_envoi as type_envoi, newsletter.date_envoi as date_envoi, newsletter.heure_envoi as heure_envoi, newsletter_block_html.id as id_block_html, newsletter_block_html.nom as newsletter_block_nom, newsletter_has_block.id as id_block, newsletter_has_block.id_block_content as id_block_content, newsletter_has_block.ordre as newsletter_block_ordre, newsletter_block_html.type as newsletter_block_type, newsletter_block_html.block_html as newsletter_block_html, newsletter_block_content.img0 as newsletter_block_img0, newsletter_block_content.img1 as newsletter_block_img1, newsletter_block_content.img2 as newsletter_block_img2, newsletter_block_content.img3 as newsletter_block_img3, newsletter_block_content.text0 as newsletter_block_text0, newsletter_block_content.text1 as newsletter_block_text1, newsletter_block_content.text2 as newsletter_block_text2, newsletter_block_content.text3 as newsletter_block_text3, newsletter_block_content.text4 as newsletter_block_text4, newsletter_block_content.text5 as newsletter_block_text5, newsletter_block_content.text6 as newsletter_block_text6, newsletter_block_content.text7 as newsletter_block_text7, newsletter_block_content.text8 as newsletter_block_text8, newsletter_block_content.text9 as newsletter_block_text9, newsletter_block_content.text10 as newsletter_block_text10, newsletter_block_content.text11 as newsletter_block_text11, newsletter_block_content.text12 as newsletter_block_text12, newsletter_block_content.text13 as newsletter_block_text13, newsletter_block_content.text14 as newsletter_block_text14, newsletter_block_content.select0 as newsletter_block_select0, newsletter_block_content.select1 as newsletter_block_select1, newsletter_block_content.select2 as newsletter_block_select2, newsletter_block_content.select3 as newsletter_block_select3');
 		$this->db->from('newsletter');
 		$this->db->join('newsletter_has_block', 'newsletter.id = newsletter_has_block.id_newsletter', 'left');
 		$this->db->join('newsletter_block_html', 'newsletter_has_block.id_block_html = newsletter_block_html.id', 'left');

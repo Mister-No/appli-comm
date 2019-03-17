@@ -90,6 +90,7 @@
 	                <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
 	                  <thead>
 	                    <tr>
+												<th>Id</th>
 	                      <th>Nom</th>
 	                      <th>Objet</th>
 	                      <th>Statut</th>
@@ -117,17 +118,14 @@
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'campagnes/informations/modification/' . $row_campagnes->id_newsletter . '">
-																		<i class="fa fa-file"></i>
-																	</a>
-																	<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '">
-																		<i class="fa fa-edit"></i>
-																	</a>
+																	<!--<a class="btn btn-success" href="' . base_url() . 'campagnes/statistics/' . $row_campagnes->id_newsletter . '">
+																		<i class="fs-14 pg-charts"></i>
+																	</a>-->
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter . '">
 																		<i class="fa fa-copy">
 																		</i>
 																	</a>
-																	<button class="btn btn-success " onclick="delete_item(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
+																	<button class="btn btn-success " onclick="popin(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
 																		<i class="fa fa-archive">
 																		</i>
 																	</button>
@@ -150,7 +148,7 @@
 
 																	<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row["id"] . '"><i class="fa fa-copy"></i></a>
 
-																	<button class="btn btn-success " onclick="delete_item(\''.$row['id'].'\', \''.$row['campaign_name'].'\')" ><i class="fa fa-trash"></i></button>
+																	<button class="btn btn-success " onclick="popin(\''.$row['id'].'\', \''.$row['campaign_name'].'\')" ><i class="fa fa-trash"></i></button>
 
 																</div>
 																<div class="btn-group">

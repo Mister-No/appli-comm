@@ -51,61 +51,61 @@
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Nom :</label>
-			                  <input type="text" class="form-control" name="nom" value="' . $row->nom . '" data-validate="required" data-message-required="Veuillez saisir un nom" placeholder="Nom" />
+			                  <input type="text" class="form-control" name="nom" value="' . $row->nom . '" data-validate="required" data-message-required="Veuillez saisir un nom" placeholder="Nom">
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Prénom :</label>
-			                  <input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" data-validate="required" data-message-required="Veuillez saisir un prénom" placeholder="Prénom" />
+			                  <input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" data-validate="required" data-message-required="Veuillez saisir un prénom" placeholder="Prénom">
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Fonction :</label>
-			                  <input type="text" class="form-control" name="fonction" value="' . $row->fonction . '" placeholder="Fonction" />
+			                  <input type="text" class="form-control" name="fonction" value="' . $row->fonction . '" placeholder="Fonction">
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Téléphone :</label>
-			                  <input type="text" class="form-control" name="tel" value="' . $row->tel . '"  placeholder="Téléphone" />
+			                  <input type="text" class="form-control" name="tel" value="' . $row->tel . '"  placeholder="Téléphone">
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Mobile :</label>
-			                  <input type="text" class="form-control" name="mobile" value="' . $row->mobile . '" placeholder="Mobile" />
+			                  <input type="text" class="form-control" name="mobile" value="' . $row->mobile . '" placeholder="Mobile">
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Télécopie :</label>
-			                  <input type="text" class="form-control" name="fax" value="' . $row->fax . '" placeholder="Télécopie" />
+			                  <input type="text" class="form-control" name="fax" value="' . $row->fax . '" placeholder="Télécopie">
 			                </div>
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Adresse électronique :</label>
-			                  <input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Adresse électronique" />
+			                  <input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Adresse électronique">
 			                </div>
 			            </div>
 			            <div class="col-md-6">
 			              <div class="form-group form-group-default">
 			                <label class="control-label">N° de voie :</label>
-			                <input type="text" class="form-control" name="num_voie" value="' . $row->num_voie . '" placeholder="N° de voie" />
+			                <input type="text" class="form-control" name="num_voie" value="' . $row->num_voie . '" placeholder="N° de voie">
 			              </div>
 			              <div class="form-group form-group-default">
 			                <label class="control-label">Nom de voie :</label>
-			                <input type="text" class="form-control" name="nom_voie" value="' . $row->nom_voie . '" placeholder="Nom de voie" />
+			                <input type="text" class="form-control" name="nom_voie" value="' . $row->nom_voie . '" placeholder="Nom de voie">
 			              </div>
 			              <div class="form-group form-group-default">
 			                <label class="control-label">Lieu-dit :</label>
-			                <input type="text" class="form-control" name="lieu_dit" value="' . $row->lieu_dit . '" placeholder="Lieu-dit" />
+			                <input type="text" class="form-control" name="lieu_dit" value="' . $row->lieu_dit . '" placeholder="Lieu-dit">
 			              </div>
 			              <div class="form-group form-group-default">
 			                <label class="control-label">Boîte postale :</label>
-			                <input type="text" class="form-control" name="bp" value="' . $row->bp . '" placeholder="Boîte postale" />
+			                <input type="text" class="form-control" name="bp" value="' . $row->bp . '" placeholder="Boîte postale">
 			              </div>
 			              <div class="form-group form-group-default">
 			                <label class="control-label">Code postal :</label>
-			                <input type="text" class="form-control" name="cp" value="' . $row->cp . '" placeholder="Code postal" />
+			                <input type="text" class="form-control" name="cp" value="' . $row->cp . '" placeholder="Code postal">
 			              </div>
 			              <div class="form-group form-group-default">
 			                <label class="control-label">Localité :</label>
-			                <input type="text" class="form-control" name="ville" value="' . $row->ville . '" placeholder="Localité" />
+			                <input type="text" class="form-control" name="ville" value="' . $row->ville . '" placeholder="Localité">
 			              </div>
 			              <div class="form-group form-group-default">
 			                <label class="control-label">Cedex :</label>
-			                <input type="text" class="form-control" name="cedex" value="' . $row->cedex . '" placeholder="Cedex" />
+			                <input type="text" class="form-control" name="cedex" value="' . $row->cedex . '" placeholder="Cedex">
 			              </div>
 			          </div>';
 						}

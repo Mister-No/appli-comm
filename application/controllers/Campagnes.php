@@ -140,10 +140,10 @@ class Campagnes extends CI_Controller {
           'nom_campagne'        => $result_newsletter[0]->nom_campagne,
           'objet_campagne'      => $result_newsletter[0]->objet,
           'expediteur_campagne' => $result_newsletter[0]->expediteur,
-          'envoi_programme'      => $result_newsletter[0]->envoi_programme,
-          'date_envoi'      => $result_newsletter[0]->date_envoi,
-          'heure_envoi'      => $result_newsletter[0]->heure_envoi,
-          'theme_campagne'      => $result_newsletter[0]->theme,
+          'type_envoi'          => $result_newsletter[0]->$type_envoi,
+          'date_envoi'           => $result_newsletter[0]->date_envoi,
+          'heure_envoi'          => $result_newsletter[0]->heure_envoi,
+          'theme_campagne'       => $result_newsletter[0]->theme,
         );
 
         $this->load->view('header', $data_themes);
@@ -179,7 +179,7 @@ class Campagnes extends CI_Controller {
         $id_block_html = $row_newsletter->id_block_html;
         $id_block_content = $row_newsletter->id_block_content;
         $nom_campagne = $row_newsletter->nom_campagne;
-        $envoi_programme = $row_newsletter->envoi_programme;
+        $type_envoi = $row_newsletter->type_envoi;
         $date_envoi = $row_newsletter->date_envoi;
         $heure_envoi = $row_newsletter->heure_envoi;
         $theme = $row_newsletter->theme;
@@ -899,7 +899,7 @@ class Campagnes extends CI_Controller {
 
   public function preview()
   {
-    //if ($_SESSION["is_connect"] == TRUE){
+    if ($_SESSION["is_connect"] == TRUE){
 
       $this->load->model('My_campagnes');
       $id_newsletter = $this->uri->segment(3, 0);
@@ -941,21 +941,21 @@ class Campagnes extends CI_Controller {
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
         $img_link3 = $row_newsletter->newsletter_block_img3;
-        $text0 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text0));
-        $text1 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text1));
-        $text2 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text2));
-        $text3 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text3));
-        $text4 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text4));
-        $text5 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text5));
-        $text6 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text6));
-        $text7 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text7));
-        $text8 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text8));
-        $text9 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text9));
-        $text10 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text10));
-        $text11 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text11));
-        $text12 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text12));
-        $text13 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text13));
-        $text14 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text14));
+        $text0 = $row_newsletter->newsletter_block_text0;
+        $text1 = $row_newsletter->newsletter_block_text1;
+        $text2 = $row_newsletter->newsletter_block_text2;
+        $text3 = $row_newsletter->newsletter_block_text3;
+        $text4 = $row_newsletter->newsletter_block_text4;
+        $text5 = $row_newsletter->newsletter_block_text5;
+        $text6 = $row_newsletter->newsletter_block_text6;
+        $text7 = $row_newsletter->newsletter_block_text7;
+        $text8 = $row_newsletter->newsletter_block_text8;
+        $text9 = $row_newsletter->newsletter_block_text9;
+        $text10 = $row_newsletter->newsletter_block_text10;
+        $text11 = $row_newsletter->newsletter_block_text11;
+        $text12 = $row_newsletter->newsletter_block_text12;
+        $text13 = $row_newsletter->newsletter_block_text13;
+        $text14 = $row_newsletter->newsletter_block_text14;
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -1140,11 +1140,15 @@ class Campagnes extends CI_Controller {
       //$replace = '\'';
       $newsletter = preg_replace($search,$replace,$newsletter);
 
-      echo $newsletter;
+      if ($this->uri->segment(2, 0) == 'preview') {
+        echo $newsletter;
+      } else {
+        return $newsletter;
+      }
 
-    /**} else {
+    } else {
       $this->load->view('login');
-    }**/
+    }
   }
 
   public function add_block()
@@ -1747,6 +1751,12 @@ class Campagnes extends CI_Controller {
       $nom_array = array();
       $csv = 'NAME;SURNAME;EMAIL\n';
 
+      // Effacement de liste de contact existante en base
+
+      $this->My_common->delete_data_detail('newsletter_has_contacts', 'id_newsletter', $id_newsletter);
+
+      // enregistrement de la liste de contact
+
       foreach ($_POST['id_cat'] as $key => $value) {
 
         $result_contact = $this->My_categories->get_contact_by_cat($value);
@@ -1876,13 +1886,14 @@ class Campagnes extends CI_Controller {
 
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION["id_group"];
-      ($this->input->post ('envoi_programme')=='on')?$envoi_programme = 1:$envoi_programme = 0;
+      ($this->input->post ('envoi_programme')=='on')?$type_envoi = 1:'';
+      ($this->input->post ('envoi_immediat')=='on')?$type_envoi = 0:'';
       $date_envoi = $this->My_common->date_fr_mysql($this->input->post ('date_envoi'));
       $heure_envoi = $this->input->post ('heure_envoi') .':'.$this->input->post ('minute_envoi');
       $scheduled_date = $date_envoi.' '.$heure_envoi.':00';
 
       $data = array(
-        'envoi_programme'      => $envoi_programme,
+        'type_envoi'           => $type_envoi,
         'date_envoi'           => $date_envoi,
         'heure_envoi'          => $heure_envoi,
       );
@@ -1899,39 +1910,102 @@ class Campagnes extends CI_Controller {
 
       $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
-				$data = array(
-					'id'				      => $data_campagne[0]->id_sendinblue,
+      if ($type_envoi == 1) {
+        $data = array(
+  				'id'				      => $data_campagne[0]->id_sendinblue,
           'scheduled_date'  => $scheduled_date,
-          'html_content'		=> base_url().'campagnes/preview/'.$id_newsletter.'.html',
-					//'send_now'		   	=> 1,
-				);
+          'html_content'		=> $this->preview(),
+  				'send_now'		   	=> 1,
+  			);
+      } else {
+        $data = array(
+  				'id'				      => $data_campagne[0]->id_sendinblue,
+          'html_content'		=> $this->preview(),
+  				'send_now'		   	=> 1,
+  			);
+      }
 
-				/**$result = $mailin->update_campaign($data);
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
-				$code = $result['code'];
+			$result = $mailin->update_campaign($data);
+			$code = $result['code'];
 
-        $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
-        echo '<pre>';
-        print_r($campagne);
-        echo '</pre>';**/
+      //$campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
-        echo $this->preview();
-				if ($code == 'success'){
+			if ($code == 'success'){
 
-          //redirect(base_url().'campagnes.html');
+        redirect(base_url().'campagnes/campagnes_envoyees.html');
 
-				} else {
+			} else {
 
-					//echo "Erreur";
+				echo "Erreur";
 
-				}
+			}
 
-    	} else {
-        	$this->load->view('login');
-    	}
+  	} else {
+      	$this->load->view('login');
+  	}
 	}
+
+  public function bat()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_users');
+      $this->load->model('My_campagnes');
+      $this->load->model('My_contacts');
+
+      $id_newsletter = $this->uri->segment(3, 0);
+      $id_group = $_SESSION["id_group"];
+      $email = $this->input->post ('email');
+
+			$result_contact = $this->My_contacts->check_exist($email, $id_group);
+
+      if (count($result_contact) == 0) {
+        $data_contact = array(
+          'email'	=> $email,
+        );
+        $this->My_common->insert_data('contacts', $data);
+      }
+
+      // Informations sur la campagne
+
+      $infos_group = $this->My_users->get_group_infos($id_group);
+      $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+      $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+
+      $data = array(
+        'id'			     	    => $data_campagne[0]->id_sendinblue,
+        'send_now'			    => 0,
+        'html_content'			=> $this->preview(),
+      );
+
+      $result = $mailin->update_campaign($data);
+      $code = $result['code'];
+
+      if ($code == 'success'){
+
+        $data = array(
+          'id' => $data_campagne[0]->id_sendinblue,
+          'emails' => array($email)
+        );
+
+        $mailin->send_bat_email($data);
+
+        redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+
+      } else {
+
+        echo 'Erreur';
+
+      }
+
+      } else {
+          $this->load->view('login');
+      }
+  }
 
   public function duplicate()
   {
@@ -1992,7 +2066,7 @@ class Campagnes extends CI_Controller {
           'objet'           => $result_newsletter[0]->objet,
           'expediteur'      => $result_newsletter[0]->expediteur,
           'theme'           => $result_newsletter[0]->theme,
-          'envoi_programme' => $result_newsletter[0]->envoi_programme,
+          'type_envoi'      => $result_newsletter[0]->type_envoi,
           'date_envoi'      => $result_newsletter[0]->date_envoi,
           'heure_envoi'     => $result_newsletter[0]->heure_envoi,
           'id_group'        => $_SESSION['id_group'],
