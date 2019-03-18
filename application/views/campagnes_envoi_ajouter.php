@@ -34,7 +34,7 @@
 			<div class="row">
 		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
-		        <div class="panel-title">Programmer l'envoi</div>
+		        <div class="panel-title">Envoyer votre newsletter</div>
 						<div class="panel-controls">
 							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
@@ -47,40 +47,27 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label class="control-label">Envoi immédiat :</label>
-										<input id="envoi_immediat" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_immediat" />
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-		        <div class="panel-body">
-		          <div class="row">
-		            <div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label class="control-label">Envoi programmé :</label>
-										<input id="envoi_programme" type="checkbox" data-init-plugin="switchery" data-size="small" name="envoi_programme" />
+									<div class="form-group form-group-default form-group-default-select2">
+										<label class="">Type d'envoi :</label>
+										<select id="type_envoi" class="full-width" data-placeholder="" data-init-plugin="select2" name="type_envoi">
+											<option value="0">Envoi immédiat</option>
+											<option value="1">Envoi différé</option>
+										</select>
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 date_heure">
 										<label class="">Heure :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="heure_envoi">
-												<?php for ($i=0; $i < 24; $i++) {
-													($i<10)?$heure = '0'.$i:$heure = $i;
-													if (date('H') == $heure) {
-														echo '<option value="'.$heure.'" selected="selected">'.$heure.'</option>';
-													} else {
-														echo '<option value="'.$heure.'">'.$heure.'</option>';
-													}
-												} ?>
+										<select id="heure" class="full-width" data-placeholder="" data-init-plugin="select2" name="heure_envoi">
+											<?php for ($i=0; $i < 24; $i++) { ?>
+												<option value="<?php echo ($i<10)?$heure = '0'.$i:$heure = $i; ?>" <?php echo (date('H', strtotime('1 hour'))==$i)?'selected="selected"':''; ?>><?php echo ($i<10)?$heure = '0'.$i:$heure = $i; ?></option>';
+											<?php	} ?>
 										</select>
 									</div>
-		            </div>
+								</div>
 								<div class="col-md-6">
 									<div class="form-group form-group-default date_heure">
 										<div class="form-input-group">
 											<label>Date</label>
-											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi" value="<?=date('Y/m/d')?>" >
+											<input type="text" class="form-control" placeholder="" id="datepicker-component2" name="date_envoi" value="" >
 										</div>
 										<!--<div class="input-group-append ">
 											<span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -88,14 +75,10 @@
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 date_heure">
 										<label class="">Minutes :</label>
-											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="minute_envoi">
+											<select id="minutes" class="full-width" data-placeholder="" data-init-plugin="select2" name="minute_envoi">
 												<?php for ($i=0; $i < 12; $i++) {
 													($i<2)?$minutes = '0'.$i*5:$minutes = $i*5;
-													if (date('i') == $minutes) {
-														echo '<option value="'.$minutes.'" selected="selected">'.$minutes.'</option>';
-													} else {
-														echo '<option value="'.$minutes.'">'.$minutes.'</option>';
-													}
+													echo '<option value="'.$minutes.'">'.$minutes.'</option>';
 												} ?>
 										</select>
 									</div>
@@ -103,7 +86,7 @@
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="button" class="btn btn-success" onclick="popin( '<?=$id_newsletter?>', '<?=$nom_campagne?>')">ENVOYER</button>
+		          <button id="send_button" type="button" class="btn btn-success">ENVOYER</button>
 		        </div>
 		      </form>
 		    </div>
@@ -113,13 +96,13 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Voulez-vous vraiment envoyer cette campagne?</h4>
+							<h4 class="modal-title"></h4>
 						</div>
-						<form action="<?=base_url();?>campagnes/delete.html" method="POST">
-		          <input type="hidden" name="id" id="id">
-							<input type="hidden" name="id" id="id">
-							<input type="hidden" name="id" id="id">
-							<input type="hidden" name="id" id="id">
+						<form action="<?=base_url();?>campagnes/send/<?=$id_newsletter?>.html" method="POST">
+							<input type="hidden" name="type_envoi" id="type_envoi_val">
+							<input type="hidden" name="date_envoi" id="date_val">
+							<input type="hidden" name="heure_envoi" id="heure_val">
+							<input type="hidden" name="minute_envoi" id="minutes_val">
 		          <div class="modal-body"></div>
 		          <div class="modal-footer">
 		            <button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
@@ -135,6 +118,16 @@
 
 	// date_us_to_fr
 
+	/**$('#datepicker-component2').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    startDate: moment(),
+    minDate: moment(),
+    locale: {
+        format: 'DD-MM-YYYY'
+    }
+	});**/
+
   $('#datepicker-component2').change( function() {
 
     my_date = $(this).val();
@@ -149,46 +142,40 @@
 
   });
 
-	$('#envoi_immediat').change( function() {
-		if ($(this).attr('checked')) {
-    	$('#envoi_programme').attr('false');
+	$('#type_envoi').change( function() {
+		if ($(this).val() == 1) {
+    	$('.date_heure').show();
     } else {
-	    $('#envoi_programme').attr('true');
+	    $('.date_heure').hide();
 	 	}
 	});
+	$('#type_envoi').change();
 
-	$('#envoi_programme').change( function() {
-		if ($(this).attr('checked')) {
-    	$('#envoi_immediat').attr('false');
-    } else {
-	    $('#envoi_immediat').attr('true');
-	 	}
-	});
-
-	function send_popin (id, titre, id_parent)
-	{
-		$(".modal").find ("#id").val(id);
-		if (id_parent != '') {
-			$(".modal").find ("#id_parent").val(id_parent);
+	$('#send_button').click( function () {
+		id = '<?=$id_newsletter?>';
+		titre = '<?=$nom_campagne?>';
+		type_envoi = $('#type_envoi').val();
+		if (type_envoi==1) {
+			envoi = 'différé';
+			date = $('#datepicker-component2').val();
+			heure = $('#heure').val();
+			minutes = $('#minutes').val();
+		} else {
+			envoi = 'immédiat';
+			date = '';
+			heure = '';
+			minutes = '';
 		}
-		$(".modal-body").empty().append (titre);
+		$(".modal").find ("#id").val(id);
+		$(".modal").find('#type_envoi_val').val(type_envoi);
+		$(".modal").find('#date_val').val(date);
+		$(".modal").find('#heure_val').val(heure);
+		$(".modal").find('#minutes_val').val(minutes);
+		$(".modal-title").empty().append('Confirmer l\'envoi '+envoi+' ?');
+		$(".modal-body").empty().append(titre);
 		$('#modal-delete').modal('show', {backdrop: 'fade'});
-
-
-	}
+	});
 
 	var initTableWithSearch = function() {};
-	/**$('#form').submit(function(e) {
-
-		e.preventDefault();
-
-		data = $(this).serialize();
-		urlCheck = 'builder/add.html';
-		urlRedirect = 'contacts.html';
-
-		check_exist(urlCheck, urlRedirect, data);
-
-	});**/
-
 
 	</script>

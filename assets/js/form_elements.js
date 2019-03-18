@@ -65,7 +65,7 @@
                 ].join('\n'),
                 suggestion: Handlebars.compile('<div>{{value}}– {{year}}</div>')
               }
-        });
+        });**/
 
         $('#daterangepicker').daterangepicker({
             timePicker: true,
@@ -87,7 +87,7 @@
 
 
         // disabling dates
-        var nowTemp = new Date();
+        /**var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
         //Input mask - Input helper
@@ -96,7 +96,7 @@
             $("#phone").mask("(999) 999-9999");
             $("#tin").mask("99-9999999");
             $("#ssn").mask("999-99-9999");
-        });**/
+        });
         //Autonumeric plug-in - automatic addition of dollar signs,etc controlled by tag attributes
         //$('.autonumeric').autoNumeric('init');
 

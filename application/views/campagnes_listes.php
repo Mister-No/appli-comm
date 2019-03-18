@@ -31,12 +31,15 @@
 							<div class="panel-title">Selectionner des destinataires</div>
 						</div>
 					</div>
-
+					<div class="erreur alert alert-danger">
+				 		<strong class="message"></strong>
+				 		<button class="close"></button>
+				 	</div>
 		<?php if (count($result) > 0) {
 
 						foreach ($result as $row) {
 
-							echo '<form method="post" class="validate" action="'. base_url() . 'campagnes/listes_add/'.$id_newsletter.'.html">
+							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'campagnes/listes_add/'.$id_newsletter.'.html">
 										 <input type="hidden" name="id_campagne" value="' . $id_newsletter . '">
 										 <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 											<div class="panel-heading">
@@ -110,26 +113,19 @@
 	 		</div>
 		</div>
 	</div>
- </div>
-
- <div class="container-fluid container-fixed-lg">
- 	<div class="erreur alert alert-danger">
- 		<strong class="message"></strong>
- 		<button class="close"></button>
- 	</div>
 
 	<script type="text/javascript">
 
-	/**$('#form').submit(function(e) {
+	$('#form').submit(function(e) {
 
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = '<?=base_url();?>'+'campagnes/list_add_recap.html';
-		urlRedirect = '<?=base_url();?>'+'campagnes/listes_recap.html ';
+		urlCheck = '<?=base_url();?>'+'campagnes/listes_add/<?=$id_newsletter?>.html';
+		urlRedirect = '<?=base_url();?>'+'campagnes/envoyer/<?=$id_newsletter?>.html ';
 
 		check_exist(urlCheck, urlRedirect, data);
 
-	});**/
+	});
 
 	</script>

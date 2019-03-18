@@ -89,16 +89,5 @@
   </div>
 	<script type="text/javascript">
 
-	$('#form').submit(function(e) {
-
-		e.preventDefault();
-
-		data = $(this).serialize();
-		urlCheck = '<?=base_url();?>'+'listes/add.html';
-		urlRedirect = '<?=base_url();?>'+'listes.html';
-
-		check_exist(urlCheck, urlRedirect, data);
-
-	});
 
 	</script>

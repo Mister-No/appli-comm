@@ -116,6 +116,16 @@ function check_exist(urlCheck, urlRedirect, data) {
 				$('.erreur').css('display', 'block');
 				$('.message').empty().html('Merci de remplir les champs obligatoire');
 
+			} else if (data == 9) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Merci de selectionner des catégories de contacts');
+
+			} else if (data == 10) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Envoi impossible');
+
 			} else {
 
 				window.location.href = urlRedirect;

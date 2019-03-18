@@ -74,28 +74,17 @@
 	</div>
 	<script type="text/javascript">
 
-	/**$('#envoi_programme').change( function() {
-		if ($(this).val() == '') {
-			$('.date_heure').addClass('showblock');
-		} else {
-			$('.date_heure').removeClass('hideblock');
-		}
-	});
-	$('#envoi_programme').change();
 	/**$('#form').submit(function(e) {
 
 		e.preventDefault();
 
 		data = $(this).serialize();
-		urlCheck = 'builder/add.html';
-		urlRedirect = 'contacts.html';
+		urlCheck = <?=base_url();?>'campagnes/add_newsletter.html';
+		urlRedirect = '.html';
 
 		check_exist(urlCheck, urlRedirect, data);
 
 	});**/
 
-	$('#datepicker-component2').change( function() {
-		console.log($(this).val());
-	});
 
 	</script>
