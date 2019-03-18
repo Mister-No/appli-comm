@@ -119,7 +119,7 @@ function check_exist(urlCheck, urlRedirect, data) {
 			} else if (data == 9) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Merci de selectionner des catégories de contacts');
+				$('.message').empty().html('Merci de selectionner une ou des catégories de contacts');
 
 			} else if (data == 10) {
 

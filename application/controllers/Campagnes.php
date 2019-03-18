@@ -1902,7 +1902,6 @@ class Campagnes extends CI_Controller {
   				'id'				      => $data_campagne[0]->id_sendinblue,
           'scheduled_date'  => $scheduled_date,
           'html_content'		=> $this->preview(),
-  				'send_now'		   	=> 1,
   			);
       } else {
         $data = array(
@@ -1914,8 +1913,6 @@ class Campagnes extends CI_Controller {
 
 			$result = $mailin->update_campaign($data);
 			$code = $result['code'];
-
-      //$campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
 			if ($code == 'success'){
 
@@ -1932,7 +1929,7 @@ class Campagnes extends CI_Controller {
 
 			} else {
 
-				echo "Erreur";
+				redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
 
 			}
 

@@ -114,7 +114,7 @@
 																'.$row_campagnes->objet.'
 															</td>
 															<td class="v-align-middle">
-																En cours
+																Archivée
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
