@@ -140,10 +140,6 @@ class Campagnes extends CI_Controller {
           'nom_campagne'        => $result_newsletter[0]->nom_campagne,
           'objet_campagne'      => $result_newsletter[0]->objet,
           'expediteur_campagne' => $result_newsletter[0]->expediteur,
-          'type_envoi'          => $result_newsletter[0]->$type_envoi,
-          'date_envoi'           => $result_newsletter[0]->date_envoi,
-          'heure_envoi'          => $result_newsletter[0]->heure_envoi,
-          'theme_campagne'       => $result_newsletter[0]->theme,
         );
 
         $this->load->view('header', $data_themes);

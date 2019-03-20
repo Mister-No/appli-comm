@@ -56,7 +56,7 @@
 
 											echo '<tr>
 															<td class="v-align-middle">
-																<a href=' . base_url() . 'contacts/modifier/' . $row['id'] . '">' . $row['email'] . '</a>
+																<a href="' . base_url() . 'contacts/modifier/' . $row['id'] . '">' . $row['email'] . '</a>
 															</td>
 															<td class="v-align-middle semi-bold">' . $row['nom'] . ' ' . $row['prenom'] . '</td>
 															<td class="v-align-middle">' . $row['categorie'] . '</td>

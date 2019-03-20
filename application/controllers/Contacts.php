@@ -282,7 +282,7 @@ class Contacts extends CI_Controller  {
       $result_cat = $this->My_categories->get_all_cat($id_group);
 
       $data = array(
-          'result_cat' => $result_cat,
+        'result_cat' => $result_cat,
       );
 
 			$this->load->view('header', $data);
@@ -295,7 +295,7 @@ class Contacts extends CI_Controller  {
 	}
 
 
-	public function importer_save()
+	public function import_save()
 	{
 		if ($_SESSION['is_connect'] == TRUE){
 
@@ -338,7 +338,7 @@ class Contacts extends CI_Controller  {
 							// On verifie si le contact est déjà dans la base :
 							$result = $this->My_contacts->check_exist ($email, $_SESSION['id_group']);
 
-							if (count($result) > 0){
+							if (count($result) > 0) {
 
 								$id_contact = $result[0]->id;
 
@@ -362,29 +362,38 @@ class Contacts extends CI_Controller  {
 							} else {
 
 								// Si il est pas dans la base on l'ajoute avec le categorie
-	  						$data = array (
-                  'id_group' => $_SESSION['id_group'],
-	  							'civ' 		=> $row['A'],
-	  							'nom' 		=> $row['B'],
-	  							'prenom' 	=> $row['C'],
-	  							'fonction' 	=> $row['D'],
-	  							'tel' 		=> $row['E'],
-	  							'fax' 		=> $row['F'],
-	  							'mobile' 	=> $row['G'],
-	  							'email' 	=> $row['H'],
-	  						);
+                if ($row['B'] != 'nom' && $row['H'] != 'email') {
+                  $data = array (
+                    'id_group'  => $_SESSION['id_group'],
+  	  							'civ' 		  => $row['A'],
+  	  							'nom' 		  => $row['B'],
+  	  							'prenom' 	  => $row['C'],
+  	  							'fonction' 	=> $row['D'],
+  	  							'tel' 		  => $row['E'],
+  	  							'fax' 		  => $row['F'],
+  	  							'mobile' 	  => $row['G'],
+  	  							'email' 	  => $row['H'],
+                    'num_voie' 	=> $row['I'],
+                    'nom_voie' 	=> $row['J'],
+                    'lieu_dit' 	=> $row['K'],
+                    'bp' 	      => $row['L'],
+                    'cp' 	      => $row['M'],
+                    'ville' 	  => $row['N'],
+                    'cedex' 	  => $row['O'],
+  	  						);
 
-	  						$id = $this->My_common->insert_data ('contacts', $data);
+  	  						$id = $this->My_common->insert_data ('contacts', $data);
 
-							if (isset($_POST['id_cat'])){
-				        foreach ($_POST['id_cat'] as $key => $value) {
-				        	$data =array (
-				        		'id_contact' => $id,
-				        		'id_cat' => $value,
-				        	);
-				        	$this->My_common->insert_data ('contacts_cat', $data);
-				        }
-				    	}
+  							if (isset($_POST['id_cat'])){
+  				        foreach ($_POST['id_cat'] as $key => $value) {
+  				        	$data =array (
+  				        		'id_contact' => $id,
+  				        		'id_cat' => $value,
+  				        	);
+  				        	$this->My_common->insert_data ('contacts_cat', $data);
+  				        }
+  				    	}
+              }
 						}
 					}
 				}

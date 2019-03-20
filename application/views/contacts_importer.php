@@ -31,7 +31,7 @@
 							</ul>
 						</div>
 		      </div>
-		      <form id="form" method="post" class="validate" action="<?=base_url();?>contacts/importer_save.html" enctype="multipart/form-data">
+		      <form id="form" method="post" class="validate" action="<?=base_url();?>contacts/import_save.html" enctype="multipart/form-data">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">
@@ -60,7 +60,7 @@
 	<script type="text/javascript">
 
 	var id_ent = null;
-	var urlSelect = '<?=base_url();?>'+'select_all_cat';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_cat';
 
 	select ('#select_category', id_ent, urlSelect);
 
