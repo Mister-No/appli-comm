@@ -80,9 +80,9 @@
 		//var blockPlace;
 
 		$('.text_to_replace').each( function (){
-			text_to_replace = $(this).text();
+			text_to_replace = $(this).html();
 			text_replaced = text_to_replace.replace(/#&§#&§/g, '"');
-			$(this).text(text_replaced);
+			$(this).html(text_replaced);
 		});
 
 		$('.newsBuilderBlock').hover(function(){

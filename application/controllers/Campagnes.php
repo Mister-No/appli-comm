@@ -411,106 +411,78 @@ class Campagnes extends CI_Controller {
       $data = array();
       $data_block = array();
       $id_group = $_SESSION['id_group'];
-      //$theme = $this->input->post ('theme');
+      $id_newsletter = 14;
+      $theme = $this->input->post ('theme');
 
       //CRÉATION DU TEMPLATE DE BASE
-      /**$data_content = array();
+      $data_content = array();
       //Block Top
 
       //Récupération id du block du template par ordre
       $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme);
-
-      foreach ($result_html_block as $block) {
-
+      $content = '';
+      $img = '';
+      $text = '';
+      $select = '';
+      $ordre = 1;
+        foreach ($result_html_block as $block) {
           //Récupération du contenu
           $result_contenu = $this->My_campagnes->get_template_content($block->id);
 
-          foreach ($result_contenu as $contenu) {
-
-            /**$data_content[] = [
-              'id_block_html' => $block->id,
-              'img0' => $contenu->content,
-              'img1' => $contenu->content,
-              'img2' => $contenu->content,
-              'img3' => $contenu->content,
-              'text0' => $contenu->content,
-              'text1' => $contenu->content,
-              'text2' => $contenu->content,
-              'text3' => $contenu->content,
-              'text4' => $contenu->content,
-              'text5' => $contenu->content,
-              'text5' => $contenu->content,
-              'text6' => $contenu->content,
-              'text7' => $contenu->content,
-              'text8' => $contenu->content,
-              'text9' => $contenu->content,
-              'text10' => $contenu->content,
-              'text11' => $contenu->content,
-              'text12' => $contenu->content,
-              'text13' => $contenu->content,
-              'select0' => $contenu->content,
-              'select1' => $contenu->content,
-              'select2' => $contenu->content,
-              'select3' => $contenu->content,
-            ];**/
-
-            /**switch ($contenu->type) {
-              case 1:
-                $i=0;
-                echo 'img'.$i.'= '.$contenu->content;
-                $i++;
-              break;
-
-              case 2:
-                $t=0;
-                echo 'text'.$t.'= '.$contenu->content;
-                $t++;
-              break;
-
-              default:
-                // code...
-                break;
-            }
-
-            /**echo '<pre>';
-            print_r($contenu->content);
-            echo '</pre>';**/
-
-          /**}
-          $img = '';
-          $text = '';
-          $select = '';
-          for ($r=0; $r < count($result_contenu); $r++) {
-            if ($result_contenu[$r]->type == 1) {
-              for ($i=0; $i < count($result_contenu[$r]->content); $i++) {
-                $img = 'img'.$i.' => '.$result_contenu[$i]->content;
-                //echo $img;
+          if (count($result_contenu) > 0) {
+              if ($result_contenu[0]->type == 1) {
+                $content = 'img0';
+              } elseif ($result_contenu[0]->type == 2) {
+                $content = 'text0';
+              } elseif ($result_contenu[0]->type == 3) {
+                $content = 'select0';
+              } else {
+                $content = '';
               }
-            } elseif ($result_contenu[$r]->type == 2) {
-              for ($t=0; $t < count($result_contenu[$r]->content); $t++) {
-                $text = 'text'.$t.' => '.$result_contenu[$t]->content;
-                //echo $text;
+
+              $data_content = array(
+                'id_newsletter' => $id_newsletter,
+                $content => $result_contenu[0]->content,
+              );
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => $ordre,
+              );
+
+              $id_block = $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+              if (count($result_contenu) > 1 && !empty($id_block_content)) {
+                $i=1;
+                foreach ($result_contenu as $contenu) {
+                  if ($contenu->type == 1) {
+                    $content = 'img'.$i;
+                  } elseif ($contenu->type == 2) {
+                    $content = 'text'.$i;
+                  } elseif ($contenu->type == 3) {
+                    $content = 'select'.$i;
+                  } else {
+                    $content = '';
+                  }
+                  $data_content = array(
+                    $content => $contenu->content,
+                  );
+                  $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+                  $i++;
+                }
               }
+              $ordre++;
             } else {
-              $select = 'select'.$r.' => '.$result_contenu[$r]->content;
+              // code...
             }
 
-          }
-
-          $data_content = array(
-            'id_block_html' => $block->id,
-            $img,
-            $text,
-            $select,
-          );
+      }
 
 
-
-
-      }**/
-
-
-      if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
+      /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
         //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
 
@@ -826,7 +798,7 @@ class Campagnes extends CI_Controller {
 
       } else {
         echo 8;
-      }
+      }**/
 
     } else {
       $this->load->view('login');
@@ -2009,10 +1981,6 @@ class Campagnes extends CI_Controller {
       $image = '';
       $image_copy = '';
       $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
-
-      /**echo '<pre>';
-      var_dump($result_newsletter);
-      echo '</pre>';**/
 
       //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
 
