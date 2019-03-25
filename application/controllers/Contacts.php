@@ -140,6 +140,7 @@ class Contacts extends CI_Controller  {
 		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_contacts');
+      $this->load->model('My_users');
 
       $id_group = $_SESSION["id_group"];
 
@@ -147,9 +148,30 @@ class Contacts extends CI_Controller  {
 
 			if (count($result) > 0) {
 
-		        echo 1;
+		      echo 1;
 
 		    } else {
+
+        $infos_group = $this->My_users->get_group_infos($id_group);
+
+        require(APPPATH.'libraries/Mailin.php');
+        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+        if ($this->input->post('blacklist') == 'on') {
+          $data = array(
+            'email'       => $this->input->post('email'),
+            'blacklisted' => 1,
+          );
+          $blacklist = 1;
+        } else {
+          $data = array(
+            'email'       => $this->input->post('email'),
+            'blacklisted' => 0,
+          );
+          $blacklist = 0;
+        }
+
+        $mailin->create_update_user($data);
 
 				$data = array(
 					'id' 			    => $this->input->post('id'),
@@ -169,6 +191,7 @@ class Contacts extends CI_Controller  {
 					'cp' 				  => $this->input->post('cp'),
 					'ville' 			=> $this->input->post('ville'),
 					'cedex' 			=> $this->input->post('cedex'),
+          'blacklist'   => $blacklist,
 				);
 
 	        $id = $this->My_common->insert_data ('contacts', $data);
@@ -198,6 +221,7 @@ class Contacts extends CI_Controller  {
 		if ($_SESSION['is_connect'] == TRUE){
 
 			$this->load->model('My_contacts');
+      $this->load->model('My_users');
 
       $this->My_contacts->delete_ent_cat($this->input->post('id'));
 
@@ -210,6 +234,27 @@ class Contacts extends CI_Controller  {
 		     echo 1;
 
       } else {
+
+        $infos_group = $this->My_users->get_group_infos($id_group);
+
+        require(APPPATH.'libraries/Mailin.php');
+        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+        if ($this->input->post('blacklist') == 'on') {
+          $data = array(
+            'email'       => $this->input->post('email'),
+            'blacklisted' => 1,
+          );
+          $blacklist = 1;
+        } else {
+          $data = array(
+            'email'       => $this->input->post('email'),
+            'blacklisted' => 0,
+          );
+          $blacklist = 0;
+        }
+
+        $mailin->create_update_user($data);
 
         $data = array(
           'id' 		      => $this->input->post('id'),
@@ -229,6 +274,7 @@ class Contacts extends CI_Controller  {
           'cp' 				  => $this->input->post('cp'),
           'ville' 			=> $this->input->post('ville'),
           'cedex' 			=> $this->input->post('cedex'),
+          'blacklist'   => $blacklist,
         );
 
         $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);

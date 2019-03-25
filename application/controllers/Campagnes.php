@@ -408,28 +408,83 @@ class Campagnes extends CI_Controller {
 
       $this->load->model('My_campagnes');
       $this->load->model('My_users');
-      $data = array();
-      $data_block = array();
-      $id_group = $_SESSION['id_group'];
-      $id_newsletter = 14;
-      $theme = $this->input->post ('theme');
 
-      //CRÉATION DU TEMPLATE DE BASE
-      $data_content = array();
-      //Block Top
+      if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
-      //Récupération id du block du template par ordre
-      $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme);
-      $content = '';
-      $img = '';
-      $text = '';
-      $select = '';
-      $ordre = 1;
-        foreach ($result_html_block as $block) {
-          //Récupération du contenu
-          $result_contenu = $this->My_campagnes->get_template_content($block->id);
+        $id_group = $_SESSION['id_group'];
+        $data = array();
+        $data_block = array();
+        $data_content = array();
+        $content = '';
+        $ordre = 1;
 
-          if (count($result_contenu) > 0) {
+        //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
+
+        $infos_group = $this->My_users->get_group_infos($id_group);
+
+        require(APPPATH.'libraries/Mailin.php');
+        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+
+        $data = array(
+          "category"=> "",
+          "from_name"=> $_SESSION['user_nom'],
+          "from_email"=> "contact@studio-brik.com",
+          "name"=> $this->input->post ('nom_campagne'),
+          "bat"=> "contact@studio-brik.com",
+          "html_content"=> "<html><body></body></html>",
+          "html_url"=> "",
+          "listid"=> array(),
+          "scheduled_date"=> "",
+          "subject"=> $this->input->post ('objet'),
+          "reply_to"=> $this->input->post ('expediteur'),
+          "to_field"=>"[PRENOM] [NOM]",
+          'exclude_list'=> array(),
+          "attachment_url"=> "",
+          "inline_image"=> 0,
+          "mirror_active"=> 0,
+          "send_now"=> 0,
+          "utm_campaign"=> "",
+        );
+
+        $result = $mailin->create_campaign($data);
+
+        if ($result['code'] == 'success') {
+
+          //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
+
+          $data = array(
+            'nom_campagne'    => $this->input->post ('nom_campagne'),
+            'objet'           => $this->input->post ('objet'),
+            'expediteur'      => $this->input->post ('expediteur'),
+            'theme'           => $this->input->post ('theme'),
+            'id_group'        => $id_group,
+            'id_sib'          => $result['data']['id'],
+            'date_creation'   => date('Y-m-d'),
+          );
+
+          $id_newsletter = $this->My_common->insert_data('newsletter', $data);
+
+          $result_theme = $this->My_campagnes->get_newsletter_theme($this->input->post ('theme'));
+
+          mkdir('mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter);
+
+          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/img_1.png';
+
+          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/img_1.png';
+
+          copy($image_template, $image_copy);
+
+          //CRÉATION DU TEMPLATE DE BASE
+
+          //Récupération id du block du template par ordre
+          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($this->input->post ('theme'));
+
+          foreach ($result_html_block as $block) {
+            //Récupération du contenu
+            $result_contenu = $this->My_campagnes->get_template_content($block->id);
+
+            if (count($result_contenu) > 0) {
+
               if ($result_contenu[0]->type == 1) {
                 $content = 'img0';
               } elseif ($result_contenu[0]->type == 2) {
@@ -442,13 +497,14 @@ class Campagnes extends CI_Controller {
 
               $data_content = array(
                 'id_newsletter' => $id_newsletter,
+                'id_block_html' => $block->id,
                 $content => $result_contenu[0]->content,
               );
               $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
 
               $data_block = array(
                 'id_newsletter'    => $id_newsletter,
-                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_html'    => $block->id,
                 'id_block_content' => $id_block_content,
                 'ordre'            => $ordre,
               );
@@ -456,31 +512,59 @@ class Campagnes extends CI_Controller {
               $id_block = $this->My_common->insert_data('newsletter_has_block', $data_block);
 
               if (count($result_contenu) > 1 && !empty($id_block_content)) {
-                $i=1;
+                $i=0;
+                //$b = false;
                 foreach ($result_contenu as $contenu) {
-                  if ($contenu->type == 1) {
-                    $content = 'img'.$i;
-                  } elseif ($contenu->type == 2) {
-                    $content = 'text'.$i;
-                  } elseif ($contenu->type == 3) {
-                    $content = 'select'.$i;
-                  } else {
-                    $content = '';
-                  }
-                  $data_content = array(
-                    $content => $contenu->content,
-                  );
-                  $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+                  /**if (!$b) {
+                    $b = true;
+                    continue;
+                  } else {**/
+                    if ($contenu->type == 1) {
+                      $content = 'img'.$i;
+                    } elseif ($contenu->type == 2) {
+                      $content = 'text'.$i;
+                    } elseif ($contenu->type == 3) {
+                      $content = 'select'.$i;
+                    } else {
+                      $content = '';
+                    }
+                    $data_content = array(
+                      $content => $contenu->content,
+                    );
+                    $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
+                  //}
                   $i++;
                 }
               }
               $ordre++;
+
             } else {
-              // code...
+
+              $data_content = array(
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $block->id,
+              );
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $block->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => $ordre,
+              );
+
+              $id_block = $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+              $ordre++;
             }
-
+          }
+        redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+        } else {
+          // code...
+        }
+      } else {
+        echo 8;
       }
-
 
       /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 

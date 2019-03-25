@@ -104,6 +104,10 @@
 		                <label class="control-label">Cedex :</label>
 		                <input type="text" class="form-control" name="cedex" placeholder="Cedex">
 		              </div>
+									<div class="form-group form-group-default">
+										<label class="control-label">Blacklisté :</label>
+										<input type="checkbox" data-init-plugin="switchery" data-size="small" data-color="danger" name="blacklist">
+									</div>
 		            </div>
 		            <div class="col-md-12">&nbsp;</div>
 		            <div class="col-md-6">
