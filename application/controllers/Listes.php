@@ -194,34 +194,40 @@ class Listes extends CI_Controller {
 
       $id_group = $_SESSION["id_group"];
 
-      $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
+      if (!empty($this->input->post('titre')) && !empty($this->input->post('id_cat'))) {
 
-			if (count($result) > 0) {
+        $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
 
-		       echo 1;
+        if (count($result) > 0) {
 
-        } else {
+             echo 1;
 
-        $data = array(
-          'titre' => $_POST['titre'],
-          'id_group' 	=> $id_group,
-        );
+          } else {
 
-           $id = $this->My_common->insert_data ('liste', $data);
+          $data = array(
+            'titre' => $_POST['titre'],
+            'id_group' 	=> $id_group,
+          );
 
-            foreach ($_POST['id_cat'] as $key => $value) {
+             $id = $this->My_common->insert_data ('liste', $data);
 
-              $data = array(
-                'id_liste'  => $id,
-                'id_cat'    => $value,
-              );
+              foreach ($_POST['id_cat'] as $key => $value) {
 
-          $this->My_common->insert_data('liste_cat', $data);
-            }
+                $data = array(
+                  'id_liste'  => $id,
+                  'id_cat'    => $value,
+                );
 
-        echo 'ok';
+                $this->My_common->insert_data('liste_cat', $data);
+              }
 
-        return $data;
+          echo 'ok';
+
+        }
+
+      } else {
+
+        echo 9;
 
       }
 
@@ -257,35 +263,43 @@ class Listes extends CI_Controller {
 
       $id_group = $_SESSION["id_group"];
 
-      $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group, $this->input->post('id'));
+      if (!empty($this->input->post('titre')) && !empty($this->input->post('id_cat'))) {
+        
+        $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group, $this->input->post('id'));
 
-      if (count($result) > 0) {
+        if (count($result) > 0) {
 
-           echo 1;
+            echo 1;
+
+          } else {
+
+            $this->My_common->delete_data("liste", $this->input->post('id'));
+            $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
+
+            $data = array(
+              'titre' => $_POST['titre'],
+              'id_group' => $id_group,
+            );
+
+            $id = $this->My_common->insert_data ('liste', $data);
+
+            foreach ($_POST['id_cat'] as $key => $value) {
+
+              $data = array(
+                'id_liste' => $id,
+                'id_cat' => $value,
+              );
+
+              $this->My_common->insert_data ('liste_cat', $data);
+            }
+
+            echo 'ok';
+
+          }
 
         } else {
 
-          $this->My_common->delete_data("liste", $this->input->post('id'));
-          $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
-
-          $data = array(
-            'titre' => $_POST['titre'],
-            'id_group' => $id_group,
-          );
-
-          $id = $this->My_common->insert_data ('liste', $data);
-
-          foreach ($_POST['id_cat'] as $key => $value) {
-
-            $data = array(
-              'id_liste' => $id,
-              'id_cat' => $value,
-            );
-
-            $this->My_common->insert_data ('liste_cat', $data);
-          }
-
-          echo 'ok';
+          echo 9;
 
         }
 

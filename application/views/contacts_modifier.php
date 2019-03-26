@@ -109,7 +109,7 @@
 			              </div>
 										<div class="form-group form-group-default">
 											<label class="control-label">Blacklisté :</label>
-											<input type="checkbox" data-init-plugin="switchery" data-size="small" data-color="danger" name="blacklist">
+											<input type="checkbox" data-init-plugin="switchery" data-size="small" data-color="danger" name="blacklist"' . $blacklist .'>
 										</div>
 			          </div>';
 						}

@@ -99,8 +99,10 @@ class Contacts extends CI_Controller  {
     if ($_SESSION['is_connect'] == TRUE){
 
       $this->load->model('My_contacts');
+      $this->load->model('My_users');
 
       $id = $this->uri->segment(3, 0);
+      $id_group = $_SESSION["id_group"];
 
       $result = $this->My_contacts->get_ent_by_id($id);
       $resultc = $this->My_contacts->get_cat_by_id($id);
@@ -112,6 +114,15 @@ class Contacts extends CI_Controller  {
         if ($row->civ == 1) { $civ_val1 = 'selected';}
       }
 
+      $infos_group = $this->My_users->get_group_infos($id_group);
+
+      require(APPPATH.'libraries/Mailin.php');
+      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+      $data_user = array( 'email' => $row->email );
+
+      $result_user = $mailin->get_user($data_user);
+
+      ($result_user['data']['blacklisted'] == 1)? $blacklist = 'checked': $blacklist = '';
       $result_cat = '';
 
       foreach ($resultc as $rowc) {
@@ -122,6 +133,7 @@ class Contacts extends CI_Controller  {
           'result'     => $result,
           'civ_val1'   => $civ_val1,
           'civ_val2'   => $civ_val2,
+          'blacklist'  => $blacklist,
           'result_cat' => $result_cat,
         );
 
@@ -254,7 +266,7 @@ class Contacts extends CI_Controller  {
           $blacklist = 0;
         }
 
-        $mailin->create_update_user($data);
+        $result = $mailin->create_update_user($data);
 
         $data = array(
           'id' 		      => $this->input->post('id'),
@@ -339,7 +351,6 @@ class Contacts extends CI_Controller  {
       	$this->load->view('login');
   	}
 	}
-
 
 	public function import_save()
 	{
