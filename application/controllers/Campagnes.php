@@ -2043,9 +2043,7 @@ class Campagnes extends CI_Controller {
 
       $result = $mailin->update_campaign($data);
       $code = $result['code'];
-      echo '<pre>';
-      print_r($result);
-      echo '</pre>';
+
       if ($code == 'success'){
 
         $data = array(
