@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  mer. 27 mars 2019 à 21:24
+-- Généré le :  mer. 27 mars 2019 à 21:32
 -- Version du serveur :  5.7.25
 -- Version de PHP :  5.6.40
 
@@ -27,6 +27,16 @@ CREATE TABLE `group_has_sender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Déchargement des données de la table `group_has_sender`
+--
+
+INSERT INTO `group_has_sender` (`id`, `id_group`, `Id_expediteur`) VALUES
+(1, 2, 1),
+(2, 2, 2),
+(3, 3, 1),
+(4, 3, 2);
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -44,4 +54,4 @@ ALTER TABLE `group_has_sender`
 -- AUTO_INCREMENT pour la table `group_has_sender`
 --
 ALTER TABLE `group_has_sender`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

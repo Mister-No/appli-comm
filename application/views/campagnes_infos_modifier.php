@@ -63,7 +63,6 @@
 									<div class="form-group form-group-default form-group-default-select2 ">
 										<label class="">Thème :</label>
 											<select class="full-width" data-placeholder="Choisir un thème" data-init-plugin="select2" name="theme" disabled>
-												<option value=""></option>
 												<?php foreach ($result_theme_newsletter as $row_theme_newsletter): ?>
 													<option value="<?=$row_theme_newsletter->id?>" <?php echo ($theme_campagne == $row_theme_newsletter->id_theme)? 'selected="selected"': ''; ?>><?=ucfirst ($row_theme_newsletter->nom)?></option>
 												<?php endforeach; ?>

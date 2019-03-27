@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  mer. 27 mars 2019 à 21:26
+-- Généré le :  mer. 27 mars 2019 à 21:35
 -- Version du serveur :  5.7.25
 -- Version de PHP :  5.6.40
 
@@ -27,6 +27,14 @@ CREATE TABLE `newsletter_sender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Déchargement des données de la table `newsletter_sender`
+--
+
+INSERT INTO `newsletter_sender` (`id`, `nom_expediteur`, `email_expediteur`) VALUES
+(1, 'Villa Beausoleil', 'relationclients@villabeausoleil.com'),
+(2, 'Manon Lamotte', 'manon.lamotte@villabeausoleil.com');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -44,4 +52,4 @@ ALTER TABLE `newsletter_sender`
 -- AUTO_INCREMENT pour la table `newsletter_sender`
 --
 ALTER TABLE `newsletter_sender`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
