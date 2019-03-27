@@ -32,14 +32,14 @@ class Statistiques extends CI_Controller {
       $id_newsletter = $this->uri->segment(3, 0);
       $contact = $this->uri->segment(4, 0);
 
-      $data = array(
+      /**$data = array(
         'date_heure'    => date('Y-m-d H:i:s'),
         'id_newsletter' => $id_newsletter,
         'contact'    => $contact,
         'ouverture'     => 1,
       );
 
-      $this->My_common->insert_data('newsletter_statistics', $data);
+      $this->My_common->insert_data('newsletter_statistics', $data);**/
 
     /**} else {
         $this->load->view('login');

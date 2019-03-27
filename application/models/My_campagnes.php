@@ -2,6 +2,37 @@
 class My_campagnes extends CI_Model {
 
 	/********************************************************/
+	/*        				 SELECT EXPEDITEURS 	   			        */
+	/********************************************************/
+	function get_senders($id_group){
+
+		$this->db->select('newsletter_sender.id as id, newsletter_sender.email_expediteur as email_expediteur, newsletter_sender.nom_expediteur as nom_expediteur');
+		$this->db->from('newsletter_sender');
+		$this->db->join('group_has_sender', 'group_has_sender.id_expediteur = newsletter_sender.id', 'left');
+		$this->db->where("group_has_sender.id_group", $id_group);
+		$this->db->order_by('newsletter_sender.id', 'ASC');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
+	/*        				 SELECT UNSENT CAMPAGNES	   			        */
+	/********************************************************/
+	function get_campagne_sender($id){
+
+		$this->db->select('newsletter_sender.id as id, newsletter_sender.email_expediteur as email_expediteur, newsletter_sender.nom_expediteur as nom_expediteur');
+		$this->db->from('newsletter_sender');
+		$this->db->where("id", $id);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+	/********************************************************/
 	/*        				 SELECT UNSENT CAMPAGNES	   			        */
 	/********************************************************/
 	function get_unsent_campagnes($id_group){

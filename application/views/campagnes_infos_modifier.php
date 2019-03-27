@@ -51,9 +51,14 @@
 									</div>
 		            </div>
 								<div class="col-md-6">
-									<div class="form-group form-group-default">
-										<label class="control-label">Expediteur :</label>
-										<input type="text" class="form-control" name="expediteur" placeholder="Expediteur" value="<?=$expediteur_campagne?>" required />
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Expéditeur :</label>
+											<select class="full-width" data-placeholder="" data-init-plugin="select2" name="id_expediteur" required>
+												<option value=""></option>
+												<?php foreach ($result_sender as $row_sender): ?>
+													<option value="<?=$row_sender->id?>" <?=($row_sender->id == $expediteur_campagne )?'selected="selected"':'';?> ><?=$row_sender->email_expediteur.' - '.$row_sender->nom_expediteur?></option>
+												<?php endforeach; ?>
+										</select>
 									</div>
 									<div class="form-group form-group-default form-group-default-select2 ">
 										<label class="">Thème :</label>

@@ -119,20 +119,25 @@ class Campagnes extends CI_Controller {
       $id_newsletter = $this->uri->segment(4, 0);
       $id_group = $_SESSION['id_group'];
       $data = array();
-      $data_themes = array();
+      $data_infos = array();
+      $data_sender = array();
 
       $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+      $result_sender = $this->My_campagnes->get_senders($id_group);
       $result_theme_newsletter = $this->My_campagnes->get_newsletter_themes_by_group($id_group);
 
-      $data_themes = array(
+      $data_infos = array(
         'result_theme_newsletter' => $result_theme_newsletter,
+        'result_sender' => $result_sender,
       );
 
       if ($etape == 'creation') {
-        $this->load->view('header', $data_themes);
+
+        $this->load->view('header', $data_infos);
         $this->load->view('campagnes_infos_ajouter');
         $this->load->view('footer');
       }
+
       if ($etape == 'modification') {
 
         $data_newsletter = array(
@@ -142,7 +147,7 @@ class Campagnes extends CI_Controller {
           'expediteur_campagne' => $result_newsletter[0]->expediteur,
         );
 
-        $this->load->view('header', $data_themes);
+        $this->load->view('header', $data_infos);
         $this->load->view('campagnes_infos_modifier', $data_newsletter);
         $this->load->view('footer');
       }
@@ -427,10 +432,10 @@ class Campagnes extends CI_Controller {
 
         $data = array(
           "category"=> "",
-          "from_name"=> $_SESSION['user_nom'],
-          "from_email"=> "contact@studio-brik.com",
+          "from_name"=> $result_expediteur[0]->nom_expediteur,
+          "from_email"=> $result_expediteur[0]->email_expediteur,
           "name"=> $this->input->post ('nom_campagne'),
-          "bat"=> "contact@studio-brik.com",
+          "bat"=> '',
           "html_content"=> "<html><body></body></html>",
           "html_url"=> "",
           "listid"=> array(),
@@ -570,6 +575,7 @@ class Campagnes extends CI_Controller {
 
         $id_group = $_SESSION['id_group'];
         $theme = $this->input->post ('theme');
+        $result_expediteur = $this->My_campagnes->get_campagne_sender($this->input->post ('id_expediteur'));
         $data = array();
         $data_block = array();
         $data_content = array();
@@ -583,10 +589,10 @@ class Campagnes extends CI_Controller {
 
         $data = array(
           "category"=> "",
-          "from_name"=> $_SESSION['user_nom'],
-          "from_email"=> "contact@studio-brik.com",
+          "from_name"=> $result_expediteur[0]->nom_expediteur,
+          "from_email"=> $result_expediteur[0]->email_expediteur,
           "name"=> $this->input->post ('nom_campagne'),
-          "bat"=> "contact@studio-brik.com",
+          "bat"=> '',
           "html_content"=> "<html><body></body></html>",
           "html_url"=> "",
           "listid"=> array(),
@@ -611,7 +617,7 @@ class Campagnes extends CI_Controller {
           $data = array(
             'nom_campagne'    => $this->input->post ('nom_campagne'),
             'objet'           => $this->input->post ('objet'),
-            'expediteur'      => $this->input->post ('expediteur'),
+            'expediteur'      => $result_expediteur[0]->id,
             'theme'           => $this->input->post ('theme'),
             'id_group'        => $_SESSION['id_group'],
             'id_sib'          => $result['data']['id'],
@@ -908,6 +914,7 @@ class Campagnes extends CI_Controller {
       // INFOS NEWSLETTER
 
       $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+      $result_expediteur = $this->My_campagnes->get_campagne_sender($this->input->post ('id_expediteur'));
 
       //UPDATE DE LA CAMPAGNE CHEZ SEND IN BLUE
 
@@ -919,10 +926,10 @@ class Campagnes extends CI_Controller {
       $data = array(
         "id"=> $result_newsletter[0]->id_sendinblue,
         "category"=> "",
-        "from_name"=> $_SESSION['user_nom'],
-        "from_email"=> "contact@studio-brik.com",
+        "from_name"=> $result_expediteur[0]->nom_expediteur,
+        "from_email"=> $result_expediteur[0]->email_expediteur,
         "name"=> $this->input->post ('nom_campagne'),
-        "bat"=> "contact@studio-brik.com",
+        "bat"=> '',
         "html_content"=> "<html><body></body></html>",
         "html_url"=> "",
         "listid"=> array(),
@@ -943,7 +950,7 @@ class Campagnes extends CI_Controller {
       $data = array(
         'nom_campagne'    => $this->input->post ('nom_campagne'),
         'objet'           => $this->input->post ('objet'),
-        'expediteur'      => $this->input->post ('expediteur'),
+        'expediteur'      => $result_expediteur[0]->email_expediteur,
       );
 
 			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
@@ -2035,7 +2042,9 @@ class Campagnes extends CI_Controller {
 
       $result = $mailin->update_campaign($data);
       $code = $result['code'];
-
+      echo '<pre>';
+      print_r($result);
+      echo '</pre>';
       if ($code == 'success'){
 
         $data = array(
@@ -2071,6 +2080,7 @@ class Campagnes extends CI_Controller {
       $image = '';
       $image_copy = '';
       $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+      $result_expediteur = $this->My_campagnes->get_campagne_sender($result_newsletter[0]->expediteur);
 
       //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
 
@@ -2081,10 +2091,10 @@ class Campagnes extends CI_Controller {
 
       $data = array(
         "category"=> "",
-        "from_name"=> $_SESSION['user_nom'],
-        "from_email"=> "contact@studio-brik.com",
+        "from_name"=> $result_expediteur[0]->nom_expediteur,
+        "from_email"=> $result_expediteur[0]->email_expediteur,
         "name"=> $result_newsletter[0]->nom_campagne.' copie',
-        "bat"=> "contact@studio-brik.com",
+        "bat"=> '',
         "html_content"=> "<html><body></body></html>",
         "html_url"=> "",
         "listid"=> array(),

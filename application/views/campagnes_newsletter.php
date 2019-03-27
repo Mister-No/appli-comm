@@ -41,7 +41,7 @@
 						<?=$newsletter?>
 					</div>
 					<div class="panel-footer text-right">
-						<a href="/campagnes/informations/<?=$id_newsletter?>.html" class="btn btn-complete">INFORMATIONS</a>
+						<a href="/campagnes/informations/modification/<?=$id_newsletter?>.html" class="btn btn-complete">INFORMATIONS</a>
 						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
 						<button type="button" class="btn btn-complete" onclick="bat_popin( '<?=$id_newsletter?>', '<?=$nom_campagne?>')">BAT</button>
 						<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
