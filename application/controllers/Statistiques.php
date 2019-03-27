@@ -35,7 +35,7 @@ class Statistiques extends CI_Controller {
       $data = array(
         'date_heure'    => date('Y-m-d H:i:s'),
         'id_newsletter' => $id_newsletter,
-        'id_contact'    => $id_contact,
+        'contact'    => $contact,
         'ouverture'     => 1,
       );
 

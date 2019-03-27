@@ -409,7 +409,7 @@ class Campagnes extends CI_Controller {
       $this->load->model('My_campagnes');
       $this->load->model('My_users');
 
-      if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
+      /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
         $id_group = $_SESSION['id_group'];
         $data = array();
@@ -518,7 +518,7 @@ class Campagnes extends CI_Controller {
                   /**if (!$b) {
                     $b = true;
                     continue;
-                  } else {**/
+                  } else {
                     if ($contenu->type == 1) {
                       $content = 'img'.$i;
                     } elseif ($contenu->type == 2) {
@@ -564,9 +564,15 @@ class Campagnes extends CI_Controller {
         }
       } else {
         echo 8;
-      }
+      }**/
 
-      /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
+      if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
+
+        $id_group = $_SESSION['id_group'];
+        $theme = $this->input->post ('theme');
+        $data = array();
+        $data_block = array();
+        $data_content = array();
 
         //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
 
@@ -882,7 +888,7 @@ class Campagnes extends CI_Controller {
 
       } else {
         echo 8;
-      }**/
+      }
 
     } else {
       $this->load->view('login');
@@ -993,21 +999,21 @@ class Campagnes extends CI_Controller {
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
         $img_link3 = $row_newsletter->newsletter_block_img3;
-        $text0 = $row_newsletter->newsletter_block_text0;
-        $text1 = $row_newsletter->newsletter_block_text1;
-        $text2 = $row_newsletter->newsletter_block_text2;
-        $text3 = $row_newsletter->newsletter_block_text3;
-        $text4 = $row_newsletter->newsletter_block_text4;
-        $text5 = $row_newsletter->newsletter_block_text5;
-        $text6 = $row_newsletter->newsletter_block_text6;
-        $text7 = $row_newsletter->newsletter_block_text7;
-        $text8 = $row_newsletter->newsletter_block_text8;
-        $text9 = $row_newsletter->newsletter_block_text9;
-        $text10 = $row_newsletter->newsletter_block_text10;
-        $text11 = $row_newsletter->newsletter_block_text11;
-        $text12 = $row_newsletter->newsletter_block_text12;
-        $text13 = $row_newsletter->newsletter_block_text13;
-        $text14 = $row_newsletter->newsletter_block_text14;
+        $text0 = nl2br($row_newsletter->newsletter_block_text0);
+        $text1 = nl2br($row_newsletter->newsletter_block_text1);
+        $text2 = nl2br($row_newsletter->newsletter_block_text2);
+        $text3 = nl2br($row_newsletter->newsletter_block_text3);
+        $text4 = nl2br($row_newsletter->newsletter_block_text4);
+        $text5 = nl2br($row_newsletter->newsletter_block_text5);
+        $text6 = nl2br($row_newsletter->newsletter_block_text6);
+        $text7 = nl2br($row_newsletter->newsletter_block_text7);
+        $text8 = nl2br($row_newsletter->newsletter_block_text8);
+        $text9 = nl2br($row_newsletter->newsletter_block_text9);
+        $text10 = nl2br($row_newsletter->newsletter_block_text10);
+        $text11 = nl2br($row_newsletter->newsletter_block_text11);
+        $text12 = nl2br($row_newsletter->newsletter_block_text12);
+        $text13 = nl2br($row_newsletter->newsletter_block_text13);
+        $text14 = nl2br($row_newsletter->newsletter_block_text14);
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -2008,7 +2014,7 @@ class Campagnes extends CI_Controller {
         $data_contact = array(
           'email'	=> $email,
         );
-        $this->My_common->insert_data('contacts', $data);
+        $this->My_common->insert_data('contacts', $data_contact);
       }
 
       // Informations sur la campagne

@@ -194,7 +194,7 @@ class Listes extends CI_Controller {
 
       $id_group = $_SESSION["id_group"];
 
-      if (!empty($this->input->post('titre')) && !empty($this->input->post('id_cat'))) {
+      if ($this->input->post('titre') != '' && $this->input->post('id_cat') != '') {
 
         $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
 
@@ -263,8 +263,8 @@ class Listes extends CI_Controller {
 
       $id_group = $_SESSION["id_group"];
 
-      if (!empty($this->input->post('titre')) && !empty($this->input->post('id_cat'))) {
-        
+      if ($this->input->post('titre') != '' && $this->input->post('id_cat') != '') {
+
         $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group, $this->input->post('id'));
 
         if (count($result) > 0) {

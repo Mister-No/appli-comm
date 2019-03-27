@@ -43,10 +43,8 @@
 					<div class="panel-footer text-right">
 						<a href="/campagnes/informations/<?=$id_newsletter?>.html" class="btn btn-complete">INFORMATIONS</a>
 						<a href="/campagnes/preview/<?=$id_newsletter?>.html" class="btn btn-complete" target="_blank">PRÉVISUALISATION</a>
-						<?php if ($_SESSION['id_group'] == 0): ?>
-							<button type="button" class="btn btn-complete" onclick="bat_popin( '<?=$id_newsletter?>', '<?=$nom_campagne?>')">BAT</button>
-							<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
-						<?php endif; ?>
+						<button type="button" class="btn btn-complete" onclick="bat_popin( '<?=$id_newsletter?>', '<?=$nom_campagne?>')">BAT</button>
+						<a href="/campagnes/listes/<?=$id_newsletter?>.html" class="btn btn-success">VALIDER</a>
 					</div>
 				</div>
 				<div class="modal fade" id="modal-delete">
@@ -81,7 +79,9 @@
 
 		$('.text_to_replace').each( function (){
 			text_to_replace = $(this).html();
-			text_replaced = text_to_replace.replace(/#&§#&§/g, '"');
+			console.log(text_to_replace);
+			text_replaced = text_to_replace.replace(/#&§#&§/g, '"').replace(/#&amp;§#&amp;§/g, '"');
+			console.log(text_replaced);
 			$(this).html(text_replaced);
 		});
 
@@ -524,12 +524,12 @@
 						});**/
 							$('input[name="text'+t+'"]').each( function (){
 								text_to_replace = $(this).val();
-								text_replaced = text_to_replace.replace(/#&§#&§/g, '"');
+								text_replaced = text_to_replace.replace(/#&§#&§/g, '"').replace(/#&amp;§#&amp;§/g, '"');
 								$(this).val(text_replaced);
 							});
 							$('textarea').each( function (){
 								text_to_replace = $(this).html();
-								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\r");
+								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\r").replace(/#&amp;§#&amp;§/g, '"');
 								$(this).val(text_replaced);
 							});
 						t++;
