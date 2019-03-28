@@ -951,7 +951,7 @@ class Campagnes extends CI_Controller {
       $data = array(
         'nom_campagne'    => $this->input->post ('nom_campagne'),
         'objet'           => $this->input->post ('objet'),
-        'expediteur'      => $result_expediteur[0]->email_expediteur,
+        'expediteur'      => $this->input->post ('id_expediteur'),
       );
 
 			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
