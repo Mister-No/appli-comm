@@ -189,27 +189,33 @@ class Campagnes extends CI_Controller {
         $nom_block = $row_newsletter->newsletter_block_nom;
         $type = $row_newsletter->newsletter_block_type;
         $ordre = $row_newsletter->newsletter_block_ordre;
+
+        // Images
+
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
         $img_link3 = $row_newsletter->newsletter_block_img3;
-        //$text0 = addcslashes($row_newsletter->newsletter_block_text0, '"\\/');
-        $text0 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text0));
-        //$text0 = $row_newsletter->newsletter_block_text0;
-        $text1 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text1));
-        $text2 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text2));
-        $text3 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text3));
-        $text4 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text4));
-        $text5 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text5));
-        $text6 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text6));
-        $text7 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text7));
-        $text8 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text8));
-        $text9 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text9));
-        $text10 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text10));
-        $text11 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text11));
-        $text12 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text12));
-        $text13 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text13));
-        $text14 = str_replace('"','#&§#&§', nl2br($row_newsletter->newsletter_block_text14));
+
+        // Texte
+
+        $text0 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text0));
+        $text1 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text1));
+        $text2 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text2));
+        $text3 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text3));
+        $text4 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text4));
+        $text5 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text5));
+        $text6 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text6));
+        $text7 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text7));
+        $text8 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text8));
+        $text9 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text9));
+        $text10 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text10));
+        $text11 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text11));
+        $text12 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text12));
+        $text13 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text13));
+        $text14 = nl2br($this->My_campagnes->replace_pattern($row_newsletter->newsletter_block_text14));
+
+        // Select
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -599,8 +605,7 @@ class Campagnes extends CI_Controller {
           "listid"=> array(),
           "scheduled_date"=> "",
           "subject"=> $this->input->post ('objet'),
-          "reply_to"=> $this->input->post ('expediteur'),
-          "to_field"=>"[PRENOM] [NOM]",
+          "reply_to"=> $result_expediteur[0]->email_expediteur,
           'exclude_list'=> array(),
           "attachment_url"=> "",
           "inline_image"=> 0,
@@ -936,8 +941,7 @@ class Campagnes extends CI_Controller {
         "listid"=> array(),
         "scheduled_date"=> "",
         "subject"=> $this->input->post ('objet'),
-        "reply_to"=> $this->input->post ('expediteur'),
-        "to_field"=>"[PRENOM] [NOM]",
+        "reply_to"=> $result_expediteur[0]->email_expediteur,
         'exclude_list'=> array(),
         "attachment_url"=> "",
         "inline_image"=> 0,
@@ -946,7 +950,7 @@ class Campagnes extends CI_Controller {
         "utm_campaign"=> "",
       );
 
-      //var_dump($mailin->update_campaign($data));
+      $mailin->update_campaign($data);
 
       $data = array(
         'nom_campagne'    => $this->input->post ('nom_campagne'),
@@ -954,9 +958,10 @@ class Campagnes extends CI_Controller {
         'expediteur'      => $this->input->post ('id_expediteur'),
       );
 
-			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+      $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
 
       redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+
 
     } else {
       $this->load->view('login');
@@ -1003,25 +1008,34 @@ class Campagnes extends CI_Controller {
         $html = $row_newsletter->newsletter_block_html;
         $nom_block = $row_newsletter->newsletter_block_nom;
         $ordre = $row_newsletter->newsletter_block_ordre;
+
+        // Images
+
         $img_link0 = $row_newsletter->newsletter_block_img0;
         $img_link1 = $row_newsletter->newsletter_block_img1;
         $img_link2 = $row_newsletter->newsletter_block_img2;
         $img_link3 = $row_newsletter->newsletter_block_img3;
-        $text0 = nl2br($row_newsletter->newsletter_block_text0);
-        $text1 = nl2br($row_newsletter->newsletter_block_text1);
-        $text2 = nl2br($row_newsletter->newsletter_block_text2);
-        $text3 = nl2br($row_newsletter->newsletter_block_text3);
-        $text4 = nl2br($row_newsletter->newsletter_block_text4);
-        $text5 = nl2br($row_newsletter->newsletter_block_text5);
-        $text6 = nl2br($row_newsletter->newsletter_block_text6);
-        $text7 = nl2br($row_newsletter->newsletter_block_text7);
-        $text8 = nl2br($row_newsletter->newsletter_block_text8);
-        $text9 = nl2br($row_newsletter->newsletter_block_text9);
-        $text10 = nl2br($row_newsletter->newsletter_block_text10);
-        $text11 = nl2br($row_newsletter->newsletter_block_text11);
-        $text12 = nl2br($row_newsletter->newsletter_block_text12);
-        $text13 = nl2br($row_newsletter->newsletter_block_text13);
-        $text14 = nl2br($row_newsletter->newsletter_block_text14);
+
+        // Textes
+
+        $text0 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text0));
+        $text1 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text1));
+        $text2 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text2));
+        $text3 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text3));
+        $text4 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text4));
+        $text5 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text5));
+        $text6 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text6));
+        $text7 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text7));
+        $text8 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text8));
+        $text9 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text9));
+        $text10 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text10));
+        $text11 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text11));
+        $text12 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text12));
+        $text13 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text13));
+        $text14 = nl2br($this->My_campagnes->replace_one_pattern($row_newsletter->newsletter_block_text14));
+
+        // Select
+
         $select0 = $row_newsletter->newsletter_block_select0;
         $select1 = $row_newsletter->newsletter_block_select1;
         $select2 = $row_newsletter->newsletter_block_select2;
@@ -1199,12 +1213,12 @@ class Campagnes extends CI_Controller {
       //$search = '/<tr class="display.*?<\/tr>/is';
       //$replace = '';
       //$newsletter = preg_replace($search,$replace,$newsletter);
-      $search = '/§§§§/';
-      $replace = '"';
+      //$search = '/§§§§/';
+      //$replace = '"';
       //$newsletter = preg_replace($search,$replace,$newsletter);
       //$search = "/§§/";
       //$replace = '\'';
-      $newsletter = preg_replace($search,$replace,$newsletter);
+      //$newsletter = preg_replace($search,$replace,$newsletter);
 
       if ($this->uri->segment(2, 0) == 'preview') {
         echo $newsletter;
@@ -2099,8 +2113,7 @@ class Campagnes extends CI_Controller {
         "listid"=> array(),
         "scheduled_date"=> "",
         "subject"=> $result_newsletter[0]->objet,
-        "reply_to"=> $result_newsletter[0]->expediteur,
-        "to_field"=>"[PRENOM] [NOM]",
+        "reply_to"=> $result_expediteur[0]->expediteur,
         'exclude_list'=> array(),
         "attachment_url"=> "",
         "inline_image"=> 0,
@@ -2262,7 +2275,7 @@ class Campagnes extends CI_Controller {
       require(APPPATH.'libraries/Mailin.php');
       $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-    	$data = array( 'id'=> $infos_group[0]->api_sib_key );
+    	$data = array( 'id'=> $result_newsletter[0]->id_sendinblue );
     	$mailin->delete_campaign($data);
 
       $this->My_common->delete_data('newsletter', $id_newsletter);

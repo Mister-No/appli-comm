@@ -54,16 +54,54 @@
 		                  <label class="control-label">Login :</label>
 		                  <input type="text" class="form-control" name="login" placeholder="Login" />
 		                </div>
+
+										<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['is_super_admin'] == 1 ) { ?>
+
+												<div class="form-group form-group-default form-group-default-select2 ">
+													<label class="control-label">Groupe :</label>
+														<select class="form-control" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_group" name="id_group" disabled>
+															<option value=""></option>
+													</select>
+												</div>
+
+										<?php	} else { ?>
+
+											<div class="form-group form-group-default">
+												<label class="controls-label">Groupe :</label>
+												<p style="margin:0px 0px 2px 0px;"> <?=$_SESSION['group']?>
+												</p>
+											</div>
+
+										<?php	} ?>
+
+										<div class="form-group form-group-default form-group-default-select2 ">
+											<label class="">Succursale :</label>
+												<select class="full-width" data-placeholder="Choisir une succursale" data-init-plugin="select2" id="select_succursale" name="id_succursale" disabled>
+											</select>
+										</div>
 									</div>
 									<div class="col-md-6">
 		                <div class="form-group form-group-default">
 		                  <label class="control-label">Mot de passe :</label>
 		                  <input type="password" class="form-control" name="password" placeholder="Mot de passe" />
 		                </div>
+
+									<?php if($_SESSION['is_admin'] == 1) { ?>
+
 										<div class="form-group form-group-default">
 		                  <label class="control-label">Administrateur :</label>
                     	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="admin" />
 		                </div>
+
+									<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['is_super_admin'] == 1 ) { ?>
+
+										<div class="form-group form-group-default">
+											<label class="control-label">Super Administrateur :</label>
+											<input type="checkbox" data-init-plugin="switchery" data-size="small" name="super_admin" />
+										</div>
+
+									<?php } ?>
+
 		                <div class="form-group form-group-default form-group-default-select2">
 		                  <label class="control-label">Rang :</label>
 											<select class="full-width" data-placeholder="Choisir le rang de l\'utilisateur" data-init-plugin="select2" name="rang">';
@@ -78,7 +116,10 @@
 			                <label class="control-label">Actif :</label>
                     	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" />
 			              </div>
-			          	</div>
+
+								<?php } ?>
+
+			          </div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
@@ -90,6 +131,16 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+
+	var id = '<?=$_SESSION['id_group']?>';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_group';
+
+	select ('#select_group', id, urlSelect);
+
+	var id = '<?=$_SESSION['id_succursale']?>';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_succursale';
+
+	select ('#select_succursale', id, urlSelect);
 
 	$('#form').submit(function(e) {
 

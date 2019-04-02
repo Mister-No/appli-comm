@@ -529,7 +529,7 @@
 							});
 							$('textarea').each( function (){
 								text_to_replace = $(this).html();
-								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\r").replace(/#&amp;§#&amp;§/g, '"');
+								text_replaced = text_to_replace.replace(/&lt;br \/&gt;/gi, "\r").replace(/#&amp;§#&amp;§/g, '"').replace(/&lt;b&gt;/g, '**').replace(/&lt;\/b&gt;/g, '**');
 								$(this).val(text_replaced);
 							});
 						t++;

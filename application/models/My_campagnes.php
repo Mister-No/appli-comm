@@ -40,9 +40,10 @@ class My_campagnes extends CI_Model {
 		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, type_envoi, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
-		$this->db->where("group_has_theme.id_group", $id_group);
+		$this->db->where("newsletter.id_group", $id_group);
 		$this->db->where("newsletter.envoi", NULL);
 		$this->db->where("newsletter.archive", NULL);
+		$this->db->group_by('newsletter.id');
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 
 		$query = $this->db->get();
@@ -58,9 +59,10 @@ class My_campagnes extends CI_Model {
 		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, type_envoi, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
-		$this->db->where("group_has_theme.id_group", $id_group);
+		$this->db->where("newsletter.id_group", $id_group);
 		$this->db->where("newsletter.envoi", 1);
 		$this->db->where("newsletter.archive", NULL);
+		$this->db->group_by('newsletter.id');
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 
 		$query = $this->db->get();
@@ -76,9 +78,10 @@ class My_campagnes extends CI_Model {
 		$this->db->select('newsletter.id as id_newsletter, newsletter.id_group, theme, nom_campagne, objet, expediteur, type_envoi, date_envoi, heure_envoi, id_sib, id_theme');
 		$this->db->from('newsletter');
 		$this->db->join('group_has_theme', 'group_has_theme.id_theme = newsletter.theme', 'left');
-		$this->db->where("group_has_theme.id_group", $id_group);
+		$this->db->where("newsletter.id_group", $id_group);
 		$this->db->where("newsletter.envoi", 1);
 		$this->db->where("newsletter.archive", 1);
+		$this->db->group_by('newsletter.id');
 		$this->db->order_by('newsletter.date_creation', 'ASC');
 
 		$query = $this->db->get();
@@ -300,5 +303,32 @@ class My_campagnes extends CI_Model {
 		$this->db->update($table, $data);
 
 	}
+
+	/****************************************************************/
+	/*  FONCTION DE REMPLACEMENT DE CARACTERES					            */
+	/****************************************************************/
+
+	function replace_pattern($input){
+		$patterns = array();
+		$patterns[0] = '/"/';
+		$patterns[1] = '/\*\*(.*?)\*\*/';
+		$replacements = array();
+		$replacements[0] = '#&§#&§';
+		$replacements[1] = '<b>$1</b>';
+		$output = preg_replace($patterns, $replacements, $input);
+		return $output;
+	}
+
+	/****************************************************************/
+	/*  FONCTION DE REMPLACEMENT DE CARACTERES					            */
+	/****************************************************************/
+
+	function replace_one_pattern($input){
+		$patterns = '/\*\*(.*?)\*\*/';
+		$replacements = '<b>$1</b>';
+		$output = preg_replace($patterns, $replacements, $input);
+		return $output;
+	}
+
 
 }

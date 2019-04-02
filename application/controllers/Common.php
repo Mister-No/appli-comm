@@ -80,19 +80,19 @@ class Common extends CI_Controller  {
       }
   }
 
-  public function select_all_clients()
+  public function select_all_group()
   {
     if ($_SESSION['is_connect'] == TRUE){
 
     $this->load->model('My_users');
 
-    $result = $this->My_users->get_all_clients();
+    $result = $this->My_users->get_all_group();
 
       foreach ($result as $row) {
 
           $data[] = array(
             'id'         => $row->id_group,
-            'text' => $row->entreprise,
+            'text'       => $row->nom_group,
           );
 
       }
@@ -105,5 +105,28 @@ class Common extends CI_Controller  {
       }
   }
 
+  public function select_all_succursale()
+  {
+    if ($_SESSION['is_connect'] == TRUE){
+
+    $this->load->model('My_users');
+
+      $id_group = $_SESSION['id_group'];
+
+      $result = $this->My_users->get_all_succursales($id_group);
+
+      foreach ($result as $row) {
+
+          $data[] = array('id' => $row->id, 'text' => $row->titre);
+
+      }
+
+      header('Content-Type: application/json');
+      echo json_encode ($data);
+
+      } else {
+          $this->load->view('login');
+      }
+  }
 
 }

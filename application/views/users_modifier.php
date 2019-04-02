@@ -28,83 +28,103 @@
 		        <div class="panel-title">Modifier un utilisateur</div>
 							<div class="panel-controls">
 								<ul>
-								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-								class="portlet-icon portlet-icon-collapse"></i></a>
+									<li>
+										<a data-toggle="collapse" class="portlet-collapse" href="#">
+											<i class="portlet-icon portlet-icon-collapse"></i>
+										</a>
 								</li>
 							</ul>
 						</div>
 		       </div>
-						<?php
-						foreach ($result as $row) {
+						<?php foreach ($result as $row) { ?>
 
-							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'users/update.html">
-			          <input type="hidden" name="id" value="' . $row->id . '">
+							<form id="form" method="post" class="validate" action="<?=base_url()?>users/update.html">
+								<input type="hidden" name="id" value="<?=$row->id?>">
 			          <div class="panel-body">
 			            <div class="row">
 			              <div class="col-md-6">
 			                <div class="form-group form-group-default">
 												<label class="control-label">Login :</label>
-												<input type="text" class="form-control" name="login" value="' . $row->login . '"  placeholder="Login" required />
+												<input type="text" class="form-control" name="login" value="<?=$row->login?>"  placeholder="Login" required />
 			                </div>
 			                <div class="form-group form-group-default">
 												<label class="control-label">Nom :</label>
-												<input type="text" class="form-control" name="nom" value="' . $row->nom . '" placeholder="Nom" required />
+												<input type="text" class="form-control" name="nom" value="<?=$row->nom?>" placeholder="Nom" required />
 			                </div>
 			                <div class="form-group form-group-default">
 												<label class="control-label">Prénom :</label>
-												<input type="text" class="form-control" name="prenom" value="' . $row->prenom . '" placeholder="Prénom" required />
+												<input type="text" class="form-control" name="prenom" value="<?=$row->prenom?>" placeholder="Prénom" required />
 			                </div>
 			                <div class="form-group form-group-default">
 												<label class="control-label">Adresse électronique :</label>
-												<input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Email" required />
+												<input type="text" class="form-control" name="email" value="<?=$row->email?>" placeholder="Email" required />
 			                </div>
-										</div>';
 
-									} ?>
+											<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['is_super_admin'] == 1 ) { ?>
 
-							<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['user_id'] == 1) { ?>
+													<div class="form-group form-group-default form-group-default-select2 ">
+														<label class="control-label">Groupe :</label>
+															<select class="form-control" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_group" name="id_group" disabled>
+																<option value=""></option>
+														</select>
+													</div>
 
-								<div class="col-md-6">
-									<div class="form-group form-group-default form-group-default-select2 ">
-										<label class="control-label">Choisir une entreprise :</label>
-											<select class="form-control" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_group" disabled>
-												<option value=""></option>
-										</select>
-									</div>
+											<?php	} else { ?>
 
-							<?php	} ?>
+												<div class="form-group form-group-default">
+													<label class="controls-label">Groupe :</label>
+													<p style="margin:0px 0px 2px 0px;"> <?=$_SESSION['group']?>
+													</p>
+												</div>
 
-							<?php  if($_SESSION['is_admin'] == 1) { ?>
+											<?php	} ?>
 
-								<?php  foreach ($result as $row) {
+											<div class="form-group form-group-default form-group-default-select2 ">
+												<label class="">Succursale :</label>
+													<select class="full-width" data-placeholder="Choisir une succursale" data-init-plugin="select2" id="select_succursale" name="id_succursale" disabled>
+												</select>
+											</div>
+										</div>
 
-								echo '<div class="form-group form-group-default">
-			                  <label class="control-label">Administrateur :</label>
-                      	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="admin" ' . $checked_admin . ' />
-			                </div>
-			                <div class="form-group form-group-default form-group-default-select2">
-			                  <label class="control-label">Rang :</label>
-												<select class="full-width" data-placeholder="Choisir le rang de l\'utilisateur" data-init-plugin="select2" name="rang">';
+										<?php  if($_SESSION['is_admin'] == 1) { ?>
 
-												for ($i=10; $i >= 1  ; $i--) {
+											<div class="form-group form-group-default">
+												<label class="control-label">Administrateur :</label>
+												<input type="checkbox" data-init-plugin="switchery" data-size="small" name="admin" <?=$checked_admin?> />
+											</div>
+
+											<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['is_super_admin'] == 1 ) { ?>
+
+												<div class="form-group form-group-default">
+													<label class="control-label">Super Administrateur :</label>
+													<input type="checkbox" data-init-plugin="switchery" data-size="small" name="super_admin" <?=$checked_super_admin?> />
+												</div>
+
+											<?php } ?>
+
+											<div class="form-group form-group-default form-group-default-select2">
+												<label class="control-label">Rang :</label>
+												<select class="full-width" data-placeholder="Choisir le rang de l\'utilisateur" data-init-plugin="select2" name="rang">
+
+												<?php for ($i=10; $i >= 1  ; $i--) {
 													$selected = ($i == $row->rang ) ? 'selected="selected"':'';
 													echo '<option '.$selected.'>'.$i.'</option>';
 												}
+												?>
+												</select>
+											</div>
+											<div class="form-group form-group-default">
+												<label class="control-label">Actif :</label>
+												<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" <?=$checked_actif?> />
+											</div>
 
-									echo '</select>
-			                </div>
-				              <div class="form-group form-group-default">
-				                <label class="control-label">Actif :</label>
-                      	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" ' . $checked_actif . ' />
-				              </div>
-				          	</div>';
+										<?php	} ?>
 
-									} ?>
+									</div>
+				        </div>
 
-							<?php	} ?>
+							<?php } ?>
 
-        			</div>
-		        </div>
 		        <div class="panel-footer text-right">
 		          <button type="submit" class="btn btn-success">MODIFIER</button>
 		        </div>
@@ -164,10 +184,15 @@
 
 	<script type="text/javascript">
 
-	var id = <?=$row->id_group?>;
-	var urlSelect = '<?=base_url();?>'+'common/select_all_clients';
+	var id = '<?=$row->id_group?>';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_group';
 
-	select ('#select_business', id, urlSelect);
+	select ('#select_group', id, urlSelect);
+
+	var id = '<?=$row->id_succursale?>';
+	var urlSelect = '<?=base_url();?>'+'common/select_all_succursale';
+
+	select ('#select_succursale', id, urlSelect);
 
 	$('#form').submit(function(e) {
 

@@ -33,6 +33,21 @@ class My_users extends CI_Model {
   }
 
   /********************************************/
+  /* SELECT TOUTES LES UTILISATEURS           */
+  /********************************************/
+  function get_all_users_super_admin(){
+
+    $this->db->select();
+    $this->db->from('users');
+    $this->db->order_by ('nom', 'ASC');
+
+    $query = $this->db->get();
+
+    return $query->result();
+
+  }
+
+  /********************************************/
   /*         SELECT UN UTILISATEUR            */
   /********************************************/
   function get_user($id){
@@ -50,12 +65,11 @@ class My_users extends CI_Model {
   /********************************************/
   /*      SELECT TOUTES LES CLIENTS           */
   /********************************************/
-  function get_all_clients(){
+  function get_all_group(){
 
-    $this->db->select('users.id_group, users.entreprise');
-    $this->db->distinct();
-    $this->db->from('users');
-    $this->db->order_by ('entreprise', 'ASC');
+    $this->db->select();
+    $this->db->from('group_infos');
+    $this->db->order_by ('id_group', 'ASC');
 
     $query = $this->db->get();
 
@@ -66,12 +80,26 @@ class My_users extends CI_Model {
   /********************************************/
   /*         SELECT UN UTILISATEUR            */
   /********************************************/
-  function get_user_entreprise($id_group){
+  function get_user_group($id_group){
 
     $this->db->select();
-    $this->db->from('entreprises');
-    $this->db->where('entreprises.id_group', $id_group);
-    $this->db->where('entreprises.id_parent', 0);
+    $this->db->from('group_infos');
+    $this->db->where('group_infos.id_group', $id_group);
+
+    $query = $this->db->get();
+
+    return $query->result();
+
+  }
+
+  /********************************************************/
+  /*           SELECT LES SUCCURSALES D'UN GROUPE         */
+  /********************************************************/
+  function get_all_succursales($id_group) {
+
+    $this->db->select();
+    $this->db->from('succursales');
+    $this->db->where('succursales.id_group', $id_group);
 
     $query = $this->db->get();
 

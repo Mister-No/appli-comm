@@ -31,18 +31,19 @@ class Login extends CI_Controller {
   				$_SESSION['is_connect'] = TRUE;
   				$_SESSION['user_id'] = $row->id;
           $_SESSION['id_group'] = $row->id_group;
+          $_SESSION['id_succursale'] = $row->id_succursale;
   				$_SESSION['is_admin'] = $row->admin;
+          $_SESSION['is_super_admin'] = $row->super_admin;
           $_SESSION['rang'] = $row->rang;
   				$_SESSION['user_nom'] = $row->nom." ".$row->prenom;
-          //$_SESSION['send_in_blue'] = $row->nom." ".$row->prenom;
 
           $this->load->model('My_users');
 
-          $result_entreprise = $this->My_users->get_user_entreprise($row->id_group);
+          $result_group = $this->My_users->get_user_group($row->id_group);
 
-          foreach($result_entreprise as $row_entreprise) {
+          foreach($result_group as $row_group) {
 
-            $_SESSION['entreprise'] = $row_entreprise->raison_sociale;
+            $_SESSION['group'] = $row_group->nom_group;
 
           }
 

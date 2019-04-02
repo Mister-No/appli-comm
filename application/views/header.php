@@ -102,7 +102,7 @@ UPLOADCARE_PREVIEW_STEP = true;
       <!-- START User Info-->
       <div class="visible-lg visible-md m-t-10">
         <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
-          <span>[<?=$_SESSION["entreprise"]?>]</span>
+          <span>[<?=$_SESSION["group"]?>]</span>
           <span class="semi-bold"><?=$_SESSION["user_nom"]?></span>
         </div>
         <div class="dropdown pull-right">
