@@ -10,29 +10,21 @@ class Campagnes extends CI_Controller {
       $this->load->model('My_campagnes');
       $this->load->model('My_users');
       $id_group = $_SESSION['id_group'];
+      $id_succursale = $_SESSION['id_succursale'];
 
-      $infos_group = $this->My_users->get_group_infos($id_group);
-
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-      $data_campagne = array(
-        'type' => '',
-        'status' => '',
-      );
-      $result = $mailin->get_campaigns_v2($data_campagne);
-
-      $result_campagnes = $this->My_campagnes->get_unsent_campagnes($id_group);
+      if ($id_succursale != '') {
+        $result_campagnes = $this->My_campagnes->get_unsent_campagnes_succursale($id_group, $id_succursale);
+      } else {
+        $result_campagnes = $this->My_campagnes->get_unsent_campagnes_group($id_group);
+      }
 
       $data = array(
-        'result' => $result,
         'result_campagnes' => $result_campagnes,
       );
 
       $this->load->view('header', $data);
       $this->load->view('campagnes_en_cours');
       $this->load->view('footer');
-
 
     } else {
         $this->load->view('login');
@@ -46,22 +38,15 @@ class Campagnes extends CI_Controller {
       $this->load->model('My_campagnes');
       $this->load->model('My_users');
       $id_group = $_SESSION['id_group'];
+      $id_succursale = $_SESSION['id_succursale'];
 
-      $infos_group = $this->My_users->get_group_infos($id_group);
-
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-      $data_campagne = array(
-        'type' => '',
-        'status' => '',
-      );
-      $result = $mailin->get_campaigns_v2($data_campagne);
-
-      $result_campagnes = $this->My_campagnes->get_sent_campagnes($id_group);
+      if ($id_succursale != '') {
+        $result_campagnes = $this->My_campagnes->get_sent_campagnes_succursale($id_group, $id_succursale);
+      } else {
+        $result_campagnes = $this->My_campagnes->get_sent_campagnes_group($id_group);
+      }
 
       $data = array(
-        'result' => $result,
         'result_campagnes' => $result_campagnes,
       );
 
@@ -81,22 +66,15 @@ class Campagnes extends CI_Controller {
       $this->load->model('My_campagnes');
       $this->load->model('My_users');
       $id_group = $_SESSION['id_group'];
+      $id_succursale = $_SESSION['id_succursale'];
 
-      $infos_group = $this->My_users->get_group_infos($id_group);
-
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-      $data_campagne = array(
-        'type' => '',
-        'status' => '',
-      );
-      $result = $mailin->get_campaigns_v2($data_campagne);
-
-      $result_campagnes = $this->My_campagnes->get_archived_campagnes($id_group);
+      if ($id_succursale != '') {
+        $result_campagnes = $this->My_campagnes->get_archived_campagnes_succursale($id_group, $id_succursale);
+      } else {
+        $result_campagnes = $this->My_campagnes->get_archived_campagnes_group($id_group);
+      }
 
       $data = array(
-        'result' => $result,
         'result_campagnes' => $result_campagnes,
       );
 
@@ -424,6 +402,7 @@ class Campagnes extends CI_Controller {
       /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
         $id_group = $_SESSION['id_group'];
+        $id_succursale = $_SESSION['id_succursale'];
         $data = array();
         $data_block = array();
         $data_content = array();
@@ -470,6 +449,7 @@ class Campagnes extends CI_Controller {
             'expediteur'      => $this->input->post ('expediteur'),
             'theme'           => $this->input->post ('theme'),
             'id_group'        => $id_group,
+            'id_succursale'   => $id_succursale,
             'id_sib'          => $result['data']['id'],
             'date_creation'   => date('Y-m-d'),
           );
@@ -581,6 +561,7 @@ class Campagnes extends CI_Controller {
       if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
         $id_group = $_SESSION['id_group'];
+        $id_succursale = $_SESSION['id_succursale'];
         $theme = $this->input->post ('theme');
         $result_expediteur = $this->My_campagnes->get_campagne_sender($this->input->post ('id_expediteur'));
         $data = array();
@@ -626,6 +607,7 @@ class Campagnes extends CI_Controller {
             'expediteur'      => $result_expediteur[0]->id,
             'theme'           => $this->input->post ('theme'),
             'id_group'        => $_SESSION['id_group'],
+            'id_succursale'   => $_SESSION['id_succursale'],
             'id_sib'          => $result['data']['id'],
             'date_creation'   => date('Y-m-d'),
           );
@@ -2090,6 +2072,7 @@ class Campagnes extends CI_Controller {
       $data_block = array();
       $id_newsletter = $this->uri->segment(3, 0);
       $id_group = $_SESSION['id_group'];
+      $id_succursale = $_SESSION['id_succursale'];
       $image = '';
       $image_copy = '';
       $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
@@ -2113,7 +2096,7 @@ class Campagnes extends CI_Controller {
         "listid"=> array(),
         "scheduled_date"=> "",
         "subject"=> $result_newsletter[0]->objet,
-        "reply_to"=> $result_expediteur[0]->expediteur,
+        "reply_to"=> $result_expediteur[0]->email_expediteur,
         'exclude_list'=> array(),
         "attachment_url"=> "",
         "inline_image"=> 0,
@@ -2139,6 +2122,7 @@ class Campagnes extends CI_Controller {
           'date_envoi'      => $result_newsletter[0]->date_envoi,
           'heure_envoi'     => $result_newsletter[0]->heure_envoi,
           'id_group'        => $_SESSION['id_group'],
+          'id_succursale'   => $_SESSION['id_succursale'],
           'id_sib'          => $result['data']['id'],
         );
 

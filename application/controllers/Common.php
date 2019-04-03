@@ -113,11 +113,17 @@ class Common extends CI_Controller  {
 
       $id_group = $_SESSION['id_group'];
 
-      $result = $this->My_users->get_all_succursales($id_group);
+      if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10) {
+        $result = $this->My_users->get_all_succursales();
+      } else {
+        $result = $this->My_users->get_all_succursales_by_id_group($id_group);
+      }
+
+
 
       foreach ($result as $row) {
 
-          $data[] = array('id' => $row->id, 'text' => $row->titre);
+          $data[] = array('id' => $row->id, 'text' => $row->nom_succursale);
 
       }
 

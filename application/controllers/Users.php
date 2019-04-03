@@ -11,10 +11,10 @@ class Users extends CI_Controller  {
 
           $id_group = $_SESSION['id_group'];
 
-          if ($id_group == 0 && $_SESSION['is_super_admin'] == 1) {
-            $result_users = $this->My_users->get_all_users_super_admin();
+          if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10) {
+            $result_users = $this->My_users->get_all_users();
           } else {
-            $result_users = $this->My_users->get_all_users($id_group);
+            $result_users = $this->My_users->get_all_users_by_id_group($id_group);
           }
 
           $users = array();
@@ -82,19 +82,19 @@ class Users extends CI_Controller  {
         $id_group = $_SESSION["id_group"];
 
         $result = $this->My_users->get_user($id);
+        $result_group = $this->My_users->get_user_group($result[0]->id_group);
 
         foreach ($result as $row) {
 
           if ($row->admin == 1) { $checked_admin = 'checked="checked"'; } else { $checked_admin = ''; }
-          if ($row->super_admin == 1) { $checked_super_admin = 'checked="checked"'; } else { $checked_super_admin = ''; }
           if ($row->actif == 1) { $checked_actif = 'checked="checked"'; } else { $checked_actif = ''; }
 
         }
 
        $data = array(
           'result'               => $result,
+          'user_group'           => $result_group[0]->nom_group, 
           'checked_admin'        => $checked_admin,
-          'checked_super_admin' => $checked_super_admin,
           'checked_actif'        => $checked_actif,
         );
 
@@ -125,7 +125,7 @@ class Users extends CI_Controller  {
 
 		    } else {
 
-          if ($_SESSION['is_super_admin'] == 1) {
+          if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10) {
             $id_group = $this->input->post('id_group');
           }
 
@@ -133,12 +133,6 @@ class Users extends CI_Controller  {
             $admin = 1;
           } else {
             $admin = 0;
-          }
-
-          if ($this->input->post('super_admin') == 'on') {
-            $super_admin = 1;
-          } else {
-            $super_admin = 0;
           }
 
           if ($this->input->post('actif') == 'on') {
@@ -159,7 +153,6 @@ class Users extends CI_Controller  {
   					'prenom' 			  => $this->input->post('prenom'),
   					'rang' 			    => $this->input->post('rang'),
   					'admin' 			  => $admin,
-            'super_admin'   => $super_admin,
             'actif' 			  => $actif,
   				);
 
@@ -193,7 +186,7 @@ class Users extends CI_Controller  {
 
        } else {
 
-         if ($_SESSION['is_super_admin'] == 1) {
+         if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10) {
            $id_group = $this->input->post('id_group');
          }
 
@@ -201,12 +194,6 @@ class Users extends CI_Controller  {
            $admin = 1;
          } else {
            $admin = 0;
-         }
-
-         if ($this->input->post('super_admin') == 'on') {
-           $super_admin = 1;
-         } else {
-           $super_admin = 0;
          }
 
          if ($this->input->post('actif') == 'on') {
@@ -224,7 +211,6 @@ class Users extends CI_Controller  {
            'prenom' 	     => $this->input->post('prenom'),
            'rang' 			   => $this->input->post('rang'),
            'admin' 			   => $admin,
-           'super_admin'   => $super_admin,
            'actif' 			   => $actif,
          );
 
@@ -234,7 +220,7 @@ class Users extends CI_Controller  {
 
            $_SESSION["id_group"] = $this->input->post('id_group');
 
-           $result = $this->My_users->get_all_users($_SESSION["id_group"]);
+           $result = $this->My_users->get_all_users_by_id_group($_SESSION["id_group"]);
 
            foreach ($result as $row) {
 

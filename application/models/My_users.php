@@ -19,7 +19,7 @@ class My_users extends CI_Model {
   /********************************************/
   /* SELECT TOUTES LES UTILISATEURS           */
   /********************************************/
-  function get_all_users($id_group){
+  function get_all_users_by_id_group($id_group){
 
     $this->db->select();
 		$this->db->from('users');
@@ -35,7 +35,7 @@ class My_users extends CI_Model {
   /********************************************/
   /* SELECT TOUTES LES UTILISATEURS           */
   /********************************************/
-  function get_all_users_super_admin(){
+  function get_all_users(){
 
     $this->db->select();
     $this->db->from('users');
@@ -93,9 +93,23 @@ class My_users extends CI_Model {
   }
 
   /********************************************************/
+  /*                  SELECT LES SUCCURSALES              */
+  /********************************************************/
+  function get_all_succursales() {
+
+    $this->db->select();
+    $this->db->from('succursales');
+
+    $query = $this->db->get();
+
+    return $query->result();
+
+  }
+
+  /********************************************************/
   /*           SELECT LES SUCCURSALES D'UN GROUPE         */
   /********************************************************/
-  function get_all_succursales($id_group) {
+  function get_all_succursales_by_id_group($id_group) {
 
     $this->db->select();
     $this->db->from('succursales');

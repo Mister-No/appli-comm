@@ -32,6 +32,13 @@
   cursor: pointer;
 }
 
+.invisible {
+  visibility: hidden;
+  width: 50%;
+  height: 62px;
+  float: left;
+}
+
 .headerSubmit {
   text-shadow: none !important;
   font-weight: bold !important;

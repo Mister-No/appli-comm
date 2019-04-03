@@ -9,8 +9,13 @@ class Dashboard extends CI_Controller {
 
 			$this->load->model('My_campagnes');
 			$id_group = $_SESSION['id_group'];
+			$id_succursale = $_SESSION['id_succursale'];
 
-			$result_campagnes = $this->My_campagnes->get_unsent_campagnes($id_group);
+			if ($id_succursale != '') {
+        $result_campagnes = $this->My_campagnes->get_unsent_campagnes_succursale($id_group, $id_succursale);
+      } else {
+        $result_campagnes = $this->My_campagnes->get_unsent_campagnes_group($id_group);
+      }
 
 			$data = array(
 				'result_campagnes' => $result_campagnes,
