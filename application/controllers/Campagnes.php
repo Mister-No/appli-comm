@@ -1851,7 +1851,21 @@ class Campagnes extends CI_Controller {
         require(APPPATH.'libraries/Mailin.php');
         $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-  			$campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+  		  $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+
+        //Check des listes existantes et suppression si cota depassé
+
+        $data_lists = array();
+        $result_lists = $mailin->get_lists($data_lists);
+
+        if (count($result_lists['data']) > 99) {
+          $result_end = end($result_lists['data']);
+          $id_last_list = $result_end['id'];
+          $data_delete = array( "id"=>$id_last_list );
+          $result_delete = $mailin->delete_list($data_delete);
+        }
+
+        //Import des users et creation d'une nouvelle liste
 
         $data = array(
           'body' => $csv,
@@ -1871,12 +1885,10 @@ class Campagnes extends CI_Controller {
             'listid'			=> array($id_liste),
             'send_now'		=> 0,
           );
-          /**echo '<pre>';
-          print_r($data);
-          echo '</pre>';**/
-          $result = $mailin->update_campaign($data_campagne);
 
-          $code = $result['code'];
+          $result_campagne = $mailin->update_campaign($data_campagne);
+
+          $code = $result_campagne['code'];
 
           if ($code == 'success'){
 

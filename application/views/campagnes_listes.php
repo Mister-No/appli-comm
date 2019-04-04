@@ -116,7 +116,7 @@
 
 	<script type="text/javascript">
 
-	$('#form').submit(function(e) {
+	/**$('#form').submit(function(e) {
 
 		e.preventDefault();
 
