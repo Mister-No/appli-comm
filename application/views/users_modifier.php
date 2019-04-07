@@ -60,7 +60,7 @@
 												<input type="text" class="form-control" name="email" value="<?=$row->email?>" placeholder="Email" required />
 			                </div>
 
-											<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10 ) { ?>
+											<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 8 ) { ?>
 
 													<div class="form-group form-group-default form-group-default-select2 ">
 														<label class="control-label">Groupe :</label>
@@ -81,7 +81,7 @@
 
 										</div>
 
-										<?php  if($_SESSION['is_admin'] == 1) { ?>
+										<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 6) { ?>
 
 											<div class="form-group form-group-default">
 												<label class="control-label">Administrateur :</label>
@@ -92,7 +92,7 @@
 												<select class="full-width" data-placeholder="Choisir le rang de l\'utilisateur" data-init-plugin="select2" name="rang">
 
 												<?php
-												if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10) {
+												if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 8) {
 													for ($i=10; $i >= 1  ; $i--) {
 														$selected = ($i == $row->rang ) ? 'selected="selected"':'';
 														echo '<option '.$selected.'>'.$i.'</option>';
@@ -107,18 +107,36 @@
 												?>
 												</select>
 											</div>
+										<?php	} ?>
+
+										<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 5): ?>
+
 											<div class="form-group form-group-default">
 												<label class="control-label">Actif :</label>
 												<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" <?=$checked_actif?> />
 											</div>
-											<div class="invisible"></div>
+
+											<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 6): ?>
+
+												<div class="invisible"></div>
+												<div class="invisible"></div>
+												<div class="invisible"></div>
+
+											<?php endif; ?>
+
+											<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 6): ?>
+
+												<div class="invisible"></div>
+
+											<?php endif; ?>
+
 											<div class="form-group form-group-default form-group-default-select2 ">
 												<label class="">Succursale :</label>
 													<select class="full-width" data-placeholder="Choisir une succursale" data-init-plugin="select2" id="select_succursale" name="id_succursale" disabled>
 												</select>
 											</div>
 
-										<?php	} ?>
+										<?php endif; ?>
 
 									</div>
 				        </div>
@@ -134,55 +152,60 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid container-fixed-lg">
-	<div class="success alert alert-success">
-		<strong class="message"></strong>
-		<button class="close"></button>
-	</div>
-	<div class="erreur alert alert-danger">
-		<strong class="message"></strong>
-		<button class="close"></button>
-	</div>
-	<div class="page-container">
-		<div class="main-content">
-			<div class="row">
-		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
-		      <div class="panel-heading">
-		        <div class="panel-title">Reinitialiser son mot de passe</div>
-						<div class="panel-controls">
-							<ul>
-							<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-							class="portlet-icon portlet-icon-collapse"></i></a>
-							</li>
-						</ul>
+
+<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 4): ?>
+
+	<div class="container-fluid container-fixed-lg">
+		<div class="success alert alert-success">
+			<strong class="message"></strong>
+			<button class="close"></button>
+		</div>
+		<div class="erreur alert alert-danger">
+			<strong class="message"></strong>
+			<button class="close"></button>
+		</div>
+		<div class="page-container">
+			<div class="main-content">
+				<div class="row">
+			    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+			      <div class="panel-heading">
+			        <div class="panel-title">Reinitialiser son mot de passe</div>
+							<div class="panel-controls">
+								<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+								class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
+						</div>
+		       </div>
+					 <form id="form_password" method="post" class="validate" action="<?=base_url()?>users/update_password.html">
+	          <input type="hidden" name="id" value="<?=$row->id?>">
+	          <div class="panel-body">
+	            <div class="col-md-6">
+	              <div class="form-group form-group-default">
+		               <label class="control-label">Mot de passe :</label>
+	                 <input type="password" class="form-control" name="password" placeholder="Mot de passe" required />
+	                </div>
+								</div>
+								<div class="col-md-6">
+	                <div class="form-group form-group-default">
+	                  <label class="control-label">Confirmation du mot de passe :</label>
+	                  <input type="password" class="form-control" name="password_confirm" placeholder="Mot de passe" required />
+	                </div>
+								</div>
+		          </div>
+		        	<div class="panel-footer text-right">
+		          	<button type="submit" class="btn btn-success">REINITIALISER</button>
+		        	</div>
+		      	</form>
 					</div>
-	       </div>
-				 <form id="form_password" method="post" class="validate" action="<?=base_url()?>users/update_password.html">
-          <input type="hidden" name="id" value="<?=$row->id?>">
-          <div class="panel-body">
-            <div class="col-md-6">
-              <div class="form-group form-group-default">
-	               <label class="control-label">Mot de passe :</label>
-                 <input type="password" class="form-control" name="password" placeholder="Mot de passe" required />
-                </div>
-							</div>
-							<div class="col-md-6">
-                <div class="form-group form-group-default">
-                  <label class="control-label">Confirmation du mot de passe :</label>
-                  <input type="password" class="form-control" name="password_confirm" placeholder="Mot de passe" required />
-                </div>
-							</div>
-	          </div>
-	        	<div class="panel-footer text-right">
-	          	<button type="submit" class="btn btn-success">REINITIALISER</button>
-	        	</div>
-	      	</form>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<script type="text/javascript">
+<?php endif; ?>
+
+<script type="text/javascript">
 
 	var id = '<?=$row->id_group?>';
 	var urlSelect = '<?=base_url();?>'+'common/select_all_group';
@@ -218,4 +241,4 @@
 
 	});
 
-	</script>
+</script>

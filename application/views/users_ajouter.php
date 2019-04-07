@@ -55,7 +55,7 @@
 		                  <input type="text" class="form-control" name="login" placeholder="Login" />
 		                </div>
 
-										<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10 ) { ?>
+										<?php  if($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 8 ) { ?>
 
 												<div class="form-group form-group-default form-group-default-select2 ">
 													<label class="control-label">Groupe :</label>
@@ -81,7 +81,7 @@
 		                  <input type="password" class="form-control" name="password" placeholder="Mot de passe" />
 		                </div>
 
-									<?php if($_SESSION['is_admin'] == 1) { ?>
+									<?php if($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 6) { ?>
 
 										<div class="form-group form-group-default">
 		                  <label class="control-label">Administrateur :</label>
@@ -91,7 +91,7 @@
 		                  <label class="control-label">Rang :</label>
 											<select class="full-width" data-placeholder="Choisir le rang de l\'utilisateur" data-init-plugin="select2" name="rang">';
 											<?php
-											if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] == 10) {
+											if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 8) {
 												for ($i=10; $i >= 1  ; $i--) {
 													echo '<option value="'. $i . '">'. $i . '</option>';
 												}
@@ -103,16 +103,22 @@
 											?>
 											</select>
 		                </div>
-			              <div class="form-group form-group-default">
-			                <label class="control-label">Actif :</label>
-                    	<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" />
-			              </div>
+
+									<?php } ?>
+									
+									<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 5): ?>
+
+										<div class="form-group form-group-default">
+											<label class="control-label">Actif :</label>
+											<input type="checkbox" data-init-plugin="switchery" data-size="small" name="actif" />
+										</div>
 										<div class="form-group form-group-default form-group-default-select2 ">
 											<label class="">Succursale :</label>
 												<select class="full-width" data-placeholder="Choisir une succursale" data-init-plugin="select2" id="select_succursale" name="id_succursale" disabled>
 											</select>
 										</div>
-								<?php } ?>
+
+									<?php endif; ?>
 
 			          </div>
 		          </div>

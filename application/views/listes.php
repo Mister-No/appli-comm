@@ -47,23 +47,30 @@
 		                </tr>
 		              </thead>
 		              <tbody>
-										<?php foreach ($result as $row) {
 
-											echo '<tr>
-															<td class="v-align-middle semi-bold"><a href="' . base_url() . 'listes/modifier/' . $row['id'] . '">' . $row['titre'] . '</a></td>
-															<td class="v-align-middle">' . $row['categories'] . '</td>
-															<td class="v-align-middle">' . $row['nbre_contact'] . '</td>
-															<td class="v-align-middle">
-																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'listes/modifier/' . $row['id'] . '"><i class="fa fa-edit"></i></a>
-																</div>
-																<div class="btn-group">
-																	 <button class="btn btn-success " onclick="popin (\''.$row['id'].'\', \''.$row['titre'].'\')" ><i class="fa fa-trash"></i></button>
-																</div>
-															</td>
-														</tr>';
+										<?php foreach ($result as $row) { ?>
 
-													} ?>
+											<tr>
+												<td class="v-align-middle semi-bold"><a href="<?=base_url() . 'listes/modifier/' . $row['id']?>"><?=$row['titre']?></a></td>
+												<td class="v-align-middle"><?=$row['categories']?></td>
+												<td class="v-align-middle"><?=$row['nbre_contact']?></td>
+												<td class="v-align-middle">
+													<div class="btn-group">
+														<a class="btn btn-success" href="<?=base_url() . 'listes/modifier/' . $row['id']?>"><i class="fa fa-edit"></i></a>
+													</div>
+
+													<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 3): ?>
+
+														<div class="btn-group">
+															 <button class="btn btn-success " onclick="popin ('<?=$row['id']?>', '<?=$row['titre']?>')" ><i class="fa fa-trash"></i></button>
+														</div>
+
+													<?php endif; ?>
+
+												</td>
+											</tr>
+
+										<?php	} ?>
 
 		                </tbody>
 

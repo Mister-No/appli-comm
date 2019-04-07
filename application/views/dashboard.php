@@ -53,77 +53,48 @@
 									</thead>
 									<tbody>
 
-									<?php
+									<?php foreach ($result_campagnes as $row_campagnes) { ?>
 
-									foreach ($result_campagnes as $row_campagnes) {
+										<tr>
+											<td class="v-align-middle semi-bold">
+												<?=$row_campagnes->id_newsletter?>
+											</td>
+											<td class="v-align-middle semi-bold">
+												<?=$row_campagnes->nom_campagne?>
+											</td>
+											<td class="v-align-middle">
+												<?=$row_campagnes->objet?>
+											</td>
+											<td class="v-align-middle">
+												En cours
+											</td>
+											<td class="v-align-middle">
+												<div class="btn-group">
+													<a class="btn btn-success" href="<?=base_url() . 'campagnes/informations/modification/' . $row_campagnes->id_newsletter?>">
+														<i class="fa fa-file"></i>
+													</a>
+													<a class="btn btn-success" href="<?=base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter?>">
+														<i class="fa fa-edit"></i>
+													</a>
+													<a class="btn btn-success" href="<?=base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter?>">
+														<i class="fa fa-copy">
+														</i>
+													</a>
 
-										echo '<tr>
-														<td class="v-align-middle semi-bold">
-															' . $row_campagnes->id_newsletter . '
-														</td>
-														<td class="v-align-middle semi-bold">
-															' . $row_campagnes->nom_campagne . '
-														</td>
-														<td class="v-align-middle">
-															'.$row_campagnes->objet.'
-														</td>
-														<td class="v-align-middle">
-															En cours
-														</td>
-														<td class="v-align-middle">
-															<div class="btn-group">
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/informations/modification/' . $row_campagnes->id_newsletter . '">
-																	<i class="fa fa-file"></i>
-																</a>
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '">
-																	<i class="fa fa-edit"></i>
-																</a>
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter . '">
-																	<i class="fa fa-copy">
-																	</i>
-																</a>
-																<button class="btn btn-success " onclick="popin(\''.$row_campagnes->id_newsletter.'\', \''.$row_campagnes->nom_campagne.'\')" >
-																	<i class="fa fa-trash">
-																	</i>
-																</button>
-															</div>
-														</td>
-													</tr>';
+													<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 0): ?>
 
-									}
+														<button class="btn btn-success " onclick="popin('<?=$row_campagnes->id_newsletter?>','<?=$row_campagnes->nom_campagne?>')" >
+															<i class="fa fa-trash">
+															</i>
+														</button>
 
-									/**foreach ($result["data"]["campaign_records"] as $row) {
+													<?php endif; ?>
 
-										echo '<tr>
-														<td class="v-align-middle">' . $row['campaign_name'] . '</td>
-														<td class="v-align-middle">' . $row['subject'] . '</td>
-														<td class="v-align-middle">' . $row['status'] . '</td>
-														<td class="v-align-middle">
-															<div class="btn-group">
+												</div>
+											</td>
+										</tr>
 
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/builder/' . $row["id"] . '"><i class="fa fa-edit"></i></a>
-
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row["id"] . '"><i class="fa fa-copy"></i></a>
-
-																<button class="btn btn-success " onclick="popin(\''.$row['id'].'\', \''.$row['campaign_name'].'\')" ><i class="fa fa-trash"></i></button>
-
-															</div>
-															<div class="btn-group">
-
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/listes/' . $row["id"] . '"><i class="fa fa-envelope"></i></a>
-
-																<a class="btn btn-success" href="' . base_url() . 'campagnes/bat/' . $row["id"] . '" ><i class="fa fa-send"></i></a>
-
-																<button class="btn btn-success" ><i class="fa fa-bar-chart"></i></button>
-
-																<button class="btn btn-success" ><i class="fa fa-archive"></i></button>
-
-															</div>
-														</td>
-													</tr>';
-
-									}**/
-									 ?>
+								<?php } ?>
 
 								</tbody>
 							</table>

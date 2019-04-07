@@ -225,72 +225,81 @@ UPLOADCARE_PREVIEW_STEP = true;
               </div>
             </ul>
           </li>-->
-          <li class="mega">
-            <a href="javascript:;"><span class="title">Listes</span>
-            <span class=" arrow"></span></a>
-            <ul class="mega">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-3 ">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Voir les listes</a></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes/ajouter.html">Ajouter des listes</a></div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Modifier des listes</a></div>
-                  </div>
-                </div>
-              </div>
-            </ul>
-          </li>
-          <li class="mega">
-            <a href="javascript:;"><span class="title">Contacts</span>
-            <span class=" arrow"></span></a>
-            <ul class="mega">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises.html">Gérer les entreprises</a>
+          <?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 2): ?>
+
+            <li class="mega">
+              <a href="javascript:;"><span class="title">Listes</span>
+              <span class=" arrow"></span></a>
+              <ul class="mega">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3 ">
+                      <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Voir les listes</a></div>
                     </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts.html">Gérer les contacts</a>
+                    <div class="col-md-3">
+                      <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes/ajouter.html">Ajouter des listes</a></div>
                     </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises/ajouter.html">Ajouter une entreprise</a>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/ajouter.html">Ajouter un contact</a>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/importer.html">Importer un contact</a>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/exporter.html">Exporter un contact</a>
+                    <div class="col-md-3">
+                      <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Modifier des listes</a></div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ul>
-          </li>
-          <li class="mega">
-            <a href="<?=base_url();?>categories.html"><span class="title">Catégories</span>
-            </a>
-          </li>
+              </ul>
+            </li>
 
-          <?php  if ($_SESSION['is_admin'] == 1) { ?>
+            <?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 3): ?>
 
-          <li class="mega">
-            <a href="<?=base_url();?>users.html"><span class="title">Utilisateurs</span>
-            </a>
-          </li>
+              <li class="mega">
+                <a href="javascript:;"><span class="title">Contacts</span>
+                <span class=" arrow"></span></a>
+                <ul class="mega">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises.html">Gérer les entreprises</a>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts.html">Gérer les contacts</a>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises/ajouter.html">Ajouter une entreprise</a>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/ajouter.html">Ajouter un contact</a>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/importer.html">Importer un contact</a>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/exporter.html">Exporter un contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              </li>
+              <li class="mega">
+                <a href="<?=base_url();?>categories.html"><span class="title">Catégories</span>
+                </a>
+              </li>
 
-        <?php } ?>
+            <?php endif; ?>
+
+            <?php  if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 4) { ?>
+
+            <li class="mega">
+              <a href="<?=base_url();?>users.html"><span class="title">Utilisateurs</span>
+              </a>
+            </li>
+
+            <?php } ?>
+
+          <?php endif; ?>
 
         </ul>
       </div>

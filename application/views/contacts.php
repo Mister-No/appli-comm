@@ -19,7 +19,7 @@
           <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
             <div class="panel-heading">
               <div class="panel-title">
-                    Vos Contacts
+                Vos Contacts
               </div>
 							<div class="panel-controls">
 								<ul>
@@ -52,26 +52,26 @@
 	                  </thead>
 	                  <tbody>
 
-										<?php foreach ($result as $row) {
+										<?php foreach ($result as $row) { ?>
 
-											echo '<tr>
-															<td class="v-align-middle">
-																<a href="' . base_url() . 'contacts/modifier/' . $row['id'] . '">' . $row['email'] . '</a>
-															</td>
-															<td class="v-align-middle semi-bold">' . $row['nom'] . ' ' . $row['prenom'] . '</td>
-															<td class="v-align-middle">' . $row['categorie'] . '</td>
-															<td class="v-align-middle">' . $row['raison_sociale'] . '</td>
-															<td class="v-align-middle">
-																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'contacts/modifier/' . $row['id'] . '"><i class="fa fa-edit"></i></a>
-																</div>
-																<div class="btn-group">
-																	<button class="btn btn-success " onclick="popin (\''.$row['id'].'\', \''.$row['nom'].'\')" ><i class="fa fa-trash"></i></button>
-																</div>
-															</td>
-				                    </tr>';
+											<tr>
+												<td class="v-align-middle">
+													<a href="<?=base_url() . 'contacts/modifier/' . $row['id']?>"><?=$row['email']?></a>
+												</td>
+												<td class="v-align-middle semi-bold"><?=$row['nom'] . ' ' . $row['prenom']?></td>
+												<td class="v-align-middle"><?=$row['categorie']?></td>
+												<td class="v-align-middle"><?=$row['raison_sociale']?></td>
+												<td class="v-align-middle">
+													<div class="btn-group">
+														<a class="btn btn-success" href="<?=base_url() . 'contacts/modifier/' . $row['id']?>"><i class="fa fa-edit"></i></a>
+													</div>
+													<div class="btn-group">
+														<button class="btn btn-success " onclick="popin ('<?=$row['id']?>', '<?=$row['nom']?>')" ><i class="fa fa-trash"></i></button>
+													</div>
+												</td>
+	                    </tr>
 
-										} ?>
+									<?php } ?>
 
                   </tbody>
                 </table>
