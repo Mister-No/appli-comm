@@ -146,7 +146,7 @@
 							</table>
 							<!-- END Header -->
 
-							<!-- Mot du chef de villa -->
+							<!-- Mot du chef de villa gauche -->
 							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">
 								<form class="" action="index.html" method="post">
 									<input type="hidden" name="id_block" value="{{id_block}}">
@@ -197,7 +197,123 @@
 							</table>
 							<!-- END Mot du chef de villa -->
 
-							<!-- Zoom sur l'activité du mois -->
+							<!-- Mot du chef de villa droite -->
+							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">
+								<form class="" action="index.html" method="post">
+									<input type="hidden" name="id_block" value="{{id_block}}">
+									<input type="hidden" name="type" value="{{type}}">
+									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+									<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+									<input type="hidden" name="nom" value="{{nom}}">
+									<input type="hidden" name="ordre" value="{{ordre}}">
+									<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="450x530" data-content="{{img0}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+									<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Signature" data-content="{{text2}}">
+								</form>
+								<tr>
+									<td bgcolor="#f8f9fc">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td style="padding: 38px 60px;" class="p30-15">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="h2 text_to_replace" style="padding-bottom: 20px; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:20px; line-height:30px; text-transform:uppercase; text-align:left; font-weight: 600; min-width:auto !important;">{{text0}}</td>
+																	</tr>
+																	<tr>
+																		<td class="text" style="padding-bottom: 20px; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:16px; line-height:30px; text-align:justify; min-width:auto !important;">
+																			<span class="text_to_replace">{{text1}}</span><br><br>
+																			<b class="text_to_replace">{{text2}}</b>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</th>
+												<th class="column" width="450" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr style="{{displayimg0}}">
+															<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/campagne_{{id_newsletter}}/{{img0}}" width="450" height="530" border="0" alt="" /></td>
+														</tr>
+													</table>
+												</th>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- END Mot du chef de villa -->
+
+							<!-- Zoom sur l'activité du mois gauche -->
+							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">
+								<form>
+									<input type="hidden" name="id_block" value="{{id_block}}">
+									<input type="hidden" name="type" value="{{type}}">
+									<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+									<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+									<input type="hidden" name="nom" value="{{nom}}">
+									<input type="hidden" name="ordre" value="{{ordre}}">
+									<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="450x530" data-content="{{img0}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+									<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text2}}">
+									<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text3}}">
+								</form>
+								<tr>
+									<td bgcolor="#f8f9fc" >
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<th class="column" width="450" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr style="{{displayimg0}}">
+															<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/beausoleil/images/campagne_{{id_newsletter}}/{{img0}}" width="450" height="530" border="0" alt="" /></td>
+														</tr>
+													</table>
+												</th>
+												<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td style="padding: 38px 60px;" class="p30-15">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="text" style="padding-bottom: 20px; color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">
+																			<strong class="text_to_replace">{{text0}}</strong>
+																			<br><br>
+																			<span class="text_to_replace">{{text1}}</span>
+																		</td>
+																	</tr>
+																	<tr style="{{display2}}">
+																		<td align="left" style="{{display2}}">
+																			<table border="0" cellspacing="0" cellpadding="0" style="{{display2}}">
+																				<tr style="{{display2}}">
+																					<td class="text-button" style="color:#2c479e; font-family:'Raleway', Arial, sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:15px 30px; background:#ffb900; min-width:auto !important; font-weight:500;">
+																						<a href="{{text3}}" target="_blank" class="link" style="color:#2c479e; text-decoration:none;">
+																							<span class="link" style="color:#2c479e; text-decoration:none;">
+																								<b class="text_to_replace">{{text2}}</b>
+																							</span>
+																						</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</th>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- END Zoom sur l'activité du mois gauche -->
+
+							<!-- Zoom sur l'activité du mois droite -->
 							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">
 								<form>
 									<input type="hidden" name="id_block" value="{{id_block}}">
@@ -260,7 +376,7 @@
 									</td>
 								</tr>
 							</table>
-							<!-- END Zoom sur l'activité du mois -->
+							<!-- END Zoom sur l'activité du mois droite -->
 
 							<!-- Image template -->
 							<table class="blockPlace newsBuilderBlock" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:40px;">

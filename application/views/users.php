@@ -58,29 +58,35 @@
 	                  </thead>
 	                  <tbody>
 
-										<?php foreach ($users as $row) {
+										<?php foreach ($users as $row) { ?>
 
-											echo '<tr>
-															<td class="v-align-middle semi-bold">
-																<a href="' . base_url() . 'users/modifier/' . $row['id'] . '">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
-															</td>
-															<td class="v-align-middle">
-																' . $row['login'] . '
-															</td>
-															<td class="v-align-middle">
-																<a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a>
-															</td>
-															<td class="v-align-middle">
-																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'users/modifier/' . $row['id'] . '"><i class="fa fa-edit"></i></a>
-																</div>
-																<div class="btn-group">
-																	<button class="btn btn-success " onclick="popin (\''.$row['id'].'\', \''.$row['nom'].'\')" ><i class="fa fa-trash"></i></button>
-																</div>
-															</td>
-				                    </tr>';
+										<tr>
+											<td class="v-align-middle semi-bold">
+												<a href="<?=base_url() . 'users/modifier/' . $row['id']?>"><?=$row['nom'] . ' ' . $row['prenom']?></a>
+											</td>
+											<td class="v-align-middle">
+												<?=$row['login']?>
+											</td>
+											<td class="v-align-middle">
+												<a href="mailto:<?=$row['email']?>"><?=$row['email']?></a>
+											</td>
+											<td class="v-align-middle">
+												<div class="btn-group">
+													<a class="btn btn-success" href="<?=base_url() . 'users/modifier/' . $row['id']?>"><i class="fa fa-edit"></i></a>
+												</div>
 
-										} ?>
+												<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 5): ?>
+
+													<div class="btn-group">
+														<button class="btn btn-success " onclick="popin ('<?=$row['id']?>','<?=$row['nom']?>)" ><i class="fa fa-trash"></i></button>
+													</div>
+
+												<?php endif; ?>
+
+											</td>
+                    </tr>
+
+									<?php	} ?>
 
                   </tbody>
                 </table>

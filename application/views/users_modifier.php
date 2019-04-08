@@ -93,12 +93,12 @@
 
 												<?php
 												if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 8) {
-													for ($i=10; $i >= 1  ; $i--) {
+													for ($i=0; $i < 11  ; $i++) {
 														$selected = ($i == $row->rang ) ? 'selected="selected"':'';
 														echo '<option '.$selected.'>'.$i.'</option>';
 													}
 												} else {
-													for ($i=8; $i >= 1  ; $i--) {
+													for ($i=0; $i < 9  ; $i++) {
 														$selected = ($i == $row->rang ) ? 'selected="selected"':'';
 														echo '<option '.$selected.'>'.$i.'</option>';
 													}

@@ -92,11 +92,11 @@
 											<select class="full-width" data-placeholder="Choisir le rang de l\'utilisateur" data-init-plugin="select2" name="rang">';
 											<?php
 											if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 8) {
-												for ($i=10; $i >= 1  ; $i--) {
+												for ($i=0; $i < 11  ; $i++) {
 													echo '<option value="'. $i . '">'. $i . '</option>';
 												}
 											} else {
-												for ($i=8; $i >= 1  ; $i--) {
+												for ($i=0; $i < 9  ; $i++) {
 													echo '<option value="'. $i . '">'. $i . '</option>';
 												}
 											}
@@ -105,7 +105,7 @@
 		                </div>
 
 									<?php } ?>
-									
+
 									<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 5): ?>
 
 										<div class="form-group form-group-default">
