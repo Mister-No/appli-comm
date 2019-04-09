@@ -10,7 +10,7 @@ class My_contacts extends CI_Model {
 		$this->db->from('contacts');
 		$this->db->join('entreprises', 'entreprises.id = contacts.id_ent', 'LEFT');
     $this->db->where("contacts.id_group = $id_group");
-    $this->db->order_by ("nom", "ASC");
+    $this->db->order_by ("email", "ASC");
 
     $query = $this->db->get();
 
