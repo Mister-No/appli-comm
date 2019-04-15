@@ -617,11 +617,11 @@ class Campagnes extends CI_Controller {
 
           $result_theme = $this->My_campagnes->get_newsletter_theme($theme);
 
-          mkdir('mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter);
+          mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter);
 
-          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/img_1.png';
+          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/img_1.png';
 
-          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/img_1.png';
+          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/img_1.png';
 
           copy($image_template, $image_copy);
 
@@ -1312,7 +1312,7 @@ class Campagnes extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1333,7 +1333,7 @@ class Campagnes extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1354,7 +1354,7 @@ class Campagnes extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images//campagne_'.$id_newsletter.'/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images//campagne_'.$id_newsletter.'/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1375,7 +1375,7 @@ class Campagnes extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img3");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images//campagne_'.$id_newsletter.'/'.$img3.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images//campagne_'.$id_newsletter.'/'.$img3.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1465,7 +1465,7 @@ class Campagnes extends CI_Controller {
           $img0 = 'img'.$d.$u;
           $image_care = $this->input->post ("img0");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img0.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/'.$img0.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1486,7 +1486,7 @@ class Campagnes extends CI_Controller {
           $img1 = 'img'.$d.$u;
           $image_care = $this->input->post ("img1");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img1.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/'.$img1.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1507,7 +1507,7 @@ class Campagnes extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img2");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img2.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/'.$img2.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -1528,7 +1528,7 @@ class Campagnes extends CI_Controller {
           $img2 = 'img'.$d.$u;
           $image_care = $this->input->post ("img3");
 
-          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/'.$img3.'.jpg';
+          $image_original = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/'.$img3.'.jpg';
 
           copy($image_care, $image_original);
 
@@ -2148,9 +2148,9 @@ class Campagnes extends CI_Controller {
 
         // COPIE DES IMAGES VERS LA NOUVELLE NEWSLETTER
 
-        $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/';
+        $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/';
 
-        $dir_copy = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter_copy.'/';
+        $dir_copy = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter_copy.'/';
 
         foreach(scandir($dir) as $file) {
           if ('.' === $file || '..' === $file) continue;

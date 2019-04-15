@@ -183,8 +183,8 @@
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
 												<td class="m-hide" width="65"></td>
-												<td class="img mt-center" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://www.colasrail.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas/template_images/logo.png" width="200" height="65" border="0" alt="" /></a></td>
-												<td class="img-right m-hide" width="172" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="images/header_image.png" width="172" height="75" border="0" alt="" /></td>
+												<td class="img mt-center" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://www.colasrail.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/logo.png" width="200" height="65" border="0" alt="" /></a></td>
+												<td class="img-right m-hide" width="172" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/header_image.png" width="172" height="75" border="0" alt="" /></td>
 											</tr>
 										</table>
 									</td>
@@ -195,23 +195,21 @@
 								<tr>
 									<td bgcolor="#ffffff">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
-											<!-- Section -->
-											<tr>
-												<td style="padding: 0px 65px 50px;" class="p0-20-30">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-														<!-- Head -->
+											<!-- Headline -->
+											<tr class="newsBuilderBlock" bgcolor="#ffffff">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text0}}">
+												</form>
+												<td style="padding: 0px 65px 20px;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<form>
-																<input type="hidden" name="id_block" value="{{id_block}}">
-																<input type="hidden" name="type" value="{{type}}">
-																<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-																<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-																<input type="hidden" name="nom" value="{{nom}}">
-																<input type="hidden" name="ordre" value="{{ordre}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre de la newsletter" data-content="{{text0}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Date de la newsletter" data-content="{{text1}}">
-															</form>
 															<td style="padding-bottom: 30px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
@@ -226,7 +224,7 @@
 																		<th class="column" width="160" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="text-date mt-center" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:19px; line-height:24px; text-align:right; font-weight:300; min-width:auto !important;">{{text1}}</td>
+																					<td class="text-date mt-center" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:19px; line-height:24px; text-align:right; font-weight:300; min-width:auto !important;">{{text0}}</td>
 																				</tr>
 																			</table>
 																		</th>
@@ -237,92 +235,91 @@
 														<tr>
 															<td style="padding-top: 30px; border-top: 1px solid #5d5d5d;"></td>
 														</tr>
-														<!-- END Head -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Headline -->
 
+											<!-- Image -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="670x247" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text0}}">
+												</form>
+												<td style="padding: 0px 65px 20px;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Full-Width image -->
 														<tr>
-															<form>
-																<input type="hidden" name="id_block" value="{{id_block}}">
-																<input type="hidden" name="type" value="{{type}}">
-																<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-																<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-																<input type="hidden" name="nom" value="{{nom}}">
-																<input type="hidden" name="ordre" value="{{ordre}}">
-																<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="670x247" data-content="{{img0}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text0}}">
-															</form>
-															<td class="fluid-img" style="padding-bottom: 30px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text0}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas/images/campagne_{{id_newsletter}}/{{img0}}" width="670" height="247" border="0" alt="" /></a></td>
+															<td class="fluid-img" style="padding-bottom: 30px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text0}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="670" height="247" border="0" alt="" /></a></td>
 														</tr>
 														<!-- END Full-Width image -->
-														<!-- TITRE -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Image -->
+
+											<!-- Titre -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding: 0px 65px 20px;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<form>
-																<input type="hidden" name="id_block" value="{{id_block}}">
-																<input type="hidden" name="type" value="{{type}}">
-																<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-																<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-																<input type="hidden" name="nom" value="{{nom}}">
-																<input type="hidden" name="ordre" value="{{ordre}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-															</form>
 															<td class="h3" style="padding-bottom: 30px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
 														</tr>
-														<!-- TITRE -->
-														<!-- H4 -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Titre -->
+
+											<!-- Paragraphe -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre du bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien du bouton" data-content="{{text4}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nom du signataire" data-content="{{text5}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Fonction" data-content="{{text6}}">
+												</form>
+												<td style="padding: 0px 65px 50px;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<form>
-																<input type="hidden" name="id_block" value="{{id_block}}">
-																<input type="hidden" name="type" value="{{type}}">
-																<input type="hidden" name="id_block_html" value="{{id_block_html}}">
-																<input type="hidden" name="id_block_content" value="{{id_block_content}}">
-																<input type="hidden" name="nom" value="{{nom}}">
-																<input type="hidden" name="ordre" value="{{ordre}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
-																<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre du bouton" data-content="{{text3}}">
-																<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien du bouton" data-content="{{text4}}">
-															</form>
 															<td class="h4" style="padding-bottom: 30px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text0}}</td>
 														</tr>
-														<!-- END H4 -->
-														<!-- Link -->
 														<tr>
-															<td class="text-link" style="padding-bottom: 30px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:23px; text-align:left; min-width:auto !important;"><a href="#" target="_blank" class="link" style="color:#ee7402; text-decoration:none;"><span class="link" style="color:#ee7402; text-decoration:none;"><img src="images/link_arrow.png" valign="middle" style="vertical-align: middle;" width="15" height="8" border="0" alt="" />&nbsp; Niveau de sous-titre 2</span></a></td>
+															<td class="text-link" style="padding-bottom: 30px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:23px; text-align:left; min-width:auto !important;"><a href="#" target="_blank" class="link" style="color:#ee7402; text-decoration:none;">
+																<span class="link" style="color:#ee7402; text-decoration:none;">
+																<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/link_arrow.png" valign="middle" style="vertical-align: middle;" width="15" height="8" border="0" alt="" />
+																&nbsp; {{text1}}</span>
+															</a>
+														</td>
 														</tr>
-														<!-- END Link -->
-														<!-- Text -->
 														<tr>
 															<td class="text" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																{{text2}}
 															</td>
 														</tr>
-														<!-- Text -->
-														<!-- Unordered List -->
-														<tr>
-															<td style="padding-bottom: 30px;">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																	<tr>
-																		<td valign="top" width="20" class="text orange" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ee7402;">&bull;</td>
-																		<td valign="top" class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Suivre les évolutions réglementaires et normatives en lien avec les autorités compétentes</td>
-																	</tr>
-																	<tr>
-																		<td valign="top" width="20" class="text orange" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ee7402;">&bull;</td>
-																		<td valign="top" class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Sensibiliser les acteurs sur les enjeux de la profession afin qu’ils puissent être pris en compte sur les chantiers</td>
-																	</tr>
-																	<tr>
-																		<td valign="top" width="20" class="text orange" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ee7402;">&bull;</td>
-																		<td valign="top" class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Défendre les intérêts économiques de nos professions aux regards des acteurs amont et aval</td>
-																	</tr>
-																	<tr>
-																		<td valign="top" width="20" class="text orange" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ee7402;">&bull;</td>
-																		<td valign="top" class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">S’assurer d’une juste concurrence entre les entreprises et lutter contre les pratiques illégales</td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-														<!-- END Unordered List -->
-														<!-- Action -->
 														<tr>
 															<td>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -335,7 +332,7 @@
 																						<table border="0" cellspacing="0" cellpadding="0">
 																						 	<tr>
 																						 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																						 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																						 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																						 		</td>
 																						 	</tr>
 																						</table>
@@ -351,11 +348,11 @@
 																					<td align="right">
 																						<table class="m-left" border="0" cellspacing="0" cellpadding="0">
 																							<tr>
-																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/ico_user.png" width="26" height="26" border="0" alt="" /></td>
+																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/ico_user.png" width="26" height="26" border="0" alt="" /></td>
 																								<td class="img" width="10" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																								<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">
-																									Pierre Durand<br />
-																									Responsable QSE
+																									{{text5}}<br />
+																									{{text6}}
 																								</td>
 																							</tr>
 																						</table>
@@ -367,14 +364,13 @@
 																</table>
 															</td>
 														</tr>
-														<!-- END Action -->
 													</table>
 												</td>
 											</tr>
-											<!-- END Section -->
+											<!-- END Paragraphe -->
 
 											<!-- Separator -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
 												<form>
 													<input type="hidden" name="id_block" value="{{id_block}}">
 													<input type="hidden" name="type" value="{{type}}">
@@ -394,7 +390,27 @@
 											<!-- END Separator -->
 
 											<!-- Two Columns -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="315x212" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image colonne 1" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text4}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="2" data-label="Image colonne 2" data-crop="315x212" data-content="{{img1}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Lien image colonne 2" data-content="{{text5}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre colonne 2" data-content="{{text6}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text7}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre bouton colonne 2" data-content="{{text8}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Lien bouton colonne 2" data-content="{{text9}}">
+												</form>
 												<td style="padding: 0px 65px 50px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
@@ -402,17 +418,17 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Full-Width image -->
 																	<tr>
-																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="images/image2.jpg" width="315" height="212" border="0" alt="" /></a></td>
+																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text0}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="315" height="212" border="0" alt="" /></a></td>
 																	</tr>
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</td>
+																		<td class="h4" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </td>
+																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -421,7 +437,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -435,17 +451,17 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Full-Width image -->
 																	<tr>
-																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="images/image3.jpg" width="315" height="212" border="0" alt="" /></a></td>
+																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text5}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img1}}" width="315" height="212" border="0" alt="" /></a></td>
 																	</tr>
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</td>
+																		<td class="h4" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text6}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </td>
+																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text7}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -454,7 +470,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text9}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text8}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -469,20 +485,34 @@
 											</tr>
 											<!-- END Two Columns -->
 
-											<!-- Separator -->
-											<tr>
-												<td style="padding: 0px 65px;" class="p0-20">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-														<tr>
-															<td style="padding-top: 40px; border-top: 1px solid #5d5d5d;" class="pt30"></td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-											<!-- END Separator -->
-
 											<!-- Three Columns -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image colonne 1" data-crop="210x141" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image colonne 1" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre colonne 1" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte colonne 1" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton colonne 1" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton colonne 1" data-content="{{text4}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="2" data-label="Image colonne 2" data-crop="210x141" data-content="{{img1}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Lien image colonne 2" data-content="{{text5}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre colonne 2" data-content="{{text6}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="2" data-label="Texte colonne 2" data-content="{{text7}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Titre bouton colonne 2" data-content="{{text8}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="2" data-label="Lien bouton colonne 2" data-content="{{text9}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="3" data-label="Image colonne 3" data-crop="210x141" data-content="{{img2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="3" data-label="Lien image colonne 3" data-content="{{text10}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="3" data-label="Titre colonne 3" data-content="{{text11}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="3" data-label="Texte colonne 3" data-content="{{text12}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="3" data-label="Titre bouton colonne 3" data-content="{{text13}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="3" data-label="Lien bouton colonne 3" data-content="{{text14}}">
+												</form>
 												<td style="padding: 0px 65px 50px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
@@ -490,17 +520,17 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Full-Width image -->
 																	<tr>
-																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="images/image4.jpg" width="210" height="141" border="0" alt="" /></a></td>
+																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text0}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="210" height="141" border="0" alt="" /></a></td>
 																	</tr>
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">Lorem ipsum dolor sit amet, sed do tempor consectetur adipiscing.</td>
+																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Les besoins des populations et des activités changent. Pour cela, les territoires doivent sans cesse s’adapter.</td>
+																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -509,7 +539,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -523,17 +553,17 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Full-Width image -->
 																	<tr>
-																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="images/image5.jpg" width="210" height="141" border="0" alt="" /></a></td>
+																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text5}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img1}}" width="210" height="141" border="0" alt="" /></a></td>
 																	</tr>
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">Lorem ipsum dolor sit amet, sed do tempor consectetur adipiscing. </td>
+																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text6}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Les besoins des populations et des activités changent. Pour cela, les territoires doivent sans cesse s’adapter.</td>
+																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text7}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -542,7 +572,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text9}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text8}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -556,17 +586,17 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Full-Width image -->
 																	<tr>
-																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="images/image6.jpg" width="210" height="141" border="0" alt="" /></a></td>
+																		<td class="fluid-img" style="padding-bottom: 15px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text10}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img2}}" width="210" height="141" border="0" alt="" /></a></td>
 																	</tr>
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">Lorem ipsum dolor sit amet, sed do tempor consectetur adipiscing. </td>
+																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text11}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Les besoins des populations et des activités changent. Pour cela, les territoires doivent sans cesse s’adapter.</td>
+																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text12}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -575,7 +605,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text14}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text13}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -591,14 +621,28 @@
 											<!-- END Three Columns -->
 
 											<!-- Article Image On The left -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="400x444" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td class="pb30" style="padding-bottom: 50px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ee7402">
 														<tr>
 															<th class="column-top" width="400" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="#" target="_blank"><img src="images/image7.jpg" width="400" height="444" border="0" alt="" /></a></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text0}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="400" height="444" border="0" alt="" /></a></td>
 																	</tr>
 																</table>
 															</th>
@@ -608,10 +652,10 @@
 																		<td style="padding: 40px 65px 0px 65px;" class="p30-20-0">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="h4-yellow" style="padding-bottom: 22px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</td>
+																					<td class="h4-yellow" style="padding-bottom: 22px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 																				</tr>
 																				<tr>
-																					<td class="text white" style="padding-bottom: 22px; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ffffff;">Les besoins des populations et des activités changent. Pour cela, les territoires doivent sans cesse s’adapter. </td>
+																					<td class="text white" style="padding-bottom: 22px; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ffffff;">{{text2}}</td>
 																				</tr>
 																				<tr>
 																					<td align="left">
@@ -619,7 +663,7 @@
 																						<table border="0" cellspacing="0" cellpadding="0">
 																						 	<tr>
 																						 		<td class="text-button yellow-button" style="mso-padding-alt:10px 36px; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important; background:#ffed00; color:#000000;">
-																						 			<a href="#" target="_blank" class="link-black" style="padding: 10px 36px; display: block; color:#000000; text-decoration:none;"><span class="link-black" style="color:#000000; text-decoration:none;">En savoir +</span></a>
+																						 			<a href="{{text4}}" target="_blank" class="link-black" style="padding: 10px 36px; display: block; color:#000000; text-decoration:none;"><span class="link-black" style="color:#000000; text-decoration:none;">{{text3}}</span></a>
 																						 		</td>
 																						 	</tr>
 																						</table>
@@ -630,7 +674,7 @@
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="img-right pb30" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="images/orange_box_image.png" width="150" height="65" border="0" alt="" /></td>
+																		<td class="img-right pb30" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/seddre/template_images/orange_box_image.png" width="150" height="65" border="0" alt="" /></td>
 																	</tr>
 																</table>
 															</th>
@@ -640,13 +684,26 @@
 											</tr>
 											<!-- END Article Image On The left -->
 
-											<!-- Article 1 -->
-											<tr>
+											<!-- Paragraph brown -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td style="padding-bottom: 40px;" class="pb30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">Actualités des clients</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -654,9 +711,9 @@
 															<td style="padding-bottom: 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/dark_red_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/dark_red_chevrons.png" width="58" height="47" border="0" alt="" /></td>
 																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/dark_red_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/dark_red_lines.png" width="670" height="12" border="0" alt="" /></td>
 																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																	</tr>
 																</table>
@@ -670,14 +727,14 @@
 																	<!-- Subtitle -->
 																	<tr>
 																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
 																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																			{{text2}}
 																		</td>
 																	</tr>
 																	<!-- END Text -->
@@ -688,7 +745,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -703,15 +760,28 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Article 1 -->
+											<!-- END Paragraph brown -->
 
-											<!-- Article 2 -->
-											<tr>
+											<!-- Paragraph grey -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td style="padding-bottom: 40px;" class="pb30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">Actualités des clients</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -719,9 +789,9 @@
 															<td style="padding-bottom: 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/grey_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/grey_chevrons.png" width="58" height="47" border="0" alt="" /></td>
 																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/grey_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/grey_lines.png" width="670" height="12" border="0" alt="" /></td>
 																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																	</tr>
 																</table>
@@ -735,14 +805,14 @@
 																	<!-- Subtitle -->
 																	<tr>
 																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
 																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																			{{text2}}
 																		</td>
 																	</tr>
 																	<!-- END Text -->
@@ -753,7 +823,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -768,15 +838,28 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Article 2 -->
+											<!-- END Paragraph grey -->
 
-											<!-- Article 3 -->
-											<tr>
+											<!-- Paragraph orange -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td style="padding-bottom: 40px;" class="pb30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">Ressources humaines</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -784,9 +867,9 @@
 															<td style="padding-bottom: 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/orange_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/orange_chevrons.png" width="58" height="47" border="0" alt="" /></td>
 																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/orange_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/orange_lines.png" width="670" height="12" border="0" alt="" /></td>
 																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																	</tr>
 																</table>
@@ -800,248 +883,14 @@
 																	<!-- Subtitle -->
 																	<tr>
 																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
 																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-																		</td>
-																	</tr>
-																	<!-- END Text -->
-																	<!-- Button -->
-																	<tr>
-																		<td align="left" style="padding-bottom: 30px;">
-																			<!-- Button -->
-																			<table border="0" cellspacing="0" cellpadding="0">
-																			 	<tr>
-																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
-																			 		</td>
-																			 	</tr>
-																			</table>
-																			<!-- END Button -->
-																		</td>
-																	</tr>
-																	<!-- END Button -->
-																	<!-- Separator -->
-																	<tr>
-																		<td style="padding-top: 30px; border-top: 1px solid #5d5d5d;"></td>
-																	</tr>
-																	<!-- END Separator -->
-																	<!-- Arrivals -->
-																	<tr>
-																		<td class="h3" style="padding-bottom: 6px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">Les arrivées</td>
-																	</tr>
-																	<tr>
-																		<td class="h4" style="padding-bottom: 6px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">Ils nous ont rejoint en mars</td>
-																	</tr>
-																	<!-- Table -->
-																	<tr>
-																		<td>
-																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																				<!-- Row 1 -->
-																				<tr>
-																					<td style="padding: 20px 0px; border-bottom: 1px solid #f0ecec;">
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																							<tr>
-																								<td width="58" class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/person_1.png" width="58" height="58" border="0" alt="" /></td>
-																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																								<td>
-																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																										<tr>
-																											<th class="column-top" width="240" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td>
-																															<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																																<tr>
-																																	<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">Benjamin MARCOURT</td>
-																																</tr>
-																																<tr>
-																																	<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Conducteur de train</td>
-																																</tr>
-																															</table>
-																														</td>
-																													</tr>
-																												</table>
-																											</th>
-																											<th style="padding-bottom: 0px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="15"></th>
-																											<th class="m-td" width="88" style="font-size:0pt; line-height:0pt; text-align:left;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/yellow_arrow.png" width="58" height="36" border="0" alt="" /></td>
-																													</tr>
-																												</table>
-																											</th>
-																											<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">Affectation : SAINT-VARENT</td>
-																													</tr>
-																												</table>
-																											</th>
-																										</tr>
-																									</table>
-																								</td>
-																							</tr>
-																						</table>
-																					</td>
-																				</tr>
-																				<!-- END Row 1 -->
-																				<!-- Row 2 -->
-																				<tr>
-																					<td style="padding: 20px 0px; border-bottom: 1px solid #f0ecec;">
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																							<tr>
-																								<td width="58" class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/person_2.png" width="58" height="58" border="0" alt="" /></td>
-																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																								<td>
-																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																										<tr>
-																											<th class="column-top" width="240" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td>
-																															<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																																<tr>
-																																	<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">Pauline GRESELLE </td>
-																																</tr>
-																																<tr>
-																																	<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Agent au sol</td>
-																																</tr>
-																															</table>
-																														</td>
-																													</tr>
-																												</table>
-																											</th>
-																											<th style="padding-bottom: 0px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="15"></th>
-																											<th class="m-td" width="88" style="font-size:0pt; line-height:0pt; text-align:left;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/yellow_arrow.png" width="58" height="36" border="0" alt="" /></td>
-																													</tr>
-																												</table>
-																											</th>
-																											<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">Affectation : RAON</td>
-																													</tr>
-																												</table>
-																											</th>
-																										</tr>
-																									</table>
-																								</td>
-																							</tr>
-																						</table>
-																					</td>
-																				</tr>
-																				<!-- END Row 2 -->
-																				<!-- Row 3 -->
-																				<tr>
-																					<td style="padding: 20px 0px; border-bottom: 1px solid #f0ecec;">
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																							<tr>
-																								<td width="58" class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/person_3.png" width="58" height="58" border="0" alt="" /></td>
-																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																								<td>
-																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																										<tr>
-																											<th class="column-top" width="240" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td>
-																															<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																																<tr>
-																																	<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">Didier JAUNET</td>
-																																</tr>
-																																<tr>
-																																	<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">Chef de base</td>
-																																</tr>
-																															</table>
-																														</td>
-																													</tr>
-																												</table>
-																											</th>
-																											<th style="padding-bottom: 0px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="15"></th>
-																											<th class="m-td" width="88" style="font-size:0pt; line-height:0pt; text-align:left;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/yellow_arrow.png" width="58" height="36" border="0" alt="" /></td>
-																													</tr>
-																												</table>
-																											</th>
-																											<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																													<tr>
-																														<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">Affectation : SAINT-VARENT</td>
-																													</tr>
-																												</table>
-																											</th>
-																										</tr>
-																									</table>
-																								</td>
-																							</tr>
-																						</table>
-																					</td>
-																				</tr>
-																				<!-- END Row 3 -->
-																			</table>
-																		</td>
-																	</tr>
-																	<!-- END Table -->
-
-																	<!-- Arrivals -->
-																</table>
-															</td>
-														</tr>
-														<!-- END Content -->
-													</table>
-												</td>
-											</tr>
-											<!-- END Article 3 -->
-
-											<!-- Article 4 -->
-											<tr>
-												<td style="padding-bottom: 40px;" class="pb30">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-														<!-- Title -->
-														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">Sécurité</td>
-														</tr>
-														<!-- END Title -->
-														<!-- Separator -->
-														<tr>
-															<td style="padding-bottom: 20px;">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																	<tr>
-																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/red_chevrons.png" width="58" height="47" border="0" alt="" /></td>
-																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/red_lines.png" width="670" height="12" border="0" alt="" /></td>
-																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																	</tr>
-																</table>
-															</td>
-														</tr>
-														<!-- END Separator -->
-														<!-- Content -->
-														<tr>
-															<td class="p0-20" style="padding: 0px 65px;">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																	<!-- Subtitle -->
-																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-																		</td>
-																	</tr>
-																	<!-- END Subtitle -->
-																	<!-- Text -->
-																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																			{{text2}}
 																		</td>
 																	</tr>
 																	<!-- END Text -->
@@ -1052,7 +901,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1067,15 +916,28 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Article 4 -->
+											<!-- END Paragraph orange -->
 
-											<!-- Article 5 -->
-											<tr>
+											<!-- Paragraph red -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td style="padding-bottom: 40px;" class="pb30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">Qualité - Environnement</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -1083,9 +945,9 @@
 															<td style="padding-bottom: 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/blue_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/red_chevrons.png" width="58" height="47" border="0" alt="" /></td>
 																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/blue_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/red_lines.png" width="670" height="12" border="0" alt="" /></td>
 																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																	</tr>
 																</table>
@@ -1099,14 +961,14 @@
 																	<!-- Subtitle -->
 																	<tr>
 																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
 																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																			{{text2}}
 																		</td>
 																	</tr>
 																	<!-- END Text -->
@@ -1117,7 +979,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1132,15 +994,28 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Article 5 -->
+											<!-- END Paragraph red -->
 
-											<!-- Article 6 -->
-											<tr>
+											<!-- Paragraph blue -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td style="padding-bottom: 40px;" class="pb30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">Matériel</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -1148,9 +1023,9 @@
 															<td style="padding-bottom: 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/black_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/blue_chevrons.png" width="58" height="47" border="0" alt="" /></td>
 																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/black_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/blue_lines.png" width="670" height="12" border="0" alt="" /></td>
 																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																	</tr>
 																</table>
@@ -1164,14 +1039,14 @@
 																	<!-- Subtitle -->
 																	<tr>
 																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
 																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																			{{text2}}
 																		</td>
 																	</tr>
 																	<!-- END Text -->
@@ -1182,7 +1057,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1197,10 +1072,101 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Article 6 -->
+											<!-- END Paragraph blue -->
 
-											<!-- Article 7 -->
-											<tr>
+											<!-- Paragraph black -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
+												<td style="padding-bottom: 40px;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/black_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/black_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+														<!-- Content -->
+														<tr>
+															<td class="p0-20" style="padding: 0px 65px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<!-- Subtitle -->
+																	<tr>
+																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																			{{text1}}
+																		</td>
+																	</tr>
+																	<!-- END Subtitle -->
+																	<!-- Text -->
+																	<tr>
+																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																			{{text2}}
+																		</td>
+																	</tr>
+																	<!-- END Text -->
+																	<!-- Button -->
+																	<tr>
+																		<td align="left">
+																			<!-- Button -->
+																			<table border="0" cellspacing="0" cellpadding="0">
+																			 	<tr>
+																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 		</td>
+																			 	</tr>
+																			</table>
+																			<!-- END Button -->
+																		</td>
+																	</tr>
+																	<!-- END Button -->
+																</table>
+															</td>
+														</tr>
+														<!-- END Content -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Paragraph black -->
+
+											<!-- Highlight -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton" data-content="{{text4}}">
+												</form>
 												<td style="padding-bottom: 40px;" class="pb30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
@@ -1208,8 +1174,8 @@
 															<td style="padding-bottom: 30px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ee7402">
 																	<tr>
-																		<td style="padding: 0 20px 0px 65px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:34px; text-align:left; font-weight:700; min-width:auto !important;" class="p0-0-0-20 h3-yellow">Focus sur…</td>
-																		<td class="fluid-img img-right m180" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="images/yellow_arrows.png" width="204" height="68" border="0" alt="" /></td>
+																		<td style="padding: 0 20px 0px 65px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:34px; text-align:left; font-weight:700; min-width:auto !important;" class="p0-0-0-20 h3-yellow">{{text0}}</td>
+																		<td class="fluid-img img-right m180" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/yellow_arrows.png" width="204" height="68" border="0" alt="" /></td>
 																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																	</tr>
 																</table>
@@ -1223,14 +1189,14 @@
 																	<!-- Subtitle -->
 																	<tr>
 																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
 																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+																			{{text2}}
 																		</td>
 																	</tr>
 																	<!-- END Text -->
@@ -1241,7 +1207,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="#" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">En savoir +</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1256,31 +1222,198 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Article 7 -->
+											<!-- END Highlight -->
 
-											<!-- Separator -->
-											<tr>
-												<td style="padding: 0px 65px;" class="p0-20">
+											<!-- Employees block -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous-titre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Photo" data-crop="330x250" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nom et prenom" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Ancienne fonction" data-content="{{text3}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nouvelle fonction" data-content="{{text4}}">
+												</form>
+												<td class="p0-20" style="padding: 0px 65px;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Arrivals -->
 														<tr>
-															<td style="padding-top: 40px; border-top: 1px solid #5d5d5d;" class="pt30"></td>
+															<td class="h3" style="padding-bottom: 6px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
 														</tr>
+														<tr>
+															<td class="h4" style="padding-bottom: 6px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
+														</tr>
+														<!-- Table -->
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<!-- Row 1 -->
+																	<tr>
+																		<td style="padding: 20px 0px; border-bottom: 1px solid #f0ecec;">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td width="58" class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="58" height="58" border="0" alt="" /></td>
+																					<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																					<td>
+																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																							<tr>
+																								<th class="column-top" width="240" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td>
+																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																													<tr>
+																														<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text2}}</td>
+																													</tr>
+																													<tr>
+																														<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text3}}</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																									</table>
+																								</th>
+																								<th style="padding-bottom: 0px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="15"></th>
+																								<th class="m-td" width="88" style="font-size:0pt; line-height:0pt; text-align:left;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/yellow_arrow.png" width="58" height="36" border="0" alt="" /></td>
+																										</tr>
+																									</table>
+																								</th>
+																								<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">{{text4}}</td>
+																										</tr>
+																									</table>
+																								</th>
+																							</tr>
+																						</table>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<!-- END Row 1 -->
+																</table>
+															</td>
+														</tr>
+														<!-- END Table -->
+
+														<!-- Arrivals -->
 													</table>
 												</td>
 											</tr>
-											<!-- END Separator -->
+											<!-- END Employees block -->
+
+											<!-- Content employees -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Photo" data-crop="330x250" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nom et prenom" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Ancienne fonction" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nouvelle fonction" data-content="{{text2}}">
+												</form>
+												<td class="p0-20" style="padding: 0px 65px;">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<!-- Row 1 -->
+																	<tr>
+																		<td style="padding: 20px 0px; border-bottom: 1px solid #f0ecec;">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td width="58" class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="58" height="58" border="0" alt="" /></td>
+																					<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																					<td>
+																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																							<tr>
+																								<th class="column-top" width="240" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td>
+																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																													<tr>
+																														<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text0}}</td>
+																													</tr>
+																													<tr>
+																														<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text1}}</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																									</table>
+																								</th>
+																								<th style="padding-bottom: 0px !important; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;" class="column" width="15"></th>
+																								<th class="m-td" width="88" style="font-size:0pt; line-height:0pt; text-align:left;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/yellow_arrow.png" width="58" height="36" border="0" alt="" /></td>
+																										</tr>
+																									</table>
+																								</th>
+																								<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
+																										</tr>
+																									</table>
+																								</th>
+																							</tr>
+																						</table>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<!-- END Row 1 -->
+																</table>
+															</td>
+														</tr>
+														<!-- END Table -->
+
+														<!-- Arrivals -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Content employees -->
 
 											<!-- The number of the month -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nombre" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Commentaire" data-content="{{text2}}">
+												</form>
 												<td style="padding: 0px 65px 50px;" class="p0-20-30" align="center">
 													<table border="0" cellspacing="0" cellpadding="0" class="m-left m-image-l">
 														<tr>
-															<td class="img m-image-l" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/abstract_yellow_arrows.png" width="140" height="144" border="0" alt="" /></td>
+															<td class="img m-image-l" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/abstract_yellow_arrows.png" width="140" height="144" border="0" alt="" /></td>
 															<td class="img" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 															<td>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="h3" style="padding-bottom: 4px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">Le chiffre du mois</td>
+																		<td class="h3" style="padding-bottom: 4px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
 																	</tr>
 																	<tr>
 																		<td style="padding-bottom: 10px;">
@@ -1292,10 +1425,10 @@
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="number" style="color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:40px; line-height:44px; text-align:left; font-weight:600; min-width:auto !important;">52 837</td>
+																		<td class="number" style="color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:40px; line-height:44px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																	<tr>
-																		<td class="h5" style="padding-bottom: 12px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">Lorem ipsum dolor sit amet</td>
+																		<td class="h5" style="padding-bottom: 12px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text2}}</td>
 																	</tr>
 																</table>
 															</td>
@@ -1305,35 +1438,34 @@
 											</tr>
 											<!-- END The number of the month -->
 
-											<!-- Separator -->
-											<tr>
-												<td style="padding: 0px 65px;" class="p0-20">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-														<tr>
-															<td style="padding-top: 40px; border-top: 1px solid #5d5d5d;" class="pt30"></td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-											<!-- END Separator -->
-
 											<!-- Document download module -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien du document" data-content="{{text2}}">
+												</form>
 												<td style="padding: 0px 65px 50px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td style="border: 2px solid #ee7402; padding: 20px 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="h4-black pb10" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:25px; text-align:left; font-weight:700; min-width:auto !important;">Module téléchargement de documents</td>
+																		<td class="h4-black pb10" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:25px; text-align:left; font-weight:700; min-width:auto !important;">{{text0}}</td>
 																	</tr>
 																	<tr>
 																		<td class="text-holder" height="55" valign="top">
 																			<table width="100%" border="0" cellspacing="0">
 																				<tr>
-																					<td valign="top" class="text5" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:24px; text-align:left; min-width:auto !important;">Télécharger le rapport Document.doc</td>
+																					<td valign="top" class="text5" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:24px; text-align:left; min-width:auto !important;">{{text1}}</td>
 																					<td valign="top" class="m-td" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																					<td valign="top" class="img-right ico-download" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="images/yellow_arrow_down.png" width="44" height="45" border="0" alt="" /></a></td>
+																					<td valign="top" class="img-right ico-download" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="{{text2}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/yellow_arrow_down.png" width="44" height="45" border="0" alt="" /></a></td>
 																				</tr>
 																			</table>
 																		</td>
@@ -1346,20 +1478,21 @@
 											</tr>
 											<!-- END Document download module -->
 
-											<!-- Separator -->
-											<tr>
-												<td style="padding: 0px 65px;" class="p0-20">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-														<tr>
-															<td style="padding-top: 40px; border-top: 1px solid #5d5d5d;" class="pt30"></td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-											<!-- END Separator -->
-
 											<!-- Testimonial -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Texte" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop="58x58" data-content="{{img0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image" data-content="{{text1}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nom et Prénom" data-content="{{text2}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Fonction" data-content="{{text3}}">
+												</form>
 												<td style="padding: 0px 200px 50px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
@@ -1372,10 +1505,10 @@
 																		<td valign="top">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img" style="padding-bottom: 10px; font-size:0pt; line-height:0pt; text-align:left;"><img src="images/quote.png" width="78" height="27" border="0" alt="" /></td>
+																					<td class="img" style="padding-bottom: 10px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/quote.png" width="78" height="27" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
-																					<td class="text-testimonials" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:28px; font-weight:300; text-align:left; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</td>
+																					<td class="text-testimonials" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:28px; font-weight:300; text-align:left; min-width:auto !important;">{{text0}}</td>
 																				</tr>
 																			</table>
 																		</td>
@@ -1390,7 +1523,7 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td width="110" style="border-top: 3px solid #ffed00;"></td>
-																		<td class="img" width="39" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/blockquote_arrow.png" width="39" height="40" border="0" alt="" /></td>
+																		<td class="img" width="39" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/blockquote_arrow.png" width="39" height="40" border="0" alt="" /></td>
 																		<td style="border-top: 3px solid #ffed00;"></td>
 																	</tr>
 																</table>
@@ -1400,9 +1533,9 @@
 															<td style="padding-left: 90px;" class="pl30">
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="images/person.png" width="58" height="58" border="0" alt="" /></td>
+																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="58" height="58" border="0" alt="" /></td>
 																		<td class="img" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">Patrick Dupont <br />Président</td>
+																		<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">{{text1}} <br />{{text2}}</td>
 																	</tr>
 																</table>
 															</td>
@@ -1412,33 +1545,31 @@
 											</tr>
 											<!-- END Testimonial -->
 
-											<!-- Separator -->
-											<tr>
-												<td style="padding: 0px 65px;" class="p0-20">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-														<tr>
-															<td style="padding-top: 40px; border-top: 1px solid #5d5d5d;" class="pt30"></td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-											<!-- END Separator -->
-
 											<!-- Flash Info -->
-											<tr>
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text1}}">
+												</form>
 												<td style="padding: 0px 160px 50px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td style="border: 1px solid #979797; padding: 30px 80px 40px 80px;" class="p30-20" bgcolor="#ffed00">
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="img-center" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:center;"><img src="images/white_arrow.png" width="97" height="49" border="0" alt="" /></td>
+																		<td class="img-center" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:center;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/white_arrow.png" width="97" height="49" border="0" alt="" /></td>
 																	</tr>
 																	<tr>
-																		<td class="h3-black" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:27px; line-height:32px; text-align:center; text-transform:uppercase; font-weight:600; min-width:auto !important;">FLASH INFO</td>
+																		<td class="h3-black" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:27px; line-height:32px; text-align:center; text-transform:uppercase; font-weight:600; min-width:auto !important;">{{text0}}</td>
 																	</tr>
 																	<tr>
-																		<td class="text3" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:center; font-weight:300; min-width:auto !important;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua</td>
+																		<td class="text3" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:center; font-weight:300; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																</table>
 															</td>
@@ -1454,13 +1585,21 @@
 
 								<!-- Footer -->
 								<tr>
+									<form>
+										<input type="hidden" name="id_block" value="{{id_block}}">
+										<input type="hidden" name="type" value="{{type}}">
+										<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+										<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+										<input type="hidden" name="nom" value="{{nom}}">
+										<input type="hidden" name="ordre" value="{{ordre}}">
+									</form>
 									<td bgcolor="#ffed00" style="padding: 30px; border-bottom: 1px solid #000000;">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
 												<th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="img" width="170" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://www.colasrail.com/" target="_blank"><img src="images/footer_logo.png" width="170" height="55" border="0" alt="" /></a></td>
+															<td class="img" width="170" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://www.colasrail.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/footer_logo.png" width="170" height="55" border="0" alt="" /></a></td>
 															<td class="content-spacing" width="60" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 															<td>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -1515,7 +1654,7 @@
 																						</table>
 																					</td>
 																					<td class="m-td" width="60" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																					<td class="img-right m-ico" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="images/ico_footer.png" width="36" height="35" border="0" alt="" /></a></td>
+																					<td class="img-right m-ico" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="#" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/ico_footer.png" width="36" height="35" border="0" alt="" /></a></td>
 																				</tr>
 																			</table>
 																		</td>
@@ -1530,10 +1669,26 @@
 									</td>
 								</tr>
 								<tr>
+									<form>
+										<input type="hidden" name="id_block" value="{{id_block}}">
+										<input type="hidden" name="type" value="{{type}}">
+										<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+										<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+										<input type="hidden" name="nom" value="{{nom}}">
+										<input type="hidden" name="ordre" value="{{ordre}}">
+									</form>
 									<td style="padding: 10px 15px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:20px; text-align:right; font-weight:400; min-width:auto !important;" bgcolor="#ffed00" class="text-footer">&copy; 2018 Studio BRIK</td>
 								</tr>
 								<tr>
-									<td style="padding: 20px; color:#4a4a4a; font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:20px; text-align:center; font-weight:400; min-width:auto !important;" class="text-footer-center"><a href="#" target="_blank" class="link-grey2-u" style="color:#4a4a4a; text-decoration:underline;"><span class="link-grey2-u" style="color:#4a4a4a; text-decoration:underline;">Se désabonner</span></a></td>
+									<form>
+										<input type="hidden" name="id_block" value="{{id_block}}">
+										<input type="hidden" name="type" value="{{type}}">
+										<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+										<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+										<input type="hidden" name="nom" value="{{nom}}">
+										<input type="hidden" name="ordre" value="{{ordre}}">
+									</form>
+									<td style="padding: 20px; color:#4a4a4a; font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:20px; text-align:center; font-weight:400; min-width:auto !important;" class="text-footer-center"><a href="{{unsubscribe}}" target="_blank" class="link-grey2-u" style="color:#4a4a4a; text-decoration:underline;"><span class="link-grey2-u" style="color:#4a4a4a; text-decoration:underline;">Se désabonner</span></a></td>
 								</tr>
 								<!-- END Footer -->
 							</table>
