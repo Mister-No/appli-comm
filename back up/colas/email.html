@@ -224,7 +224,7 @@
 																		<th class="column" width="160" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="text-date mt-center" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:19px; line-height:24px; text-align:right; font-weight:300; min-width:auto !important;">{{text0}}</td>
+																					<td class="text-date mt-center text_to_replace" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:19px; line-height:24px; text-align:right; font-weight:300; min-width:auto !important;">{{text0}}</td>
 																				</tr>
 																			</table>
 																		</th>
@@ -278,14 +278,14 @@
 												<td style="padding: 0px 65px 20px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="h3" style="padding-bottom: 30px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
+															<td class="h3 text_to_replace" style="padding-bottom: 30px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
 														</tr>
 													</table>
 												</td>
 											</tr>
 											<!-- END Titre -->
 
-											<!-- Paragraphe -->
+											<!-- Paragraph -->
 											<tr class="blockPlace newsBuilderBlock">
 												<form>
 													<input type="hidden" name="id_block" value="{{id_block}}">
@@ -305,18 +305,16 @@
 												<td style="padding: 0px 65px 50px;" class="p0-20-30">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="h4" style="padding-bottom: 30px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text0}}</td>
+															<td class="h4 text_to_replace" style="padding-bottom: 30px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text0}}</td>
 														</tr>
 														<tr>
-															<td class="text-link" style="padding-bottom: 30px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:23px; text-align:left; min-width:auto !important;"><a href="#" target="_blank" class="link" style="color:#ee7402; text-decoration:none;">
-																<span class="link" style="color:#ee7402; text-decoration:none;">
-																<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/link_arrow.png" valign="middle" style="vertical-align: middle;" width="15" height="8" border="0" alt="" />
-																&nbsp; {{text1}}</span>
-															</a>
+															<td class="text-link" style="padding-bottom: 30px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:23px; text-align:left; min-width:auto !important;">
+																<span class="link text_to_replace" style="color:#ee7402; text-decoration:none;">
+																<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/link_arrow.png" valign="middle" style="vertical-align: middle;" width="15" height="8" border="0" alt="" /> {{text1}}</span>
 														</td>
 														</tr>
 														<tr>
-															<td class="text" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+															<td class="text text_to_replace" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																{{text2}}
 															</td>
 														</tr>
@@ -332,7 +330,7 @@
 																						<table border="0" cellspacing="0" cellpadding="0">
 																						 	<tr>
 																						 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																						 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																						 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																						 		</td>
 																						 	</tr>
 																						</table>
@@ -351,8 +349,9 @@
 																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/ico_user.png" width="26" height="26" border="0" alt="" /></td>
 																								<td class="img" width="10" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																								<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">
-																									{{text5}}<br />
-																									{{text6}}
+																									<span class="text_to_replace">{{text5}}</span>
+																									<br />
+																									<span class="text_to_replace">{{text6}}</span>
 																								</td>
 																							</tr>
 																						</table>
@@ -367,7 +366,7 @@
 													</table>
 												</td>
 											</tr>
-											<!-- END Paragraphe -->
+											<!-- END Paragraph -->
 
 											<!-- Separator -->
 											<tr class="blockPlace newsBuilderBlock">
@@ -423,12 +422,12 @@
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
+																		<td class="h4 text_to_replace" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
+																		<td class="text text_to_replace" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -437,7 +436,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -456,12 +455,12 @@
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text6}}</td>
+																		<td class="h4 text_to_replace" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text6}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text7}}</td>
+																		<td class="text text_to_replace" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text7}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -470,7 +469,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text9}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text8}}</span></a>
+																			 			<a href="{{text9}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text8}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -525,12 +524,12 @@
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text1}}</td>
+																		<td class="h5-black text_to_replace" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
+																		<td class="text text_to_replace" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -539,7 +538,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -558,12 +557,12 @@
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text6}}</td>
+																		<td class="h5-black text_to_replace" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text6}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text7}}</td>
+																		<td class="text text_to_replace" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text7}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -572,7 +571,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text9}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text8}}</span></a>
+																			 			<a href="{{text9}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text8}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -591,12 +590,12 @@
 																	<!-- END Full-Width image -->
 																	<!-- H3 -->
 																	<tr>
-																		<td class="h5-black" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text11}}</td>
+																		<td class="h5-black text_to_replace" style="padding-bottom: 20px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:24px; text-align:left; font-weight:400; min-width:auto !important;">{{text11}}</td>
 																	</tr>
 																	<!-- END H3 -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text12}}</td>
+																		<td class="text text_to_replace" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text12}}</td>
 																	</tr>
 																	<!-- END Text -->
 																	<tr>
@@ -605,7 +604,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text14}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text13}}</span></a>
+																			 			<a href="{{text14}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text13}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -652,10 +651,10 @@
 																		<td style="padding: 40px 65px 0px 65px;" class="p30-20-0">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="h4-yellow" style="padding-bottom: 22px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
+																					<td class="h4-yellow text_to_replace" style="padding-bottom: 22px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 																				</tr>
 																				<tr>
-																					<td class="text white" style="padding-bottom: 22px; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ffffff;">{{text2}}</td>
+																					<td class="text white text_to_replace" style="padding-bottom: 22px; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important; color:#ffffff;">{{text2}}</td>
 																				</tr>
 																				<tr>
 																					<td align="left">
@@ -663,7 +662,7 @@
 																						<table border="0" cellspacing="0" cellpadding="0">
 																						 	<tr>
 																						 		<td class="text-button yellow-button" style="mso-padding-alt:10px 36px; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important; background:#ffed00; color:#000000;">
-																						 			<a href="{{text4}}" target="_blank" class="link-black" style="padding: 10px 36px; display: block; color:#000000; text-decoration:none;"><span class="link-black" style="color:#000000; text-decoration:none;">{{text3}}</span></a>
+																						 			<a href="{{text4}}" target="_blank" class="link-black" style="padding: 10px 36px; display: block; color:#000000; text-decoration:none;"><span class="link-black text_to_replace" style="color:#000000; text-decoration:none;">{{text3}}</span></a>
 																						 		</td>
 																						 	</tr>
 																						</table>
@@ -703,7 +702,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -726,14 +725,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -745,7 +744,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -781,7 +780,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -804,14 +803,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -823,7 +822,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -859,7 +858,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -882,14 +881,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -901,7 +900,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -937,7 +936,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -960,14 +959,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -979,7 +978,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1015,7 +1014,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -1038,14 +1037,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -1057,7 +1056,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button text_to_replace" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1093,7 +1092,7 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Title -->
 														<tr>
-															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2">{{text0}}</td>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
 														</tr>
 														<!-- END Title -->
 														<!-- Separator -->
@@ -1116,14 +1115,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -1135,7 +1134,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1188,14 +1187,14 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<!-- Subtitle -->
 																	<tr>
-																		<td class="h4" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
+																		<td class="h4 text_to_replace" style="padding-bottom: 25px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">
 																			{{text1}}
 																		</td>
 																	</tr>
 																	<!-- END Subtitle -->
 																	<!-- Text -->
 																	<tr>
-																		<td class="text" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																		<td class="text text_to_replace" style="padding-bottom: 25px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
 																			{{text2}}
 																		</td>
 																	</tr>
@@ -1207,7 +1206,7 @@
 																			<table border="0" cellspacing="0" cellpadding="0">
 																			 	<tr>
 																			 		<td class="text-button" style="mso-padding-alt:10px 36px; color:#ffffff; background:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-weight:600; font-size:16px; line-height:20px; text-align:center; border-radius:40px; min-width:auto !important;">
-																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
+																			 			<a href="{{text4}}" target="_blank" class="link-button" style="padding: 10px 36px; display: block; color:#ffffff; text-decoration:none;"><span class="link-button text_to_replace" style="color:#ffffff; text-decoration:none;">{{text3}}</span></a>
 																			 		</td>
 																			 	</tr>
 																			</table>
@@ -1244,10 +1243,10 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Arrivals -->
 														<tr>
-															<td class="h3" style="padding-bottom: 6px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
+															<td class="h3 text_to_replace" style="padding-bottom: 6px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
 														</tr>
 														<tr>
-															<td class="h4" style="padding-bottom: 6px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
+															<td class="h4 text_to_replace" style="padding-bottom: 6px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 														</tr>
 														<!-- Table -->
 														<tr>
@@ -1269,10 +1268,10 @@
 																											<td>
 																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																													<tr>
-																														<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text2}}</td>
+																														<td class="h5 text_to_replace" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text2}}</td>
 																													</tr>
 																													<tr>
-																														<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text3}}</td>
+																														<td class="text text_to_replace" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text3}}</td>
 																													</tr>
 																												</table>
 																											</td>
@@ -1290,7 +1289,7 @@
 																								<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																										<tr>
-																											<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">{{text4}}</td>
+																											<td class="text4 text_to_replace" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">{{text4}}</td>
 																										</tr>
 																									</table>
 																								</th>
@@ -1348,10 +1347,10 @@
 																											<td>
 																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																													<tr>
-																														<td class="h5" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text0}}</td>
+																														<td class="h5 text_to_replace" style="padding-bottom: 5px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text0}}</td>
 																													</tr>
 																													<tr>
-																														<td class="text" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text1}}</td>
+																														<td class="text text_to_replace" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">{{text1}}</td>
 																													</tr>
 																												</table>
 																											</td>
@@ -1369,7 +1368,7 @@
 																								<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																										<tr>
-																											<td class="text4" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
+																											<td class="text4 text_to_replace" style="color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:30px; text-align:left; min-width:auto !important;">{{text2}}</td>
 																										</tr>
 																									</table>
 																								</th>
@@ -1413,7 +1412,7 @@
 															<td>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="h3" style="padding-bottom: 4px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
+																		<td class="h3 text_to_replace" style="padding-bottom: 4px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;">{{text0}}</td>
 																	</tr>
 																	<tr>
 																		<td style="padding-bottom: 10px;">
@@ -1425,10 +1424,10 @@
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="number" style="color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:40px; line-height:44px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
+																		<td class="number text_to_replace" style="color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:40px; line-height:44px; text-align:left; font-weight:600; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																	<tr>
-																		<td class="h5" style="padding-bottom: 12px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text2}}</td>
+																		<td class="h5 text_to_replace" style="padding-bottom: 12px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:22px; text-align:left; font-weight:600; min-width:auto !important;">{{text2}}</td>
 																	</tr>
 																</table>
 															</td>
@@ -1457,13 +1456,13 @@
 															<td style="border: 2px solid #ee7402; padding: 20px 20px;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="h4-black pb10" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:25px; text-align:left; font-weight:700; min-width:auto !important;">{{text0}}</td>
+																		<td class="h4-black pb10 text_to_replace" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:25px; text-align:left; font-weight:700; min-width:auto !important;">{{text0}}</td>
 																	</tr>
 																	<tr>
 																		<td class="text-holder" height="55" valign="top">
 																			<table width="100%" border="0" cellspacing="0">
 																				<tr>
-																					<td valign="top" class="text5" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:24px; text-align:left; min-width:auto !important;">{{text1}}</td>
+																					<td valign="top" class="text5 text_to_replace" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:16px; line-height:24px; text-align:left; min-width:auto !important;">{{text1}}</td>
 																					<td valign="top" class="m-td" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																					<td valign="top" class="img-right ico-download" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="{{text2}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/yellow_arrow_down.png" width="44" height="45" border="0" alt="" /></a></td>
 																				</tr>
@@ -1508,7 +1507,7 @@
 																					<td class="img" style="padding-bottom: 10px; font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/quote.png" width="78" height="27" border="0" alt="" /></td>
 																				</tr>
 																				<tr>
-																					<td class="text-testimonials" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:28px; font-weight:300; text-align:left; min-width:auto !important;">{{text0}}</td>
+																					<td class="text-testimonials text_to_replace" style="padding-bottom: 20px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:20px; line-height:28px; font-weight:300; text-align:left; min-width:auto !important;">{{text0}}</td>
 																				</tr>
 																			</table>
 																		</td>
@@ -1535,7 +1534,7 @@
 																	<tr>
 																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="58" height="58" border="0" alt="" /></td>
 																		<td class="img" width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																		<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">{{text1}} <br />{{text2}}</td>
+																		<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;"><span class="text_to_replace">{{text1}}</span> <br /><span class="text_to_replace">{{text2}}</span></td>
 																	</tr>
 																</table>
 															</td>
@@ -1566,10 +1565,10 @@
 																		<td class="img-center" style="padding-bottom: 20px; font-size:0pt; line-height:0pt; text-align:center;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/white_arrow.png" width="97" height="49" border="0" alt="" /></td>
 																	</tr>
 																	<tr>
-																		<td class="h3-black" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:27px; line-height:32px; text-align:center; text-transform:uppercase; font-weight:600; min-width:auto !important;">{{text0}}</td>
+																		<td class="h3-black text_to_replace" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:27px; line-height:32px; text-align:center; text-transform:uppercase; font-weight:600; min-width:auto !important;">{{text0}}</td>
 																	</tr>
 																	<tr>
-																		<td class="text3" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:center; font-weight:300; min-width:auto !important;">{{text1}}</td>
+																		<td class="text3 text_to_replace" style="color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:center; font-weight:300; min-width:auto !important;">{{text1}}</td>
 																	</tr>
 																</table>
 															</td>
