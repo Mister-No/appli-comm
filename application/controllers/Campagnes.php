@@ -458,11 +458,11 @@ class Campagnes extends CI_Controller {
 
           $result_theme = $this->My_campagnes->get_newsletter_theme($this->input->post ('theme'));
 
-          mkdir('mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter);
+          mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter);
 
-          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/img_1.png';
+          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/img_1.png';
 
-          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter.'/img_1.png';
+          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/img_1.png';
 
           copy($image_template, $image_copy);
 
@@ -2144,7 +2144,7 @@ class Campagnes extends CI_Controller {
 
         $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
 
-        mkdir('mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter_copy);
+        mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter_copy);
 
         // COPIE DES IMAGES VERS LA NOUVELLE NEWSLETTER
 
@@ -2280,7 +2280,7 @@ class Campagnes extends CI_Controller {
       $this->My_common->delete_data_detail('newsletter_has_contacts', 'id_newsletter', $id_newsletter);
 
       $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
-      $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.$result_theme[0]->nom.'/images/campagne_'.$id_newsletter;
+      $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter;
 
       foreach(scandir($dir) as $file) {
           if ('.' === $file || '..' === $file) continue;
