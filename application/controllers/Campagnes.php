@@ -877,7 +877,7 @@ class Campagnes extends CI_Controller {
           redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
 
         } else {
-
+          echo 3;
         }
 
       } else {
