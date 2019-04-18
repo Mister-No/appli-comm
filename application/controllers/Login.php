@@ -10,8 +10,8 @@ class Login extends CI_Controller {
 	public function verifier(){
 
     // Mise en place des regles de verification du formulaire :
-    $this->form_validation->set_rules('username', 'Login', 'trim|required|min_length[3]|max_length[20]');
-    $this->form_validation->set_rules('password', 'Mot de passe', 'trim|required|min_length[4]|max_length[20]');
+    $this->form_validation->set_rules('username', 'Login', 'trim|required|min_length[3]|max_length[40]');
+    $this->form_validation->set_rules('password', 'Mot de passe', 'trim|required|min_length[4]|max_length[40]');
 
     if ($this->form_validation->run() == FALSE) {
 

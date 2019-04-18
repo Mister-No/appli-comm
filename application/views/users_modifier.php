@@ -8,8 +8,9 @@
 				<li>
 					<a href="<?=base_url();?>users.html">Utilisateurs</a>
 				</li>
+				<?php foreach ($result as $row) { ?>
 				<li>
-					<a href="<?=base_url();?>users/modifier.html" class="active">Modifier</a>
+					<a href="<?=base_url();?>users/modifier/<?=$row->id?>.html" class="active">Modifier</a>
 				</li>
 			</ul>
 		</div>
@@ -36,8 +37,6 @@
 							</ul>
 						</div>
 		       </div>
-						<?php foreach ($result as $row) { ?>
-
 							<form id="form" method="post" class="validate" action="<?=base_url()?>users/update.html">
 								<input type="hidden" name="id" value="<?=$row->id?>">
 			          <div class="panel-body">
