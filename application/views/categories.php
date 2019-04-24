@@ -71,7 +71,7 @@
 												  </i>
 												</li>
 												<li>
-													<i onclick="delete_item (\''.$row['id'].'\', \''.$row['titre'].'\');"><i class="fa fa-trash"></i></i>
+													<i onclick="popin (\''.addslashes($row['id']).'\', \''.addslashes($row['titre']).'\');"><i class="fa fa-trash"></i></i>
 												</li>
 												<li>
 													<a data-toggle="collapse" class="portlet-collapse" href="#">
@@ -106,7 +106,7 @@
 		                            <span class="panel-controls pull-right">
 																	<i onclick="edit_cat(' . $row_cat['id'] . ', ' . $row['id'] . ');"><i class="fa fa-edit"></i>
 																	</i>
-																		<i onclick="delete_item(\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\',\'' . $row['id'] . '\');"><i class="fa fa-trash"></i>
+																		<i onclick="popin(\''.addslashes($row_cat['id']).'\', \''.addslashes($row_cat['titre']).'\',\'' . addslashes($row['id']) . '\');"><i class="fa fa-trash"></i>
 																	</i>
 																</span>
 															</li>

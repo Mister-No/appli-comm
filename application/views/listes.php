@@ -62,7 +62,7 @@
 													<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 3): ?>
 
 														<div class="btn-group">
-															 <button class="btn btn-success " onclick="popin ('<?=$row['id']?>', '<?=$row['titre']?>')" ><i class="fa fa-trash"></i></button>
+															 <button class="btn btn-success " onclick="popin ('<?=addslashes($row['id'])?>', '<?=addslashes($row['titre'])?>')" ><i class="fa fa-trash"></i></button>
 														</div>
 
 													<?php endif; ?>

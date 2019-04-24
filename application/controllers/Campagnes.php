@@ -93,6 +93,7 @@ class Campagnes extends CI_Controller {
     if ($_SESSION["is_connect"] == TRUE){
 
       $this->load->model('My_campagnes');
+      $this->load->model('My_users');
       $etape = $this->uri->segment(3, 0);
       $id_newsletter = $this->uri->segment(4, 0);
       $id_group = $_SESSION['id_group'];
@@ -333,7 +334,7 @@ class Campagnes extends CI_Controller {
           '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none;mso-hide:all; ',
           '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none;mso-hide:all; ',
           '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
-          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
+          '{{displayimg3}}'      => (!empty($img_link3))?'':'display:none;mso-hide:all; ',
           '{{display0}}'         => (!empty($text0))?'':'display:none;mso-hide:all; ',
           '{{display1}}'         => (!empty($text1))?'':'display:none;mso-hide:all; ',
           '{{display2}}'         => (!empty($text2))?'':'display:none;mso-hide:all; ',
@@ -348,7 +349,7 @@ class Campagnes extends CI_Controller {
           '{{display11}}'        => (!empty($text11))?'':'display:none;mso-hide:all; ',
           '{{display12}}'        => (!empty($text12))?'':'display:none;mso-hide:all; ',
           '{{display13}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
-          '{{display14}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
+          '{{display14}}'        => (!empty($text14))?'':'display:none;mso-hide:all; ',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -1156,7 +1157,7 @@ class Campagnes extends CI_Controller {
           '{{displayimg0}}'      => (!empty($img_link0))?'':'display:none;mso-hide:all; ',
           '{{displayimg1}}'      => (!empty($img_link1))?'':'display:none;mso-hide:all; ',
           '{{displayimg2}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
-          '{{displayimg3}}'      => (!empty($img_link2))?'':'display:none;mso-hide:all; ',
+          '{{displayimg3}}'      => (!empty($img_link3))?'':'display:none;mso-hide:all; ',
           '{{display0}}'         => (!empty($text0))?'':'display:none;mso-hide:all; ',
           '{{display1}}'         => (!empty($text1))?'':'display:none;mso-hide:all; ',
           '{{display2}}'         => (!empty($text2))?'':'display:none;mso-hide:all; ',
@@ -1171,7 +1172,7 @@ class Campagnes extends CI_Controller {
           '{{display11}}'        => (!empty($text11))?'':'display:nonemso-hide:all; ',
           '{{display12}}'        => (!empty($text12))?'':'display:none;mso-hide:all; ',
           '{{display13}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
-          '{{display14}}'        => (!empty($text13))?'':'display:none;mso-hide:all; ',
+          '{{display14}}'        => (!empty($text14))?'':'display:none;mso-hide:all; ',
           '{{url0}}'             => $url0,
           '{{url1}}'             => $url1,
           '{{url2}}'             => $url2,
@@ -1999,11 +2000,11 @@ class Campagnes extends CI_Controller {
 
         $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
 
-        redirect(base_url().'campagnes/envoyees.html');
+        //redirect(base_url().'campagnes/envoyees.html');
 
 			} else {
 
-				redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
+				//redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
 
 			}
 

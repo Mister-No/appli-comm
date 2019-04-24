@@ -126,7 +126,7 @@
 
 														<?php if ($_SESSION['rang'] > 0): ?>
 
-															<button class="btn btn-success" onclick="popin('<?=$row_campagnes->id_newsletter?>', '<?=$row_campagnes->nom_campagne?>')" >
+															<button class="btn btn-success" onclick="popin('<?=addslashes($row_campagnes->id_newsletter)?>', '<?=addslashes($row_campagnes->nom_campagne)?>')" >
 																<i class="fa fa-archive">
 																</i>
 															</button>

@@ -64,7 +64,7 @@
 																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id . '"><i class="fa fa-edit"></i></a>
 															</div>
 															<div class="btn-group">
-																<button class="btn btn-success " onclick="popin (\''.$row->id.'\', \''.$row->raison_sociale.'\')" ><i class="fa fa-trash"></i></button>
+																<button class="btn btn-success " onclick="popin (\''.addslashes($row->id).'\', \''.addslashes($row->raison_sociale).'\')" ><i class="fa fa-trash"></i></button>
 															</div>
 														</td>
 													</tr>';

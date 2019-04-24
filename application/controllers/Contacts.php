@@ -122,7 +122,20 @@ class Contacts extends CI_Controller  {
 
       $result_user = $mailin->get_user($data_user);
 
-      ($result_user['data']['blacklisted'] == 1)? $blacklist = 'checked': $blacklist = '';
+      if ($result_user['code'] == 'success') {
+        if ($result_user['data']['blacklisted'] == 1) {
+          $blacklist = 'checked';
+        } else {
+          $blacklist = '';
+        }
+      } else {
+        if ($result[0]->blacklist == 1) {
+          $blacklist = 'checked';
+        } else {
+          $blacklist = '';
+        }
+      }
+
       $result_cat = '';
 
       foreach ($resultc as $rowc) {
