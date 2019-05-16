@@ -176,6 +176,4 @@
 		$('#modal-delete').modal('show', {backdrop: 'fade'});
 	});
 
-	var initTableWithSearch = function() {};
-
 	</script>

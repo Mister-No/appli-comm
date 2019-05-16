@@ -27,7 +27,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/datatables-responsive/css/datatables.responsive.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages-icons.css">
 <link class="main-stylesheet" rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages.css" />
-<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/style.css?<?=date('U')?>">
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/summernote/css/summernote.css">
 <link href="<?=base_url();?>assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
 <link href="assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
@@ -43,12 +43,6 @@
 <script src="<?=base_url();?>assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="<?=base_url();?>assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script src="<?=base_url();?>assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
-<script src="<?=base_url();?>assets/js/datatables.js" type="text/javascript"></script>
-<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
-<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js" type="text/javascript"></script>
-<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
-<script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
 <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/lodash.min.js" type="text/javascript"></script>
 
 <script>

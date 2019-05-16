@@ -1193,7 +1193,7 @@ class Campagnes extends CI_Controller {
       $search = '/<form.*?<\/form>/is';
       $replace = '';
       $newsletter = preg_replace($search,$replace,$newsletter);
-      //$search = '/<tr class="display.*?<\/tr>/is';
+      //$search = '/<table class="display.*?<\/table>/is';
       //$replace = '';
       //$newsletter = preg_replace($search,$replace,$newsletter);
       //$search = '/§§§§/';

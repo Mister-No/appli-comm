@@ -166,7 +166,12 @@
 										<input type="hidden" name="nom" value="{{nom}}">
 										<input type="hidden" name="ordre" value="{{ordre}}">
 									</form>
-									<td class="text-top" bgcolor="#fafafa" style="padding: 8px 15px; color:#c8c8c8; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:center; font-weight:600; min-width:auto !important;"><a href="{{mirror}}" target="_blank" class="link-grey" style="color:#c8c8c8; text-decoration:none;"><span class="link-grey" style="color:#c8c8c8; text-decoration:none;">Voir cette newsletter en ligne</span></a></td>
+									<td class="text-top" bgcolor="#fafafa" style="padding: 8px 15px; color:#c8c8c8; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:center; font-weight:600; min-width:auto !important;">
+										<a href="{{mirror}}" target="_blank" class="link-grey" style="color:#c8c8c8; text-decoration:none;">
+											<span class="link-grey" style="color:#c8c8c8; text-decoration:none;">Voir cette newsletter en ligne
+											</span>
+										</a>
+									</td>
 								</tr>
 								<!-- END Pre-Header -->
 								<!-- Header -->
@@ -183,8 +188,13 @@
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
 												<td class="m-hide" width="65"></td>
-												<td class="img mt-center" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://www.colasrail.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/logo.png" width="200" height="65" border="0" alt="" /></a></td>
-												<td class="img-right m-hide" width="172" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/header_image.png" width="172" height="75" border="0" alt="" /></td>
+												<td class="img mt-center" style="font-size:0pt; line-height:0pt; text-align:left;">
+													<a href="http://www.colasrail.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/logo.png" width="200" height="65" border="0" alt="" />
+													</a>
+												</td>
+												<td class="img-right m-hide" width="172" style="font-size:0pt; line-height:0pt; text-align:right;">
+													<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/header_image.png" width="172" height="75" border="0" alt="" />
+												</td>
 											</tr>
 										</table>
 									</td>
@@ -256,7 +266,11 @@
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<!-- Full-Width image -->
 														<tr>
-															<td class="fluid-img" style="padding-bottom: 30px; font-size:0pt; line-height:0pt; text-align:left;"><a href="{{text0}}" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="670" border="0" alt="" /></a></td>
+															<td class="fluid-img" style="padding-bottom: 30px; font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="{{text0}}" target="_blank">
+																	<img src="{{base_url}}mediatheque/newsletter/colas_rail/images/campagne_{{id_newsletter}}/{{img0}}" width="670" border="0" alt="" />
+																</a>
+															</td>
 														</tr>
 														<!-- END Full-Width image -->
 													</table>
@@ -370,6 +384,131 @@
 											</tr>
 											<!-- END Paragraph -->
 
+											<!-- Sous titre niveau 1 -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous titre" data-content="{{text0}}">
+												</form>
+												<td style="padding: 0px 65px 10px;width:100%;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr style="{{display0}}">
+															<td class="h4 text_to_replace" style="padding-bottom: 30px; color:#5d5d5d; font-family:'Open Sans', Arial, sans-serif; font-size:22px; line-height:30px; text-align:left; font-weight:600; min-width:auto !important; {{display0}}">{{text0}}</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- END Sous titre niveau 1 -->
+
+											<!-- Sous titre niveau 2 -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Sous titre" data-content="{{text0}}">
+												</form>
+												<td style="padding: 0px 65px 10px;width:100%;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr style="{{display0}}">
+															<td class="text-link" style="padding-bottom: 30px; color:#ee7402; font-family:'Open Sans', Arial, sans-serif; font-size:18px; line-height:23px; text-align:left; min-width:auto !important; {{display0}}">
+																<span class="link text_to_replace" style="color:#ee7402; text-decoration:none;">
+																<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/link_arrow.png" valign="middle" style="vertical-align: middle;" width="15" height="8" border="0" alt="" /> {{text0}}</span>
+														</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- END Sous titre niveau 2 -->
+
+											<!-- Texte -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_summernote[]" value="2" data-col="1" data-label="Texte" data-content="{{text0}}">
+												</form>
+												<td style="padding: 0px 65px 10px;width:100%;" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td class="text text_to_replace" style="padding-bottom: 30px; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">
+																{{text0}}
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- END Texte -->
+
+											<!-- Signature -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Nom du signataire" data-content="{{text0}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Fonction" data-content="{{text1}}">
+												</form>
+												<td style="padding: 0px 65px 10px;width:100%" class="p0-20-30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<th class="column-top" width="400" style="font-size:0pt; line-height:0pt; padding:0px 0px 30px; margin:0; font-weight:normal; vertical-align:top;">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td align="left">
+																					</td>
+																				</tr>
+																			</table>
+																		</th>
+																		<th style="padding-bottom: 30px !important; font-size:0pt; line-height:0pt; padding:0px 0px 30px; margin:0; font-weight:normal;" class="column" width="25"></th>
+																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0px 0px 30px; margin:0; font-weight:normal;">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td align="right">
+																						<table class="m-left" border="0" cellspacing="0" cellpadding="0">
+																							<tr>
+																								<td class="img" width="25" style="font-size:0pt; line-height:0pt; text-align:left;">
+																									<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/ico_user.png" width="26" height="26" border="0" alt="" />
+																								</td>
+																								<td class="img" width="10" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																								<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">
+																									<span class="text_to_replace">{{text0}}</span>
+																									<br />
+																									<span class="text_to_replace">{{text1}}</span>
+																								</td>
+																							</tr>
+																						</table>
+																					</td>
+																				</tr>
+																			</table>
+																		</th>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<!-- END Signature -->
+
 											<!-- Separator -->
 											<tr class="blockPlace newsBuilderBlock">
 												<form>
@@ -380,7 +519,7 @@
 													<input type="hidden" name="nom" value="{{nom}}">
 													<input type="hidden" name="ordre" value="{{ordre}}">
 												</form>
-												<td style="padding: 0px 65px;" class="p0-20" width="100%">
+												<td style="padding: 0px 65px;width:100%;" class="p0-20">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
 															<td style="padding-top: 40px; border-top: 1px solid #5d5d5d;" class="pt30"></td>
@@ -763,6 +902,43 @@
 											</tr>
 											<!-- END Paragraph brown -->
 
+											<!-- Title brown -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/dark_red_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/dark_red_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Title brown -->
+
 											<!-- Paragraph grey -->
 											<tr class="blockPlace newsBuilderBlock">
 												<form>
@@ -840,6 +1016,43 @@
 												</td>
 											</tr>
 											<!-- END Paragraph grey -->
+
+											<!-- Title grey -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/grey_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/grey_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Title grey -->
 
 											<!-- Paragraph orange -->
 											<tr class="blockPlace newsBuilderBlock">
@@ -919,6 +1132,43 @@
 											</tr>
 											<!-- END Paragraph orange -->
 
+											<!-- Title orange -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/orange_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/orange_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Title orange -->
+
 											<!-- Paragraph red -->
 											<tr class="blockPlace newsBuilderBlock">
 												<form>
@@ -996,6 +1246,43 @@
 												</td>
 											</tr>
 											<!-- END Paragraph red -->
+
+											<!-- Title red -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/red_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/red_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Title red -->
 
 											<!-- Paragraph blue -->
 											<tr class="blockPlace newsBuilderBlock">
@@ -1075,6 +1362,43 @@
 											</tr>
 											<!-- END Paragraph blue -->
 
+											<!-- Title blue -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/blue_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/blue_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Title blue -->
+
 											<!-- Paragraph black -->
 											<tr class="blockPlace newsBuilderBlock">
 												<form>
@@ -1153,6 +1477,43 @@
 											</tr>
 											<!-- END Paragraph black -->
 
+											<!-- Title black -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding: 0 65px; color:#000000; font-family:'Open Sans', Arial, sans-serif; font-size:35px; line-height:40px; text-align:left; font-weight:300; min-width:auto !important;" class="p0-20-10 h2 text_to_replace">{{text0}}</td>
+														</tr>
+														<!-- END Title -->
+														<!-- Separator -->
+														<tr>
+															<td style="padding-bottom: 20px;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="fluid-img m13" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/black_chevrons.png" width="58" height="47" border="0" alt="" /></td>
+																		<td class="img" width="7" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																		<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/black_lines.png" width="670" height="12" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Separator -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Title black -->
+
 											<!-- Highlight -->
 											<tr class="blockPlace newsBuilderBlock">
 												<form>
@@ -1221,6 +1582,37 @@
 															</td>
 														</tr>
 														<!-- END Content -->
+													</table>
+												</td>
+											</tr>
+											<!-- END Highlight -->
+
+											<!-- Title Highlight -->
+											<tr class="blockPlace newsBuilderBlock">
+												<form>
+													<input type="hidden" name="id_block" value="{{id_block}}">
+													<input type="hidden" name="type" value="{{type}}">
+													<input type="hidden" name="id_block_html" value="{{id_block_html}}">
+													<input type="hidden" name="id_block_content" value="{{id_block_content}}">
+													<input type="hidden" name="nom" value="{{nom}}">
+													<input type="hidden" name="ordre" value="{{ordre}}">
+													<input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre" data-content="{{text0}}">
+												</form>
+												<td style="padding-bottom: 10px;width:100%;" class="pb30">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<!-- Title -->
+														<tr>
+															<td style="padding-bottom: 30px;width:100%;">
+																<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#ee7402;">
+																	<tr>
+																		<td style="padding: 0 20px 0px 65px; color:#ffed00; font-family:'Open Sans', Arial, sans-serif; font-size:30px; line-height:34px; text-align:left; font-weight:700; min-width:auto !important;" class="p0-0-0-20 h3-yellow">{{text0}}</td>
+																		<td class="fluid-img img-right m180" style="font-size:0pt; line-height:0pt; text-align:right;"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/yellow_arrows.png" width="204" height="68" border="0" alt="" /></td>
+																		<td class="content-spacing" width="65" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<!-- END Title -->
 													</table>
 												</td>
 											</tr>
@@ -1605,7 +1997,11 @@
 												<th class="column-top" width="370" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="img" width="170" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://www.colasrail.com/" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/footer_logo.png" width="170" height="55" border="0" alt="" /></a></td>
+															<td class="img" width="170" style="font-size:0pt; line-height:0pt; text-align:left;">
+																<a href="http://www.colasrail.com/" target="_blank">
+																	<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/footer_logo.png" width="170" height="55" border="0" alt="" />
+																</a>
+															</td>
 															<td class="content-spacing" width="60" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 															<td>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -1618,7 +2014,11 @@
 																					<td class="text" style="font-weight: bold; text-transform: uppercase; color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:30px; text-align:left; min-width:auto !important;">COLAS RAIL</td>
 																				</tr>
 																				<tr>
-																					<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;"><a href="http://www.colasrail.com/" target="_blank" class="link-black" style="color:#000000; text-decoration:none;"><span class="link-black" style="color:#000000; text-decoration:none;">www.colasrail.com</span></a></td>
+																					<td class="text2" style="color:#494949; font-family:'Open Sans', Arial, sans-serif; font-size:14px; line-height:20px; text-align:left; min-width:auto !important;">
+																						<a href="http://www.colasrail.com/" target="_blank" class="link-black" style="color:#000000; text-decoration:none;">
+																							<span class="link-black" style="color:#000000; text-decoration:none;">www.colasrail.com</span>
+																						</a>
+																					</td>
 																				</tr>
 																			</table>
 																		</td>
@@ -1660,7 +2060,11 @@
 																						</table>
 																					</td>
 																					<td class="m-td" width="60" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
-																					<td class="img-right m-ico" style="font-size:0pt; line-height:0pt; text-align:right;"><a href="http://www.colasrail.com/activites/transport.php" target="_blank"><img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/ico_footer.png" width="36" height="35" border="0" alt="" /></a></td>
+																					<td class="img-right m-ico" style="font-size:0pt; line-height:0pt; text-align:right;">
+																						<a href="http://www.colasrail.com/activites/transport.php" target="_blank">
+																							<img src="{{base_url}}mediatheque/newsletter/colas_rail/template_images/ico_footer.png" width="36" height="35" border="0" alt="" />
+																						</a>
+																					</td>
 																				</tr>
 																			</table>
 																		</td>
