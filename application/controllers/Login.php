@@ -108,11 +108,11 @@ class Login extends CI_Controller {
 
       $message =
       '<html>
-      <head><title>BrandName</title></head>
+      <head><title>Shuttle</title></head>
       <body>
         <div style="padding:5px; width:600px; background-color:#cccccc; border:#333333 2px solid;">
         <div>
-          <img src="" alt="logo" />
+          <img src="'.base_url().'assets/img/logo.png" alt="logo" />
         </div>
           <div>
             <h3 style="color:#ffffff;">Bonjour' . $prenom . ' ' . $nom . '</h3>
@@ -127,7 +127,7 @@ class Login extends CI_Controller {
 
       $this->email->clear();
 
-      $this->email->from('pages@pages.fr', 'PAGES');
+      $this->email->from('contact@shuttle.fr', 'Shuttle');
       $this->email->to($this->input->post('email'));
 
       $this->email->subject('Récupération de mot de passe');
