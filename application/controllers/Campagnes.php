@@ -2000,11 +2000,11 @@ class Campagnes extends CI_Controller {
 
         $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
 
-        //redirect(base_url().'campagnes/envoyees.html');
+        redirect(base_url().'campagnes/envoyees.html');
 
 			} else {
 
-				//redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
+				redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
 
 			}
 
