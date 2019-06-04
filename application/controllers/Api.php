@@ -19,7 +19,33 @@ class Api extends CI_Controller {
 	public function ajout_contact()
 	{
 
-		var_dump ($_POST);
+		$this->load->model('My_contacts');
+		$this->load->model('My_users');
+
+		$id_group = 2;
+
+		$check_contact = $this->My_contacts->check_exist($this->input->post('email'), $id_group);
+
+		if (count($check_contact) == 0) {
+
+			$data_contacts = array(
+				'id_group' 		 => $id_group,
+				'email'				 => $this->input->post('email'),
+				'blacklist'	 	 => $this->input->post('newslatter'),
+			);
+
+			$id_contact = $this->My_common->insert_data("contacts", $data_contacts);
+
+			$data_contacts_cat = array(
+				'id_cat' 			 => $this->input->post('id_categorie'),
+				'id_contact' 		 => $id_contact,
+			);
+
+			$this->My_common->insert_data("contacts_cat", $data_contacts_cat);
+
+			echo 'ok';
+
+		}
 
 	}
 

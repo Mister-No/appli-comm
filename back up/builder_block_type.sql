@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 31 Mai 2019 à 14:17
+-- Généré le: Mar 04 Juin 2019 à 09:03
 -- Version du serveur: 5.5.54-MariaDB
 -- Version de PHP: 5.4.45
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `builder_block_type` (
   `builder_block_html` text,
   `affichage` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=109 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 --
 -- Contenu de la table `builder_block_type`
@@ -149,7 +149,8 @@ INSERT INTO `builder_block_type` (`id`, `id_group`, `theme`, `nom`, `builder_blo
 (105, 4, 4, 'Titre matériel', '<div class="col-xs-2 newBlock"><input type="hidden" name="id_block_html" value="105"><input type="hidden" name="nom" value="Titre matériel"><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre"><img class="smallBlockIcon" src="/mediatheque/newsletter/colas_rail/template_images/titre_materiel.png" alt=""><p>Titre matériel</p></div>', 1),
 (106, 4, 4, 'Titre focus', '<div class="col-xs-2 newBlock"><input type="hidden" name="id_block_html" value="106"><input type="hidden" name="nom" value="Titre focus"><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre"><img class="smallBlockIcon" src="/mediatheque/newsletter/colas_rail/template_images/titre_focus.png" alt=""><p>Titre focus</p></div>', 1),
 (107, 4, 4, 'Bouton lien', '<div class="col-xs-2 newBlock"><input type="hidden" name="id_block_html" value="107"><input type="hidden" name="nom" value="Bouton lien"><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Titre bouton"><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien bouton"><img class="smallBlockIcon" src="/mediatheque/newsletter/colas_rail/template_images/bouton_lien.png" alt=""><p>Bouton lien</p></div>', 1),
-(108, 2, 2, 'Image libre', '<div class="col-xs-2 newBlock"><input type="hidden" name="id_block_html" value="30"><input type="hidden" name="nom" value="Image libre"><input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop=""><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image"><img class="bigBlockIcon" src="/mediatheque/newsletter/steva/template_images/image.png" alt=""><p>Image libre</p></div>', 1);
+(108, 2, 2, 'Image libre', '<div class="col-xs-2 newBlock"><input type="hidden" name="id_block_html" value="108"><input type="hidden" name="nom" value="Image libre"><input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop=""><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image"><img class="bigBlockIcon" src="/mediatheque/newsletter/steva/template_images/image.png" alt=""><p>Image libre</p></div>', 1),
+(109, 3, 3, 'Image libre', '<div class="col-xs-2 newBlock"><input type="hidden" name="id_block_html" value="109"><input type="hidden" name="nom" value="Image libre"><input class="block_input" type="hidden" name="block_input_image[]" value="1" data-col="1" data-label="Image" data-crop=""><input class="block_input" type="hidden" name="block_input_texte[]" value="3" data-col="1" data-label="Lien image"><img class="bigBlockIcon" src="/mediatheque/newsletter/beausoleil/template_images/image.png" alt=""><p>Image libre</p></div>', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
