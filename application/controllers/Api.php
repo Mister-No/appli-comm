@@ -20,7 +20,6 @@ class Api extends CI_Controller {
 	{
 
 		$this->load->model('My_contacts');
-		$this->load->model('My_users');
 
 		$id_group = 2;
 
