@@ -36,7 +36,7 @@ class Api extends CI_Controller {
 			$id_contact = $this->My_common->insert_data("contacts", $data_contacts);
 
 			$data_contacts_cat = array(
-				'id_cat' 			 => $this->input->post('id_categorie'),
+				'id_cat' 			 => $this->input->post('id'),
 				'id_contact' 		 => $id_contact,
 			);
 
@@ -53,12 +53,12 @@ class Api extends CI_Controller {
 
 			$this->My_common->update_data("contacts", 'id', $check_contact[0]->id, $data_contacts);
 
-			$check_cat_contact = $this->My_contacts->check_contact_cat($this->input->post('id_categorie'), $check_contact[0]->id);
+			$check_cat_contact = $this->My_contacts->check_contact_cat($this->input->post('id'), $check_contact[0]->id);
 
 			if (count($check_cat_contact) == 0) {
 
 				$data_contacts_cat = array(
-					'id_cat' 			 	 => $this->input->post('id_categorie'),
+					'id_cat' 			 	 => $this->input->post('id'),
 					'id_contact' 		 => $check_contact[0]->id,
 				);
 
