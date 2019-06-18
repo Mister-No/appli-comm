@@ -95,10 +95,14 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
+							<div class="erreur alert alert-danger">
+								<strong class="message"></strong>
+								<button class="close"></button>
+							</div>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title"></h4>
 						</div>
-						<form action="<?=base_url();?>campagnes/send/<?=$id_newsletter?>.html" method="POST">
+						<form id="form_validation" action="<?=base_url();?>campagnes/send/<?=$id_newsletter?>.html" method="POST">
 							<input type="hidden" name="type_envoi" id="type_envoi_val">
 							<input type="hidden" name="date_envoi" id="date_val">
 							<input type="hidden" name="heure_envoi" id="heure_val">
@@ -153,7 +157,7 @@
 
 	$('#send_button').click( function () {
 		id = '<?=$id_newsletter?>';
-		titre = '<?=$nom_campagne?>';
+		titre = '<?=addslashes($nom_campagne)?>';
 		type_envoi = $('#type_envoi').val();
 		if (type_envoi==1) {
 			envoi = 'différé';
@@ -174,6 +178,18 @@
 		$(".modal-title").empty().append('Confirmer l\'envoi '+envoi+' ?');
 		$(".modal-body").empty().append(titre);
 		$('#modal-delete').modal('show', {backdrop: 'fade'});
+	});
+
+	$('#form_validation').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = '<?=base_url();?>'+'campagnes/send/<?=$id_newsletter?>.html';
+		urlRedirect = '<?=base_url();?>'+'campagnes/envoyees.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
 	});
 
 	</script>

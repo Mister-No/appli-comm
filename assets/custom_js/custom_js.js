@@ -119,12 +119,22 @@ function check_exist(urlCheck, urlRedirect, data) {
 			} else if (data == 9) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Merci de selectionner une ou des catégories de contacts');
+				$('.message').empty().html('Merci de selectionner une ou des catégories avec contacts');
 
 			} else if (data == 10) {
 
 				$('.erreur').css('display', 'block');
 				$('.message').empty().html('Envoi impossible');
+
+			} else if (data == 11) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Probleme de mise à jour de la campagne, merci de réessayer ultérieurement');
+
+			} else if (data == 12) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Aucun contact dans la ou les catégories sélectionnée(s)');
 
 			} else {
 

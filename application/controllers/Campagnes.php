@@ -1813,7 +1813,7 @@ class Campagnes extends CI_Controller {
       $email_array = array();
       $nom_array = array();
       $csv = 'NAME;SURNAME;EMAIL\n';
-
+      $count_result = 0;
       // Effacement de liste de contact existante en base
 
       $this->My_common->delete_data_detail('newsletter_has_contacts', 'id_newsletter', $id_newsletter);
@@ -1825,6 +1825,7 @@ class Campagnes extends CI_Controller {
         foreach ($_POST['id_cat'] as $key => $value) {
 
           $result_contact = $this->My_categories->get_contact_by_cat($value);
+          $count_result += count($result_contact);
 
           foreach ($result_contact as $row_contact) {
             if (count($row_contact->nom) > 0){
@@ -1835,71 +1836,83 @@ class Campagnes extends CI_Controller {
           }
 
           if (count($result_contact) > 0) {
+
             $data_contact = array(
               'id_newsletter'				  => $id_newsletter,
               'id_contact'            => $result_contact[0]->id,
             );
             $this->My_common->insert_data('newsletter_has_contacts', $data_contact);
+
           }
 
         }
 
-        // Informations sur la campagne
+        // filtre Si aucun contact dans une ou des categories
+        
+        if ($count_result > 0) {
 
-        $infos_group = $this->My_users->get_group_infos($id_group);
-        $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+          // Informations sur la campagne
 
-        require(APPPATH.'libraries/Mailin.php');
-        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+          $infos_group = $this->My_users->get_group_infos($id_group);
+          $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
 
-  		  $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+          require(APPPATH.'libraries/Mailin.php');
+          $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-        //Check des listes existantes et suppression si cota depassé
+    		  $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
-        $data_lists = array();
-        $result_lists = $mailin->get_lists($data_lists);
+          //Check des listes existantes et suppression si cota depassé
 
-        if (count($result_lists['data']) > 99) {
-          $result_end = end($result_lists['data']);
-          $id_last_list = $result_end['id'];
-          $data_delete = array( "id"=>$id_last_list );
-          $result_delete = $mailin->delete_list($data_delete);
-        }
+          $data_lists = array();
+          $result_lists = $mailin->get_lists($data_lists);
 
-        //Import des users et creation d'une nouvelle liste
+          if (count($result_lists['data']) > 99) {
+            $result_end = end($result_lists['data']);
+            $id_last_list = $result_end['id'];
+            $data_delete = array( "id"=>$id_last_list );
+            $result_delete = $mailin->delete_list($data_delete);
+          }
 
-        $data = array(
-          'body' => $csv,
-          'name' => 'liste_'.$campagne['data'][0]['id'],
-        );
+          //Import des users et creation d'une nouvelle liste
 
-        $result = $mailin->import_users($data);
-
-        $id_liste = $result['data']['list_id'][0];
-
-        $code = $result['code'];
-
-        if ($code == 'success'){
-
-          $data_campagne = array(
-            'id'				  => $data_campagne[0]->id_sendinblue,
-            'listid'			=> array($id_liste),
-            'send_now'		=> 0,
+          $data = array(
+            'body' => $csv,
+            'name' => 'liste_'.$campagne['data'][0]['id'],
           );
 
-          $result_campagne = $mailin->update_campaign($data_campagne);
+          $result = $mailin->import_users($data);
 
-          $code = $result_campagne['code'];
+          $id_liste = $result['data']['list_id'][0];
+
+          $code = $result['code'];
 
           if ($code == 'success'){
 
-            echo 'ok';
+            $data_campagne = array(
+              'id'				  => $data_campagne[0]->id_sendinblue,
+              'listid'			=> array($id_liste),
+              'send_now'		=> 0,
+            );
 
-          } else {
+            $result_campagne = $mailin->update_campaign($data_campagne);
 
-            echo 10;
+            $code = $result_campagne['code'];
+
+            if ($code == 'success'){
+
+              echo 'ok';
+
+            } else {
+
+              echo 11;
+
+            }
 
           }
+
+        } else {
+
+          echo 12;
 
         }
 
@@ -1972,41 +1985,58 @@ class Campagnes extends CI_Controller {
 
       $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
-      if ($this->input->post ('type_envoi') == 1) {
-        $data = array(
-  				'id'				      => $data_campagne[0]->id_sendinblue,
-          'scheduled_date'  => $scheduled_date,
-          'html_content'		=> $this->preview(),
-  			);
+      //Check si existance de contacts dans la liste
+
+      $data_list = array( "id"=>$campagne['data'][0]['listid'][0]);
+      $liste = $mailin->get_list($data_list);
+
+      if ($liste['data']['total_subscribers'] > 0 && $liste['data']['total_subscribers'] != NULL) {
+
+        //Données en fonction du type d'envoi
+
+        if ($this->input->post ('type_envoi') == 1) {
+          $data = array(
+    				'id'				      => $data_campagne[0]->id_sendinblue,
+            'scheduled_date'  => $scheduled_date,
+            'html_content'		=> $this->preview(),
+    			);
+        } else {
+          $data = array(
+    				'id'				      => $data_campagne[0]->id_sendinblue,
+            'html_content'		=> $this->preview(),
+    				'send_now'		   	=> 1,
+    			);
+        }
+
+  			$result = $mailin->update_campaign($data);
+  			$code = $result['code'];
+
+        //Envoi si mise à jour ok
+
+  			if ($code == 'success'){
+
+          $data = array(
+            'type_envoi'           => $this->input->post ('type_envoi'),
+            'date_envoi'           => $date_envoi,
+            'heure_envoi'          => $heure_envoi,
+            'envoi'                => 1,
+          );
+
+          $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+
+          echo 'ok';
+
+  			} else {
+
+  				echo 10;
+
+  			}
+
       } else {
-        $data = array(
-  				'id'				      => $data_campagne[0]->id_sendinblue,
-          'html_content'		=> $this->preview(),
-  				'send_now'		   	=> 1,
-  			);
+
+        echo 11;
+
       }
-
-			$result = $mailin->update_campaign($data);
-			$code = $result['code'];
-
-			if ($code == 'success'){
-
-        $data = array(
-          'type_envoi'           => $this->input->post ('type_envoi'),
-          'date_envoi'           => $date_envoi,
-          'heure_envoi'          => $heure_envoi,
-          'envoi'                => 1,
-        );
-
-        $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
-
-        redirect(base_url().'campagnes/envoyees.html');
-
-			} else {
-
-				redirect(base_url().'campagnes/envoyer/'.$id_newsletter.'.html');
-
-			}
 
   	} else {
       	$this->load->view('login');
