@@ -1848,7 +1848,7 @@ class Campagnes extends CI_Controller {
         }
 
         // filtre Si aucun contact dans une ou des categories
-        
+
         if ($count_result > 0) {
 
           // Informations sur la campagne
@@ -2264,8 +2264,12 @@ class Campagnes extends CI_Controller {
       require(APPPATH.'libraries/Mailin.php');
       $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-    	$data = array( 'id'=> $infos_group[0]->api_sib_key );
-    	$mailin->delete_campaign($data);
+    	$data = array(
+        'id'=> $infos_group[0]->api_sib_key,
+        'status' => 'archive',
+      );
+
+    	$mailin->update_campaign_status($data);
 
       $data = array(
         'archive'    => 1,
