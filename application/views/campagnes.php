@@ -6,7 +6,7 @@
 					<p>Shuttle</p>
 				</li>
 				<li>
-					<a href="<?=base_url();?>campagnes/en_cours.html" class="active">Campagnes en cours</a>
+					<a href="<?=base_url();?>campagnes.html" class="active">Campagnes</a>
 				</li>
 			</ul>
 		</div>
@@ -66,7 +66,7 @@
           <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
             <div class="panel-heading">
               <div class="panel-title">
-                    Vos Campagnes en cours
+                    Vos Campagnes
               </div>
 							<div class="panel-controls">
 								<ul>
@@ -90,7 +90,6 @@
 	                <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
 	                  <thead>
 	                    <tr>
-												<th>Id</th>
 	                      <th>Nom</th>
 	                      <th>Objet</th>
 	                      <th>Statut</th>
@@ -99,49 +98,68 @@
 	                  </thead>
 	                  <tbody>
 
-										<?php foreach ($result_campagnes as $row_campagnes) { ?>
+										<?php
 
-											<tr>
-												<td class="v-align-middle semi-bold">
-													<?=$row_campagnes->id_newsletter?>
-												</td>
-												<td class="v-align-middle semi-bold">
-													<?=$row_campagnes->nom_campagne?>
-												</td>
-												<td class="v-align-middle">
-													<?=$row_campagnes->objet?>
-												</td>
-												<td class="v-align-middle">
-													En cours
-												</td>
-												<td class="v-align-middle">
-													<div class="btn-group">
-														<a class="btn btn-success" href="<?=base_url() . 'campagnes/informations/modification/' . $row_campagnes->id_newsletter?>">
-															<i class="fa fa-file"></i>
-														</a>
-														<a class="btn btn-success" href="<?=base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter?>">
-															<i class="fa fa-edit">
-															</i>
-														</a>
-														<a class="btn btn-success" href="<?=base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter?>">
-															<i class="fa fa-copy">
-															</i>
-														</a>
+										foreach ($result_campagnes as $row_campagnes) {
 
-														<?php if ($_SESSION['is_admin'] == 1 && $_SESSION['rang'] > 0): ?>
+											echo '<tr>
+															<td class="v-align-middle semi-bold">
+																' . $row_campagnes->nom_campagne . '
+															</td>
+															<td class="v-align-middle">
+																'.$row_campagnes->objet.'
+															</td>
+															<td class="v-align-middle">
 
-															<button class="btn btn-success " onclick="popin('<?=addslashes($row_campagnes->id_newsletter)?>','<?=addslashes($row_campagnes->nom_campagne)?>')" >
-																<i class="fa fa-trash">
-																</i>
-															</button>
+															</td>
+															<td class="v-align-middle">
+																<div class="btn-group">
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/newsletter/' . $row_campagnes->id_newsletter . '">
+																		<i class="fa fa-edit">
+																		</i>
+																	</a>
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row_campagnes->id_newsletter . '">
+																		<i class="fa fa-copy">
+																		</i>
+																	</a>
+																</div>
+															</td>
+				                    </tr>';
 
-														<?php endif; ?>
+										}
 
-													</div>
-												</td>
-	                    </tr>
+										/**foreach ($result["data"]["campaign_records"] as $row) {
 
-										<?php } ?>
+											echo '<tr>
+															<td class="v-align-middle">' . $row['campaign_name'] . '</td>
+															<td class="v-align-middle">' . $row['subject'] . '</td>
+															<td class="v-align-middle">' . $row['status'] . '</td>
+															<td class="v-align-middle">
+																<div class="btn-group">
+
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/builder/' . $row["id"] . '"><i class="fa fa-edit"></i></a>
+
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/duplicate/' . $row["id"] . '"><i class="fa fa-copy"></i></a>
+
+																	<button class="btn btn-success " onclick="delete_item(\''.$row['id'].'\', \''.$row['campaign_name'].'\')" ><i class="fa fa-trash"></i></button>
+
+																</div>
+																<div class="btn-group">
+
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/listes/' . $row["id"] . '"><i class="fa fa-envelope"></i></a>
+
+																	<a class="btn btn-success" href="' . base_url() . 'campagnes/bat/' . $row["id"] . '" ><i class="fa fa-send"></i></a>
+
+																	<button class="btn btn-success" ><i class="fa fa-bar-chart"></i></button>
+
+																	<button class="btn btn-success" ><i class="fa fa-archive"></i></button>
+
+																</div>
+															</td>
+				                    </tr>';
+
+										}**/
+										 ?>
 
                   </tbody>
                 </table>
@@ -155,7 +173,7 @@
 		      <div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		          <h4 class="modal-title">Voulez-vous vraiment supprimer cette campagne?</h4>
+		          <h4 class="modal-title">Voulez-vous vraiment supprimer cette campagene?</h4>
 		        </div>
 		        <form action="<?=base_url();?>campagnes/delete.html" method="POST">
 		          <input type="hidden" name="id" id="id">
@@ -170,13 +188,7 @@
 		  </div>
     </div>
   </div>
-	<script src="<?=base_url();?>assets/js/datatables.js" type="text/javascript"></script>
-	<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-	<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
-	<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js" type="text/javascript"></script>
-	<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
-	<script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
-	<script type="text/javascript">
+  <script type="text/javascript">
 		var table = $('#tableWithSearch').dataTable( {
 				"pageLength": 30,
 				"order": [[0, 'desc']],
@@ -185,7 +197,7 @@
 				"scrollCollapse": true,
 				"oLanguage": {
 						"sLengthMenu": "_MENU_ ",
-						"sInfo": "Affiche <b>_START_ à _END_</b> of _TOTAL_ entrées"
+						"sInfo": "Affiche <b>_START_ à _END_</b> sur _TOTAL_ entrées"
 				},
 				"iDisplayLength": 30
 		} );

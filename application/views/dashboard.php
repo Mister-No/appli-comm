@@ -128,23 +128,21 @@
 		 <script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
 		 <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
 		 <script type="text/javascript">
+				var table = $('#tableWithSearch').dataTable( {
+						"pageLength": 30,
+						"order": [[0, 'desc']],
+						"sDom": "<t><'row'<p i>>",
+						"destroy": true,
+						"scrollCollapse": true,
+						"oLanguage": {
+								"sLengthMenu": "_MENU_ ",
+								"sInfo": "Affiche <b>_START_ à _END_</b> sur _TOTAL_ entrées"
+						},
+						"iDisplayLength": 30
+				} );
 
-		 $('#tableWithSearch').dataTable( {
-				 "pageLength": 30,
-				 "order": [[0, 'desc']],
-				 "sDom": "<t><'row'<p i>>",
-				 "destroy": true,
-				 "scrollCollapse": true,
-				 "oLanguage": {
-						 "sLengthMenu": "_MENU_ ",
-						 "sInfo": "Affiche <b>_START_ à _END_</b> sur _TOTAL_ entrées"
-				 },
-				 "iDisplayLength": 5
-		 } );
-
-		 // search box for table
-		 $('#search-table').keyup(function() {
-				 table.fnFilter($(this).val());
-		 });
-
-		 </script>
+				// search box for table
+				$('#search-table').keyup(function() {
+						table.fnFilter($(this).val());
+				});
+		</script>

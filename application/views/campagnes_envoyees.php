@@ -173,7 +173,7 @@
 	<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		$('#tableWithSearch').dataTable( {
+		var table = $('#tableWithSearch').dataTable( {
 				"pageLength": 30,
 				"order": [[0, 'desc']],
 				"sDom": "<t><'row'<p i>>",
