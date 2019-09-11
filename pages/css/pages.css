@@ -3705,6 +3705,7 @@ Misc buttons
   border-width: 0;
   -webkit-transition: all 0.2s linear 0s;
   transition: all 0.2s linear 0s;
+  margin:20px 0px 20px 0px;
 }
 .alert.bordered {
   border-width: 1px;
@@ -3733,7 +3734,7 @@ Misc buttons
   height: 9px;
   position: relative;
   opacity: 0.8;
-  top: 4.5px;
+  top: 7px;
   float: right;
   margin-left: 20px;
   font-size: 0;

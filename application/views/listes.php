@@ -86,8 +86,12 @@
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		          <h4 class="modal-title">Voulez-vous vraiment supprimer cette liste ?</h4>
+							<div class="erreur alert alert-danger">
+								<strong class="message"></strong>
+								<button class="close"></button>
+							</div>
 		        </div>
-		        <form action="<?=base_url();?>listes/delete.html" method="POST">
+		        <form id="form" action="<?=base_url();?>listes/delete.html" method="POST">
 		          <input type="hidden" name="id" id="id">
 		          <div class="modal-body"></div>
 		          <div class="modal-footer">
@@ -100,3 +104,16 @@
 		  </div>
 		</div>
 	</div>
+	<script>
+	$('#form').submit(function(e) {
+
+		e.preventDefault();
+
+		data = $(this).serialize();
+		urlCheck = '<?=base_url();?>'+'listes/delete.html';
+		urlRedirect = '<?=base_url();?>'+'listes.html';
+
+		check_exist(urlCheck, urlRedirect, data);
+
+	});
+	</script>

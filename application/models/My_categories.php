@@ -110,4 +110,17 @@ class My_categories extends CI_Model {
     return $query->result();
   }
 
+	function get_mail_contact_by_cat($id){
+
+		$this->db->select('contacts.email');
+		//$this->db->distinct('contacts.email');
+		$this->db->from('contacts_cat');
+		$this->db->join('contacts', 'contacts.id = contacts_cat.id_contact');
+		$this->db->where("contacts_cat.id_cat = $id");
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 }

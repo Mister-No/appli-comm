@@ -79,62 +79,62 @@ function check_exist(urlCheck, urlRedirect, data) {
 			if (data == 1) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Entité deja existante');
+				$('.message').empty().html('Entité deja existante.');
 
 			} else if (data == 2) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Login ou mot de passe incorrect');
+				$('.message').empty().html('Login ou mot de passe incorrect.');
 
 			} else if (data == 3) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Probleme de droits ou de connexion, votre action n\'a pu etre prise en compte');
+				$('.message').empty().html('Probleme de droits ou de connexion, votre action n\'a pu etre prise en compte.');
 
 			} else if (data == 4) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Les mots de passe ne sont pas identiques');
+				$('.message').empty().html('Les mots de passe ne sont pas identiques.');
 
 			} else if (data == 5) {
 
 				$('.success').css('display', 'block');
-				$('.message').empty().html('Le mot de passe est reinitialisé');
+				$('.message').empty().html('Le mot de passe est reinitialisé.');
 
 			} else if (data == 6) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Utilisateur inexistant');
+				$('.message').empty().html('Utilisateur inexistant.');
 
 			} else if (data == 7) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Un nouveau mot de passe vous à été envoyé par mail');
+				$('.message').empty().html('Un nouveau mot de passe vous à été envoyé par mail.');
 
 			} else if (data == 8) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Merci de remplir les champs obligatoire');
+				$('.message').empty().html('Merci de remplir les champs obligatoire.');
 
 			} else if (data == 9) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Merci de selectionner une ou des catégories avec contacts');
+				$('.message').empty().html('Merci de selectionner une ou des catégories avec contacts.');
 
 			} else if (data == 10) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Envoi impossible');
+				$('.message').empty().html('Envoi impossible.');
 
 			} else if (data == 11) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Probleme de mise à jour de la campagne, merci de réessayer ultérieurement');
+				$('.message').empty().html('Probleme de transimission des données, merci de réessayer ultérieurement.');
 
 			} else if (data == 12) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Aucun contact dans la ou les catégories sélectionnée(s)');
+				$('.message').empty().html('Aucun contact dans la ou les catégories sélectionnée(s).');
 
 			} else {
 

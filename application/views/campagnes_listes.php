@@ -40,6 +40,8 @@
 						foreach ($result as $row) {
 
 							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'campagnes/listes_add/'.$id_newsletter.'.html">
+										 <input type="hidden" name="id_liste" value="' . $row['id'] . '"/>
+										 <input type="hidden" name="id_sib" value="' . $row['id_sib'] . '"/>
 										 <input type="hidden" name="id_campagne" value="' . $id_newsletter . '">
 										 <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 											<div class="panel-heading">

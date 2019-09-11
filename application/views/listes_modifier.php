@@ -27,6 +27,7 @@
 
 			echo '<form id="form" method="post" class="validate" action="'. base_url() . 'listes/update.html">
 					    <input type="hidden" name="id" value="' . $row['id'] . '"/>
+							<input type="hidden" name="id_sib" value="' . $row['id_sib'] . '"/>
 					    <div class="row">
 					      <div class="col-md-12">
 								<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
