@@ -1819,20 +1819,20 @@ class Campagnes extends CI_Controller {
 
       // enregistrement de la liste de contact
 
-      if (!empty($_POST['id_sib'])) {
+      if (!empty($_POST['id_liste'])) {
 
-        foreach ($_POST['id_sib'] as $key => $value) {
+        for ($i=0; $i < count($_POST['id_liste']); $i++) {
 
           $data_liste = array(
             'id_newsletter'				    => $id_newsletter,
-            'id_liste'                => $_POST['id_liste'],
-            'id_liste_sib'            => $_POST['id_sib'],
+            'id_liste'                => $_POST['id_liste'][$i],
+            'id_liste_sib'            => $_POST['id_sib'][$i],
           );
-          $this->My_common->insert_data('newsletter_has_contacts', $data_contact);
+          $this->My_common->insert_data('newsletter_has_contacts', $data_liste);
 
           // On relie les listes de contacts à la campagne
 
-          $data_send_lists[] = $_POST['id_sib'];
+          $data_send_lists[] = $_POST['id_sib'][$i];
 
         }
 
@@ -1848,7 +1848,7 @@ class Campagnes extends CI_Controller {
 
         //Check des listes existantes et suppression si cota depassé
 
-        $data_lists = array();
+        /**$data_lists = array();
         $result_lists = $mailin->get_lists($data_lists);
 
         if (count($result_lists['data']) > 99) {
@@ -1856,32 +1856,27 @@ class Campagnes extends CI_Controller {
           $id_last_list = $result_end['id'];
           $data_delete = array( "id"=>$id_last_list );
           $result_delete = $mailin->delete_list($data_delete);
-        }
+        }**/
+
+        $data_campagne = array(
+          'id'				  => $data_campagne[0]->id_sendinblue,
+          'listid'			=> $data_send_lists,
+          'send_now'		=> 0,
+        );
+
+        $result_campagne = $mailin->update_campaign($data_campagne);
+
+        $code = $result_campagne['code'];
 
         if ($code == 'success'){
 
-          $data_campagne = array(
-            'id'				  => $data_campagne[0]->id_sendinblue,
-            'listid'			=> $data_send_lists,
-            'send_now'		=> 0,
-          );
+          echo 'ok';
 
-          $result_campagne = $mailin->update_campaign($data_campagne);
+        } else {
 
-          $code = $result_campagne['code'];
-
-          if ($code == 'success'){
-
-            echo 'ok';
-
-          } else {
-
-            echo 11;
-
-          }
+          echo 11;
 
         }
-
 
       } else {
 
@@ -1951,9 +1946,7 @@ class Campagnes extends CI_Controller {
       $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
       $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
-      echo '<pre>';
-      print_r($campagne);
-      echo '</pre>';
+
       //Check si existance de contacts dans la liste
 
       $data_list = array( "id"=>$campagne['data'][0]['listid'][0]);

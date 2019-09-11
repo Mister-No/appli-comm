@@ -40,53 +40,21 @@
 						foreach ($result as $row) {
 
 							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'campagnes/listes_add/'.$id_newsletter.'.html">
-										 <input type="hidden" name="id_liste" value="' . $row['id'] . '"/>
-										 <input type="hidden" name="id_sib" value="' . $row['id_sib'] . '"/>
-										 <input type="hidden" name="id_campagne" value="' . $id_newsletter . '">
 										 <div data-pages="portlet" class="panel panel-default panel-collapsed" id="portlet-basic">
 											<div class="panel-heading">
 												<div class="panel-title">' . $row['titre'] . '</div>
 													<div class="panel-controls">
 														<ul>
-														<li><input type="checkbox" name="id_liste[]" class="check_all" value="' . $row['id'] . '"></li>
-														<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-														class="pg-arrow_minimize"></i></a>
+														<li>
+															<input type="checkbox" name="id_liste[]"
+															class="check_list" value="' . $row['id'] . '">
+															<input type="hidden" name="id_sib[]" value="' . $row['id_sib'] . '" disabled="disabled"/>
+				 										 <input type="hidden" name="id_campagne" value="' . $id_newsletter . '">
 														</li>
 													</ul>
 												</div>
 											</div>
-											<div class="panel-body" style="display:none;">';
-
-												foreach ($row['cat'] as $row_cat) {
-
-													echo '<div class="col-md-12">
-
-																		<div class="panel-heading">
-																			<div class="panel-title">' . $row_cat['titre_cat_parent'] . '</div>
-																				<div class="panel-controls">
-																					<ul>
-																					<li><input type="checkbox" name="id_cat[]" class="check_all" value="' . $row_cat['id'] . '"></li>
-																				</ul>
-																			</div>
-																		</div>
-																		<div class="panel panel-default">
-																			<ul class="list-group">';
-
-																				foreach ($row_cat['child_cat'] as $row_cat_child) {
-
-																					echo '<li class="list-group-item">' .  $row_cat_child['titre'] . '
-																									<input type="checkbox" class="pull-right"  name="id_cat[]" value="' . $row_cat_child['id'] . '">
-																									</li>';
-																				}
-
-																				echo '</ul>
-																						</div>
-																					</div>';
-
-											}
-
-											echo '</div>
-													</div>';
+										</div>';
 
 										}
 

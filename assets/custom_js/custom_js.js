@@ -13,6 +13,10 @@ $(document).ready(function()
 			$(this).parent().parent().parent().parent().parent().find(':checkbox').prop('checked', this.checked);
 	});
 
+	$('.check_list').click( function() {
+		$(this).parent().find('input[name="id_sib[]"]').attr('disabled', function(_, attr){ return !attr});
+	});
+
 });
 
 /** Fonction pour la selection de categories ou d'entreprise en select **/
