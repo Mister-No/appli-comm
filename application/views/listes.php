@@ -104,7 +104,13 @@
 		  </div>
 		</div>
 	</div>
+	<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
 	<script>
+
 	$('#form').submit(function(e) {
 
 		e.preventDefault();
@@ -116,4 +122,45 @@
 		check_exist(urlCheck, urlRedirect, data);
 
 	});
+
+	var initTableWithSearch = function() {
+			var table = $('#tableWithSearch');
+
+			var settings = {
+					"sDom": "<t><'row'<p i>>",
+					"destroy": true,
+					"scrollCollapse": true,
+					"oLanguage": {
+							"sLengthMenu": "_MENU_ ",
+							"sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
+					},
+					"iDisplayLength": 5
+			};
+
+			table.dataTable(settings);
+
+			// search box for table
+			$('#search-table').keyup(function() {
+					table.fnFilter($(this).val());
+			});
+	}
+
+	/**var table = $('#tableWithSearch').dataTable( {
+			"pageLength": 30,
+			"order": [[0, 'desc']],
+			"sDom": "<t><'row'<p i>>",
+			"destroy": true,
+			"scrollCollapse": true,
+			"oLanguage": {
+					"sLengthMenu": "_MENU_ ",
+					"sInfo": "Affiche <b>_START_ à _END_</b> sur _TOTAL_ entrées"
+			},
+			"iDisplayLength": 30
+	} );
+
+	// search box for table
+	$('#search-table').keyup(function() {
+			table.fnFilter($(this).val());
+	});**/
+
 	</script>

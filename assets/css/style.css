@@ -370,3 +370,27 @@
 .uploadcare--widget {
   display: block;
 }
+
+/* contenu page maintenance */
+.corpSite{ width:1110px; margin: 0 auto; max-width: 95%}
+
+.corpSite .page_attente {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.corpSite .page_attente img {
+  width: 260px;
+
+}
+
+.corpSite .page_attente p {
+  font-size: 18px;
+  margin: 16px;
+  color: #6e7b93;
+  font-weight: lighter;
+}

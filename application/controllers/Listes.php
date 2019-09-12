@@ -222,7 +222,7 @@ class Listes extends CI_Controller {
 
           $data_liste_sib1 = array(
            "list_name" => $_POST['titre'],
-           "list_parent" => 6,
+           "list_parent" => $infos_group[0]->liste_parent_sib,
           );
 
           $result = $mailin->create_list($data_liste_sib1);
@@ -368,7 +368,7 @@ class Listes extends CI_Controller {
             $data_liste_sib1 = array(
              "id" => $this->input->post('id_sib'),
              "list_name" => $this->input->post('titre'),
-             "list_parent" => 6,
+             "list_parent" => $infos_group[0]->liste_parent_sib,
             );
 
             $result = $mailin->update_list($data_liste_sib1);
@@ -396,7 +396,7 @@ class Listes extends CI_Controller {
               // Suppression des categories rattachées a la liste en base
 
               $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
-              
+
               // Ajout des users dans la liste send in blue et en base
 
               foreach ($_POST['id_cat'] as $key => $value) {
