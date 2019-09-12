@@ -140,6 +140,11 @@ function check_exist(urlCheck, urlRedirect, data) {
 				$('.erreur').css('display', 'block');
 				$('.message').empty().html('Aucun contact dans la ou les catégories sélectionnée(s).');
 
+			} else if (data == 13) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Vous avez atteint cotre quota de listes.');
+
 			} else {
 
 				window.location.href = urlRedirect;

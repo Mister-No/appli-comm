@@ -66,7 +66,10 @@ class Listes extends CI_Controller {
 
       $id_group = $_SESSION["id_group"];
 
+      $this->load->model('My_listes');
       $this->load->model('My_categories');
+      $this->load->model('My_users');
+
       $tab_cat = array();
       $tab_cat_child = array();
       $result = array();
@@ -104,7 +107,7 @@ class Listes extends CI_Controller {
       $this->load->view('footer');
 
     } else {
-          $this->load->view('login');
+      $this->load->view('login');
     }
   }
 
@@ -220,58 +223,70 @@ class Listes extends CI_Controller {
           require(APPPATH.'libraries/Mailin.php');
           $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-          $data_liste_sib1 = array(
-           "list_name" => $_POST['titre'],
-           "list_parent" => $infos_group[0]->liste_parent_sib,
-          );
+          // Check si le quota de listes maximum est atteint
 
-          $result = $mailin->create_list($data_liste_sib1);
+          $result = $mailin->get_lists($data);
 
-          if ($result['code'] == 'success') {
+          if (count($result['data']) < 150) {
 
-            // Enregistrement de la liste en base
-
-            $data_liste = array(
-              'id_sib'  => $result['data']['id'],
-              'titre' => $_POST['titre'],
-              'id_group' 	=> $id_group,
+            $data_liste_sib1 = array(
+             "list_name" => $_POST['titre'],
+             "list_parent" => $infos_group[0]->liste_parent_sib,
             );
 
-            $id = $this->My_common->insert_data ('liste', $data_liste);
+            $result = $mailin->create_list($data_liste_sib1);
 
-            foreach ($_POST['id_cat'] as $key => $value) {
+            if ($result['code'] == 'success') {
 
-              $data_cat = array(
-                'id_liste'  => $id,
-                'id_cat'    => $value,
+              // Enregistrement de la liste en base
+
+              $data_liste = array(
+                'id_sib'  => $result['data']['id'],
+                'titre' => $_POST['titre'],
+                'id_group' 	=> $id_group,
               );
 
-              $this->My_common->insert_data('liste_cat', $data_cat);
+              $id = $this->My_common->insert_data ('liste', $data_liste);
 
-              $result_contacts = $this->My_categories->get_mail_contact_by_cat($value);
+              foreach ($_POST['id_cat'] as $key => $value) {
 
-              foreach ($result_contacts as $row_user) {
+                $data_cat = array(
+                  'id_liste'  => $id,
+                  'id_cat'    => $value,
+                );
 
-                $data_users[]=$row_user->email;
+                $this->My_common->insert_data('liste_cat', $data_cat);
+
+                $result_contacts = $this->My_categories->get_mail_contact_by_cat($value);
+
+                foreach ($result_contacts as $row_user) {
+
+                  $data_users[]=$row_user->email;
+
+                }
 
               }
 
+              // Enregistrement des contacts dans la liste send in blue
+
+              $data_liste_sib2 = array(
+               "id"     => $result['data']['id'],
+               "users"  => $data_users,
+              );
+
+              $result = $mailin->add_users_list($data_liste_sib2);
+
+              echo 'ok';
+
+            } else {
+
+              echo 11;
+
             }
-
-            // Enregistrement des contacts dans la liste send in blue
-
-            $data_liste_sib2 = array(
-             "id"     => $result['data']['id'],
-             "users"  => $data_users,
-            );
-
-            $result = $mailin->add_users_list($data_liste_sib2);
-
-            echo 'ok';
 
           } else {
 
-            echo 11;
+            echo 13;
 
           }
 
