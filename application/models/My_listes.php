@@ -112,4 +112,17 @@ class My_listes extends CI_Model {
     return $query->result();
   }
 
+	function get_cat_liste($id, $id_group){
+
+		$this->db->select();
+		$this->db->from('liste_cat');
+		$this->db->join('liste', 'liste.id = liste_cat.id_liste', 'left');
+		$this->db->where("liste_cat.id_cat", $id);
+  	$this->db->where("liste.id_group", $id_group);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 }

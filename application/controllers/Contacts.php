@@ -164,8 +164,10 @@ class Contacts extends CI_Controller  {
 
 		if ($_SESSION['is_connect'] == TRUE){
 
-			$this->load->model('My_contacts');
-      $this->load->model('My_users');
+      $this->load->model('My_listes');
+  		$this->load->model('My_categories');
+  		$this->load->model('My_users');
+  		$this->load->model('My_contacts');
 
       $id_group = $_SESSION["id_group"];
 
@@ -221,13 +223,33 @@ class Contacts extends CI_Controller  {
 
 	        $id = $this->My_common->insert_data ('contacts', $data);
 
-	        foreach ($_POST['id_cat'] as $key => $value) {
-	        	$data =array (
-	        		'id_contact' => $id,
-	        		'id_cat' => $value,
-	        	);
-	        	$this->My_common->insert_data ('contacts_cat', $data);
-	        }
+          if ($this->input->post('id_cat') != '') {
+
+            foreach ($_POST['id_cat'] as $key => $value) {
+
+  	        	$data =array (
+  	        		'id_contact' => $id,
+  	        		'id_cat' => $value,
+  	        	);
+
+  	        	$this->My_common->insert_data ('contacts_cat', $data);
+
+              $cat_list = $this->My_listes->get_cat_liste($value, $id_group);
+
+              if ($cat_list[0]->id_sib != '') {
+
+                $data_cat_list = array(
+        					"id" 		=> $cat_list[0]->id_sib,
+        					"users" => array($this->input->post('email')),
+        				);
+
+    				    $result = $mailin->add_users_list($data_cat_list);
+
+              }
+
+  	        }
+
+          }
 
 		        echo 'ok';
 		    }
@@ -245,10 +267,10 @@ class Contacts extends CI_Controller  {
 
 		if ($_SESSION['is_connect'] == TRUE){
 
-			$this->load->model('My_contacts');
-      $this->load->model('My_users');
-
-      $this->My_contacts->delete_ent_cat($this->input->post('id'));
+      $this->load->model('My_listes');
+  		$this->load->model('My_categories');
+  		$this->load->model('My_users');
+  		$this->load->model('My_contacts');
 
       $id_group = $_SESSION["id_group"];
 
@@ -304,12 +326,57 @@ class Contacts extends CI_Controller  {
 
         $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
 
-        foreach ($_POST['id_cat'] as $key => $value) {
-          $data =array (
-            'id_contact' => $this->input->post('id'),
-            'id_cat' => $value,
-          );
-          $this->My_common->insert_data('contacts_cat', $data);
+        // Suppression du contact des listes auxquelles il appartient
+
+        $contact_cat = $this->My_contacts->get_contact_cat($this->input->post('id'));
+
+        foreach ($contact_cat as $row_list) {
+
+          $cat_list = $this->My_listes->get_cat_liste($row_list->id_cat, $id_group);
+
+          if ($cat_list[0]->id_sib != '') {
+
+            $data_cat_list = array(
+    					"id" 		=> $cat_list[0]->id_sib,
+    					"users" => array($this->input->post('email')),
+    				);
+
+				    $result = $mailin->delete_users_list($data_cat_list);
+
+          }
+
+        }
+
+        $this->My_contacts->delete_ent_cat($this->input->post('id'));
+
+        if ($this->input->post('id_cat') != '') {
+
+          // Ajout du contact aux categories et listes choisies
+
+          foreach ($_POST['id_cat'] as $key => $value) {
+
+            $data =array (
+              'id_contact' => $this->input->post('id'),
+              'id_cat' => $value,
+            );
+
+            $this->My_common->insert_data('contacts_cat', $data);
+
+            $cat_list = $this->My_listes->get_cat_liste($value, $id_group);
+
+            if ($cat_list[0]->id_sib != '') {
+
+              $data_cat_list = array(
+      					"id" 		=> $cat_list[0]->id_sib,
+      					"users" => array($this->input->post('email')),
+      				);
+
+  				    $result = $mailin->add_users_list($data_cat_list);
+
+            }
+
+          }
+
         }
 
         echo 'ok';
