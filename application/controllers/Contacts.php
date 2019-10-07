@@ -436,7 +436,10 @@ class Contacts extends CI_Controller  {
 	{
 		if ($_SESSION['is_connect'] == TRUE){
 
-			$this->load->model('My_contacts');
+      $this->load->model('My_listes');
+  		$this->load->model('My_categories');
+  		$this->load->model('My_users');
+  		$this->load->model('My_contacts');
 
 			$this->load->library('upload');
 			$this->load->helper('url');
@@ -464,6 +467,12 @@ class Contacts extends CI_Controller  {
 					$objReader->setReadDataOnly(true);
 					$objPHPExcel = $objReader->load("temp/temp.xlsx");
 					$objWorksheet = $objPHPExcel->setActiveSheetIndex(0)->toArray(null,true,true,true);
+
+          //Connexion chez send in blue
+          $infos_group = $this->My_users->get_group_infos($_SESSION['id_group']);
+
+          require(APPPATH.'libraries/Mailin.php');
+          $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
 					foreach ($objWorksheet as $row) {
 
@@ -521,7 +530,16 @@ class Contacts extends CI_Controller  {
 
   	  						$id = $this->My_common->insert_data ('contacts', $data);
 
-  							if (isset($_POST['id_cat'])){
+                  // Ajout du contact chez send in blue
+
+                  $data = array(
+                    'email'       => $row['H'],
+                  );
+
+                  $mailin->create_update_user($data);
+
+  							 if (isset($_POST['id_cat'])){
+
   				        foreach ($_POST['id_cat'] as $key => $value) {
   				        	$data =array (
   				        		'id_contact' => $id,
@@ -529,7 +547,9 @@ class Contacts extends CI_Controller  {
   				        	);
   				        	$this->My_common->insert_data ('contacts_cat', $data);
   				        }
+
   				    	}
+
               }
 						}
 					}
