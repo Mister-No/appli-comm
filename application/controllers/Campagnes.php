@@ -210,7 +210,7 @@ class Campagnes extends CI_Controller {
         switch ($select0) {
 
           case 0:
-            $url0 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            $url0 = 'https://www.facebook.com/steva.steva.12327';
             break;
 
           case 1:
@@ -233,7 +233,7 @@ class Campagnes extends CI_Controller {
         switch ($select1) {
 
           case 0:
-            $url1 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            $url1 = 'https://www.facebook.com/steva.steva.12327';
             break;
 
           case 1:
@@ -256,7 +256,7 @@ class Campagnes extends CI_Controller {
         switch ($select2) {
 
           case 0:
-            $url2 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            $url2 = 'https://www.facebook.com/steva.steva.12327';
             break;
 
           case 1:
@@ -279,7 +279,7 @@ class Campagnes extends CI_Controller {
         switch ($select3) {
 
           case 0:
-            $url3 = 'https://www.facebook.com/pages/Groupe-Steva/203522023189062';
+            $url3 = 'https://www.facebook.com/steva.steva.12327';
             break;
 
           case 1:
@@ -2044,7 +2044,9 @@ class Campagnes extends CI_Controller {
 
       $result = $mailin->update_campaign($data);
       $code = $result['code'];
-
+      /**echo '<pre>';
+      print_r($result);
+      echo '</pre>';**/
         if ($code == 'success'){
 
           $data = array(
@@ -2052,8 +2054,10 @@ class Campagnes extends CI_Controller {
             'emails' => array($email)
           );
 
-          $mailin->send_bat_email($data);
-
+          $result_send = $mailin->send_bat_email($data);
+          /**echo '<pre>';
+          print_r($result_send);
+          echo '</pre>';**/
           redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
 
         } else {
