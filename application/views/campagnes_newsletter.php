@@ -232,7 +232,6 @@
 	}
 
 	// Fonction d'affichage des éléments pour l'ajout d'un block
-
 	function addblock() {
 
 		$('.newBlock').click( function() {
@@ -388,7 +387,6 @@
 	}
 
 	// Fonction d'affichage des éléments pour l'update d'un block
-
 	function editBlock() {
 
 		$('.editBlock').unbind().click( function() {
@@ -553,7 +551,6 @@
 	}
 
 	// Fonction de deplacement du block vers le haut
-
 	function upMoveBlock() {
 
 		$('.upBlock').unbind().click( function() {
@@ -582,7 +579,6 @@
 	}
 
 	// Fonction de deplacement du block vers le bas
-
 	function downMoveBlock() {
 
 		$('.downBlock').unbind().click( function() {
@@ -611,7 +607,6 @@
 	}
 
 	// Fonction de suppression du block
-
 	function deleteBlock() {
 
 		$('.deleteBlock').unbind().click( function() {

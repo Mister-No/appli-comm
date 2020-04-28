@@ -210,7 +210,7 @@ class Listes extends CI_Controller {
       if ($this->input->post('titre') != '' && $this->input->post('id_cat') != '') {
 
         $result = $this->My_listes->check_exist($this->input->post('titre'), $id_group);
-
+        
         if (count($result) > 0) {
 
              echo 1;
@@ -220,28 +220,77 @@ class Listes extends CI_Controller {
           // Enregistrement de la liste chez send in blue
 
           $infos_group = $this->My_users->get_group_infos($id_group);
-          require(APPPATH.'libraries/Mailin.php');
-          $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+          
+          $curl = curl_init();
 
-          // Check si le quota de listes maximum est atteint
+          curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists?limit=10&offset=0",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+              "accept: application/json",
+              "api-key: ".$infos_group[0]->api_sib_key
+            ),
+          ));
+          
+          $response = curl_exec($curl);
+          $err = curl_error($curl);
+          
+          curl_close($curl);
+          
+          $list_total = 150;
 
-          $result = $mailin->get_lists($data);
+          $response = json_decode ($response);
 
-          if (count($result['data']) < 150) {
+          if (isset ($response->count)){
+            $list_total = $response->count;
+          }
+
+          if ($list_total < 150) {
 
             $data_liste_sib1 = array(
-             "list_name" => $_POST['titre'],
-             "list_parent" => $infos_group[0]->liste_parent_sib,
+             "name" => $_POST['titre'],
+             "folderId" => $infos_group[0]->liste_parent_sib,
             );
+            $data_liste_sib1 = json_encode ($data_liste_sib1, JSON_NUMERIC_CHECK);
 
-            $result = $mailin->create_list($data_liste_sib1);
+            $curl = curl_init();
 
-            if ($result['code'] == 'success') {
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => $data_liste_sib1,
+              CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "api-key: ".$infos_group[0]->api_sib_key,
+                "content-type: application/json"
+              ),
+            ));
+            
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+            
+            $response = json_decode ($response);
+
+          
+
+            if (isset($response->id)) {
 
               // Enregistrement de la liste en base
 
               $data_liste = array(
-                'id_sib'  => $result['data']['id'],
+                'id_sib'  => $response->id,
                 'titre' => $_POST['titre'],
                 'id_group' 	=> $id_group,
               );
@@ -268,14 +317,35 @@ class Listes extends CI_Controller {
               }
 
               // Enregistrement des contacts dans la liste send in blue
-
               $data_liste_sib2 = array(
-               "id"     => $result['data']['id'],
-               "users"  => $data_users,
+               "emails"  => $data_users,
               );
 
-              $result = $mailin->add_users_list($data_liste_sib2);
+              $data_liste_sib2 = json_encode ($data_liste_sib2);
 
+              $curl = curl_init();
+
+              curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$response->id."/contacts/add",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => $data_liste_sib2,
+                CURLOPT_HTTPHEADER => array(
+                  "accept: application/json",
+                  "api-key: ".$infos_group[0]->api_sib_key,
+                  "content-type: application/json"
+                ),
+              ));
+              
+              $response = curl_exec($curl);
+              $err = curl_error($curl);
+              
+              curl_close($curl);
+              
               echo 'ok';
 
             } else {
@@ -320,14 +390,31 @@ class Listes extends CI_Controller {
       // Suppression de la liste chez send in blue
 
       $infos_group = $this->My_users->get_group_infos($id_group);
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-      $data = array( "id"=>$result_liste[0]->id_sib);
+      $curl = curl_init();
 
-      $result = $mailin->delete_list($data);
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$result_liste[0]->id_sib,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "DELETE",
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      
+      curl_close($curl);
+      
+      $response = json_decode ($response);
 
-      if ($result['code']='success') {
+      if (!isset($response->code)) {
 
         $this->My_common->delete_data('liste', $this->input->post('id'));
         $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
@@ -377,76 +464,123 @@ class Listes extends CI_Controller {
             // Update de la liste chez send in blue
 
             $infos_group = $this->My_users->get_group_infos($id_group);
-            require(APPPATH.'libraries/Mailin.php');
-            $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
             $data_liste_sib1 = array(
-             "id" => $this->input->post('id_sib'),
-             "list_name" => $this->input->post('titre'),
-             "list_parent" => $infos_group[0]->liste_parent_sib,
+              "name" => $this->input->post('titre'),
             );
 
-            $result = $mailin->update_list($data_liste_sib1);
+            $data_liste_sib1 = json_encode ($data_liste_sib1);
+ 
+            $curl = curl_init();
 
-            if ($result['code'] == 'success') {
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$this->input->post('id_sib'),
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "PUT",
+              CURLOPT_POSTFIELDS => $data_liste_sib1,
+              CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "api-key: ".$infos_group[0]->api_sib_key,
+                "content-type: application/json"
+              ),
+            ));
+            
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+            
 
-              // Update de la liste en base
+            // Update de la liste en base
+            $data_liste = array(
+              'titre' => $this->input->post('titre'),
+              'id_group' 	=> $id_group,
+            );
 
-              $data_liste = array(
-                'titre' => $this->input->post('titre'),
-                'id_group' 	=> $id_group,
+            $this->My_common->update_data ('liste', 'id', $this->input->post('id'), $data_liste);
+
+            // Suppression de tous les users de la liste send in blue
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$this->input->post('id_sib')."/contacts/remove",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => "{\"all\":true}",
+              CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "api-key: ".$infos_group[0]->api_sib_key,
+                "content-type: application/json"
+              ),
+            ));
+            
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+            
+            // Suppression des categories rattachées a la liste en base
+            $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
+
+            // Ajout des users dans la liste send in blue et en base
+            foreach ($_POST['id_cat'] as $key => $value) {
+
+              $data_cat = array(
+                'id_liste'  => $this->input->post('id'),
+                'id_cat'    => $value,
               );
 
-              $this->My_common->update_data ('liste', 'id', $this->input->post('id'), $data_liste);
+              $this->My_common->insert_data('liste_cat', $data_cat);
 
-              // Suppression de tous les users de la liste send in blue
+              $result_contacts = $this->My_categories->get_mail_contact_by_cat($value);
 
-              $data_liste_sib2 = array(
-               "id"     => $this->input->post('id_sib'),
-               //"users"  => $data_users,
-              );
+              foreach ($result_contacts as $row_user) {
 
-              $result = $mailin->delete_users_list($data_liste_sib2);
-
-              // Suppression des categories rattachées a la liste en base
-
-              $this->db->delete('liste_cat', array('id_liste' => $this->input->post('id')));
-
-              // Ajout des users dans la liste send in blue et en base
-
-              foreach ($_POST['id_cat'] as $key => $value) {
-
-                $data_cat = array(
-                  'id_liste'  => $this->input->post('id'),
-                  'id_cat'    => $value,
-                );
-
-                $this->My_common->insert_data('liste_cat', $data_cat);
-
-                $result_contacts = $this->My_categories->get_mail_contact_by_cat($value);
-
-                foreach ($result_contacts as $row_user) {
-
-                  $data_users[]=$row_user->email;
-
-                }
+                $data_users[]=$row_user->email;
 
               }
 
-              $data_liste_sib3 = array(
-               "id"     => $this->input->post('id_sib'),
-               "users"  => $data_users,
-              );
-
-              $result = $mailin->add_users_list($data_liste_sib3);
-
-              echo 'ok';
-
-            } else {
-
-              echo 11;
-
             }
+
+            $data_liste_sib3 = array(
+              "emails"  => $data_users,
+            );
+
+            $data_liste_sib3 = json_encode ($data_liste_sib3);
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$this->input->post('id_sib')."/contacts/add",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => $data_liste_sib3,
+              CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "api-key: ".$infos_group[0]->api_sib_key,
+                "content-type: application/json"
+              ),
+            ));
+             
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+             
+            curl_close($curl);
+
+            echo 'ok';
 
           }
 

@@ -400,165 +400,6 @@ class Campagnes extends CI_Controller {
       $this->load->model('My_campagnes');
       $this->load->model('My_users');
 
-      /**if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
-
-        $id_group = $_SESSION['id_group'];
-        $id_succursale = $_SESSION['id_succursale'];
-        $data = array();
-        $data_block = array();
-        $data_content = array();
-        $content = '';
-        $ordre = 1;
-
-        //CREATION DE LA CAMPAGNE CHEZ SEND IN BLUE
-
-        $infos_group = $this->My_users->get_group_infos($id_group);
-
-        require(APPPATH.'libraries/Mailin.php');
-        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-        $data = array(
-          "category"=> "",
-          "from_name"=> $result_expediteur[0]->nom_expediteur,
-          "from_email"=> $result_expediteur[0]->email_expediteur,
-          "name"=> $this->input->post ('nom_campagne'),
-          "bat"=> '',
-          "html_content"=> "<html><body></body></html>",
-          "html_url"=> "",
-          "listid"=> array(),
-          "scheduled_date"=> "",
-          "subject"=> $this->input->post ('objet'),
-          "reply_to"=> $this->input->post ('expediteur'),
-          "to_field"=>"[PRENOM] [NOM]",
-          'exclude_list'=> array(),
-          "attachment_url"=> "",
-          "inline_image"=> 0,
-          "mirror_active"=> 0,
-          "send_now"=> 0,
-          "utm_campaign"=> "",
-        );
-
-        $result = $mailin->create_campaign($data);
-
-        if ($result['code'] == 'success') {
-
-          //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
-
-          $data = array(
-            'nom_campagne'    => $this->input->post ('nom_campagne'),
-            'objet'           => $this->input->post ('objet'),
-            'expediteur'      => $this->input->post ('expediteur'),
-            'theme'           => $this->input->post ('theme'),
-            'id_group'        => $id_group,
-            'id_succursale'   => $id_succursale,
-            'id_sib'          => $result['data']['id'],
-            'date_creation'   => date('Y-m-d'),
-          );
-
-          $id_newsletter = $this->My_common->insert_data('newsletter', $data);
-
-          $result_theme = $this->My_campagnes->get_newsletter_theme($this->input->post ('theme'));
-
-          mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter);
-
-          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/img_1.png';
-
-          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/img_1.png';
-
-          copy($image_template, $image_copy);
-
-          //CRÉATION DU TEMPLATE DE BASE
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($this->input->post ('theme'));
-
-          foreach ($result_html_block as $block) {
-            //Récupération du contenu
-            $result_contenu = $this->My_campagnes->get_template_content($block->id);
-
-            if (count($result_contenu) > 0) {
-
-              if ($result_contenu[0]->type == 1) {
-                $content = 'img0';
-              } elseif ($result_contenu[0]->type == 2) {
-                $content = 'text0';
-              } elseif ($result_contenu[0]->type == 3) {
-                $content = 'select0';
-              } else {
-                $content = '';
-              }
-
-              $data_content = array(
-                'id_newsletter' => $id_newsletter,
-                'id_block_html' => $block->id,
-                $content => $result_contenu[0]->content,
-              );
-              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-              $data_block = array(
-                'id_newsletter'    => $id_newsletter,
-                'id_block_html'    => $block->id,
-                'id_block_content' => $id_block_content,
-                'ordre'            => $ordre,
-              );
-
-              $id_block = $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-              if (count($result_contenu) > 1 && !empty($id_block_content)) {
-                $i=0;
-                //$b = false;
-                foreach ($result_contenu as $contenu) {
-                  /**if (!$b) {
-                    $b = true;
-                    continue;
-                  } else {
-                    if ($contenu->type == 1) {
-                      $content = 'img'.$i;
-                    } elseif ($contenu->type == 2) {
-                      $content = 'text'.$i;
-                    } elseif ($contenu->type == 3) {
-                      $content = 'select'.$i;
-                    } else {
-                      $content = '';
-                    }
-                    $data_content = array(
-                      $content => $contenu->content,
-                    );
-                    $this->My_common->update_data('newsletter_block_content', 'id', $id_block_content, $data_content);
-                  //}
-                  $i++;
-                }
-              }
-              $ordre++;
-
-            } else {
-
-              $data_content = array(
-                'id_newsletter' => $id_newsletter,
-                'id_block_html' => $block->id,
-              );
-              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-              $data_block = array(
-                'id_newsletter'    => $id_newsletter,
-                'id_block_html'    => $block->id,
-                'id_block_content' => $id_block_content,
-                'ordre'            => $ordre,
-              );
-
-              $id_block = $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-              $ordre++;
-            }
-          }
-        redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
-        } else {
-          // code...
-        }
-      } else {
-        echo 8;
-      }**/
-
       if ($this->input->post ('nom_campagne') != '' && $this->input->post ('theme') != '') {
 
         $id_group = $_SESSION['id_group'];
@@ -573,312 +414,321 @@ class Campagnes extends CI_Controller {
 
         $infos_group = $this->My_users->get_group_infos($id_group);
 
-        require(APPPATH.'libraries/Mailin.php');
-        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-        $data = array(
-          "category"=> "",
-          "from_name"=> $result_expediteur[0]->nom_expediteur,
-          "from_email"=> $result_expediteur[0]->email_expediteur,
-          "name"=> $this->input->post ('nom_campagne'),
-          "bat"=> '',
-          "html_content"=> "<html><body></body></html>",
-          "html_url"=> "",
-          "listid"=> array(),
-          "scheduled_date"=> "",
-          "subject"=> $this->input->post ('objet'),
-          "reply_to"=> $result_expediteur[0]->email_expediteur,
-          'exclude_list'=> array(),
-          "attachment_url"=> "",
-          "inline_image"=> 0,
-          "mirror_active"=> 0,
-          "send_now"=> 0,
-          "utm_campaign"=> "",
+        $data_update = array (
+          "sender" => array (
+            "name" => $result_expediteur[0]->nom_expediteur,
+            "email" => $result_expediteur[0]->email_expediteur,
+          ),
+          "name" => $this->input->post ('nom_campagne'),
+          "subject" => $this->input->post ('objet'),
+          "replyTo" => $result_expediteur[0]->email_expediteur,
+          "htmlContent" => "<html></html>"
         );
 
-        $result = $mailin->create_campaign($data);
+        $data_string = json_encode($data_update);
 
-        if ($result['code'] == 'success') {
+        $curl = curl_init();
 
-          //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => $data_string,
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "api-key: ".$infos_group[0]->api_sib_key,
+            "content-type: application/json"
+          ),
+        ));
 
-          $data = array(
-            'nom_campagne'    => $this->input->post ('nom_campagne'),
-            'objet'           => $this->input->post ('objet'),
-            'expediteur'      => $result_expediteur[0]->id,
-            'theme'           => $this->input->post ('theme'),
-            'id_group'        => $_SESSION['id_group'],
-            'id_succursale'   => $_SESSION['id_succursale'],
-            'id_sib'          => $result['data']['id'],
-            'date_creation'   => date('Y-m-d'),
-          );
 
-          $theme = $this->input->post ('theme');
-    			$id_newsletter = $this->My_common->insert_data('newsletter', $data);
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
 
-          $result_theme = $this->My_campagnes->get_newsletter_theme($theme);
-
-          mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter);
-
-          $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/img_1.png';
-
-          $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/img_1.png';
-
-          copy($image_template, $image_copy);
-
-          //CRÉATION DU TEMPLATE DE BASE
-
-          //Block Top
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 1);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-      			);
-
-      			$id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 1,
-            );
-
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
+        if ($err) {
+          echo 3;
+        } else {
+          if (strlen ($response) > 20)
+          {
+            echo 3;
           }
+          else
+          {
+            $response = json_decode ($response);
 
-          //Block Header
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 2);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-      			);
-
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 2,
+            //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
+            $data = array(
+              'nom_campagne'    => $this->input->post ('nom_campagne'),
+              'objet'           => $this->input->post ('objet'),
+              'expediteur'      => $result_expediteur[0]->id,
+              'theme'           => $this->input->post ('theme'),
+              'id_group'        => $_SESSION['id_group'],
+              'id_succursale'   => $_SESSION['id_succursale'],
+              'id_sib'          => $response->id,
+              'date_creation'   => date('Y-m-d'),
             );
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+            $theme = $this->input->post ('theme');
+            $id_newsletter = $this->My_common->insert_data('newsletter', $data);
 
-          }
+            $result_theme = $this->My_campagnes->get_newsletter_theme($theme);
 
-          //Block Headline
+            mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter);
 
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 3);
+            $image_template = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/img_1.png';
+            $image_copy = $_SERVER['DOCUMENT_ROOT'] . '/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/img_1.png';
 
-          if (count($result_html_block) > 0) {
+            copy($image_template, $image_copy);
 
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-              'text0' => 'Newsletter',
-              'text1' => 1,
-              'text2' => date('d/m/Y'),
-            );
+            //CRÉATION DU TEMPLATE DE BASE
 
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            //Block Top
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 1);
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 3,
-            );
+            if (count($result_html_block) > 0) {
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-          }
-
-          //Block Image
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 4);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-              'img0'  => 'img_1.png',
-              'text0' => '#',
-            );
-
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 4,
-            );
-
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-          }
-
-          //Block Titre
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 5);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-              'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-            );
-
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 5,
-            );
-
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-          }
-
-          //Block Paragraphe
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 6);
-
-          if (count($result_html_block) > 0) {
-
-            if ($theme == 3) {
               $data_content = array (
                 'id_newsletter' => $id_newsletter,
                 'id_block_html' => $result_html_block[0]->id,
-                'text0' => 'Lorem ipsum dolor sit amet',
-                'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-                'text2' => 'En savoir +',
-                'text3' => '#',
               );
-            } else {
-              $data_content = array (
-                'id_newsletter' => $id_newsletter,
-                'id_block_html' => $result_html_block[0]->id,
-                'text0' => '1. Lorem ipsum dolor sit amet',
-                'text1' => 'Lorem ipsum',
-                'text2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-                'text3' => 'En savoir +',
-                'text4' => '#',
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 1,
               );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
             }
 
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+            //Block Header
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 2);
 
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 6,
-            );
+            if (count($result_html_block) > 0) {
 
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 2,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Headline
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 3);
+
+            if (count($result_html_block) > 0) {
+
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+                'text0' => 'Newsletter',
+                'text1' => 1,
+                'text2' => date('d/m/Y'),
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 3,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Image
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 4);
+
+            if (count($result_html_block) > 0) {
+
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+                'img0'  => 'img_1.png',
+                'text0' => '#',
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 4,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Titre
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 5);
+
+            if (count($result_html_block) > 0) {
+
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+                'text0' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 5,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Paragraphe
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 6);
+
+            if (count($result_html_block) > 0) {
+
+              if ($theme == 3) {
+                $data_content = array (
+                  'id_newsletter' => $id_newsletter,
+                  'id_block_html' => $result_html_block[0]->id,
+                  'text0' => 'Lorem ipsum dolor sit amet',
+                  'text1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                  'text2' => 'En savoir +',
+                  'text3' => '#',
+                );
+              } else {
+                $data_content = array (
+                  'id_newsletter' => $id_newsletter,
+                  'id_block_html' => $result_html_block[0]->id,
+                  'text0' => '1. Lorem ipsum dolor sit amet',
+                  'text1' => 'Lorem ipsum',
+                  'text2' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                  'text3' => 'En savoir +',
+                  'text4' => '#',
+                );
+              }
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 6,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Footer
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 7);
+
+            if (count($result_html_block) > 0) {
+
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 7,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Footer bar
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 8);
+
+            if (count($result_html_block) > 0) {
+
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 8,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            //Block Bottom
+            //Récupération id du block du template par ordre
+            $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 9);
+
+            if (count($result_html_block) > 0) {
+
+              $data_content = array (
+                'id_newsletter' => $id_newsletter,
+                'id_block_html' => $result_html_block[0]->id,
+              );
+
+              $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+              $data_block = array(
+                'id_newsletter'    => $id_newsletter,
+                'id_block_html'    => $result_html_block[0]->id,
+                'id_block_content' => $id_block_content,
+                'ordre'            => 9,
+              );
+
+              $this->My_common->insert_data('newsletter_has_block', $data_block);
+
+            }
+
+            redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+
 
           }
-
-          //Block Footer
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 7);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-            );
-
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 7,
-            );
-
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-          }
-
-          //Block Footer bar
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 8);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-            );
-
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 8,
-            );
-
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-          }
-
-          //Block Bottom
-
-          //Récupération id du block du template par ordre
-          $result_html_block = $this->My_campagnes->get_id_block_html_by_theme_and_template($theme, 9);
-
-          if (count($result_html_block) > 0) {
-
-            $data_content = array (
-              'id_newsletter' => $id_newsletter,
-              'id_block_html' => $result_html_block[0]->id,
-            );
-
-            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-            $data_block = array(
-              'id_newsletter'    => $id_newsletter,
-              'id_block_html'    => $result_html_block[0]->id,
-              'id_block_content' => $id_block_content,
-              'ordre'            => 9,
-            );
-
-            $this->My_common->insert_data('newsletter_has_block', $data_block);
-
-          }
-
-          redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
-
-        } else {
-          echo 3;
         }
 
       } else {
@@ -909,41 +759,58 @@ class Campagnes extends CI_Controller {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-      $data = array(
-        "id"=> $result_newsletter[0]->id_sendinblue,
-        "category"=> "",
-        "from_name"=> $result_expediteur[0]->nom_expediteur,
-        "from_email"=> $result_expediteur[0]->email_expediteur,
-        "name"=> $this->input->post ('nom_campagne'),
-        "bat"=> '',
-        "html_content"=> "<html><body></body></html>",
-        "html_url"=> "",
-        "listid"=> array(),
-        "scheduled_date"=> "",
-        "subject"=> $this->input->post ('objet'),
-        "reply_to"=> $result_expediteur[0]->email_expediteur,
-        'exclude_list'=> array(),
-        "attachment_url"=> "",
-        "inline_image"=> 0,
-        "mirror_active"=> 0,
-        "send_now"=> 0,
-        "utm_campaign"=> "",
+      $data_update = array (
+        "sender" => array (
+          "name" => $result_expediteur[0]->nom_expediteur,
+          "email" => $result_expediteur[0]->email_expediteur,
+        ),
+        "name" => $this->input->post ('nom_campagne'),
+        "subject" => $this->input->post ('objet'),
+        "replyTo" => $result_expediteur[0]->email_expediteur
       );
 
-      $mailin->update_campaign($data);
+      $data_string = json_encode($data_update);
 
-      $data = array(
-        'nom_campagne'    => $this->input->post ('nom_campagne'),
-        'objet'           => $this->input->post ('objet'),
-        'expediteur'      => $this->input->post ('id_expediteur'),
-      );
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$result_newsletter[0]->id_sendinblue,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "PUT",
+        CURLOPT_POSTFIELDS => $data_string,
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key,
+          "content-type: application/json"
+        ),
+      ));
 
-      $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      curl_close($curl);
 
-      redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+      if ($err) {
+        echo 11;
+      } else {
+        if (strlen($response) > 0)
+        {
+          echo 11;
+        } else
+        {
+          $data = array(
+            'nom_campagne'    => $this->input->post ('nom_campagne'),
+            'objet'           => $this->input->post ('objet'),
+            'expediteur'      => $this->input->post ('id_expediteur'),
+          );
+
+          $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+
+          redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+        }
+      }
 
 
     } else {
@@ -953,17 +820,16 @@ class Campagnes extends CI_Controller {
 
   public function preview()
   {
-    if ($_SESSION["is_connect"] == TRUE){
+    //if ($_SESSION["is_connect"] == TRUE){
 
       $this->load->model('My_campagnes');
       $id_newsletter = $this->uri->segment(3, 0);
-      $id_group = $_SESSION['id_group'];
       $data = array();
       $replace_html = '';
       $head = '';
       $blocks_html = '';
       $end = '';
-      $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+      $result_newsletter = $this->My_campagnes->get_newsletter($id_newsletter);
       $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
 
       // BLOCK HEAD ET END
@@ -1209,9 +1075,9 @@ class Campagnes extends CI_Controller {
         return $newsletter;
       }
 
-    } else {
-      $this->load->view('login');
-    }
+    //} else {
+    // $this->load->view('login');
+    //}
   }
 
   public function add_block()
@@ -1779,16 +1645,10 @@ class Campagnes extends CI_Controller {
       $infos_group = $this->My_users->get_group_infos($id_group);
       $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-			$campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
-
       $data = array(
         'id_newsletter' => $id_newsletter,
         'nom_campagne' => $data_campagne[0]->nom_campagne,
     		'result' => $result,
-    		'campagne' => $campagne['data'],
     	);
 
     	$this->load->view('header', $data);
@@ -1814,11 +1674,9 @@ class Campagnes extends CI_Controller {
       $data_send_lists = array();
 
       // Effacement de liste de contact existante en base
-
       $this->My_common->delete_data_detail('newsletter_has_contacts', 'id_newsletter', $id_newsletter);
 
       // enregistrement de la liste de contact
-
       if (!empty($_POST['id_liste'])) {
 
         for ($i=0; $i < count($_POST['id_liste']); $i++) {
@@ -1831,7 +1689,6 @@ class Campagnes extends CI_Controller {
           $this->My_common->insert_data('newsletter_has_contacts', $data_liste);
 
           // On relie les listes de contacts à la campagne
-
           $data_send_lists[] = $_POST['id_sib'][$i];
 
         }
@@ -1841,41 +1698,39 @@ class Campagnes extends CI_Controller {
         $infos_group = $this->My_users->get_group_infos($id_group);
         $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
 
-        require(APPPATH.'libraries/Mailin.php');
-        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-  		  $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
-
-        //Check des listes existantes et suppression si cota depassé
-
-        /**$data_lists = array();
-        $result_lists = $mailin->get_lists($data_lists);
-
-        if (count($result_lists['data']) > 99) {
-          $result_end = end($result_lists['data']);
-          $id_last_list = $result_end['id'];
-          $data_delete = array( "id"=>$id_last_list );
-          $result_delete = $mailin->delete_list($data_delete);
-        }**/
-
-        $data_campagne = array(
-          'id'				  => $data_campagne[0]->id_sendinblue,
-          'listid'			=> $data_send_lists,
-          'send_now'		=> 0,
+        // preparation des données :
+        $data_update = array (
+          "recipients" => array (
+            "listIds" => $data_send_lists
+            ),
+            "htmlUrl" => "http://newsletter.studio-brik.com/campagnes/preview/".$id_newsletter.".html",
         );
+        $data_string = json_encode($data_update, JSON_NUMERIC_CHECK);
 
-        $result_campagne = $mailin->update_campaign($data_campagne);
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$data_campagne[0]->id_sendinblue,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "PUT",
+          CURLOPT_POSTFIELDS => $data_string,
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "api-key: ".$infos_group[0]->api_sib_key,
+            "content-type: application/json"
+          ),
+        ));
 
-        $code = $result_campagne['code'];
-
-        if ($code == 'success'){
-
-          echo 'ok';
-
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+          echo "11";
         } else {
-
-          echo 11;
-
+          echo "ok";
         }
 
       } else {
@@ -1900,19 +1755,11 @@ class Campagnes extends CI_Controller {
       $id_group = $_SESSION["id_group"];
 
       // Informations sur la campagne
-
-      $infos_group = $this->My_users->get_group_infos($id_group);
       $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
-
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-      $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
 
       $data = array(
         'id_newsletter' => $id_newsletter,
         'nom_campagne' => $data_campagne[0]->nom_campagne,
-        'campagne' => $campagne['data']
       );
 
       $this->load->view('header', $data);
@@ -1935,70 +1782,181 @@ class Campagnes extends CI_Controller {
       $id_group = $_SESSION["id_group"];
       $date_envoi = $this->My_common->date_fr_mysql($this->input->post ('date_envoi'));
       $heure_envoi = $this->input->post ('heure_envoi') .':'.$this->input->post ('minute_envoi');
-      $scheduled_date = $date_envoi.' '.$heure_envoi.':00';
-
+      $scheduled_date = $date_envoi.'T'.$heure_envoi.':00';
       // Informations sur la campagne
 
       $infos_group = $this->My_users->get_group_infos($id_group);
       $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+      $total_contact = 0;
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+      // recuperation des informations de la campagne :
+      $curl = curl_init();
 
-      $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$data_campagne[0]->id_sendinblue,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key,
+        ),
+      ));
 
-      //Check si existance de contacts dans la liste
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
 
-      $data_list = array( "id"=>$campagne['data'][0]['listid'][0]);
-      $liste = $mailin->get_list($data_list);
+      curl_close($curl);
 
-      if ($liste['data']['total_subscribers'] > 0 && $liste['data']['total_subscribers'] != NULL) {
+      if ($err) {
+        echo 14;
+      }
+      else {
+        $data_return = json_decode ($response);
+        foreach ($data_return->recipients->lists as $item_list)
+        {
+          // recuperation des informations de la liste :
+          $curl = curl_init();
+          curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$item_list,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+              "accept: application/json",
+              "api-key: ".$infos_group[0]->api_sib_key,
+            ),
+          ));
 
-        //Données en fonction du type d'envoi
+          $response = curl_exec($curl);
+          $err = curl_error($curl);
 
-        if ($this->input->post ('type_envoi') == 1) {
-          $data = array(
-    				'id'				      => $data_campagne[0]->id_sendinblue,
-            'scheduled_date'  => $scheduled_date,
-            'html_content'		=> $this->preview(),
-    			);
-        } else {
-          $data = array(
-    				'id'				      => $data_campagne[0]->id_sendinblue,
-            'html_content'		=> $this->preview(),
-    				'send_now'		   	=> 1,
-    			);
+          curl_close($curl);
+
+          if ($err) {
+            echo 15;
+          } else {
+            $data_return_liste = json_decode ($response);
+            $total_contact += $data_return_liste->totalSubscribers;
+          }
+
+
         }
 
-  			$result = $mailin->update_campaign($data);
-  			$code = $result['code'];
+        // si la liste a des contacts on envoi
+        if ($total_contact > 0)
+        {
+          // si c'est différé :
+          if ($this->input->post ('type_envoi') == 1)
+          {
+            // preparation des données :
+            $data_update = array (
+              "scheduledAt" => $scheduled_date,
+            );
+            $data_string = json_encode($data_update);
 
-        //Envoi si mise à jour ok
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$data_campagne[0]->id_sendinblue,
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "PUT",
+              CURLOPT_POSTFIELDS => $data_string,
+              CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "api-key: ".$infos_group[0]->api_sib_key,
+                "content-type: application/json"
+              ),
+            ));
 
-  			if ($code == 'success'){
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
 
-          $data = array(
-            'type_envoi'           => $this->input->post ('type_envoi'),
-            'date_envoi'           => $date_envoi,
-            'heure_envoi'          => $heure_envoi,
-            'envoi'                => 1,
-          );
+            if ($err) {
+              echo 10;
+            } else {
+              if (strlen ($response) > 0){
+                echo 10;
+              } else {
 
-          $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+                $data = array(
+                  'type_envoi'           => $this->input->post ('type_envoi'),
+                  'date_envoi'           => $date_envoi,
+                  'heure_envoi'          => $heure_envoi,
+                  'envoi'                => 1,
+                );
 
-          echo 'ok';
+                $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
 
-  			} else {
+                echo "ok";
+              }
+            }
 
-  				echo 10;
 
-  			}
+          }
+          // si c'est immédiat
+          else
+          {
+            $curl = curl_init();
 
-      } else {
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$data_campagne[0]->id_sendinblue."/sendNow",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "api-key: ".$infos_group[0]->api_sib_key,
+              ),
+            ));
 
-        echo 11;
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
 
+            curl_close($curl);
+            if ($err) {
+              echo 10;
+            } else {
+              if (strlen ($response) > 0){
+                echo 10;
+              } else {
+
+                $data = array(
+                  'type_envoi'           => $this->input->post ('type_envoi'),
+                  'date_envoi'           => $date_envoi,
+                  'heure_envoi'          => $heure_envoi,
+                  'envoi'                => 1,
+                );
+
+                $this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
+                echo "ok";
+              }
+            }
+
+          }
+
+        }
+
+        // si la liste n'a pas de contact, erreur
+        else
+        {
+          echo 16;
+        }
       }
+
 
   	} else {
       	$this->load->view('login');
@@ -2030,45 +1988,85 @@ class Campagnes extends CI_Controller {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
       $data_campagne = $this->My_campagnes->get_newsletter($id_newsletter, $id_group);
+      $result_expediteur = $this->My_campagnes->get_campagne_sender($data_campagne[0]->expediteur);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+      $from_name = $result_expediteur[0]->nom_expediteur;
+      $from_email = $result_expediteur[0]->email_expediteur;
+      $nom_campagne = $data_campagne[0]->nom_campagne;
+      $objet = $data_campagne[0]->objet;
+      $html_content = $this->preview();
 
-      $campagne = $mailin->get_campaigns_v2(array('id' => $data_campagne[0]->id_sendinblue));
-
-      $data = array(
-        'id'			     	    => $data_campagne[0]->id_sendinblue,
-        'send_now'			    => 0,
-        'html_content'			=> $this->preview(),
+      $data_update = array (
+        "sender" => array (
+          "name" => $from_name,
+          "email" => $from_email,
+        ),
+        "name" => $nom_campagne,
+        "htmlUrl" => "http://newsletter.studio-brik.com/campagnes/preview/".$id_newsletter.".html",
+        "subject" => $objet,
+        "replyTo" => $from_email
       );
 
-      $result = $mailin->update_campaign($data);
-      $code = $result['code'];
-      /**echo '<pre>';
-      print_r($result);
-      echo '</pre>';**/
-        if ($code == 'success'){
+      $data_string = json_encode($data_update);
 
-          $data = array(
-            'id' => $data_campagne[0]->id_sendinblue,
-            'emails' => array($email)
-          );
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$data_campagne[0]->id_sendinblue,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "PUT",
+        CURLOPT_POSTFIELDS => $data_string,
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key,
+          "content-type: application/json"
+        ),
+      ));
 
-          $result_send = $mailin->send_bat_email($data);
-          /**echo '<pre>';
-          print_r($result_send);
-          echo '</pre>';**/
-          redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      curl_close($curl);
 
+      if ($err) {
+        echo "cURL Error #:" . $err;
+      } else {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$data_campagne[0]->id_sendinblue."/sendTest",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => "{\"emailTo\":[\"$email\"]}",
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "api-key: ".$infos_group[0]->api_sib_key,
+            "content-type: application/json"
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+          echo "cURL Error #:" . $err;
         } else {
-
-          echo 'Erreur';
-
+          redirect(base_url().'campagnes/newsletter/'.$id_newsletter.'.html');
         }
+
+      }
 
       } else {
           $this->load->view('login');
       }
+
   }
 
   public function duplicate()
@@ -2091,117 +2089,125 @@ class Campagnes extends CI_Controller {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-      $data = array(
-        "category"=> "",
-        "from_name"=> $result_expediteur[0]->nom_expediteur,
-        "from_email"=> $result_expediteur[0]->email_expediteur,
-        "name"=> $result_newsletter[0]->nom_campagne.' copie',
-        "bat"=> '',
-        "html_content"=> "<html><body></body></html>",
-        "html_url"=> "",
-        "listid"=> array(),
-        "scheduled_date"=> "",
-        "subject"=> $result_newsletter[0]->objet,
-        "reply_to"=> $result_expediteur[0]->email_expediteur,
-        'exclude_list'=> array(),
-        "attachment_url"=> "",
-        "inline_image"=> 0,
-        "mirror_active"=> 0,
-        "send_now"=> 0,
-        "utm_campaign"=> "",
+      $data_update = array (
+        "sender" => array (
+          "name" => $result_expediteur[0]->nom_expediteur,
+          "email" => $result_expediteur[0]->email_expediteur,
+        ),
+        "name" => $result_newsletter[0]->nom_campagne.' copie',
+        "subject" => $result_newsletter[0]->objet,
+        "replyTo" => $result_expediteur[0]->email_expediteur,
+        "htmlContent" => "<html></html>"
       );
 
-      $result = $mailin->create_campaign($data);
+      $data_string = json_encode($data_update);
 
-      if ($result['code'] == 'success') {
+      $curl = curl_init();
 
-        //COPIE DE LA NEWSLETTER
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $data_string,
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key,
+          "content-type: application/json"
+        ),
+      ));
 
-        //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
 
-        $data = array(
-          'nom_campagne'    => $result_newsletter[0]->nom_campagne.' copie',
-          'objet'           => $result_newsletter[0]->objet,
-          'expediteur'      => $result_newsletter[0]->expediteur,
-          'theme'           => $result_newsletter[0]->theme,
-          'type_envoi'      => $result_newsletter[0]->type_envoi,
-          'date_envoi'      => $result_newsletter[0]->date_envoi,
-          'heure_envoi'     => $result_newsletter[0]->heure_envoi,
-          'id_group'        => $_SESSION['id_group'],
-          'id_succursale'   => $_SESSION['id_succursale'],
-          'id_sib'          => $result['data']['id'],
-        );
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+      curl_close($curl);
 
-        $id_newsletter_copy = $this->My_common->insert_data('newsletter', $data);
-
-        // CREATION DU NOUVEAU DOSSIER
-
-        $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
-
-        mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter_copy);
-
-        // COPIE DES IMAGES VERS LA NOUVELLE NEWSLETTER
-
-        $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/';
-
-        $dir_copy = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter_copy.'/';
-
-        foreach(scandir($dir) as $file) {
-          if ('.' === $file || '..' === $file) continue;
-          copy($dir.$file, $dir_copy.$file);
-        }
-
-        // COPIE DES DONNEES
-
-        foreach ($result_newsletter as $row_newsletter) {
-
-          $data_content = array (
-            'id_newsletter' => $id_newsletter_copy,
-            'id_block_html' => $row_newsletter->id_block_html,
-            'img0'          => $row_newsletter->newsletter_block_img0,
-            'img1'          => $row_newsletter->newsletter_block_img1,
-            'img2'          => $row_newsletter->newsletter_block_img2,
-            'img3'          => $row_newsletter->newsletter_block_img3,
-            'text0'         => $row_newsletter->newsletter_block_text0,
-            'text1'         => $row_newsletter->newsletter_block_text1,
-            'text2'         => $row_newsletter->newsletter_block_text2,
-            'text3'         => $row_newsletter->newsletter_block_text3,
-            'text4'         => $row_newsletter->newsletter_block_text4,
-            'text5'         => $row_newsletter->newsletter_block_text5,
-            'text6'         => $row_newsletter->newsletter_block_text6,
-            'text7'         => $row_newsletter->newsletter_block_text7,
-            'text8'         => $row_newsletter->newsletter_block_text8,
-            'text9'         => $row_newsletter->newsletter_block_text9,
-            'text10'        => $row_newsletter->newsletter_block_text10,
-            'text11'        => $row_newsletter->newsletter_block_text11,
-            'text12'        => $row_newsletter->newsletter_block_text12,
-            'text13'        => $row_newsletter->newsletter_block_text13,
-            'text14'        => $row_newsletter->newsletter_block_text14,
-            'select0'       => $row_newsletter->newsletter_block_select0,
-            'select1'       => $row_newsletter->newsletter_block_select1,
-            'select2'       => $row_newsletter->newsletter_block_select2,
-            'select3'       => $row_newsletter->newsletter_block_select3,
-          );
-
-          $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
-
-          $data_block = array(
-            'id_newsletter'    => $id_newsletter_copy,
-            'id_block_html'    => $row_newsletter->id_block_html,
-            'id_block_content' => $id_block_content,
-            'ordre'            => $row_newsletter->newsletter_block_ordre,
-          );
-
-          $this->My_common->insert_data('newsletter_has_block', $data_block);
-        }
-
-        redirect(base_url().'campagnes/newsletter/'.$id_newsletter_copy.'.html');
-
+      if ($err) {
+        echo 17;
       } else {
+        if (strlen ($response) > 20)
+        {
+          echo 17;
+        } else
+        {
+          $data_return = json_decode($response);
+          //AJOUT EN BASE DES INFORMATIONS DE LA CAMPAGNE
+          $data = array(
+            'nom_campagne'    => $result_newsletter[0]->nom_campagne.' copie',
+            'objet'           => $result_newsletter[0]->objet,
+            'expediteur'      => $result_newsletter[0]->expediteur,
+            'theme'           => $result_newsletter[0]->theme,
+            'type_envoi'      => $result_newsletter[0]->type_envoi,
+            'date_envoi'      => $result_newsletter[0]->date_envoi,
+            'heure_envoi'     => $result_newsletter[0]->heure_envoi,
+            'id_group'        => $_SESSION['id_group'],
+            'id_succursale'   => $_SESSION['id_succursale'],
+            'id_sib'          => $data_return->id,
+          );
+          $id_newsletter_copy = $this->My_common->insert_data('newsletter', $data);
 
+          // CREATION DU NOUVEAU DOSSIER
+          $result_theme = $this->My_campagnes->get_newsletter_theme($result_newsletter[0]->theme);
+          mkdir('mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter_copy);
+
+          // COPIE DES IMAGES VERS LA NOUVELLE NEWSLETTER
+          $dir = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter.'/';
+          $dir_copy = $_SERVER['DOCUMENT_ROOT'].'/mediatheque/newsletter/'.str_replace(' ', '_', $result_theme[0]->nom).'/images/campagne_'.$id_newsletter_copy.'/';
+
+          foreach(scandir($dir) as $file) {
+            if ('.' === $file || '..' === $file) continue;
+            copy($dir.$file, $dir_copy.$file);
+          }
+
+          // COPIE DES DONNEES
+          foreach ($result_newsletter as $row_newsletter) {
+
+            $data_content = array (
+              'id_newsletter' => $id_newsletter_copy,
+              'id_block_html' => $row_newsletter->id_block_html,
+              'img0'          => $row_newsletter->newsletter_block_img0,
+              'img1'          => $row_newsletter->newsletter_block_img1,
+              'img2'          => $row_newsletter->newsletter_block_img2,
+              'img3'          => $row_newsletter->newsletter_block_img3,
+              'text0'         => $row_newsletter->newsletter_block_text0,
+              'text1'         => $row_newsletter->newsletter_block_text1,
+              'text2'         => $row_newsletter->newsletter_block_text2,
+              'text3'         => $row_newsletter->newsletter_block_text3,
+              'text4'         => $row_newsletter->newsletter_block_text4,
+              'text5'         => $row_newsletter->newsletter_block_text5,
+              'text6'         => $row_newsletter->newsletter_block_text6,
+              'text7'         => $row_newsletter->newsletter_block_text7,
+              'text8'         => $row_newsletter->newsletter_block_text8,
+              'text9'         => $row_newsletter->newsletter_block_text9,
+              'text10'        => $row_newsletter->newsletter_block_text10,
+              'text11'        => $row_newsletter->newsletter_block_text11,
+              'text12'        => $row_newsletter->newsletter_block_text12,
+              'text13'        => $row_newsletter->newsletter_block_text13,
+              'text14'        => $row_newsletter->newsletter_block_text14,
+              'select0'       => $row_newsletter->newsletter_block_select0,
+              'select1'       => $row_newsletter->newsletter_block_select1,
+              'select2'       => $row_newsletter->newsletter_block_select2,
+              'select3'       => $row_newsletter->newsletter_block_select3,
+            );
+
+            $id_block_content = $this->My_common->insert_data('newsletter_block_content', $data_content);
+
+            $data_block = array(
+              'id_newsletter'    => $id_newsletter_copy,
+              'id_block_html'    => $row_newsletter->id_block_html,
+              'id_block_content' => $id_block_content,
+              'ordre'            => $row_newsletter->newsletter_block_ordre,
+            );
+
+            $this->My_common->insert_data('newsletter_has_block', $data_block);
+          }
+
+          redirect(base_url().'campagnes/newsletter/'.$id_newsletter_copy.'.html');
+
+        }
       }
 
     } else {
@@ -2227,15 +2233,29 @@ class Campagnes extends CI_Controller {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
-    	$data = array(
-        'id'=> $infos_group[0]->api_sib_key,
-        'status' => 'archive',
-      );
+      $curl = curl_init();
 
-    	$mailin->update_campaign_status($data);
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$result_newsletter[0]->id_sendinblue."/status",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "PUT",
+        CURLOPT_POSTFIELDS => "{\"status\":\"archive\"}",
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key,
+          "content-type: application/json"
+        ),
+      ));
+
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+
+      curl_close($curl);
 
       $data = array(
         'archive'    => 1,
@@ -2244,6 +2264,7 @@ class Campagnes extends CI_Controller {
 			$this->My_common->update_data('newsletter', 'id', $id_newsletter, $data);
 
       redirect(base_url().'campagnes/archivees.html');
+
 
   	} else {
       	$this->load->view('login');
@@ -2269,11 +2290,26 @@ class Campagnes extends CI_Controller {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
+      $curl = curl_init();
 
-    	$data = array( 'id'=> $result_newsletter[0]->id_sendinblue );
-    	$mailin->delete_campaign($data);
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.sendinblue.com/v3/emailCampaigns/".$result_newsletter[0]->id_sendinblue,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "DELETE",
+        CURLOPT_HTTPHEADER => array(
+          "accept: application/json",
+          "api-key: ".$infos_group[0]->api_sib_key,
+        ),
+      ));
+
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+
+      curl_close($curl);
 
       $this->My_common->delete_data('newsletter', $id_newsletter);
       $this->My_common->delete_data_detail('newsletter_has_block', 'id_newsletter', $id_newsletter);

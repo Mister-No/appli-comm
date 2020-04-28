@@ -51,6 +51,58 @@ class Contacts extends CI_Controller  {
     	} else {
         	$this->load->view('login');
     	}
+  }
+  
+  public function get_liste()
+	{
+		if ($_SESSION['is_connect'] == TRUE){
+
+			$this->load->model('My_contacts');
+
+          $id_group = $_SESSION['id_group'];
+
+	        $result_cont = $this->My_contacts->get_all_cont($id_group);
+
+          $result = array();
+
+          foreach ($result_cont as $row) {
+
+              $result_cat = $this->My_contacts->get_cat_total_by_id($row->id);
+
+              $cat = "";
+              foreach ($result_cat as $row_cat) {
+                $cat .=  $row_cat->titre." / ";
+              }
+
+            $all_cat = substr($cat, 0, -3);
+            $all_cat = (strlen($all_cat) > 84) ? substr($all_cat,0,84). ' ... ' : $all_cat;
+
+              $bouton = '<div class="btn-group">';
+              $bouton .= '<a class="btn btn-success" href="/contacts/modifier/'.$row->id.'"><i class="fa fa-edit"></i></a></div>';
+              
+              $bouton .= '<div class="btn-group">';
+              $bouton .= '<button class="btn btn-success" onclick="popin (\''.$row->id.'\', \''.addslashes($row->nom).'\')" ><i class="fa fa-trash"></i></button></div>';       
+            
+
+            $temp = array (
+                $row->email,
+                $row->nom." ".$row->prenom,
+                $all_cat,
+                $row->raison_sociale,
+                $bouton,
+                $row->id,
+              );
+
+            array_push ($result, $temp);
+
+          }
+          header('Content-Type: application/json');
+          $data["data"] = $result;
+          echo json_encode ($data);
+      
+    	} else {
+        	$this->load->view('login');
+    	}
 	}
 
   public function erreur()
@@ -116,27 +168,48 @@ class Contacts extends CI_Controller  {
 
       $infos_group = $this->My_users->get_group_infos($id_group);
 
-      require(APPPATH.'libraries/Mailin.php');
-      $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-      $data_user = array( 'email' => $row->email );
+      // verification du blacklistage :
+        $curl = curl_init();
 
-      $result_user = $mailin->get_user($data_user);
-
-      if ($result_user['code'] == 'success') {
-        if ($result_user['data']['blacklisted'] == 1) {
-          $blacklist = 'checked';
-        } else {
-          $blacklist = '';
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/".$row->email,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "api-key: ".$infos_group[0]->api_sib_key,
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        $response = json_decode ($response);
+        if (isset ($response->code))
+        {
+          if ($result[0]->blacklist == 1) {
+            $blacklist = 'checked';
+          } else {
+            $blacklist = '';
+          }
+        } else 
+        {
+          if ($response->emailBlacklisted == 1)
+          {
+            $blacklist = 'checked'; 
+          } else 
+          {
+            $blacklist = ''; 
+          }
         }
-      } else {
-        if ($result[0]->blacklist == 1) {
-          $blacklist = 'checked';
-        } else {
-          $blacklist = '';
-        }
-      }
-
-      $result_cat = '';
+        
+      $result_cat = array();
 
       foreach ($resultc as $rowc) {
         $result_cat[] = $rowc->id_cat;
@@ -153,6 +226,7 @@ class Contacts extends CI_Controller  {
       $this->load->view('header', $data);
       $this->load->view('contacts_modifier');
       $this->load->view('footer');
+      
 
     } else {
         $this->load->view('login');
@@ -177,88 +251,149 @@ class Contacts extends CI_Controller  {
 
 		      echo 1;
 
-		    } else {
+		  } else {
 
         $infos_group = $this->My_users->get_group_infos($id_group);
-
-        require(APPPATH.'libraries/Mailin.php');
-        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
 
         if ($this->input->post('blacklist') == 'on') {
           $data = array(
             'email'       => $this->input->post('email'),
-            'blacklisted' => 1,
+            'blacklisted' => true,
           );
           $blacklist = 1;
         } else {
           $data = array(
             'email'       => $this->input->post('email'),
-            'blacklisted' => 0,
+            'blacklisted' => false,
           );
           $blacklist = 0;
         }
 
-        $mailin->create_update_user($data);
+        $data_update = json_encode ($data);
+        
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.sendinblue.com/v3/contacts",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => $data_update,
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "api-key: ".$infos_group[0]->api_sib_key,
+            "content-type: application/json"
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
 
-				$data = array(
-					'id' 			    => $this->input->post('id'),
-          'id_group' 		=> $id_group,
-					'civ' 				=> $this->input->post('civ'),
-					'nom' 				=> $this->input->post('nom'),
-					'prenom' 			=> $this->input->post('prenom'),
-					'fonction' 		=> $this->input->post('fonction'),
-					'tel' 				=> $this->input->post('tel'),
-					'fax' 				=> $this->input->post('fax'),
-					'mobile' 			=> $this->input->post('mobile'),
-					'email' 			=> $this->input->post('email'),
-					'num_voie' 		=> $this->input->post('num_voie'),
-					'nom_voie' 		=> $this->input->post('nom_voie'),
-					'lieu_dit' 		=> $this->input->post('lieu_dit'),
-					'bp' 				  => $this->input->post('bp'),
-					'cp' 				  => $this->input->post('cp'),
-					'ville' 			=> $this->input->post('ville'),
-					'cedex' 			=> $this->input->post('cedex'),
-          'blacklist'   => $blacklist,
-				);
+        curl_close($curl);
+        
+        if ($err) {
+          echo 1;
+        } else {
+          $response = json_decode ($response);
 
-	        $id = $this->My_common->insert_data ('contacts', $data);
+          if (isset($response->code))
+          {
+            echo 1;
+          } else 
+          {
+            $data = array(
+              'id' 			    => $this->input->post('id'),
+              'id_group' 		=> $id_group,
+              'civ' 				=> $this->input->post('civ'),
+              'nom' 				=> $this->input->post('nom'),
+              'prenom' 			=> $this->input->post('prenom'),
+              'fonction' 		=> $this->input->post('fonction'),
+              'tel' 				=> $this->input->post('tel'),
+              'fax' 				=> $this->input->post('fax'),
+              'mobile' 			=> $this->input->post('mobile'),
+              'email' 			=> $this->input->post('email'),
+              'num_voie' 		=> $this->input->post('num_voie'),
+              'nom_voie' 		=> $this->input->post('nom_voie'),
+              'lieu_dit' 		=> $this->input->post('lieu_dit'),
+              'bp' 				  => $this->input->post('bp'),
+              'cp' 				  => $this->input->post('cp'),
+              'ville' 			=> $this->input->post('ville'),
+              'cedex' 			=> $this->input->post('cedex'),
+              'blacklist'   => $blacklist,
+            );
+    
+            $id = $this->My_common->insert_data ('contacts', $data);
+    
+            if ($this->input->post('id_cat') != '') {
+    
+              foreach ($_POST['id_cat'] as $key => $value) {
+    
+                $data =array (
+                  'id_contact' => $id,
+                  'id_cat' => $value,
+                );
+    
+                $this->My_common->insert_data ('contacts_cat', $data);
+    
+                $cat_list = $this->My_listes->get_cat_liste($value, $id_group);
 
-          if ($this->input->post('id_cat') != '') {
+                if ($cat_list[0]->id_sib != '') {
+    
+                  $data_cat_list = array(
+                    "listIds" 		=> array ($cat_list[0]->id_sib),
+                  );
 
-            foreach ($_POST['id_cat'] as $key => $value) {
-
-  	        	$data =array (
-  	        		'id_contact' => $id,
-  	        		'id_cat' => $value,
-  	        	);
-
-  	        	$this->My_common->insert_data ('contacts_cat', $data);
-
-              $cat_list = $this->My_listes->get_cat_liste($value, $id_group);
-
-              if ($cat_list[0]->id_sib != '') {
-
-                $data_cat_list = array(
-        					"id" 		=> $cat_list[0]->id_sib,
-        					"users" => array($this->input->post('email')),
-        				);
-
-    				    $result = $mailin->add_users_list($data_cat_list);
-
+                  $data_cat_list = json_encode ($data_cat_list, JSON_NUMERIC_CHECK);
+    
+                  $curl = curl_init();
+                  curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/".$this->input->post('email'),
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "PUT",
+                    CURLOPT_POSTFIELDS => $data_cat_list,
+                    CURLOPT_HTTPHEADER => array(
+                      "accept: application/json",
+                      "api-key: ".$infos_group[0]->api_sib_key,
+                      "content-type: application/json"
+                    ),
+                  ));
+                  
+                  $response = curl_exec($curl);
+                  $err = curl_error($curl);
+          
+                  curl_close($curl);
+                  
+                  if ($err) {
+                    echo 1;
+                  } else {
+                    $response = json_decode ($response);
+                    
+                  }
+              
+                }
+    
               }
-
-  	        }
-
+    
+            }
+            echo 'ok';
+    
           }
 
-		        echo 'ok';
-		    }
+        }
+        
+		  }
 
-    	} else {
+    } else {
 
-        echo 3;
+      echo 3;
 
-    	}
+    }
 
 	}
 
@@ -284,102 +419,187 @@ class Contacts extends CI_Controller  {
 
         $infos_group = $this->My_users->get_group_infos($id_group);
 
-        require(APPPATH.'libraries/Mailin.php');
-        $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
         if ($this->input->post('blacklist') == 'on') {
           $data = array(
-            'email'       => $this->input->post('email'),
-            'blacklisted' => 1,
+            'emailBlacklisted' => true,
           );
           $blacklist = 1;
         } else {
           $data = array(
-            'email'       => $this->input->post('email'),
-            'blacklisted' => 0,
+            'emailBlacklisted' => false,
           );
           $blacklist = 0;
         }
+        $data_update = json_encode ($data);
 
-        $result = $mailin->create_update_user($data);
+        $curl = curl_init();
 
-        $data = array(
-          'id' 		      => $this->input->post('id'),
-          'id_ent' 			=> $this->input->post('id_ent'),
-          'civ' 				=> $this->input->post('civ'),
-          'nom' 				=> $this->input->post('nom'),
-          'prenom' 			=> $this->input->post('prenom'),
-          'fonction' 		=> $this->input->post('fonction'),
-          'tel' 				=> $this->input->post('tel'),
-          'fax' 				=> $this->input->post('fax'),
-          'mobile' 			=> $this->input->post('mobile'),
-          'email' 			=> $this->input->post('email'),
-          'num_voie' 		=> $this->input->post('num_voie'),
-          'nom_voie' 		=> $this->input->post('nom_voie'),
-          'lieu_dit' 		=> $this->input->post('lieu_dit'),
-          'bp' 				  => $this->input->post('bp'),
-          'cp' 				  => $this->input->post('cp'),
-          'ville' 			=> $this->input->post('ville'),
-          'cedex' 			=> $this->input->post('cedex'),
-          'blacklist'   => $blacklist,
-        );
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/".$this->input->post('email'),
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "PUT",
+          CURLOPT_POSTFIELDS => $data_update,
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "api-key: ".$infos_group[0]->api_sib_key,
+            "content-type: application/json"
+          ),
+        ));
 
-        $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+          echo 2;
+        } else {
+          echo $response;
+          $response = json_decode ($response);
 
-        // Suppression du contact des listes auxquelles il appartient
-
-        $contact_cat = $this->My_contacts->get_contact_cat($this->input->post('id'));
-
-        foreach ($contact_cat as $row_list) {
-
-          $cat_list = $this->My_listes->get_cat_liste($row_list->id_cat, $id_group);
-
-          if ($cat_list[0]->id_sib != '') {
-
-            $data_cat_list = array(
-    					"id" 		=> $cat_list[0]->id_sib,
-    					"users" => array($this->input->post('email')),
-    				);
-
-				    $result = $mailin->delete_users_list($data_cat_list);
-
+          if (isset ($response->code))
+          {
+            echo 3;
           }
+          else 
+          {
 
-        }
-
-        $this->My_contacts->delete_ent_cat($this->input->post('id'));
-
-        if ($this->input->post('id_cat') != '') {
-
-          // Ajout du contact aux categories et listes choisies
-
-          foreach ($_POST['id_cat'] as $key => $value) {
-
-            $data =array (
-              'id_contact' => $this->input->post('id'),
-              'id_cat' => $value,
+            $data = array(
+              'id' 		      => $this->input->post('id'),
+              'id_ent' 			=> $this->input->post('id_ent'),
+              'civ' 				=> $this->input->post('civ'),
+              'nom' 				=> $this->input->post('nom'),
+              'prenom' 			=> $this->input->post('prenom'),
+              'fonction' 		=> $this->input->post('fonction'),
+              'tel' 				=> $this->input->post('tel'),
+              'fax' 				=> $this->input->post('fax'),
+              'mobile' 			=> $this->input->post('mobile'),
+              'email' 			=> $this->input->post('email'),
+              'num_voie' 		=> $this->input->post('num_voie'),
+              'nom_voie' 		=> $this->input->post('nom_voie'),
+              'lieu_dit' 		=> $this->input->post('lieu_dit'),
+              'bp' 				  => $this->input->post('bp'),
+              'cp' 				  => $this->input->post('cp'),
+              'ville' 			=> $this->input->post('ville'),
+              'cedex' 			=> $this->input->post('cedex'),
+              'blacklist'   => $blacklist,
             );
+            $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
+    
+            // Suppression du contact des listes auxquelles il appartient
+            $contact_cat = $this->My_contacts->get_contact_cat($this->input->post('id'));
+            foreach ($contact_cat as $row_list) {
 
-            $this->My_common->insert_data('contacts_cat', $data);
+              $cat_list = $this->My_listes->get_cat_liste($row_list->id_cat, $id_group);
 
-            $cat_list = $this->My_listes->get_cat_liste($value, $id_group);
+              if ($cat_list[0]->id_sib != '') {
 
-            if ($cat_list[0]->id_sib != '') {
+                $data_remove_list = array (
+                  "emails" => array ($this->input->post('email')),
+                );
 
-              $data_cat_list = array(
-      					"id" 		=> $cat_list[0]->id_sib,
-      					"users" => array($this->input->post('email')),
-      				);
+                $data_remove_list = json_encode ($data_remove_list);
 
-  				    $result = $mailin->add_users_list($data_cat_list);
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                  CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/lists/".$cat_list[0]->id_sib."/contacts/remove",
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 30,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "POST",
+                  CURLOPT_POSTFIELDS => $data_remove_list,
+                  CURLOPT_HTTPHEADER => array(
+                    "accept: application/json",
+                    "api-key: ".$infos_group[0]->api_sib_key,
+                    "content-type: application/json"
+                  ),
+                ));
+                
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                
+                curl_close($curl);
+
+              }
 
             }
 
+            $this->My_contacts->delete_ent_cat($this->input->post('id'));
+            if ($this->input->post('id_cat') != '') {
+    
+              // Ajout du contact aux categories et listes choisies
+    
+              foreach ($_POST['id_cat'] as $key => $value) {
+    
+                $data =array (
+                  'id_contact' => $this->input->post('id'),
+                  'id_cat' => $value,
+                );
+    
+                $this->My_common->insert_data('contacts_cat', $data);
+    
+                $cat_list = $this->My_listes->get_cat_liste($value, $id_group);
+    
+                if ($cat_list[0]->id_sib != '') {
+        
+                  $data_cat_list = array(
+                    "listIds" 		=> array ($cat_list[0]->id_sib),
+                  );
+
+                  $data_cat_list = json_encode ($data_cat_list, JSON_NUMERIC_CHECK);
+    
+                  $curl = curl_init();
+                  curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/".$this->input->post('email'),
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "PUT",
+                    CURLOPT_POSTFIELDS => $data_cat_list,
+                    CURLOPT_HTTPHEADER => array(
+                      "accept: application/json",
+                      "api-key: ".$infos_group[0]->api_sib_key,
+                      "content-type: application/json"
+                    ),
+                  ));
+                  
+                  $response = curl_exec($curl);
+                  $err = curl_error($curl);
+          
+                  curl_close($curl);
+                  
+                  if ($err) {
+                    echo 1;
+                  } else {
+                    $response = json_decode ($response);
+                    
+                  }
+    
+                }
+    
+              }
+    
+            }
+            echo 'ok';
+    
+
           }
 
         }
+        
 
-        echo 'ok';
+
+
 
      }
 
@@ -409,6 +629,7 @@ class Contacts extends CI_Controller  {
 
   }
 
+  
 	public function importer()
 	{
 		if ($_SESSION['is_connect'] == TRUE){
@@ -434,7 +655,8 @@ class Contacts extends CI_Controller  {
 
 	public function import_save()
 	{
-		if ($_SESSION['is_connect'] == TRUE){
+    if ($_SESSION['is_connect'] == TRUE)
+    {
 
       $this->load->model('My_listes');
   		$this->load->model('My_categories');
@@ -456,10 +678,13 @@ class Contacts extends CI_Controller  {
 			if ($_FILES['fichier']['name'] != ''){
 				$config['file_name'] = $file;
 				$this->upload->initialize($config);
-				if (!$this->upload->do_upload('fichier')){
+        if (!$this->upload->do_upload('fichier'))
+        {
 					echo 'erreur 1';
           echo $this->upload->display_errors();
-				} else {
+        } 
+        else 
+        {
 
 					require(APPPATH.'libraries/PHPExcel.php');
 
@@ -471,99 +696,166 @@ class Contacts extends CI_Controller  {
           //Connexion chez send in blue
           $infos_group = $this->My_users->get_group_infos($_SESSION['id_group']);
 
-          require(APPPATH.'libraries/Mailin.php');
-          $mailin = new Mailin("https://api.sendinblue.com/v2.0", $infos_group[0]->api_sib_key);
-
-					foreach ($objWorksheet as $row) {
-
-						if ($row['B'] != 'Nom' && $row['B'] != ''){
-
-							$email 	= $row['H'];
-							$nom 	= $row['B'];
+          foreach ($objWorksheet as $row) 
+          {
+            if ($row['B'] != 'Nom' && $row['B'] != '')
+            {
+							$email 	= trim($row['H']);
+							$nom 	= trim($row['B']);
 
 							// On verifie si le contact est déjà dans la base :
 							$result = $this->My_contacts->check_exist ($email, $_SESSION['id_group']);
 
-							if (count($result) > 0) {
-
+              if (count($result) > 0) 
+              {
 								$id_contact = $result[0]->id;
 
 								// si il est dans la base on verifie si il est dans la categorie
-								if (isset($_POST['id_cat'])){
+                if (isset($_POST['id_cat']))
+                {
 
-									foreach ($_POST['id_cat'] as $key => $value) {
+                  foreach ($_POST['id_cat'] as $key => $value) 
+                  {
 										$result_contact_cat = $this->My_contacts->check_contact_cat($value, $id_contact);
-										if (count ($result_contact_cat) == 0){
+                    if (count ($result_contact_cat) == 0)
+                    {
 
-							        	$data =array (
-							        		'id_contact' => $id_contact,
-							        		'id_cat' => $value,
-							        	);
-							        	$this->My_common->insert_data ('contacts_cat', $data);
+                      $data =array (
+                        'id_contact' => $id_contact,
+                        'id_cat' => $value,
+                      );
+                      $this->My_common->insert_data ('contacts_cat', $data);
 
 										}
-									}
+                  }
+                  
 								}
 
-							} else {
-
+              } 
+              else 
+              {
 								// Si il est pas dans la base on l'ajoute avec le categorie
-                if ($row['B'] != 'nom' && $row['H'] != 'email') {
+                if ($row['B'] != 'nom' && $row['H'] != 'email') 
+                {
                   $data = array (
                     'id_group'  => $_SESSION['id_group'],
-  	  							'civ' 		  => $row['A'],
-  	  							'nom' 		  => $row['B'],
-  	  							'prenom' 	  => $row['C'],
-  	  							'fonction' 	=> $row['D'],
-  	  							'tel' 		  => $row['E'],
-  	  							'fax' 		  => $row['F'],
-  	  							'mobile' 	  => $row['G'],
-  	  							'email' 	  => $row['H'],
-                    'num_voie' 	=> $row['I'],
-                    'nom_voie' 	=> $row['J'],
-                    'lieu_dit' 	=> $row['K'],
-                    'bp' 	      => $row['L'],
-                    'cp' 	      => $row['M'],
-                    'ville' 	  => $row['N'],
-                    'cedex' 	  => $row['O'],
+  	  							'nom' 		  => $nom,
+  	  							'email' 	  => $email,
   	  						);
-
   	  						$id = $this->My_common->insert_data ('contacts', $data);
 
-                  // Ajout du contact chez send in blue
-
+                  // Ajout dans sendinblue
                   $data = array(
-                    'email'       => $row['H'],
+                    'email'       => $email,
+                    'blacklisted' => false,
+                  );
+          
+                  $data_update = json_encode ($data);
+                  
+                  $curl = curl_init();
+                  curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://api.sendinblue.com/v3/contacts",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => $data_update,
+                    CURLOPT_HTTPHEADER => array(
+                      "accept: application/json",
+                      "api-key: ".$infos_group[0]->api_sib_key,
+                      "content-type: application/json"
+                    ),
+                  ));
+                  
+                  $response = curl_exec($curl);
+                  $err = curl_error($curl);
+          
+                  if (isset($_POST['id_cat']))
+                  {
+
+                    foreach ($_POST['id_cat'] as $key => $value) 
+                    {
+                      $data =array (
+                        'id_contact' => $id,
+                        'id_cat' => $value,
+                      );
+                      $this->My_common->insert_data ('contacts_cat', $data);
+                    }
+
+  				    	  }
+
+                }
+              }
+              
+
+              
+              // Mise à jour des listes dans sendinblue :
+              foreach ($_POST['id_cat'] as $key => $value) {
+                $cat_list = $this->My_listes->get_cat_liste($value, $_SESSION['id_group']);
+                if ($cat_list[0]->id_sib != '') 
+                {
+
+                  $data_cat_list = array(
+                    "listIds" 		=> array ($cat_list[0]->id_sib),
                   );
 
-                  $mailin->create_update_user($data);
+                  $data_cat_list = json_encode ($data_cat_list, JSON_NUMERIC_CHECK);
 
-  							 if (isset($_POST['id_cat'])){
+                  $curl = curl_init();
+                  curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://api.sendinblue.com/v3/contacts/".$email,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "PUT",
+                    CURLOPT_POSTFIELDS => $data_cat_list,
+                    CURLOPT_HTTPHEADER => array(
+                      "accept: application/json",
+                      "api-key: ".$infos_group[0]->api_sib_key,
+                      "content-type: application/json"
+                    ),
+                  ));
+                  
+                  $response = curl_exec($curl);
+                  $err = curl_error($curl);
+          
+                  curl_close($curl);
+                  echo "Email importé : ".$row['H']."<br>";
+                  echo "Retour d'import : ".$response."<br><br>";
 
-  				        foreach ($_POST['id_cat'] as $key => $value) {
-  				        	$data =array (
-  				        		'id_contact' => $id,
-  				        		'id_cat' => $value,
-  				        	);
-  				        	$this->My_common->insert_data ('contacts_cat', $data);
-  				        }
-
-  				    	}
-
+                }
               }
-						}
-					}
-				}
-			}
-		} else {
-			echo 'erreur';
-		}
+              
 
-		redirect (base_url().'contacts');
 
-  	} else {
-      	$this->load->view('login');
+					  }
+				  }
+        }
+
+        //redirect (base_url().'contacts');
+      } 
+      else 
+      {
+			  echo 'erreur';
+		  }
+
+		  
+
+    } 
+    else 
+    {
+      $this->load->view('login');
   	}
-	}
+  }
+  
 
 }
+
+/*
+
+
+*/

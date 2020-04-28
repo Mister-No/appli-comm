@@ -83,7 +83,7 @@ function check_exist(urlCheck, urlRedirect, data) {
 			if (data == 1) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Entité deja existante.');
+				$('.message').empty().html('Element deja existant ou non valide.');
 
 			} else if (data == 2) {
 
@@ -143,7 +143,27 @@ function check_exist(urlCheck, urlRedirect, data) {
 			} else if (data == 13) {
 
 				$('.erreur').css('display', 'block');
-				$('.message').empty().html('Vous avez atteint cotre quota de listes.');
+				$('.message').empty().html('Vous avez atteint votre quota de listes.');
+
+			} else if (data == 14) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Impossible d\'identifier votre campagne.');
+
+			}  else if (data == 15) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Impossible d\'identifier votre liste.');
+
+			}  else if (data == 16) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Aucun contact dans votre liste.');
+
+			}  else if (data == 17) {
+
+				$('.erreur').css('display', 'block');
+				$('.message').empty().html('Impossible de dupiquer cette campagne.');
 
 			} else {
 
